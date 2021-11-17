@@ -1,0 +1,3 @@
+[submodule "themes/website_theme"]
+	path = themes/website_theme
+	url = git@github.com:slds-lmu/website_theme.git
