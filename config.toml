@@ -1,4 +1,4 @@
-baseURL = "https://slds-lmu.github.io/website_template/"
+baseURL = "https://slds-lmu.github.io/i2ml/"
 languageCode = "en-us"
 title = "Introduction to Machine Learning (I2ML)"
 theme = "website_theme"
@@ -50,9 +50,9 @@ unsafe= true
     url = "."
   [[menu.footer]]
     name = "Course content"
-    url = "https://github.com/compstat-lmu/lecture_i2ml"
+    url = "https://github.com/slds-lmu/lecture_i2ml"
   [[menu.footer]]
     name = "Website source code"
-    url = "https://github.com/slds-lmu/website_template"
+    url = "https://github.com/slds-lmu/i2ml"
 [minify] # needed for quizdown to work
   disableHTML = true
