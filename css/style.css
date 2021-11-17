@@ -1,0 +1,165 @@
+:root {
+  --text-width: 800px;
+}
+
+/* overwrite bootstrap */
+
+@media (min-width:992px) {
+ .container,
+ .container-lg,
+ .container-md,
+ .container-sm {
+  max-width: var(--text-width)
+ }
+}
+@media (min-width:1200px) {
+ .container,
+ .container-lg,
+ .container-md,
+ .container-sm,
+ .container-xl {
+  max-width: var(--text-width)
+ }
+}
+@media (min-width:1400px) {
+ .container,
+ .container-lg,
+ .container-md,
+ .container-sm,
+ .container-xl,
+ .container-xxl {
+  max-width: var(--text-width)
+ }
+}
+
+#logo {
+  width: 200px;
+  margin: auto;
+  padding: 20px;
+  display: block;
+}
+
+#content {
+  margin-top: 2em;
+  padding-bottom: 4em;
+}
+
+p {
+  text-align: justify  
+}
+
+/* Team */
+h1#team + ul {
+  margin-top: 2em;
+}
+h1#team + ul li {
+  display: block;
+  float: left;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+h1#team + ul li img{
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border:solid 2px #e8e8e8;
+  border-radius:50px;
+  float: left;
+  margin-right: 2em;
+  margin-top: -1em;
+}
+
+/* shortcode:  video */
+div.embedded_video {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+  min-width: 400px;
+}
+div.embedded_video iframe {
+  min-height: 250px;
+  width: 100%;
+  aspect-ratio: 16 / 9; 
+  border: solid 1px #888888;
+}
+
+.chapter_overview>ul>li {
+  display: block;
+  border: 1px solid #888888;
+  border-radius: 5px;
+  padding: 1rem;
+  margin: 2rem auto 2rem;
+}
+
+.chapter_overview a {
+  text-decoration: none;
+}
+
+.chapter_overview>ul>li>a {
+  display: block;
+  font-size: 130%;
+}
+
+.chapter_overview>ul>li>ul {
+  margin-top: 0.8rem;
+}
+
+
+ul.section_skipper {
+  display: block;
+  overflow: auto;
+  padding: 0;
+  margin: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: var(--text-width);
+}
+ 
+ul.section_skipper #next_in_section {
+  float: left;
+}
+
+ul.section_skipper #prev_in_section {
+  float: right;
+}
+
+footer ul {
+  margin: 0;
+}
+
+
+
+/* mathjax */
+
+code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+}
+
+/* shortcode:  pdf */
+
+div.pdf {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+}
+
+div.pdf object {
+  width: 100%;
+  aspect-ratio: 16/9;
+}
+
+/* pdfjs */
+
+canvas.pdf-canvas {
+  border: 1px solid #888888;
+  direction: ltr;
+  width: 100%;
+  height: auto;
+}
+div.pdf div.pdf-paginator{
+    text-align: center;
+    margin-bottom: 10px;
+}
