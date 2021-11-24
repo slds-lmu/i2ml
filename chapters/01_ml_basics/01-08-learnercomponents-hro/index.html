@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 1.1: What is ML?</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 01.08: Components of a Learner</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
@@ -56,12 +56,14 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 1.1: What is ML?</h1>
-<p>As subtopic of artificial intelligence, machine learning is a mathematically well-defined discipline and usually constructs predictive or decision models from data, instead of explicitly programming them. In this section, you will see some typical examples of where machine learning is applied and the main directions of machine learning.</p>
+<h1>Chapter 01.08: Components of a Learner</h1>
+<p>Nearly all supervised learning algorithms can be described in terms of three components: 1) hypothesis space, 2) risk, and 3) optimization. In this section, we explain how these components interact and why this is a very useful concept for many supervised learning approaches.</p>
+<h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/TfrSKiOecWI" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/PL7pDX9BBRc" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -71,15 +73,35 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-basics-whatisml.pdf"><button class="btn btn-primary">Download &raquo;slides-basics-whatisml.pdf&laquo;</button></a>
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-basics-learnercomponents-hro.pdf"><button class="btn btn-primary">Download &raquo;slides-basics-learnercomponents-hro.pdf&laquo;</button></a>
+
+<h3 id="quiz">Quiz</h3>
+
+
+<div class='quizdown'>
+  
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [x] For a given hypothesis space, different optimization procedures can be used to find the best model within it.
+- [ ] Providing two different training data sets to a learner will result in the same optimal model.
+- [x] The parameterization of a model defines its hypothesis space.
+- [x] Supervised learning consists of three components: hypothesis space, risk, and optimization.
+
+
+</div>
 
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/01_ml_basics/01-08-learnercomponents-hro/">&#xab; Chapter 01.08: Components of a Learner</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/01_ml_basics/01-07-optimization/">&#xab; Chapter 01.07: Optimization</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/01_ml_basics/01_02_data/">Chapter 1.2: Data &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/01_ml_basics/01_01_what_is_ml/">Chapter 1.1: What is ML? &#xbb;</a></li>
 
 </ul>
 
@@ -101,5 +123,16 @@
 
 
 
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+</script>
+<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+</script>
 </body>
 </html>
