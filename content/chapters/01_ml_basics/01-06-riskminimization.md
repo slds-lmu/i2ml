@@ -1,5 +1,6 @@
 ---
 title: "Chapter 01.06: Losses and Risk Minimization"
+weight: 1006
 ---
 In order to find good solutions we need a concept to evaluate and compare models. To this end, the concepts of *loss function*, *risk* and *empirical risk minimization* are introduced.
 
