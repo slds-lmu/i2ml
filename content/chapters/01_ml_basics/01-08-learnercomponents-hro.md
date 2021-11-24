@@ -1,5 +1,6 @@
 ---
 title: "Chapter 01.08: Components of a Learner"
+weight: 1008
 quizdown: true
 ---
 Nearly all supervised learning algorithms can be described in terms of three components: 1) hypothesis space, 2) risk, and 3) optimization. In this section, we explain how these components interact and why this is a very useful concept for many supervised learning approaches.
