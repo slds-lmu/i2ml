@@ -11,4 +11,4 @@ We introduce models as functional hypotheses about the mapping from feature to t
 
 ### Lecture slides
 
-{{< pdfjs file="slides-basics-models-parameters.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-models-parameters.pdf" >}}
