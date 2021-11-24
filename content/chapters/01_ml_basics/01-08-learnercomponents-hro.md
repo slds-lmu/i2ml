@@ -16,6 +16,7 @@ Nearly all supervised learning algorithms can be described in terms of three com
 
 ### Quiz
 
+
 {{< quizdown >}}
 
 ---
