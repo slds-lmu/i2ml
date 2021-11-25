@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
+
+
+<title>Introduction to Machine Learning (I2ML) | Chapter 04.10: Measures Classification ROC Visualization</title>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/website_i2ml_copy/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/website_i2ml_copy/favicon-16x16.png">
+<link rel="manifest" href="/website_i2ml_copy/site.webmanifest">
+<link rel="mask-icon" href="/website_i2ml_copy/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head><body>
+<img id="logo" src="/website_i2ml_copy/i2ml.svg" />
+
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        
+        <a class="nav-link" href="/website_i2ml_copy">
+        
+        Home
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/chapters/">
+        
+        Chapters
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/appendix/">
+        
+        Appendix
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/exercises/">
+        
+        Exercises
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/references/">
+        
+        References
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/team/">
+        
+        Team
+        </a>
+        
+    </nav>
+</div><div id="content" class="container">
+<h1>Chapter 04.10: Measures Classification ROC Visualization</h1>
+<p>In this section, we explain the ROC curve and how to calculate it. In addition, we will present AUC and partial AUC as global performance measures.</p>
+<h3 id="lecture-video">Lecture video</h3>
+<!-- <div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/m5We8ITYEVk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
+ -->
+<h3 id="lecture-slides">Lecture slides</h3>
+<!-- 
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  
+<div class="pdf">
+<div class="pdf-paginator" id="paginator_slides_evaluation_measures_classification_roc_space_pdf">
+    <button class="btn btn-primary" id="prev_slides_evaluation_measures_classification_roc_space_pdf">Previous</button>
+    &nbsp;
+    <span>Page: <span id="page_num_slides_evaluation_measures_classification_roc_space_pdf"></span> / <span id="page_count_slides_evaluation_measures_classification_roc_space_pdf"></span></span>
+    &nbsp;
+    <button class="btn btn-primary" id="next_slides_evaluation_measures_classification_roc_space_pdf">Next</button>
+    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-measures-classification-roc-space.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_measures_classification_roc_space_pdf">PDF</button></a>
+</div>
+<div id="embed-pdf-container_slides_evaluation_measures_classification_roc_space_pdf">
+    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_measures_classification_roc_space_pdf"></canvas>
+</div>
+</div>
+
+<script type="text/javascript">
+window.addEventListener("load",function(){
+
+
+var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification-roc-space.pdf';
+var hidePaginator = "";
+
+
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+
+
+pdfjsLib.GlobalWorkerOptions.workerSrc = "https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.worker.min.js";
+
+
+var pdfDoc = null,
+    pageNum = 1,
+    pageRendering = false,
+    pageNumPending = null,
+    scale = 3,
+    canvas_slides_evaluation_measures_classification_roc_space_pdf = document.getElementById('the-canvas_slides_evaluation_measures_classification_roc_space_pdf'),
+    ctx = canvas_slides_evaluation_measures_classification_roc_space_pdf.getContext('2d');
+
+
+
+function renderPage(num) {
+  pageRendering = true;
+  
+  pdfDoc.getPage(num).then(function(page) {
+    var viewport = page.getViewport({scale: scale});
+    canvas_slides_evaluation_measures_classification_roc_space_pdf.height = viewport.height;
+    canvas_slides_evaluation_measures_classification_roc_space_pdf.width = viewport.width;
+
+    
+    var renderContext = {
+      canvasContext: ctx,
+      viewport: viewport
+    };
+    var renderTask = page.render(renderContext);
+
+    
+    renderTask.promise.then(function() {
+      pageRendering = false;
+      if (pageNumPending !== null) {
+        
+        renderPage(pageNumPending);
+        pageNumPending = null;
+      }
+    });
+  });
+
+  
+  document.getElementById('page_num_slides_evaluation_measures_classification_roc_space_pdf').textContent = num;
+}
+
+
+
+function queuerenderPage(num) {
+  if (pageRendering) {
+    pageNumPending = num;
+  } else {
+    renderPage(num);
+  }
+}
+
+
+
+if (hidePaginator == "true") {
+  document.getElementById("paginator_slides_evaluation_measures_classification_roc_space_pdf").style.display = 'none';
+}
+
+
+
+function onPrevPage() {
+  if (pageNum <= 1) {
+    return;
+  }
+  pageNum--;
+  queuerenderPage(pageNum);
+}
+document.getElementById('prev_slides_evaluation_measures_classification_roc_space_pdf').addEventListener('click', onPrevPage);
+
+
+
+function onNextPage() {
+  if (pageNum >= pdfDoc.numPages) {
+    return;
+  }
+  pageNum++;
+  queuerenderPage(pageNum);
+}
+document.getElementById('next_slides_evaluation_measures_classification_roc_space_pdf').addEventListener('click', onNextPage);
+
+
+
+pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+  pdfDoc = pdfDoc_;
+  document.getElementById('page_count_slides_evaluation_measures_classification_roc_space_pdf').textContent = pdfDoc.numPages;
+
+  
+  renderPage(pageNum);
+});
+})
+
+</script>
+
+ -->
+<h3 id="code-demo">Code demo</h3>
+<p><strong>ROC</strong></p>
+<p>You can run the code snippets in the demos on your local machine. The corresponding Rmd version of this demo can be found <a href="https://github.com/compstat-lmu/lecture_i2ml/blob/master/code-demos/code_demo_roc.Rmd">here</a>. If you want to render the Rmd files to PDF, you need the accompanying <a href="https://github.com/compstat-lmu/lecture_i2ml/tree/master/style">style files</a>.</p>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_i2ml/tree/master/code-demos-pdf/code_demo_roc.pdf">
+    <button class="btn btn-primary" style="">
+      Download &raquo;code_demo_roc.pdf&laquo;
+    </button>
+  </a>
+
+
+<h3 id="quiz">Quiz</h3>
+
+
+<div class='quizdown'>
+  
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [x] Logistic regression minimizes the binomial loss.
+- [x] The Brier score is like the MSE, just with probabilities.
+- [ ] The log-loss punishes being very wrong less than the Brier score.
+- [ ] Accuracy and mean classification error are calculated using the predicted probabilities.
+- [x] The confusion matrix tabulates the true against predicted classes.
+- [ ] A misclassification error rate of 0.1% is always great.
+
+## Which statements are true? 
+
+- [ ] If the proportion of positive to negative instances in the training data changes, the ROC curve will not change.
+- [x] If the proportion of positive to negative instances in the test data changes, the ROC curve will not change.
+- [x] Several evaluation metrics can be derived from a confusion matrix.
+- [x] The area under the ROC curve is called AUC.
+- [ ] AUC = 0 means that the model is optimal.
+
+## Which statements are true? 
+
+- [ ] Using the prediction on the train data is the ordinary and correct way of calculating the ROC.
+- [x] The calculation of the ROC should be done on a test set.
+- [x] The AUC is not affected by the threshold, as opposed to the MCE.
+
+
+</div>
+
+
+<ul class="section_skipper list-unstyled">
+
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-09-measures-classification-roc/">&#xab; Chapter 04.09: Measures Classification ROC</a></li>
+
+
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-11-auc_extensions/">Chapter 04.11: AUC Extensions &#xbb;</a></li>
+
+</ul>
+
+
+
+
+        </div><footer class="bg-light text-center text-lg-start fixed-bottom">
+<ul class="list-inline text-center">
+  <li class="list-inline-item">© 2021 Course Creator</li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/lecture_i2ml" target="_blank">Course content</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="/website_i2ml_copy" target="_blank">Main Course Website</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/i2ml" target="_blank">Website source code</a></li>
+  
+</ul>
+</footer>
+
+
+
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+</script>
+<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+</script>
+</body>
+</html>

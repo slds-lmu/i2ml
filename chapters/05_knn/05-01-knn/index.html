@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
+
+
+<title>Introduction to Machine Learning (I2ML) | Chapter 05.01: k-Nearest Neighbors (k-NN)</title>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/website_i2ml_copy/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/website_i2ml_copy/favicon-16x16.png">
+<link rel="manifest" href="/website_i2ml_copy/site.webmanifest">
+<link rel="mask-icon" href="/website_i2ml_copy/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head><body>
+<img id="logo" src="/website_i2ml_copy/i2ml.svg" />
+
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        
+        <a class="nav-link" href="/website_i2ml_copy">
+        
+        Home
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/chapters/">
+        
+        Chapters
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/appendix/">
+        
+        Appendix
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/exercises/">
+        
+        Exercises
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/references/">
+        
+        References
+        </a>
+        
+        <a class="nav-link" href="/website_i2ml_copy/team/">
+        
+        Team
+        </a>
+        
+    </nav>
+</div><div id="content" class="container">
+<h1>Chapter 05.01: k-Nearest Neighbors (k-NN)</h1>
+<p>We demonstrate that distances in feature space are crucial in \(k\)-NN regression / classification and show how we can form predictions by averaging / majority vote. In this, \(k\)-NN is a very local model and works without distributional assumptions.</p>
+<h3 id="lecture-video">Lecture video</h3>
+<div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/BMCgd1et_2E" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+<h3 id="lecture-slides">Lecture slides</h3>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-knn.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;slides-knn.pdf&laquo;
+    </button>
+  </a>
+
+
+<h3 id="quiz">Quiz</h3>
+
+
+<div class='quizdown'>
+  
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [x] Choosing the distance metric is a crucial design decision for $k$-NN.
+- [ ] $k$-NN can only be used for classification tasks.
+- [x] $N_k(x)$ contains the subset of the feature space $\mathcal{X}$ that is at least as close to $x$ as the $k$-th closest neighbor of $x$ in the training data set.
+- [x] 1-NN always 'predicts' perfectly on observations of the training data set (if there are no observations with equal feature but different target values).
+- [x] $k$-NN with $k = n$ always predicts the same target variable value for all possible inputs (if no weights are used).
+- [ ] $k$-NN for classification is a probabilistic classifier.
+
+
+</div>
+
+
+
+
+
+        </div><footer class="bg-light text-center text-lg-start fixed-bottom">
+<ul class="list-inline text-center">
+  <li class="list-inline-item">© 2021 Course Creator</li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/lecture_i2ml" target="_blank">Course content</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="/website_i2ml_copy" target="_blank">Main Course Website</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/i2ml" target="_blank">Website source code</a></li>
+  
+</ul>
+</footer>
+
+
+
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+</script>
+<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+</script>
+</body>
+</html>
