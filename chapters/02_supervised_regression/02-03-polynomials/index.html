@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 2.1: Loss Functions for Regression</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 02.03: Polynomial Regression Models</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
@@ -56,12 +56,14 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 2.1: Loss Functions for Regression</h1>
-<p>L1 and L2 are two essential loss functions used for evaluating the performance of regression models. This section defines L1 and L2 loss and explains the differences.</p>
+<h1>Chapter 02.03: Polynomial Regression Models</h1>
+<p>This section introduces polynomials to obtain more flexible models for the regression task. We explain the connection to the basic linear model and discuss the problem of overfitting.</p>
+<h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/Syrzezpj2FY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/q1ETfSxEfSg" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -71,13 +73,14 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-regression-losses.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-regression-polynomials.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-regression-losses.pdf&laquo;
+      Download &raquo;slides-regression-polynomials.pdf&laquo;
     </button>
   </a>
 
 
+<h3 id="quiz">Quiz</h3>
 
 
 <div class='quizdown'>
@@ -87,38 +90,10 @@
 shuffle_questions: false
 ---
 
-## Human verification
+## Which statements are true? 
 
-What picture shows an apple?
-
-- [x] ![](https://upload.wikimedia.org/wikipedia/commons/2/22/Malus_domestica_a1.jpg)
-- [x] ![](https://upload.wikimedia.org/wikipedia/commons/9/92/95apple.jpeg)
-- [x] ![](https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Macintosh_128k_transparency.png/511px-Macintosh_128k_transparency.png)
-- [ ] ![](https://slds-lmu.github.io/website_i2ml_copy/chapters/02_supervised_regression/Bananas.svg)
-
-## Loss Functions
-
-Which statements are true?
-
----
-shuffle_answers: true
----
-
-- [ ] The absolute loss function is more sensitive to outliers than the quadratic loss function.
-- [x] Optimization of $L2$ loss is easier than of $L1$ loss.
-
-## Linear Regression
-
-Which statements are true?
-
----
-shuffle_answers: true
----
-
-- [x] The target in linear regression has to be numeric
-- [ ] The features in linear regression have to be numeric
-- [x] The classical linear model from statistics with gaussian errors is linear regression with $L2$-loss
-- [x] The hypothesis space of linear regression consists of linear functions of the features
+- [ ] With linear regression it is only possible to model linear effects of a feature.
+- [x] Overfitting is a present danger in polynomial regression.
 
 
 </div>
@@ -126,10 +101,8 @@ shuffle_answers: true
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/02_supervised_regression/02-01-losses/">&#xab; Chapter 02.01: Loss Functions for Regression</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/02_supervised_regression/02-02-linearmodel/">&#xab; Chapter 02.02: Linear Regression Models</a></li>
 
-
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/02_supervised_regression/02-02-linearmodel/">Chapter 02.02: Linear Regression Models &#xbb;</a></li>
 
 </ul>
 
