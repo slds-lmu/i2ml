@@ -107,10 +107,10 @@
 </li>
 
 <li>
-    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-05-overfitting/">Chapter 04.05: Overfitting</a>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-05-overfitting-underfitting/">Chapter 04.05: Overfitting &amp; Underfitting</a>
     
       
-        <p>When a machine learning model performs well on training data but does not generalize on the test data, we speak of overfitting. We will show you examples of this behavior and how to diagnose overfitting.
+        <p>In machine learning, we are interested in a model that captures the true underlying function and still generalizes well to new data. When the model fails on the first task, we speak of underfitting, and both train and test error will be high. On the other hand, learning the training data very well at the expense of generalization ability is referred to as overfitting and usually occurs when there is not enough data to tell our hypotheses apart. We will show you examples of this behavior and how to diagnose overfitting.
 </p>
       
       
@@ -130,7 +130,8 @@
     <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-07-resampling-2/">Chapter 04.07: Resampling 2</a>
     
       
-        <p>### Lecture slides  Previous &amp;nbsp; Page:  /  &amp;nbsp; Next PDF     window.addEventListener(&#34;load&#34;,function(){ var url = &#39;https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification.pdf&#39;; var hidePaginator = &#34;&#34;; var pdfjsLib = window[&#39;pdfjs-dist/build/pdf&#39;]; pdfjsLib.GlobalWorkerOptions.workerSrc = &#34;https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.worker.min.js&#34;; var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 3, canvas_slides_evaluation_measures_classification_pdf = document.getElementById(&#39;the-canvas_slides_evaluation_measures_classification_pdf&#39;), ctx = canvas_slides_evaluation_measures_classification_pdf.getContext(&#39;2d&#39;); function renderPage(num) { pageRendering = true; pdfDoc.getPage(num).then(function(page) { var viewport = page.getViewport({scale: scale}); canvas_slides_evaluation_measures_classification_pdf.</p>
+        <p>We provide a deep dive on resampling, showing its superiority to holdout splitting and analyzing the bias-variance decomposition of its MSE. We further point out the dependence between CV fold results and that hypothesis testing is therefore not applicable, and give some practical tips to choose resampling strategies.
+</p>
       
       
 </li>
@@ -146,7 +147,7 @@
 </li>
 
 <li>
-    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-09-measures-classification-roc/">Chapter 04.09: Measures Classification ROC</a>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-09-rocbasics/">Chapter 04.09: ROC Basics</a>
     
       
         <p>From the confusion matrix we can calculate a variety of ROC metrics. Among others, we will explain true positive rate, negative predictive value and the $F1$ measure.
@@ -156,29 +157,41 @@
 </li>
 
 <li>
-    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-10-measures-classification-roc-space/">Chapter 04.10: Measures Classification ROC Visualization</a>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-10-roccurves/">Chapter 04.10: ROC Curves</a>
     
       
-        <p>In this section, we explain the ROC curve and how to calculate it. In addition, we will present AUC and partial AUC as global performance measures.
+        <p>In this section, we explain the ROC curve and how to calculate it. In addition, we will present the AUC as a global performance measure that integrates over all possible thresholds.
 </p>
       
       
 </li>
 
 <li>
-    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-11-auc_extensions/">Chapter 04.11: AUC Extensions</a>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-11-partialauc-mcauc/">Chapter 04.11: Partial AUC &amp; Multi-Class AUC</a>
     
       
-        <p>### Lecture slides  Previous &amp;nbsp; Page:  /  &amp;nbsp; Next PDF     window.addEventListener(&#34;load&#34;,function(){ var url = &#39;https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification.pdf&#39;; var hidePaginator = &#34;&#34;; var pdfjsLib = window[&#39;pdfjs-dist/build/pdf&#39;]; pdfjsLib.GlobalWorkerOptions.workerSrc = &#34;https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.worker.min.js&#34;; var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 3, canvas_slides_evaluation_measures_classification_pdf = document.getElementById(&#39;the-canvas_slides_evaluation_measures_classification_pdf&#39;), ctx = canvas_slides_evaluation_measures_classification_pdf.getContext(&#39;2d&#39;); function renderPage(num) { pageRendering = true; pdfDoc.getPage(num).then(function(page) { var viewport = page.getViewport({scale: scale}); canvas_slides_evaluation_measures_classification_pdf.</p>
+        <p>We discuss both the partial AUC, which restricts the AUC to the relevant area for a specific application, and possible extensions of the AUC to multi-class classification.
+</p>
       
       
 </li>
 
 <li>
-    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-12-beyond_auc/">Chapter 04.12: Beyond AUC</a>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-12-prcurves/">Chapter 04.12: Precision-Recall Curves</a>
     
       
-        <p>### Lecture slides  Previous &amp;nbsp; Page:  /  &amp;nbsp; Next PDF     window.addEventListener(&#34;load&#34;,function(){ var url = &#39;https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification.pdf&#39;; var hidePaginator = &#34;&#34;; var pdfjsLib = window[&#39;pdfjs-dist/build/pdf&#39;]; pdfjsLib.GlobalWorkerOptions.workerSrc = &#34;https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.worker.min.js&#34;; var pdfDoc = null, pageNum = 1, pageRendering = false, pageNumPending = null, scale = 3, canvas_slides_evaluation_measures_classification_pdf = document.getElementById(&#39;the-canvas_slides_evaluation_measures_classification_pdf&#39;), ctx = canvas_slides_evaluation_measures_classification_pdf.getContext(&#39;2d&#39;); function renderPage(num) { pageRendering = true; pdfDoc.getPage(num).then(function(page) { var viewport = page.getViewport({scale: scale}); canvas_slides_evaluation_measures_classification_pdf.</p>
+        <p>Besides plotting TPR against FPR to obtain the ROC curve, it sometimes makes sense to instead consider precision (= PPV) vs recall (= TPR), especially when data are imbalanced.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/website_i2ml_copy/chapters/04_evaluation/04-13-auc-mwu/">Chapter 04.13: AUC &amp; Mann-Whitney-U Test</a>
+    
+      
+        <p>We demonstrate that the AUC is equivalent to the normalized test statistic in the Mann-Whitney-U test, both of which are effectively rank-based metrics.
+</p>
       
       
 </li>

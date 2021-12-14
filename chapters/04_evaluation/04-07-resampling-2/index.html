@@ -57,16 +57,17 @@
     </nav>
 </div><div id="content" class="container">
 <h1>Chapter 04.07: Resampling 2</h1>
-<!--
-### Lecture video
-
+<p>We provide a deep dive on resampling, showing its superiority to holdout
+splitting and analyzing the bias-variance decomposition of its MSE.
+We further point out the dependence between CV fold results and that
+hypothesis testing is therefore not applicable, and give some practical tips
+to choose resampling strategies.</p>
+<h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/bHwUwrbCHEU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/7O2N5idB8iw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-
-### Lecture slides
-
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -78,16 +79,16 @@
   
   
 <div class="pdf">
-<div class="pdf-paginator" id="paginator_slides_evaluation_measures_classification_pdf">
-    <button class="btn btn-primary" id="prev_slides_evaluation_measures_classification_pdf">Previous</button>
+<div class="pdf-paginator" id="paginator_slides_evaluation_resampling_2_pdf">
+    <button class="btn btn-primary" id="prev_slides_evaluation_resampling_2_pdf">Previous</button>
     &nbsp;
-    <span>Page: <span id="page_num_slides_evaluation_measures_classification_pdf"></span> / <span id="page_count_slides_evaluation_measures_classification_pdf"></span></span>
+    <span>Page: <span id="page_num_slides_evaluation_resampling_2_pdf"></span> / <span id="page_count_slides_evaluation_resampling_2_pdf"></span></span>
     &nbsp;
-    <button class="btn btn-primary" id="next_slides_evaluation_measures_classification_pdf">Next</button>
-    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-measures-classification.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_measures_classification_pdf">PDF</button></a>
+    <button class="btn btn-primary" id="next_slides_evaluation_resampling_2_pdf">Next</button>
+    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-resampling-2.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_resampling_2_pdf">PDF</button></a>
 </div>
-<div id="embed-pdf-container_slides_evaluation_measures_classification_pdf">
-    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_measures_classification_pdf"></canvas>
+<div id="embed-pdf-container_slides_evaluation_resampling_2_pdf">
+    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_resampling_2_pdf"></canvas>
 </div>
 </div>
 
@@ -95,7 +96,7 @@
 window.addEventListener("load",function(){
 
 
-var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification.pdf';
+var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-resampling-2.pdf';
 var hidePaginator = "";
 
 
@@ -110,8 +111,8 @@ var pdfDoc = null,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
-    canvas_slides_evaluation_measures_classification_pdf = document.getElementById('the-canvas_slides_evaluation_measures_classification_pdf'),
-    ctx = canvas_slides_evaluation_measures_classification_pdf.getContext('2d');
+    canvas_slides_evaluation_resampling_2_pdf = document.getElementById('the-canvas_slides_evaluation_resampling_2_pdf'),
+    ctx = canvas_slides_evaluation_resampling_2_pdf.getContext('2d');
 
 
 
@@ -120,8 +121,8 @@ function renderPage(num) {
   
   pdfDoc.getPage(num).then(function(page) {
     var viewport = page.getViewport({scale: scale});
-    canvas_slides_evaluation_measures_classification_pdf.height = viewport.height;
-    canvas_slides_evaluation_measures_classification_pdf.width = viewport.width;
+    canvas_slides_evaluation_resampling_2_pdf.height = viewport.height;
+    canvas_slides_evaluation_resampling_2_pdf.width = viewport.width;
 
     
     var renderContext = {
@@ -142,7 +143,7 @@ function renderPage(num) {
   });
 
   
-  document.getElementById('page_num_slides_evaluation_measures_classification_pdf').textContent = num;
+  document.getElementById('page_num_slides_evaluation_resampling_2_pdf').textContent = num;
 }
 
 
@@ -158,7 +159,7 @@ function queuerenderPage(num) {
 
 
 if (hidePaginator == "true") {
-  document.getElementById("paginator_slides_evaluation_measures_classification_pdf").style.display = 'none';
+  document.getElementById("paginator_slides_evaluation_resampling_2_pdf").style.display = 'none';
 }
 
 
@@ -170,7 +171,7 @@ function onPrevPage() {
   pageNum--;
   queuerenderPage(pageNum);
 }
-document.getElementById('prev_slides_evaluation_measures_classification_pdf').addEventListener('click', onPrevPage);
+document.getElementById('prev_slides_evaluation_resampling_2_pdf').addEventListener('click', onPrevPage);
 
 
 
@@ -181,13 +182,13 @@ function onNextPage() {
   pageNum++;
   queuerenderPage(pageNum);
 }
-document.getElementById('next_slides_evaluation_measures_classification_pdf').addEventListener('click', onNextPage);
+document.getElementById('next_slides_evaluation_resampling_2_pdf').addEventListener('click', onNextPage);
 
 
 
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  document.getElementById('page_count_slides_evaluation_measures_classification_pdf').textContent = pdfDoc.numPages;
+  document.getElementById('page_count_slides_evaluation_resampling_2_pdf').textContent = pdfDoc.numPages;
 
   
   renderPage(pageNum);
@@ -195,10 +196,6 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
 })
 
 </script>
-
-
--->
-
 
 
 <ul class="section_skipper list-unstyled">

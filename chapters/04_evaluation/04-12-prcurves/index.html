@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 04.11: AUC Extensions</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 04.12: Precision-Recall Curves</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
@@ -56,17 +56,16 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 04.11: AUC Extensions</h1>
-<!--
-### Lecture video
-
+<h1>Chapter 04.12: Precision-Recall Curves</h1>
+<p>Besides plotting TPR against FPR to obtain the ROC curve, it sometimes makes
+sense to instead consider precision (= PPV) vs recall (= TPR), especially when
+data are imbalanced.</p>
+<h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/bHwUwrbCHEU" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/6tJXX3vmYl0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
-
-### Lecture slides
-
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -78,16 +77,16 @@
   
   
 <div class="pdf">
-<div class="pdf-paginator" id="paginator_slides_evaluation_measures_classification_pdf">
-    <button class="btn btn-primary" id="prev_slides_evaluation_measures_classification_pdf">Previous</button>
+<div class="pdf-paginator" id="paginator_slides_evaluation_prcurves_pdf">
+    <button class="btn btn-primary" id="prev_slides_evaluation_prcurves_pdf">Previous</button>
     &nbsp;
-    <span>Page: <span id="page_num_slides_evaluation_measures_classification_pdf"></span> / <span id="page_count_slides_evaluation_measures_classification_pdf"></span></span>
+    <span>Page: <span id="page_num_slides_evaluation_prcurves_pdf"></span> / <span id="page_count_slides_evaluation_prcurves_pdf"></span></span>
     &nbsp;
-    <button class="btn btn-primary" id="next_slides_evaluation_measures_classification_pdf">Next</button>
-    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-measures-classification.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_measures_classification_pdf">PDF</button></a>
+    <button class="btn btn-primary" id="next_slides_evaluation_prcurves_pdf">Next</button>
+    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-prcurves.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_prcurves_pdf">PDF</button></a>
 </div>
-<div id="embed-pdf-container_slides_evaluation_measures_classification_pdf">
-    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_measures_classification_pdf"></canvas>
+<div id="embed-pdf-container_slides_evaluation_prcurves_pdf">
+    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_prcurves_pdf"></canvas>
 </div>
 </div>
 
@@ -95,7 +94,7 @@
 window.addEventListener("load",function(){
 
 
-var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-measures-classification.pdf';
+var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-prcurves.pdf';
 var hidePaginator = "";
 
 
@@ -110,8 +109,8 @@ var pdfDoc = null,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
-    canvas_slides_evaluation_measures_classification_pdf = document.getElementById('the-canvas_slides_evaluation_measures_classification_pdf'),
-    ctx = canvas_slides_evaluation_measures_classification_pdf.getContext('2d');
+    canvas_slides_evaluation_prcurves_pdf = document.getElementById('the-canvas_slides_evaluation_prcurves_pdf'),
+    ctx = canvas_slides_evaluation_prcurves_pdf.getContext('2d');
 
 
 
@@ -120,8 +119,8 @@ function renderPage(num) {
   
   pdfDoc.getPage(num).then(function(page) {
     var viewport = page.getViewport({scale: scale});
-    canvas_slides_evaluation_measures_classification_pdf.height = viewport.height;
-    canvas_slides_evaluation_measures_classification_pdf.width = viewport.width;
+    canvas_slides_evaluation_prcurves_pdf.height = viewport.height;
+    canvas_slides_evaluation_prcurves_pdf.width = viewport.width;
 
     
     var renderContext = {
@@ -142,7 +141,7 @@ function renderPage(num) {
   });
 
   
-  document.getElementById('page_num_slides_evaluation_measures_classification_pdf').textContent = num;
+  document.getElementById('page_num_slides_evaluation_prcurves_pdf').textContent = num;
 }
 
 
@@ -158,7 +157,7 @@ function queuerenderPage(num) {
 
 
 if (hidePaginator == "true") {
-  document.getElementById("paginator_slides_evaluation_measures_classification_pdf").style.display = 'none';
+  document.getElementById("paginator_slides_evaluation_prcurves_pdf").style.display = 'none';
 }
 
 
@@ -170,7 +169,7 @@ function onPrevPage() {
   pageNum--;
   queuerenderPage(pageNum);
 }
-document.getElementById('prev_slides_evaluation_measures_classification_pdf').addEventListener('click', onPrevPage);
+document.getElementById('prev_slides_evaluation_prcurves_pdf').addEventListener('click', onPrevPage);
 
 
 
@@ -181,13 +180,13 @@ function onNextPage() {
   pageNum++;
   queuerenderPage(pageNum);
 }
-document.getElementById('next_slides_evaluation_measures_classification_pdf').addEventListener('click', onNextPage);
+document.getElementById('next_slides_evaluation_prcurves_pdf').addEventListener('click', onNextPage);
 
 
 
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  document.getElementById('page_count_slides_evaluation_measures_classification_pdf').textContent = pdfDoc.numPages;
+  document.getElementById('page_count_slides_evaluation_prcurves_pdf').textContent = pdfDoc.numPages;
 
   
   renderPage(pageNum);
@@ -197,16 +196,12 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
 </script>
 
 
--->
-
-
-
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-10-measures-classification-roc-space/">&#xab; Chapter 04.10: Measures Classification ROC Visualization</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-11-partialauc-mcauc/">&#xab; Chapter 04.11: Partial AUC &amp; Multi-Class AUC</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-12-beyond_auc/">Chapter 04.12: Beyond AUC &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-13-auc-mwu/">Chapter 04.13: AUC &amp; Mann-Whitney-U Test &#xbb;</a></li>
 
 </ul>
 

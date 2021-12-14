@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/website_i2ml_copy/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 04.06: Resampling 1</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 04.11: Partial AUC &amp; Multi-Class AUC</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/website_i2ml_copy/apple-touch-icon.png">
@@ -56,11 +56,13 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 04.06: Resampling 1</h1>
-<p>Different resampling techniques help to assess the performance of a learner while avoiding potential quirks resulting from a single train-test split. We will introduce cross-validation (with and without stratification), bootstrap and subsampling.</p>
+<h1>Chapter 04.11: Partial AUC &amp; Multi-Class AUC</h1>
+<p>We discuss both the partial AUC, which restricts the AUC to the relevant area
+for a specific application, and possible extensions of the AUC to multi-class
+classification.</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/YWmC0C_NBLk" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/JGag-IwJ93E" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -75,16 +77,16 @@
   
   
 <div class="pdf">
-<div class="pdf-paginator" id="paginator_slides_evaluation_resampling_1_pdf">
-    <button class="btn btn-primary" id="prev_slides_evaluation_resampling_1_pdf">Previous</button>
+<div class="pdf-paginator" id="paginator_slides_evaluation_partialauc_pdf">
+    <button class="btn btn-primary" id="prev_slides_evaluation_partialauc_pdf">Previous</button>
     &nbsp;
-    <span>Page: <span id="page_num_slides_evaluation_resampling_1_pdf"></span> / <span id="page_count_slides_evaluation_resampling_1_pdf"></span></span>
+    <span>Page: <span id="page_num_slides_evaluation_partialauc_pdf"></span> / <span id="page_count_slides_evaluation_partialauc_pdf"></span></span>
     &nbsp;
-    <button class="btn btn-primary" id="next_slides_evaluation_resampling_1_pdf">Next</button>
-    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-resampling-1.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_resampling_1_pdf">PDF</button></a>
+    <button class="btn btn-primary" id="next_slides_evaluation_partialauc_pdf">Next</button>
+    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-partialauc.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_partialauc_pdf">PDF</button></a>
 </div>
-<div id="embed-pdf-container_slides_evaluation_resampling_1_pdf">
-    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_resampling_1_pdf"></canvas>
+<div id="embed-pdf-container_slides_evaluation_partialauc_pdf">
+    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_partialauc_pdf"></canvas>
 </div>
 </div>
 
@@ -92,7 +94,7 @@
 window.addEventListener("load",function(){
 
 
-var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-resampling-1.pdf';
+var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-partialauc.pdf';
 var hidePaginator = "";
 
 
@@ -107,8 +109,8 @@ var pdfDoc = null,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
-    canvas_slides_evaluation_resampling_1_pdf = document.getElementById('the-canvas_slides_evaluation_resampling_1_pdf'),
-    ctx = canvas_slides_evaluation_resampling_1_pdf.getContext('2d');
+    canvas_slides_evaluation_partialauc_pdf = document.getElementById('the-canvas_slides_evaluation_partialauc_pdf'),
+    ctx = canvas_slides_evaluation_partialauc_pdf.getContext('2d');
 
 
 
@@ -117,8 +119,8 @@ function renderPage(num) {
   
   pdfDoc.getPage(num).then(function(page) {
     var viewport = page.getViewport({scale: scale});
-    canvas_slides_evaluation_resampling_1_pdf.height = viewport.height;
-    canvas_slides_evaluation_resampling_1_pdf.width = viewport.width;
+    canvas_slides_evaluation_partialauc_pdf.height = viewport.height;
+    canvas_slides_evaluation_partialauc_pdf.width = viewport.width;
 
     
     var renderContext = {
@@ -139,7 +141,7 @@ function renderPage(num) {
   });
 
   
-  document.getElementById('page_num_slides_evaluation_resampling_1_pdf').textContent = num;
+  document.getElementById('page_num_slides_evaluation_partialauc_pdf').textContent = num;
 }
 
 
@@ -155,7 +157,7 @@ function queuerenderPage(num) {
 
 
 if (hidePaginator == "true") {
-  document.getElementById("paginator_slides_evaluation_resampling_1_pdf").style.display = 'none';
+  document.getElementById("paginator_slides_evaluation_partialauc_pdf").style.display = 'none';
 }
 
 
@@ -167,7 +169,7 @@ function onPrevPage() {
   pageNum--;
   queuerenderPage(pageNum);
 }
-document.getElementById('prev_slides_evaluation_resampling_1_pdf').addEventListener('click', onPrevPage);
+document.getElementById('prev_slides_evaluation_partialauc_pdf').addEventListener('click', onPrevPage);
 
 
 
@@ -178,13 +180,13 @@ function onNextPage() {
   pageNum++;
   queuerenderPage(pageNum);
 }
-document.getElementById('next_slides_evaluation_resampling_1_pdf').addEventListener('click', onNextPage);
+document.getElementById('next_slides_evaluation_partialauc_pdf').addEventListener('click', onNextPage);
 
 
 
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  document.getElementById('page_count_slides_evaluation_resampling_1_pdf').textContent = pdfDoc.numPages;
+  document.getElementById('page_count_slides_evaluation_partialauc_pdf').textContent = pdfDoc.numPages;
 
   
   renderPage(pageNum);
@@ -194,9 +196,6 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
 </script>
 
 
-<h3 id="code-demo">Code demo</h3>
-<p><strong>Resampling</strong></p>
-<p>You can run the code snippets in the demos on your local machine. The corresponding Rmd version of this demo can be found <a href="https://github.com/compstat-lmu/lecture_i2ml/blob/master/code-demos/code_demo_resampling.Rmd">here</a>. If you want to render the Rmd files to PDF, you need the accompanying <a href="https://github.com/compstat-lmu/lecture_i2ml/tree/master/style">style files</a>.</p>
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -208,16 +207,16 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   
   
 <div class="pdf">
-<div class="pdf-paginator" id="paginator_code_demo_resampling_pdf">
-    <button class="btn btn-primary" id="prev_code_demo_resampling_pdf">Previous</button>
+<div class="pdf-paginator" id="paginator_slides_evaluation_mcauc_pdf">
+    <button class="btn btn-primary" id="prev_slides_evaluation_mcauc_pdf">Previous</button>
     &nbsp;
-    <span>Page: <span id="page_num_code_demo_resampling_pdf"></span> / <span id="page_count_code_demo_resampling_pdf"></span></span>
+    <span>Page: <span id="page_num_slides_evaluation_mcauc_pdf"></span> / <span id="page_count_slides_evaluation_mcauc_pdf"></span></span>
     &nbsp;
-    <button class="btn btn-primary" id="next_code_demo_resampling_pdf">Next</button>
-    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/code_demo_resampling.pdf" target="_blank"><button class="btn btn-secondary" id="next_code_demo_resampling_pdf">PDF</button></a>
+    <button class="btn btn-primary" id="next_slides_evaluation_mcauc_pdf">Next</button>
+    <a href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/slides-evaluation-mcauc.pdf" target="_blank"><button class="btn btn-secondary" id="next_slides_evaluation_mcauc_pdf">PDF</button></a>
 </div>
-<div id="embed-pdf-container_code_demo_resampling_pdf">
-    <canvas class="pdf-canvas" id="the-canvas_code_demo_resampling_pdf"></canvas>
+<div id="embed-pdf-container_slides_evaluation_mcauc_pdf">
+    <canvas class="pdf-canvas" id="the-canvas_slides_evaluation_mcauc_pdf"></canvas>
 </div>
 </div>
 
@@ -225,7 +224,7 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
 window.addEventListener("load",function(){
 
 
-var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/code_demo_resampling.pdf';
+var url = 'https:\/\/slds-lmu.github.io\/website_i2ml_copy\/chapters\/04_evaluation\/slides-evaluation-mcauc.pdf';
 var hidePaginator = "";
 
 
@@ -240,8 +239,8 @@ var pdfDoc = null,
     pageRendering = false,
     pageNumPending = null,
     scale = 3,
-    canvas_code_demo_resampling_pdf = document.getElementById('the-canvas_code_demo_resampling_pdf'),
-    ctx = canvas_code_demo_resampling_pdf.getContext('2d');
+    canvas_slides_evaluation_mcauc_pdf = document.getElementById('the-canvas_slides_evaluation_mcauc_pdf'),
+    ctx = canvas_slides_evaluation_mcauc_pdf.getContext('2d');
 
 
 
@@ -250,8 +249,8 @@ function renderPage(num) {
   
   pdfDoc.getPage(num).then(function(page) {
     var viewport = page.getViewport({scale: scale});
-    canvas_code_demo_resampling_pdf.height = viewport.height;
-    canvas_code_demo_resampling_pdf.width = viewport.width;
+    canvas_slides_evaluation_mcauc_pdf.height = viewport.height;
+    canvas_slides_evaluation_mcauc_pdf.width = viewport.width;
 
     
     var renderContext = {
@@ -272,7 +271,7 @@ function renderPage(num) {
   });
 
   
-  document.getElementById('page_num_code_demo_resampling_pdf').textContent = num;
+  document.getElementById('page_num_slides_evaluation_mcauc_pdf').textContent = num;
 }
 
 
@@ -288,7 +287,7 @@ function queuerenderPage(num) {
 
 
 if (hidePaginator == "true") {
-  document.getElementById("paginator_code_demo_resampling_pdf").style.display = 'none';
+  document.getElementById("paginator_slides_evaluation_mcauc_pdf").style.display = 'none';
 }
 
 
@@ -300,7 +299,7 @@ function onPrevPage() {
   pageNum--;
   queuerenderPage(pageNum);
 }
-document.getElementById('prev_code_demo_resampling_pdf').addEventListener('click', onPrevPage);
+document.getElementById('prev_slides_evaluation_mcauc_pdf').addEventListener('click', onPrevPage);
 
 
 
@@ -311,13 +310,13 @@ function onNextPage() {
   pageNum++;
   queuerenderPage(pageNum);
 }
-document.getElementById('next_code_demo_resampling_pdf').addEventListener('click', onNextPage);
+document.getElementById('next_slides_evaluation_mcauc_pdf').addEventListener('click', onNextPage);
 
 
 
 pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
   pdfDoc = pdfDoc_;
-  document.getElementById('page_count_code_demo_resampling_pdf').textContent = pdfDoc.numPages;
+  document.getElementById('page_count_slides_evaluation_mcauc_pdf').textContent = pdfDoc.numPages;
 
   
   renderPage(pageNum);
@@ -327,34 +326,12 @@ pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
 </script>
 
 
-<h3 id="quiz">Quiz</h3>
-
-
-<div class='quizdown'>
-  
-
----
-shuffle_questions: false
----
-
-## Which statements are true? 
-
-- [x] Cross-validation, bootstrap, and subsampling are resampling techniques.
-- [x] Estimating the expected generalization error is a goal of resampling.
-- [ ] In bootstrap, each observation serves as a test point exactly once.
-- [x] In resampling, the data set is split repeatedly into training and tests sets.
-- [ ] Resampling strategies are unbiased.
-
-
-</div>
-
-
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-05-overfitting-underfitting/">&#xab; Chapter 04.05: Overfitting &amp; Underfitting</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-10-roccurves/">&#xab; Chapter 04.10: ROC Curves</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-07-resampling-2/">Chapter 04.07: Resampling 2 &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/website_i2ml_copy/chapters/04_evaluation/04-12-prcurves/">Chapter 04.12: Precision-Recall Curves &#xbb;</a></li>
 
 </ul>
 
@@ -398,16 +375,5 @@ shuffle_questions: false
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
-</script>
-<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
-</script>
 </body>
 </html>
