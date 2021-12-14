@@ -12,4 +12,4 @@ Analogous to regression, we consider essential performance measures for classifi
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-measures-classification.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-measures-classification.pdf" >}}

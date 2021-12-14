@@ -13,7 +13,7 @@ In this section, we explain the ROC curve and how to calculate it. In addition, 
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-roccurves.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-roccurves.pdf" >}}
 
 ### Code demo
 

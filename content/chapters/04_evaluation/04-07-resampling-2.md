@@ -17,4 +17,4 @@ to choose resampling strategies.
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-resampling-2.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-resampling-2.pdf" >}}

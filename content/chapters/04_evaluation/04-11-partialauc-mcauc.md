@@ -15,6 +15,6 @@ classification.
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-partialauc.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-partialauc.pdf" >}}
 
 {{< pdfjs file="slides-evaluation-mcauc.pdf" >}}

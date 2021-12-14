@@ -12,4 +12,4 @@ From the confusion matrix we can calculate a variety of ROC metrics. Among other
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-rocbasics.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-rocbasics.pdf" >}}

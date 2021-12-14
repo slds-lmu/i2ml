@@ -15,4 +15,4 @@ data are imbalanced.
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-prcurves.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-prcurves.pdf" >}}

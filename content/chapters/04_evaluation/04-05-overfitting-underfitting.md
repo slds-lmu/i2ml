@@ -15,7 +15,7 @@ We will show you examples of this behavior and how to diagnose overfitting.
 
 ### Lecture slides
 
-{{< pdfjs file="slides-evaluation-overfitting-underfitting.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-overfitting-underfitting.pdf" >}}
 
 ### Code demo
 
