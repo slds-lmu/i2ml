@@ -1,19 +1,19 @@
 ---
-title: "Chapter 04.10: Measures Classification ROC Visualization"
+title: "Chapter 04.10: ROC Curves"
 weight: 4010
 quizdown: true
 ---
-In this section, we explain the ROC curve and how to calculate it. In addition, we will present AUC and partial AUC as global performance measures.
+In this section, we explain the ROC curve and how to calculate it. In addition, we will present the AUC as a global performance measure that integrates over all possible thresholds.
 
 <!--more-->
 
 ### Lecture video
 
-<!-- {{< video id="m5We8ITYEVk" >}} -->
+{{< video id="91PXeV65x5Y" >}}
 
 ### Lecture slides
 
-<!-- {{< pdfjs file="slides-evaluation-measures-classification-roc-space.pdf" >}} -->
+{{< pdfjs file="slides-evaluation-roccurves.pdf" >}}
 
 ### Code demo
 
@@ -21,7 +21,7 @@ In this section, we explain the ROC curve and how to calculate it. In addition, 
 
 You can run the code snippets in the demos on your local machine. The corresponding Rmd version of this demo can be found [here](https://github.com/compstat-lmu/lecture_i2ml/blob/master/code-demos/code_demo_roc.Rmd). If you want to render the Rmd files to PDF, you need the accompanying [style files](https://github.com/compstat-lmu/lecture_i2ml/tree/master/style). 
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/code-demos-pdf/code_demo_roc.pdf" >}}
+{{< pdfjs file="code_demo_roc.pdf" >}}
 
 ### Quiz
 
@@ -46,7 +46,7 @@ shuffle_questions: false
 - [x] If the proportion of positive to negative instances in the test data changes, the ROC curve will not change.
 - [x] Several evaluation metrics can be derived from a confusion matrix.
 - [x] The area under the ROC curve is called AUC.
-- [ ] AUC = 0 means that the model is optimal.
+- [ ] A model with AUC=0 is the worst case.
 
 ## Which statements are true? 
 
