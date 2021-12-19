@@ -18,6 +18,6 @@ While most of the course is on a conceptual, programming language-independent le
 
 Note: In summer semester 2021 we are still extending the material somewhat, so the complete first version including all advanced material will probably be available around 07/2021.
 
-The course material is developed in a public github repository: https://github.com/compstat-lmu/lecture_i2ml. You can find the changelog at: https://github.com/compstat-lmu/lecture_i2ml/blob/master/CHANGELOG.md.
+The course material is developed in a [public GitHub repository](https://github.com/compstat-lmu/lecture_i2ml). You can find the changelog [here](https://github.com/compstat-lmu/lecture_i2ml/blob/master/CHANGELOG.md).
 
 If you love teaching ML and have free resources available, please consider joining the team and email us now! (bernd.bischl@stat.uni-muenchen.de or ludwig.bothmann@stat.uni-muenchen.de)
