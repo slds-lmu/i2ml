@@ -21,3 +21,8 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 - Exercise 9: {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_forests.pdf" >}} Solution: {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_forests.pdf" >}}
 
 - Exercise 10: {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} Solution: {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}}
+
+|            | Exercise    | Solution |
+| ---------| -------------- | -------------|
+| Exercise 1 | Download | Download | 
+| Exercise 2 | Download | Download | 
