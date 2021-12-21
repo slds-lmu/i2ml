@@ -14,3 +14,17 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | Exercise 8 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_trees.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_trees.pdf" >}} |
 | Exercise 9 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_forests.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_forests.pdf" >}} |
 | Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}} | 
+
+__Exercises for Chapters 11-20 (LMU Lecture SL):__
+
+|            | Exercise    | Solution |
+| ---------| -------------- | -------------|
+| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_advriskmin_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_advriskmin_1.pdf" >}} | 
+| Exercise 2 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_advriskmin_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_advriskmin_2.pdf" >}} | 
+| Exercise 3 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_advriskmin_3.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_advriskmin_3.pdf" >}} | 
+| Exercise 4 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_multiclass_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_multiclass_1.pdf" >}} |
+| Exercise 5 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_multiclass_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_multiclass_2.pdf" >}} |
+| Exercise 6 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_information_theory_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_information_theory_1.pdf" >}} |
+| Exercise 7 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_information_theory_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_information_theory_2.pdf" >}} |
+| Exercise 8 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_regularization_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_regularization_1.pdf" >}} |
+| Exercise 9 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_regularization_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_regularization_2.pdf" >}} |
