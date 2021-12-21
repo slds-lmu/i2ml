@@ -24,5 +24,5 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
-| Exercise 1 | [Download](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_ml-basics.pdf) | Download | 
+| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_ml-basics.pdf" >}} | Download | 
 | Exercise 2 | Download | Download | 
