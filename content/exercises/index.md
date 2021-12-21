@@ -26,4 +26,4 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | ---------| -------------- | -------------|
 | Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_ml-basics.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_ml-basics.pdf" >}} | 
 | Exercise 2 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_regression.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_regression.pdf" >}} | 
-| Exercise 210 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}} | 
+| Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}} | 
