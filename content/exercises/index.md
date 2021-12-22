@@ -16,7 +16,7 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}} | 
 
 
-__Exercises for Chapters 11-20 (LMU Lecture SL):__
+### Exercises for Chapters 11-20 (LMU Lecture SL):
 
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
