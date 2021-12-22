@@ -1,7 +1,6 @@
 # Exercises
 
 __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
-
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
 | Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_ml-basics.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_ml-basics.pdf" >}} | 
@@ -16,7 +15,7 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/ex_tuning_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises-pdf/sol_tuning_resampling.pdf" >}} | 
 
 
-### Exercises for Chapters 11-20 (LMU Lecture SL):
+__Exercises for Chapters 11-20 (LMU Lecture SL):__
 
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
