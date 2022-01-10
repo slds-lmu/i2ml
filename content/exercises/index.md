@@ -1,4 +1,6 @@
-# Exercises
+---
+title: Exercises
+---
 
 __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
