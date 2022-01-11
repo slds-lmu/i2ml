@@ -28,12 +28,12 @@ unsafe= true
     name = "Appendix"
     pre = "appendix"
     url = "appendix/"
-    weight = 3
+    weight = 4
   [[menu.main]]
     name = "Team"
     pre = "team"
     url = "team/"
-    weight = 3
+    weight = 6
   [[menu.main]]
     name = "Exercises"
     pre = "exercises"
@@ -43,7 +43,7 @@ unsafe= true
     name = "References"
     pre = "references"
     url = "references/"
-    weight = 3
+    weight = 5
 # can contain as main items as you want
   [[menu.footer]] # name here does not matter
     name = "Main Course Website"
