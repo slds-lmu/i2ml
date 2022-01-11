@@ -8,7 +8,7 @@ enableRobotsTXT = true
 unsafe= true
 
 [Params]
-  footer = "© 2021 Course Creator"
+  footer = "© 2022 Course Creator"
   logo = "i2ml.svg" # file in ./static
   video_base_url = "https://www.youtube-nocookie.com/embed/"
   mathjax = true # has to be enabled for each page or enable it here globally
