@@ -22,7 +22,7 @@
 - Holger Löwe
 - Lisa Wimmer
 - Omid Charrakh
-- Carolin Becker
+- Son Trinh
 - Rifat Mehreen Amin
 - Katharina Ring
 
