@@ -1,4 +1,4 @@
-baseURL = "https://slds-lmu.github.io/website_i2ml_copy/"
+baseURL = "https://slds-lmu.github.io/i2ml/"
 languageCode = "en-us"
 title = "Introduction to Machine Learning (I2ML)"
 theme = "website_theme"
