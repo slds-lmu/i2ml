@@ -6,25 +6,24 @@
   joined the team in summer 2020, held the classes in winter 2020/21, and is in charge of the classes held in winter 2021/22 at LMU Munich.
 - ![](https://www.biostat.statistik.uni-muenchen.de/bilder/fscheipl.png) [Fabian Scheipl](https://www.biostat.statistik.uni-muenchen.de/personen/mitarbeiter/scheipl/index.html) 
   joined the team in fall 2018 and contributed to the slides, videos and code demos.
-- ![](https://avatars.githubusercontent.com/u/14146757?v=4) [Heidi Seibold](https://www.compstat.statistik.uni-muenchen.de/people/seibold) joined the team in fall 2019 and was in charge of the classes held in spring 2020 at LMU Munich and University of Bielefeld.
 - ![](https://avatars.githubusercontent.com/u/20367117?v=4) [Daniel Schalk](https://www.compstat.statistik.uni-muenchen.de/people/schalk) 
   is a PhD at Bernd's group and organized the second round of the inverted classroom in spring 2019; he also provided the digital platform for videos, quizzes and exercises. 
-- ![](https://avatars.githubusercontent.com/u/1632100?v=4) [Christoph Molnar](https://www.compstat.statistik.uni-muenchen.de/people/molnar) 
-  is a PhD at Bernd's group and organized the first round of the inverted classroom in spring 2018, including the first round of videos. 
 - ![](https://www.slds.stat.uni-muenchen.de/images/tobias_pielok.jpg) [Tobias Pielok](https://www.slds.stat.uni-muenchen.de/people/pielok/) 
   is a PhD at Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
+
+## Former members of the team
+- ![](https://avatars.githubusercontent.com/u/14146757?v=4) [Heidi Seibold](https://www.compstat.statistik.uni-muenchen.de/people/seibold) joined the team in fall 2019 and has been in charge of the classes held in spring 2020 at LMU Munich and University of Bielefeld.
+- ![](https://avatars.githubusercontent.com/u/1632100?v=4) [Christoph Molnar](https://www.compstat.statistik.uni-muenchen.de/people/molnar) 
+  was a PhD at Bernd's group and organized the first round of the inverted classroom in spring 2018, including the first round of videos. 
 - ![](https://avatars.githubusercontent.com/u/1888623?v=4) [Jakob Richter](https://jakob-r.de/)
   created this website using Hugo, some CSS and the [hugo-quiz plugin](https://github.com/bonartm/hugo-quiz).
 
-
-## Student Assistants
+## Current student assistants
 
 - Holger Löwe
-- Lisa Wimmer
-- Omid Charrakh
 - Son Trinh
-- Rifat Mehreen Amin
-- Katharina Ring
+- Lisa Wimmer
+
 
 ## Contributors welcome
 
