@@ -33,6 +33,10 @@
   - quizzes support mathjax without the `mathjax: true`
 - in `_index.md` you can specify `show_in_index: (content|summary|none)`
 
+## Deploying the website
+
+The deploy is done automatically via GitHub Actions. Nothing needs to be done to publish a new version of the website. Each build is triggered when a commit is done to the `main` branch.
+
 ## License
 
 [MIT LICENSE](LICENSE)
