@@ -69,6 +69,28 @@ h1#team + ul li img{
   margin-top: -1em;
 }
 
+h2#alumni + ul {
+  margin-top: 2em;
+}
+h2#alumni + ul li {
+  display: block;
+  float: left;
+  margin-bottom: 2em;
+  margin-top: 1em;
+}
+h2#alumni + ul li img{
+  width:100px;
+  height:100px;
+  object-fit:cover;
+  border:solid 2px #e8e8e8;
+  border-radius:50px;
+  float: left;
+  margin-right: 2em;
+  margin-top: -1em;
+}
+
+
+
 /* shortcode:  video */
 div.embedded_video {
   width: 100%;
