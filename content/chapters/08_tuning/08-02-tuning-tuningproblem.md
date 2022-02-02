@@ -14,3 +14,20 @@ Hyperparameter tuning is the process of finding good model hyperparameters. In t
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-tuningproblem.pdf" >}}
+
+### Quiz
+
+{{< quizdown >}}
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [x] Tuning means optimizing hyperparameters.
+- [x] Doing tuning well is hard; nested resampling can help.
+- [x] Good tuning is crucial to achieving good performance for all ML algorithms.
+- [ ] Tuning optimizes the inner loss.
+
+{{< /quizdown >}}
