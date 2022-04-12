@@ -1,10 +1,5 @@
 ---
-title: 'References'
-description: null
-prev: null
-next: null
-type: chapter
-id: 1
+title: Literature
 ---
 
 <section class="c72e2d57">
