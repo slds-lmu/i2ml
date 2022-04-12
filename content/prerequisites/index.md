@@ -22,6 +22,7 @@ All of the covered concepts and algorithms are presented independently of any pr
 
 If you need to read up on some required topics, this list might help. We tried to keep it as short as possible. More advanced references are listed in [Literature](../literature/index.md).
 
-- [M. Deisenroth, A. Faisal, C. Ong. Mathematics for Machine Learning](https://mml-book.github.io/book/mml-book.pdf)
-- [H. Wickham, G. Grolemund. R for Data Science](https://r4ds.had.co.nz/)
-- [Introductory R course on datacamp.com](https://learn.datacamp.com/courses/free-introduction-to-r)
+- M. Deisenroth, A. Faisal, C. Ong. Mathematics for Machine Learning. [URL](https://mml-book.github.io/book/mml-book.pdf)
+- L. Wassermann. All of Statistics. [URL](http://egrcc.github.io/docs/math/all-of-statistics.pdf)
+- H. Wickham, G. Grolemund. R for Data Science. [URL](https://r4ds.had.co.nz/)
+- Introductory R course on datacamp.com [URL](https://learn.datacamp.com/courses/free-introduction-to-r)
