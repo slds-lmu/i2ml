@@ -20,7 +20,7 @@ The course material covers all exam-relevant topics. For more in-depth study of 
 - E. Alpaydin. Introduction to Machine Learning. MIT Press, 2010. [URL](http://www.cmpe.boun.edu.tr/~ethem/i2ml2e/)
 *Standard reference with broad coverage; easy to read.*
 - K. Murphy. Machine Learning: a Probabilistic Perspective. MIT Press, 2012. [URL](https://probml.github.io/pml-book/book0.html)
-*Standard reference; very extensive; statistical/probabilistic lens.*
+*Standard reference; quite extensive; statistical/probabilistic lens.*
 - N. Japkowicz. Evaluating Learning Algorithms (A Classification Perspective). Cambridge University Press, 2011.
 *Nice reading on performance measures, resampling methods and (some) statistical tests for benchmarking in ML; only for classification.*
 
@@ -38,7 +38,7 @@ The course material covers all exam-relevant topics. For more in-depth study of 
 
 ## R Programming
 
-We use the *mlr3* package for machine learning in R.
+We use the **mlr3** package for machine learning in R.
 
 - Central project page and learning resources: https://mlr3.mlr-org.com/, in particular
   - the [book](https://mlr3book.mlr-org.com/),

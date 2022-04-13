@@ -11,4 +11,4 @@ __Why another ML course:__ A key goal of the course is to teach the fundamental 
 We also want this course not only to be open, but [open source](https://arxiv.org/pdf/2107.14330.pdf). 
 
 __What is not covered:__ (1) Deep learning. (2) An in-depth coverage of optimization. 
-We are working on separate open courses for both topics already.
+We are working on separate open courses for both topics.
