@@ -25,39 +25,47 @@ unsafe= true
     url = "chapters/"
     weight = 2
   [[menu.main]]
-    name = "Appendix"
-    pre = "appendix"
-    url = "appendix/"
-    weight = 4
-  [[menu.main]]
-    name = "Team"
-    pre = "team"
-    url = "team/"
-    weight = 6
-  [[menu.main]]
     name = "Exercises"
     pre = "exercises"
     url = "exercises/"
     weight = 3
   [[menu.main]]
-    name = "References"
-    pre = "references"
-    url = "references/"
+    name = "Appendix"
+    pre = "appendix"
+    url = "appendix/"
+    weight = 4
+  [[menu.main]]
+    name = "Prerequisites"
+    pre = "prerequisites"
+    url = "prerequisites/"
     weight = 5
+  [[menu.main]]
+    name = "Literature"
+    pre = "literature"
+    url = "literature/"
+    weight = 6
+  [[menu.main]]
+    name = "Team"
+    pre = "team"
+    url = "team/"
+    weight = 7
   [[menu.main]]
     name = "News"
     pre = "news"
     url = "news/"
-    weight = 7
+    weight = 8
 # can contain as main items as you want
   [[menu.footer]] # name here does not matter
     name = "Main Course Website"
     url = "."
+    weight = 1
   [[menu.footer]]
-    name = "Course content"
+    name = "Material Source Code"
     url = "https://github.com/slds-lmu/lecture_i2ml"
+    weight = 2
   [[menu.footer]]
-    name = "Website source code"
+    name = "Website Source Code"
     url = "https://github.com/slds-lmu/i2ml"
+    weight = 3
 [minify] # needed for quizdown to work
   disableHTML = true

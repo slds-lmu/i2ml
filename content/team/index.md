@@ -10,12 +10,13 @@
   is a PhD at Bernd's group and organized the second round of the inverted classroom in spring 2019; he also provided the digital platform for videos, quizzes and exercises.
 - ![](https://www.slds.stat.uni-muenchen.de/images/tobias_pielok.jpg) [Tobias Pielok](https://www.slds.stat.uni-muenchen.de/people/pielok/)
   is a PhD at Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
+- ![](https://www.slds.stat.uni-muenchen.de/images/wimmer.jpg) [Lisa Wimmer](https://www.slds.stat.uni-muenchen.de/people/wimmer/)
+  is a PhD at Bernd’s group and contributed to slides and exercises.
 
 ## Current student assistants
 
 - Holger Löwe
 - Son Trinh
-- Lisa Wimmer
 
 
 ## Alumni
@@ -29,8 +30,9 @@
 
 ## Contributors welcome
 
-If you would like to contribute, please get in touch and read our
-[contributing guidelines](../CONTRIBUTING.md)
+__If you love teaching ML and have free resources available, please consider joining the team and email us now! (bernd.bischl@stat.uni-muenchen.de or ludwig.bothmann@stat.uni-muenchen.de).__
+
+Our contributing guidelines may be found [here](https://github.com/slds-lmu/lecture_i2ml/blob/master/CONTRIBUTING.md).
 
 
 ## License
