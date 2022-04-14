@@ -2,8 +2,6 @@
 title: Prerequisites
 ---
 
-# Prerequisites
-
 ## Maths & Statistics
 
 The course is targeted at ML beginners with a basic, university-level, education in maths and statistics and programming.  The first part aims at a practical and operational understanding of concepts. It requires a basic (!) understanding of: 
