@@ -5,7 +5,7 @@ title: Literature
 The course material covers all exam-relevant topics in a quite self-contained manner. 
 For more in-depth study, we recommend the following literature. Note that some of the books are rather detailed and involved, and more geared towards a larger lecture in a Master's degree. 
 
-We **recommend to buy and read** at least one standard reference on ML, for BSc level this might be the Witten, for the MSc level the Hastie, Bishop, Murphy or Alplaydin, the Shalev-Shwartz for a mathematical entry point.
+We **recommend to buy and read** at least one standard reference on ML, for BSc level this might be the James, for the MSc level the Hastie, Bishop, Murphy or Alplaydin, the Shalev-Shwartz for a mathematical entry point.
 
 ## Helpful References for Prerequisites
 
