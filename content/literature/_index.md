@@ -18,7 +18,7 @@ If you need to read up on some of the required topics (see [Prerequisites](../pr
 
 ## Machine Learning
 
-- K. Kersting, C. Lampert, C. Rothkopf. Wie Maschinen Lernen. Springer, 2019. [URL](https://link.springer.com/book/10.1007/978-3-658-26763-6) *German, informal, intuitive introduction to ML. Lower than BSc level, maybe more targeted at pupils or a non-academic audience. Read if you want a very light-weight introduction into the field, or buy as present for relatives and friends if the ask what you are doing.*
+- K. Kersting, C. Lampert, C. Rothkopf. Wie Maschinen Lernen. Springer, 2019. [URL](https://link.springer.com/book/10.1007/978-3-658-26763-6) *German, informal, intuitive introduction to ML. Lower than BSc level, maybe more targeted at pupils or a non-academic audience. Read if you want a very light-weight introduction into the field, or buy as present for relatives and friends if they ask what you are doing.*
 - G. James, D. Witten, T. Hastie, R. Tibshirani. An Introduction to Statistical Learning. MIT Press, 2010. [URL](http://www-bcf.usc.edu/~gareth/ISL/) *Beginner-level introduction with applications in R. Very well suited for the BSc level.*
 - T. Hastie, R. Tibshirani, J. Friedman. The Elements of Statistical Learning. Springer, 2009. [URL](https://web.stanford.edu/~hastie/ElemStatLearn/) *Standard reference for statistics-flavored ML.*
 - C. M. Bishop. Pattern Recognition and Machine Learning. Springer, 2006. [URL](http://research.microsoft.com/en-us/um/people/cmbishop/prml/) *Standard reference for ML-flavored ML.*
