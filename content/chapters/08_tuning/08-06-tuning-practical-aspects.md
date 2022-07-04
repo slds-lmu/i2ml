@@ -9,7 +9,8 @@ In the context of practical applications the outcome of hyperparamter optimizati
 
 ### Lecture video
 
-{{< video id="lG4Ul1Liq-U" >}}
+<!--{{< video id="lG4Ul1Liq-U" >}}-->
+Coming soon
 
 ### Lecture slides
 

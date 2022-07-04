@@ -8,7 +8,8 @@ Besides grid search and random search there are several more advanced techniques
 
 ### Lecture video
 
-{{< video id="lG4Ul1Liq-U" >}}
+<!--{{< video id="lG4Ul1Liq-U" >}}-->
+Coming soon
 
 ### Lecture slides
 

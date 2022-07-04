@@ -9,7 +9,7 @@ In this section we familiarize ourselves with two simple but popular tuning stra
 
 ### Lecture video
 
-{{< video id="A1cx4FkS0lw" >}}
+{{< video id="LSt1KcsHAK0" >}}
 
 ### Lecture slides
 
