@@ -8,7 +8,7 @@ While model parameters are optimized during training, hyperparameters must be sp
 
 ### Lecture video
 
-{{< video id="lG4Ul1Liq-U" >}}
+{{< video id="6L6YOijl0nA" >}}
 
 ### Lecture slides
 
