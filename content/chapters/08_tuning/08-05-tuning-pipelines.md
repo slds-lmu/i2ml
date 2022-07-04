@@ -1,6 +1,6 @@
 ---
 title: "Chapter 08.05: Pipelines and AutoML"
-weight: 8001
+weight: 8005
 ---
 Some aspects of the machine learning lifecycle can be automated via 
 AutoML. In this section we look into pipelines as part of AutoML and how (HPO-) pipelines  can be represented as directed acyclic graphs (DAGs).  
