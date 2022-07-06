@@ -9,7 +9,7 @@ Hyperparameter tuning is the process of finding good model hyperparameters. In t
 
 ### Lecture video
 
-{{< video id="Eo7iqMOeILY" >}}
+{{< video id="3Su1jA6Ed1g" >}}
 
 ### Lecture slides
 

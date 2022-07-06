@@ -10,8 +10,7 @@ AutoML. In this section we look into pipelines as part of AutoML and how (HPO-) 
 
 ### Lecture video
 
-<!--{{< video id="lG4Ul1Liq-U" >}}-->
-Coming soon
+{{< video id="BB_8zQVCN3Q" >}}
 
 ### Lecture slides
 
