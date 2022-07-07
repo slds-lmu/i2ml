@@ -5,7 +5,7 @@ title: Literature
 The course material covers all exam-relevant topics in a quite self-contained manner. 
 For more in-depth study, we recommend the following literature. Note that some of the books are rather detailed and involved, and more geared towards a larger lecture in a Master's degree. 
 
-We **recommend to buy and read** at least one standard reference on ML, for BSc level this might be the Witten, for the MSc level the Hastie, Bishop, Murphy or Alplaydin, the Shalev-Shwartz for a mathematical entry point.
+We **recommend to buy and read** at least one standard reference on ML, for BSc level this might be the James, for the MSc level the Hastie, Bishop, Murphy or Alplaydin, the Shalev-Shwartz for a mathematical entry point.
 
 ## Helpful References for Prerequisites
 
@@ -18,7 +18,7 @@ If you need to read up on some of the required topics (see [Prerequisites](../pr
 
 ## Machine Learning
 
-- K. Kersting, C. Lampert, C. Rothkopf. Wie Maschinen Lernen. Springer, 2019. [URL](https://link.springer.com/book/10.1007/978-3-658-26763-6) *German, informal, intuitive introduction to ML. Lower than BSc level, maybe more targeted at pupils or a non-academic audience. Read if you want a very light-weight introduction into the field, or buy as present for relatives and friends if the ask what you are doing.*
+- K. Kersting, C. Lampert, C. Rothkopf. Wie Maschinen Lernen. Springer, 2019. [URL](https://link.springer.com/book/10.1007/978-3-658-26763-6) *German, informal, intuitive introduction to ML. Lower than BSc level, maybe more targeted at pupils or a non-academic audience. Read if you want a very light-weight introduction into the field, or buy as present for relatives and friends if they ask what you are doing.*
 - G. James, D. Witten, T. Hastie, R. Tibshirani. An Introduction to Statistical Learning. MIT Press, 2010. [URL](http://www-bcf.usc.edu/~gareth/ISL/) *Beginner-level introduction with applications in R. Very well suited for the BSc level.*
 - T. Hastie, R. Tibshirani, J. Friedman. The Elements of Statistical Learning. Springer, 2009. [URL](https://web.stanford.edu/~hastie/ElemStatLearn/) *Standard reference for statistics-flavored ML.*
 - C. M. Bishop. Pattern Recognition and Machine Learning. Springer, 2006. [URL](http://research.microsoft.com/en-us/um/people/cmbishop/prml/) *Standard reference for ML-flavored ML.*
