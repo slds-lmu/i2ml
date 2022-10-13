@@ -16,4 +16,5 @@ title: Errata
 - Chapter 13.6: Slide 2/7 typos in formula and bullet point 3
 - Chapter 17.1: Slide 6/11 Typo in f
 - Chapter 19.5: Slide 3/11: bullet point 1 added "if", bullet point 2 changed "decrease" to "increase"
+- Chapter 20.1: Slides 6 and 7/11: improved plot and text
 - Chapter 20.2: Slide 14/15: error in step 1 of the algorithm
