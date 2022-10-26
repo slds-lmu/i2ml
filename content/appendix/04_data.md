@@ -4,6 +4,10 @@ title: Data sets
 
 ## Data sets used in the lecture
 
+- Bikeshare
+
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/datasets-pdf/bikeshare.pdf" >}}
+
 - Boston Housing 
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/datasets-pdf/boston.pdf" >}}
