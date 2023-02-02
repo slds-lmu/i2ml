@@ -5,7 +5,7 @@ weight: 8006
 
 #### Literature
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-tuningproblem.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/i2ml/blob/hpo-link/content/appendix/references.pdf" >}}
 
 #### Further Material
 
