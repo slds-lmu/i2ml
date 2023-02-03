@@ -3,6 +3,8 @@ title: "Tuning: Further Reading"
 weight: 8006
 ---
 
+<!--more-->
+
 #### Literature
 
 {{< pdfjs file="https://github.com/slds-lmu/i2ml/blob/hpo-link/content/appendix/references.pdf" >}}
