@@ -12,4 +12,4 @@ In this section, we introduce the Brier score and derive its risk minimizer and 
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-advriskmin-classification-brier.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-classification-brier.pdf" >}}
