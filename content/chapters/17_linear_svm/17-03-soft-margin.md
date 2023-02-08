@@ -12,4 +12,4 @@ Hard margin SVMs are often not applicable to practical questions because they fa
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-linsvm-soft-margin.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-soft-margin.pdf" >}}
