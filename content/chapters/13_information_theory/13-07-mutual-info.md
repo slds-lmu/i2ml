@@ -12,4 +12,4 @@ Information theory also provides means of quantifying relations between two rand
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-info-mutual-info.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-mutual-info.pdf" >}}
