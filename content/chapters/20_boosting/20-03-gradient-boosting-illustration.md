@@ -13,4 +13,4 @@ principle.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-regression-illustrations.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-regression-illustrations.pdf" >}}
