@@ -12,4 +12,4 @@ In this section, we introduce the pioneering AdaBoost algorithm.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-intro-adaboost.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-intro-adaboost.pdf" >}}
