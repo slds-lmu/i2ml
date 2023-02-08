@@ -12,4 +12,4 @@ In this section, we show examples for formal definitions of hypothesis spaces.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-hypospaces-examples.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-hypospaces-examples.pdf" >}}
