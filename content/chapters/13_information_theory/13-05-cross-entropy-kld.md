@@ -12,4 +12,4 @@ We introduce cross-entropy as a further information-theoretic concept and discus
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-info-cross-entropy-kld.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-cross-entropy-kld.pdf" >}}
