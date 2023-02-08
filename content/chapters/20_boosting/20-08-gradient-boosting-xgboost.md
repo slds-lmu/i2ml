@@ -12,4 +12,4 @@ We introduce XGBoost, a highly efficient, tree-based boosting system with additi
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-xgboost.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-xgboost.pdf" >}}
