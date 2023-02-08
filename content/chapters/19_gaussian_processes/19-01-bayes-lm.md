@@ -12,4 +12,4 @@ We begin by reviewing the Bayesian formulation of a linear model and show that i
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-gp-bayes-lm.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-gp-bayes-lm.pdf" >}}
