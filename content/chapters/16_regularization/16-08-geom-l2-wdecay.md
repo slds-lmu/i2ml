@@ -12,4 +12,4 @@ In this section, we provide a geometric understanding of \\(L2\\) regularization
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-regu-geom-l2-wdecay.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-geom-l2-wdecay.pdf" >}}
