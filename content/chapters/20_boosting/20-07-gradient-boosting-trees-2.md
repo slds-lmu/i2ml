@@ -12,4 +12,4 @@ We explain how terminal coefficients are found in a risk-minimal manner and brie
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-gbm-with-trees-2.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-with-trees-2.pdf" >}}
