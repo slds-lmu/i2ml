@@ -12,4 +12,4 @@ In this section, we revisit overfitting and introduce regularization as a remedy
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-regu-intro.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-intro.pdf" >}}
