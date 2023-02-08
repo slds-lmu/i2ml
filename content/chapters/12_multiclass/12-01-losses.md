@@ -12,4 +12,4 @@ In this section, we introduce the basic concepts in multiclass (MC) classificati
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mc-losses.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-losses.pdf" >}}
