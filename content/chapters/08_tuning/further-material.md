@@ -1,5 +1,5 @@
 ---
-title: "Tuning: Further Reading"
+title: "Tuning: Further Material"
 weight: 8006
 ---
 
@@ -18,3 +18,4 @@ weight: 8006
     - [Part II - Tune a Preprocessing Pipeline](https://mlr-org.com/gallery/series/2021-03-10-practical-tuning-series-tune-a-preprocessing-pipeline/)
     - [Part III - Build an Automated Machine Learning System](https://mlr-org.com/gallery/series/2021-03-11-practical-tuning-series-build-an-automated-machine-learning-system/)
     - [Part IV - Tuning and Parallel Processing](https://mlr-org.com/gallery/series/2021-03-12-practical-tuning-series-tuning-and-parallel-processing/)
+    These notebooks are a step-by-step hands-on tutorial on how to tune ML models with mlr3.
