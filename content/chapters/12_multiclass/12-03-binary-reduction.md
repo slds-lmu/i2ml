@@ -12,4 +12,4 @@ It is sometimes advisable to address a multiclass problem as a set of binary one
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mc-binary-reduction.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-binary-reduction.pdf" >}}

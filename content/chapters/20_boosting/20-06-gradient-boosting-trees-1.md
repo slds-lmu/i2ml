@@ -12,4 +12,4 @@ We discuss trees as the most popular base learners in gradient boosting, with sp
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-gbm-with-trees-1.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-with-trees-1.pdf" >}}

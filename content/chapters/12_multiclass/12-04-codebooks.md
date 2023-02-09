@@ -12,4 +12,4 @@ In this section, we introduce codebooks as a general concept for multiclass-to- 
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mc-codebooks.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-codebooks.pdf" >}}

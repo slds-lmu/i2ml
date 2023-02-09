@@ -12,4 +12,4 @@ In this section, we revisit \\(L1\\) loss and derive its risk minimizer -- the c
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-advriskmin-regression-l1.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l1.pdf" >}}

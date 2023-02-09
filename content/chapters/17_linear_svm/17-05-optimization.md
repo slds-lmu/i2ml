@@ -12,4 +12,4 @@ The linear SVM problem is challenging due to its non-differentiability. In this 
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-linsvm-optimization.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-optimization.pdf" >}}

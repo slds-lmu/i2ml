@@ -12,4 +12,4 @@ In this section, we derive and discuss the classic bias-variance decomposition o
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-hypospaces-bias-variance-decomposition.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-hypospaces-bias-variance-decomposition.pdf" >}}

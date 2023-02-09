@@ -12,4 +12,4 @@ In this section, we introduce softmax regression as a generalization of logistic
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mc-softmax-regression.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-softmax-regression.pdf" >}}

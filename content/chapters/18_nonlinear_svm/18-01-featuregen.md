@@ -12,4 +12,4 @@ We show how nonlinear feature maps project the input data to transformed spaces,
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nonlinsvm-featuregen.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-featuregen.pdf" >}}

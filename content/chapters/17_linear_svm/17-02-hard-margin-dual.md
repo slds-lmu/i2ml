@@ -12,4 +12,4 @@ In this section, we derive the dual variant of the linear hard-margin SVM proble
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-linsvm-hard-margin-dual.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-hard-margin-dual.pdf" >}}

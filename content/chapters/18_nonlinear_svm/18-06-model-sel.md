@@ -12,4 +12,4 @@ In this section, we discuss the importance of SVM hyperparameters for adequate s
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nonlinsvm-modelsel.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-modelsel.pdf" >}}

@@ -12,4 +12,4 @@ We discuss the connection between maximum likelihood estimation and risk minimiz
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-advriskmin-max-likelihood-other.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-max-likelihood-other.pdf" >}}

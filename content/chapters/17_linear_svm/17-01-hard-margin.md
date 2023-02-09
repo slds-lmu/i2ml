@@ -12,4 +12,4 @@ Hard margin SVMs seek perfect data separation. We introduce the linear hard marg
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-linsvm-hard-margin.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-hard-margin.pdf" >}}

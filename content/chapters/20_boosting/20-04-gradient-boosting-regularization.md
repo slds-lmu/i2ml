@@ -12,4 +12,4 @@ Powerful boosting learners tend to overfit. We discuss the number of iterations,
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-boosting-gbm-regularization.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-regularization.pdf" >}}

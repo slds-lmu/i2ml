@@ -12,4 +12,4 @@ We introduce important concepts in theoretical risk minimization: risk minimizer
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-advriskmin-risk-minimizer.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-risk-minimizer.pdf" >}}
