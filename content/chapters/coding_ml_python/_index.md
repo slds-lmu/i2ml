@@ -1,4 +1,4 @@
 ---
-title: "Coding ML [R and mlr3]"
+title: "Coding ML [Python and sklearn]"
 ---
-This chapter introduces the R package mlr3. After some basic concepts we focus on resampling, tuning and pipelines.
+This section introduces basic concepts and implementations using Python and in particular sklearn.
