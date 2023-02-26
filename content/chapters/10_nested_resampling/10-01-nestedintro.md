@@ -1,6 +1,6 @@
 ---
-title: "Chapter 09.01: Motivation"
-weight: 9001
+title: "Chapter 10.01: Motivation"
+weight: 10001
 quizdown: true
 ---
 Selecting the best model from a set of candidates is an important part of most machine learning problems. By examining an instructive and problematic example, we introduce the untouched-test-set principle.

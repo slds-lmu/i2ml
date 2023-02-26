@@ -1,6 +1,6 @@
 ---
-title: "Chapter 08.04: Advanced Tuning Techniques"
-weight: 8004
+title: "Chapter 09.04: Advanced Tuning Techniques"
+weight: 9004
 ---
 Besides grid search and random search there are several more advanced techniques for hyperparameter optimization. In this section we focus on model based optimization methods such as Bayesian optimization. Furthermore, we look into multi-fidelity methods such as the hyperband algorithm.  
 

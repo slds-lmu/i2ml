@@ -1,6 +1,6 @@
 ---
-title: "Chapter 10.03: Tuning with mlr3"
-weight: 10003
+title: "Chapter 03: Tuning with mlr3"
+weight: 03
 quizdown: true
 ---
 We can easily conduct hyperparameter tuning with mrl3's modular ecosystem, defining custom search spaces and suitable tuning algorithms.

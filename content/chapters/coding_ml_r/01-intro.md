@@ -1,6 +1,6 @@
 ---
-title: "Chapter 10.01: Intro to mlr3"
-weight: 10001
+title: "Chapter 01: Intro to mlr3"
+weight: 01
 quizdown: true
 ---
 In this section, we introduce the basic concepts of the R package mlr3.
