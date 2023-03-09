@@ -10,5 +10,4 @@ __Why another ML course:__ A key goal of the course is to teach the fundamental 
 
 We also want this course not only to be open, but [open source](https://arxiv.org/pdf/2107.14330.pdf). 
 
-__What is not covered:__ (1) Deep learning. (2) An in-depth coverage of optimization. 
-We are working on separate open courses for both topics.
+__What is not covered:__ (1) An in-depth coverage of deep learning, we offer this in our course [Introduction to Deep Learning](https://slds-lmu.github.io/i2dl/). (2) An in-depth coverage of optimization - we are working on a separate course for optimization.
