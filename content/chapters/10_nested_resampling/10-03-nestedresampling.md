@@ -1,6 +1,6 @@
 ---
-title: "Chapter 09.03: Nested Resampling"
-weight: 9003
+title: "Chapter 10.03: Nested Resampling"
+weight: 10003
 ---
 In this section, we will explain why and how nested resampling is done.
 

@@ -1,6 +1,6 @@
 ---
-title: "Chapter 10.04: Pipelines with mlr3"
-weight: 10004
+title: "Chapter 04: Pipelines with mlr3"
+weight: 04
 quizdown: true
 ---
 Pipelines provide an important tool to package all relevant machine learning steps into a single object that can be treated just like any other learner, ensuring adherence to the train-test split principle even in the face of complex analyses.
