@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
+
+
+<title>Introduction to Machine Learning (I2ML) | Chapter 08: Neural Networks</title>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/i2ml/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/i2ml/favicon-16x16.png">
+<link rel="manifest" href="/i2ml/site.webmanifest">
+<link rel="mask-icon" href="/i2ml/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head><body>
+<img id="logo" src="/i2ml/i2ml.svg" />
+
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        
+        <a class="nav-link" href="/i2ml">
+        
+        Home
+        </a>
+        
+        <a class="nav-link" href="/i2ml/chapters/">
+        
+        Chapters
+        </a>
+        
+        <a class="nav-link" href="/i2ml/exercises/">
+        
+        Exercises
+        </a>
+        
+        <a class="nav-link" href="/i2ml/appendix/">
+        
+        Appendix
+        </a>
+        
+        <a class="nav-link" href="/i2ml/prerequisites/">
+        
+        Prerequisites
+        </a>
+        
+        <a class="nav-link" href="/i2ml/literature/">
+        
+        Literature
+        </a>
+        
+        <a class="nav-link" href="/i2ml/team/">
+        
+        Team
+        </a>
+        
+        <a class="nav-link" href="/i2ml/news/">
+        
+        News
+        </a>
+        
+    </nav>
+</div><div id="content" class="container">
+<h1>Chapter 08: Neural Networks</h1>
+
+<p><p>This chapter introduces the basic concepts of neural networks.</p>
+</p>
+
+
+<div class="chapter_overview">
+<ul class="list-unstyled">
+
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-01-intro/">Chapter 08.01: Introduction</a>
+    
+      
+        <p>In this section, we introduces the relationship of DL and ML, give basic intro about feature learning, and discuss the use-cases and data types for DL methods.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-02-single-neuron/">Chapter 08.02: Single Neuron</a>
+    
+      
+        <p>In this section we explain the graphical representation of a single neuron and describe affine transformations and non-linear activation functions. Moreover, we talk about the hypothesis spaces of a single neuron and name some typical loss functions.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-03-single-hidden-layer/">Chapter 08.03: Single Hidden Layer NN</a>
+    
+      
+        <p>We introduce architecture of single hidden layer neural networks and discuss the advantage of hidden layers. Then, we explain the typical (non-linear) activation functions.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-04-nn4multiclass/">Chapter 08.04: Single Hidden Layer Networks for Multi-Class Classification</a>
+    
+      
+        <p>In this section, we discuss a neural network architectures for multi-class classification, softmax activation function as well as the Softmax loss.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-05-mulitlayernn/">Chapter 08.05: MLP: Multi-Layer Feedforward Neural Networks</a>
+    
+      
+        <p>Architectures of deep neural networks and deep neural networks as chained functions are the learning goal of this part.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-06-computational-graph/">Chapter 08.06: Chain Rule and Computational Graphs</a>
+    
+      
+        <p>In this section, we explain the chain rule of calculus, and it&amp;rsquo;s computational graphs.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-07-history/">Extra: Brief History</a>
+    
+      
+        <p>We overview history of DL development.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/08_neural_networks/08-08-backprob1/">Extra: Basic Backpropagation 1</a>
+    
+      
+        <p>This section introduces forward and backward passes, chain rule, and the details of backprop in deep learning.
+</p>
+      
+      
+</li>
+
+
+</ul>
+</div>
+
+
+        </div><footer class="bg-light text-center text-lg-start fixed-bottom">
+<ul class="list-inline text-center">
+  <li class="list-inline-item">© 2022 Course Creator</li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="/i2ml" target="_blank">Main Course Website</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/lecture_i2ml" target="_blank">Material Source Code</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/i2ml" target="_blank">Website Source Code</a></li>
+  
+</ul>
+</footer>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      ignoreHtmlClass: ['quizdown']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>
