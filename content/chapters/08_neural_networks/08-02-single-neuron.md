@@ -12,4 +12,4 @@ In this section we explain the graphical representation of a single neuron and d
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mlps-single-neuron-.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-single-neuron.pdf" >}}
