@@ -9,6 +9,6 @@ In this section, we explain the chain rule of calculus, and it's computational g
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-opt1-comp-graphs.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-comp-graphs.pdf" >}}
 
 
