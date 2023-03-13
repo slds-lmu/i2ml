@@ -11,4 +11,4 @@ In this section, we discuss a neural network architectures for multi-class class
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-mlps-multiclass-classification.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-multiclass-classification.pdf" >}}
