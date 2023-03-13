@@ -11,7 +11,7 @@ This section introduces forward and backward passes, chain rule, and the details
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2dl/blob/main/slides-pdf/topic2/slides-opt1-basic-backpropagation1.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-basic-backpropagation1.pdf" >}}
 
 
 

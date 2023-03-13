@@ -13,4 +13,4 @@ functions.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2dl/blob/main/slides-pdf/topic1/slides-mlps-single-hidden-layer-networks.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-single-hidden-layer-networks.pdf" >}}

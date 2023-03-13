@@ -12,4 +12,4 @@ In this section, we introduces the relationship of DL and ML, give basic intro a
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2dl/blob/main/slides-pdf/topic1/slides-intro-introduction.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-intro-introduction.pdf" >}}
