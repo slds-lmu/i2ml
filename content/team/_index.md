@@ -15,8 +15,10 @@
 
 ## Current student assistants
 
+- Laetitia Frost
 - Holger Löwe
-- Son Trinh
+- Patricio Massaro
+- Stefanie Schwarz
 
 
 ## Alumni
