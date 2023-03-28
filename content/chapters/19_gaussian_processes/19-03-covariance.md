@@ -12,4 +12,4 @@ In this section, we discuss the role of covariance functions in GPs and introduc
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-gp-covariance.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/slides-pdf/slides-gp-covariance.pdf" >}}

@@ -12,4 +12,4 @@ In this section, we discuss how the capacity of a hypothesis influences the over
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-hypospaces-capacity-overfitting.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/attic/hypospaces-capacity/slides/slides-hypospaces-capacity-overfitting.pdf" >}}

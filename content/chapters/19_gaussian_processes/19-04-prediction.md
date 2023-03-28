@@ -12,4 +12,4 @@ In this section, we show how to derive the posterior process and discuss further
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-gp-prediction.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/slides-pdf/slides-gp-prediction.pdf" >}}

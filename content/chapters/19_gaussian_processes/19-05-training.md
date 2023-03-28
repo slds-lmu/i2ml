@@ -12,4 +12,4 @@ In this section, we show how Gaussian processes are actually trained using maxim
 
 ### Lecture slides
 
-{{< pdfjs file=https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-gp-training.pdf" >}}
+{{< pdfjs file=https://github.com/slds-lmu/lecture_advml/raw/main/slides-pdf/slides-gp-training.pdf" >}}
