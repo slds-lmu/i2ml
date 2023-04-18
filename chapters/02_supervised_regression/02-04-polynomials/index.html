@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 2: Supervised Regression</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 02.04: Polynomial Regression Models</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,59 +66,57 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 2: Supervised Regression</h1>
+<h1>Chapter 02.04: Polynomial Regression Models</h1>
+<p>This section introduces polynomials to obtain more flexible models for the regression task. We explain the connection to the basic linear model and discuss the problem of overfitting.</p>
+<h3 id="lecture-video">Lecture video</h3>
+<div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/dsO2sNiuxug" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
-<p><p>This chapter treats the supervised regression task in more detail. We will see different loss functions for regression, how a linear regression model can be used from a Machine Learning perspective, and how to extend it with polynomials for greater flexibility.</p>
-</p>
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
-<div class="chapter_overview">
-<ul class="list-unstyled">
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
 
 
-<li>
-    <a class="title" href="/i2ml/chapters/02_supervised_regression/02-01-l2-loss/">Chapter 02.01: Linear Models with L2 Loss</a>
-    
-      
-        <p>In this section, we focus on the general concept of linear regression and explain how the linear regression model can be used from a machine learning perspective to predict a continuous numerical target variable. Furthermore, we introduce the \(L2\) loss in the context of linear regression and explain how its use results in an SSE-minimal model.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/02_supervised_regression/02-02-ols/">Chapter 02.02: Deep Dive: Proof OLS Regression</a>
-    
-      
-        <p>In this section, we provide you with a proof for the ordinary least squares (OLS) method.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/02_supervised_regression/02-03-l1-loss/">Chapter 02.03: Linear Models with L1 Loss</a>
-    
-      
-        <p>In this section, we introduce \(L1\) loss and elaborate its differences to \(L2\) loss. In addition, we explain how the choice of loss affects optimization and robustness.
-</p>
-      
-      
-</li>
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-regression-polynomials.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;slides-regression-polynomials.pdf&laquo;
+    </button>
+  </a>
 
-<li>
-    <a class="title" href="/i2ml/chapters/02_supervised_regression/02-04-polynomials/">Chapter 02.04: Polynomial Regression Models</a>
-    
-      
-        <p>This section introduces polynomials to obtain more flexible models for the regression task. We explain the connection to the basic linear model and discuss the problem of overfitting.
-</p>
-      
-      
-</li>
+
+<h3 id="quiz">Quiz</h3>
+
+
+<div class='quizdown'>
+  
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [ ] With linear regression it is only possible to model linear effects of a feature.
+- [x] Overfitting is a present danger in polynomial regression.
+
+
+</div>
+
+
+<ul class="section_skipper list-unstyled">
+
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/02_supervised_regression/02-03-l1-loss/">&#xab; Chapter 02.03: Linear Models with L1 Loss</a></li>
 
 
 </ul>
-</div>
+
+
 
 
         </div><footer class="bg-light text-center text-lg-start fixed-bottom">
@@ -158,5 +156,16 @@
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
+</script>
+<script 
+src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
+</script>
+<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
+</script>
 </body>
 </html>
