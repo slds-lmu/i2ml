@@ -12,4 +12,4 @@ In this section, we introduce the basic idea behind Gaussian processes. We move 
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-gp-basic.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/slides-pdf/slides-gp-basic.pdf" >}}

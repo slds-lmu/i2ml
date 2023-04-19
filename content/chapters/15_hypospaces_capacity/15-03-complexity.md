@@ -12,4 +12,4 @@ The "no free lunch" theorem implies that we cannot construct a universally optim
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-hypospaces-complexity.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/attic/hypospaces-capacity/slides/slides-hypospaces-complexity.pdf" >}}
