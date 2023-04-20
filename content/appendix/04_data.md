@@ -12,6 +12,8 @@ title: Data sets
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/datasets-pdf/boston.pdf" >}}
 
+We are aware of the ethical issues regarding this data set ([more information](https://medium.com/@docintangible/racist-data-destruction-113e3eff54a8)) and will replace it in upcoming revisions of the material. 
+
 - Circle 
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/datasets-pdf/circle.pdf" >}}
@@ -31,6 +33,8 @@ title: Data sets
 - Iris
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/datasets-pdf/iris.pdf" >}}
+
+We are aware of the ethical issues regarding this data set ([more information](https://armchairecology.blog/iris-dataset/)) and will replace it in upcoming revisions of the material. 
 
 - MNIST
 
