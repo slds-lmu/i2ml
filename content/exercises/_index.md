@@ -31,12 +31,11 @@ __Exercises for Chapters 11-20 (LMU Lecture SL):__
 | Exercise 5 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_information_theory_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_information_theory_1.pdf" >}} |
 | Exercise 6 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_information_theory_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_information_theory_2.pdf" >}} |
 | Exercise 7 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_cod_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_cod_1.pdf" >}} |
-| Exercise 8 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_hypospaces_capacity_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_hypospaces_capacity_1.pdf" >}} |
-| Exercise 9 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_regularization_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_regularization_1.pdf" >}} |
-| Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_1.pdf" >}} |
-| Exercise 11 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_2.pdf" >}} |
-| Exercise 12 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_1.pdf" >}} |
-| Exercise 13 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_2.pdf" >}} |
+| Exercise 8 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_regularization_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_regularization_1.pdf" >}} |
+| Exercise 9 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_1.pdf" >}} |
+| Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_2.pdf" >}} |
+| Exercise 11 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_1.pdf" >}} |
+| Exercise 12 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_2.pdf" >}} |
 
 <br>
 
