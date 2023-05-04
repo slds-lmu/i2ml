@@ -5,18 +5,18 @@ title: Exercises
 __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
 |            | Exercise    | Solution |          |
-| ---------| -------------- | -------------| -------------|
+| -------------| -------------- | -------------| -------------|
 | Exercise 1 | [ex_ml-basics.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_ml-basics.pdf) | [sol_ml-basics.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_ml-basics.pdf) |          |
 | Exercise 2 | [ex_regression.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_regression.pdf) | [sol_regression.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_regression.pdf) | [sol_regression_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-regression/sol_regression_py.ipynb) | 
-| Exercise 3 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_1.pdf" >}} |          |
-| Exercise 4 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_2.pdf" >}} | [sol_classification_2_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-classification/sol_classification_2_py.ipynb) |
-| Exercise 5 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_1.pdf" >}} |          |
-| Exercise 6 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_2.pdf" >}} |          |
-| Exercise 7 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_3.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_3.pdf" >}} |          |
-| Exercise 8 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_trees.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_trees.pdf" >}} |          |
-| Exercise 9 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_forests.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_forests.pdf" >}} |          |
-| Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf" >}} |          |
-| Exercise 11 | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nested_resampling.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nested_resampling.pdf" >}} |          |
+| Exercise 3 | [ex_classification_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_1.pdf) | [sol_classification_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_1.pdf) |          |
+| Exercise 4 | [ex_classification_2.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_2.pdf) | [sol_classification_2.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_2.pdf) | [sol_classification_2_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-classification/sol_classification_2_py.ipynb) |
+| Exercise 5 | [ex_eval_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_1.pdf) | [sol_eval_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_1.pdf) |          |
+| Exercise 6 | [ex_eval_2.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_2.pdf) | [sol_eval_2.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_2.pdf) |          |
+| Exercise 7 | [ex_eval_3.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_3.pdf) | [sol_eval_3.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_3.pdf) |          |
+| Exercise 8 | [ex_trees.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_trees.pdf) | [sol_trees.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_trees.pdf) |          |
+| Exercise 9 | [ex_forests.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_forests.pdf) | [sol_forests.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_forests.pdf) |          |
+| Exercise 10 | [ex_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf) | [sol_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf) |          |
+| Exercise 11 | [ex_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nested_resampling.pdf) | [sol_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nested_resampling.pdf) |          |
 
 <br>
 
