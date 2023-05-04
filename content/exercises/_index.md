@@ -5,7 +5,7 @@ title: Exercises
 __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
 |            | Exercise    | Solution |          |
-| -------------| -------------- | -------------| -------------|
+| ----------------| ---------------------------- | ---------------------------- | ---------------------------- |
 | Exercise 1 | [ex_ml-basics.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_ml-basics.pdf) | [sol_ml-basics.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_ml-basics.pdf) |          |
 | Exercise 2 | [ex_regression.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_regression.pdf) | [sol_regression.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_regression.pdf) | [sol_regression_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-regression/sol_regression_py.ipynb) | 
 | Exercise 3 | [ex_classification_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_1.pdf) | [sol_classification_1.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_1.pdf) |          |
