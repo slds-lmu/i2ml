@@ -1,6 +1,6 @@
 ---
-title: "Chapter 06.04: Computational Aspects of Finding Splits"
-weight: 6004
+title: "Chapter 06.05: Computational Aspects of Finding Splits"
+weight: 6005
 quizdown: true
 ---
 In this section, we explain the computational aspects of the node-splitting procedure, especially for nominal features. In addition, we illustrate how to deal with missing values.

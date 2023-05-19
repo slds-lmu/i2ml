@@ -1,8 +1,8 @@
 ---
-title: "Chapter 06.02: Splitting Criteria"
-weight: 6002
+title: "Chapter 06.03: Splitting Criteria for Regression"
+weight: 6003
 ---
-CART algorithms require splitting criteria for trees, which are usually defined in terms of impurity reduction. In this section we formalize the idea of splitting criteria and explain the details of splitting for both regression and classification.
+CART algorithms require splitting criteria for trees, which are usually defined in terms of impurity reduction. In this section we formalize the idea of splitting criteria and explain the details of splitting. We start with regression and doing so we show how split criteria fit into our framework of empirical risk minimization.
 
 <!--more-->
 

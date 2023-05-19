@@ -1,9 +1,10 @@
 ---
-title: "Chapter 06.01: Introduction"
+title: "Chapter 06.01: Predictions with CART"
 weight: 6001
 quizdown: true
 ---
 Decision trees are an important type of machine learning model and come in two main types: classification and regression trees. In this section, we explain the general idea of CART and show how they recursively divide up the input space into ever smaller rectangular partitions.
+Thus, we think of CART for now only as a predictor.
 
 <!--more-->
 
