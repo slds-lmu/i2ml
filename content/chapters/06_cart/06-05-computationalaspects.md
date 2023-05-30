@@ -13,7 +13,7 @@ In this section, we explain the computational aspects of the node-splitting proc
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-splitcomputation.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-computationalaspects.pdf" >}}
 
 ### Quiz
 

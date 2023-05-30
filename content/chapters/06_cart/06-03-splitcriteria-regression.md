@@ -12,4 +12,4 @@ CART algorithms require splitting criteria for trees, which are usually defined 
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-splitcriteria.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-splitcriteria-regression.pdf" >}}

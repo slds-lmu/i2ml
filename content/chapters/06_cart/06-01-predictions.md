@@ -14,7 +14,7 @@ Thus, we think of CART for now only as a predictor.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-intro.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-predictions.pdf" >}}
 
 ### Quiz
 
