@@ -1,6 +1,6 @@
 ---
-title: "Chapter 06.06: Discussion"
-weight: 6006
+title: "Chapter 06.07: Discussion"
+weight: 6007
 quizdown: true
 ---
 In this section we discuss the advantages and disadvantages of CART and mention other tree methodologies.
@@ -9,7 +9,7 @@ In this section we discuss the advantages and disadvantages of CART and mention 
 
 ### Lecture video
 
-{{< video id="nKULLVAUk74" >}}
+{{< video id="Jrr2BCnYtlI" >}}
 
 ### Lecture slides
 
