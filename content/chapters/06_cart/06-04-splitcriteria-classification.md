@@ -7,6 +7,8 @@ Here, we see that there are analogies of ERM and impurity reduction.
 While these analogies are interested, proving the equivalence of ERM and impurity reduction are beyond the scope of this lecture.
 The interested reader can refer to chapter 11 of this lecture, where we proof the equivalence.
 
+<!--more-->
+
 ### Lecture video
 
 {{< video id="Q0DSNh6qEQw" >}}
