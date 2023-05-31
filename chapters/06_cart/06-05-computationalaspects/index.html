@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06.05: Stopping Criteria &amp; Pruning</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.05: Computational Aspects of Finding Splits</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,11 +66,11 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06.05: Stopping Criteria &amp; Pruning</h1>
-<p>The recursive partitioning procedure used to grow a CART usually leads to problems such as exponential growth of computations, overfitting, and the horizon effect. To deal with these problems, we can use stopping criteria and pruning. In this section, we explain the basis of these two solutions.</p>
+<h1>Chapter 06.05: Computational Aspects of Finding Splits</h1>
+<p>In this section, we explain the computational aspects of the node-splitting procedure, especially for nominal features. In addition, we illustrate how to deal with missing values.</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/oQj3N2T-T90" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/6yAgoECJAP0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -83,9 +83,9 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-stoppingpruning.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-computationalaspects.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-cart-stoppingpruning.pdf&laquo;
+      Download &raquo;slides-cart-computationalaspects.pdf&laquo;
     </button>
   </a>
 
@@ -102,9 +102,12 @@ shuffle_questions: false
 
 ## Which statements are true? 
 
-- [x] Pruning means cutting back the tree.
-- [x] Pruning means that the tree becomes less complex.
-- [ ] A tree with one observation per leaf node should have good generalization performance.
+- [x] To find optimal splits, one iterates over all features, and for each feature over all possible split points.
+- [ ] To find optimal splits, we use the one that splits the data approximately in half in each step.
+- [x] To find optimal splits, we evaluate the possible splits only on the data that ended up in the parent node we are trying to split.
+- [x] The optimal split results in the lowest sum of empirical risks in the child nodes.
+- [ ] Monotone transformations of several features will change the structure of the tree.
+- [x] The CART algorithm cannot go on training if every node contains exactly one observation.
 
 
 </div>
@@ -112,10 +115,10 @@ shuffle_questions: false
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-04-splitcomputation/">&#xab; Chapter 06.04: Computational Aspects of Finding Splits</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-04-splitcriteria-classification/">&#xab; Chapter 06.04: Splitting Criteria for Classification</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-06-discussion/">Chapter 06.06: Discussion &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-06-stoppingpruning/">Chapter 06.06: Stopping Criteria &amp; Pruning &#xbb;</a></li>
 
 </ul>
 

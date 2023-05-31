@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06.01: Introduction</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.06: Stopping Criteria &amp; Pruning</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,11 +66,11 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06.01: Introduction</h1>
-<p>Decision trees are an important type of machine learning model and come in two main types: classification and regression trees. In this section, we explain the general idea of CART and show how they recursively divide up the input space into ever smaller rectangular partitions.</p>
+<h1>Chapter 06.06: Stopping Criteria &amp; Pruning</h1>
+<p>The recursive partitioning procedure used to grow a CART usually leads to problems such as exponential growth of computations, overfitting, and the horizon effect. To deal with these problems, we can use stopping criteria and pruning. In this section, we explain the basis of these two solutions.</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/R_PqefI-ON8" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/8CSGRjM8E0g" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -83,9 +83,9 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-intro.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-stoppingpruning.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-cart-intro.pdf&laquo;
+      Download &raquo;slides-cart-stoppingpruning.pdf&laquo;
     </button>
   </a>
 
@@ -102,11 +102,9 @@ shuffle_questions: false
 
 ## Which statements are true? 
 
-- [x] The prediction function defined by a CART divides the feature space into disjoint hyperrectangles.
-- [x] The root node contains all data.
-- [ ] The leaf node contains all data.
-- [ ] Observations can end up in several leaf nodes at the same time.
-- [x] The CART algorithm recursively splits nodes into child nodes.
+- [x] Pruning means cutting back the tree.
+- [x] Pruning means that the tree becomes less complex.
+- [ ] A tree with one observation per leaf node should have good generalization performance.
 
 
 </div>
@@ -114,8 +112,10 @@ shuffle_questions: false
 
 <ul class="section_skipper list-unstyled">
 
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-05-computationalaspects/">&#xab; Chapter 06.05: Computational Aspects of Finding Splits</a></li>
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-02-splitcriteria/">Chapter 06.02: Splitting Criteria &#xbb;</a></li>
+
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-07-discussion/">Chapter 06.07: Discussion &#xbb;</a></li>
 
 </ul>
 

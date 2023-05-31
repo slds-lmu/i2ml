@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06.04: Computational Aspects of Finding Splits</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.04: Splitting Criteria for Classification</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,14 +66,19 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06.04: Computational Aspects of Finding Splits</h1>
-<p>In this section, we explain the computational aspects of the node-splitting procedure, especially for nominal features. In addition, we illustrate how to deal with missing values.</p>
+<h1>Chapter 06.04: Splitting Criteria for Classification</h1>
+<p>We extend splitting criteria to classification task.
+Here, we see that there are analogies of ERM and impurity reduction.
+While these analogies are interested, proving the equivalence of ERM and impurity reduction are beyond the scope of this lecture.
+The interested reader can refer to chapter 11 of this lecture, where we proof the equivalence.</p>
 <h3 id="lecture-video">Lecture video</h3>
+<!--THIS NEEDS TO BE UPDATED AS SOON AS VIDEOS EXIST; SO FAR DUPLICATED-->
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/RujQ_xP-NFA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/Q0DSNh6qEQw" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
+<!--THIS NEEDS TO BE UPDATED AS SOON AS VIDEOS EXIST; SO FAR DUPLICATED-->
 
 
 <script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
@@ -83,42 +88,22 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-splitcomputation.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-splitcriteria-classification.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-cart-splitcomputation.pdf&laquo;
+      Download &raquo;slides-cart-splitcriteria-classification.pdf&laquo;
     </button>
   </a>
 
 
-<h3 id="quiz">Quiz</h3>
 
-
-<div class='quizdown'>
-  
-
----
-shuffle_questions: false
----
-
-## Which statements are true? 
-
-- [x] To find optimal splits, one iterates over all features, and for each feature over all possible split points.
-- [ ] To find optimal splits, we use the one that splits the data approximately in half in each step.
-- [x] To find optimal splits, we evaluate the possible splits only on the data that ended up in the parent node we are trying to split.
-- [x] The optimal split results in the lowest sum of empirical risks in the child nodes.
-- [ ] Monotone transformations of several features will change the structure of the tree.
-- [x] The CART algorithm cannot go on training if every node contains exactly one observation.
-
-
-</div>
 
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-03-treegrowing/">&#xab; Chapter 06.03: Growing a Tree</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-03-splitcriteria-regression/">&#xab; Chapter 06.03: Splitting Criteria for Regression</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-05-stoppingpruning/">Chapter 06.05: Stopping Criteria &amp; Pruning &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-05-computationalaspects/">Chapter 06.05: Computational Aspects of Finding Splits &#xbb;</a></li>
 
 </ul>
 
@@ -162,16 +147,5 @@ shuffle_questions: false
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
-</script>
-<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
-</script>
 </body>
 </html>

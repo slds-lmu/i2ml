@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06.06: Discussion</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.01: Predictions with CART</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,11 +66,12 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06.06: Discussion</h1>
-<p>In this section we discuss the advantages and disadvantages of CART and mention other tree methodologies.</p>
+<h1>Chapter 06.01: Predictions with CART</h1>
+<p>Decision trees are an important type of machine learning model and come in two main types: classification and regression trees. In this section, we explain the general idea of CART and show how they recursively divide up the input space into ever smaller rectangular partitions.
+Thus, we think of CART for now only as a predictor.</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/nKULLVAUk74" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/mouBj4qiHRs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -83,28 +84,9 @@
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-discussion.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-predictions.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-cart-discussion.pdf&laquo;
-    </button>
-  </a>
-
-
-<h3 id="code-demo">Code demo</h3>
-<p><strong>CART</strong></p>
-<p>You can run the code snippets in the demos on your local machine. The corresponding Rmd version of this demo can be found <a href="https://github.com/compstat-lmu/lecture_i2ml/blob/master/code-demos/code_demo_cart.Rmd">here</a>. If you want to render the Rmd files to PDF, you need the accompanying <a href="https://github.com/compstat-lmu/lecture_i2ml/tree/master/style">style files</a>.</p>
-
-
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
-
-
-
-
-  
-  
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/code-demos-pdf/code_demo_cart.pdf">
-    <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;code_demo_cart.pdf&laquo;
+      Download &raquo;slides-cart-predictions.pdf&laquo;
     </button>
   </a>
 
@@ -121,10 +103,11 @@ shuffle_questions: false
 
 ## Which statements are true? 
 
-- [ ] CART is a stable algorithm -- if the data changes slightly the tree structure remains quite similar.
-- [x] CART is robust to outliers.
-- [x] With trees it is easy to handle missing values.
-- [ ] A simple tree is everything you need to fit a linear function $y \approx a + b \cdot x$ with numeric target.
+- [x] The prediction function defined by a CART divides the feature space into disjoint hyperrectangles.
+- [x] The root node contains all data.
+- [ ] The leaf node contains all data.
+- [ ] Observations can end up in several leaf nodes at the same time.
+- [x] The CART algorithm recursively splits nodes into child nodes.
 
 
 </div>
@@ -132,8 +115,8 @@ shuffle_questions: false
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_trees/06-05-stoppingpruning/">&#xab; Chapter 06.05: Stopping Criteria &amp; Pruning</a></li>
 
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-02-treegrowing/">Chapter 06.02: Growing a Tree &#xbb;</a></li>
 
 </ul>
 

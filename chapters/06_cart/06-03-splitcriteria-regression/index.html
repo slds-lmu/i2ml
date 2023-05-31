@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06: Classification and Regression Trees (CART)</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.03: Splitting Criteria for Regression</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,79 +66,40 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06: Classification and Regression Trees (CART)</h1>
+<h1>Chapter 06.03: Splitting Criteria for Regression</h1>
+<p>CART algorithms require splitting criteria for trees, which are usually defined in terms of impurity reduction. In this section we formalize the idea of splitting criteria and explain the details of splitting. We start with regression and doing so we show how split criteria fit into our framework of empirical risk minimization.</p>
+<h3 id="lecture-video">Lecture video</h3>
+<div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/3Zzp64RgUoY" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
-<p><p>This chapter introduces Classification and Regression Trees (CART), a well-established machine learning procedure. We explain the main idea and give details on splitting criteria, discuss computational aspects of growing a tree, and illustrate the idea of stopping criteria and pruning.</p>
-</p>
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
-<div class="chapter_overview">
-<ul class="list-unstyled">
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
 
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-01-intro/">Chapter 06.01: Introduction</a>
-    
-      
-        <p>Decision trees are an important type of machine learning model and come in two main types: classification and regression trees. In this section, we explain the general idea of CART and show how they recursively divide up the input space into ever smaller rectangular partitions.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-02-splitcriteria/">Chapter 06.02: Splitting Criteria</a>
-    
-      
-        <p>CART algorithms require splitting criteria for trees, which are usually defined in terms of impurity reduction. In this section we formalize the idea of splitting criteria and explain the details of splitting for both regression and classification.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-03-treegrowing/">Chapter 06.03: Growing a Tree</a>
-    
-      
-        <p>In this section, we explain how to grow a tree starting with an empty tree, i.e., a root node containing all the data. It will be shown that trees are grown by recursively applying greedy optimization to each node.
-</p>
-      
-      
-</li>
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-splitcriteria-regression.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;slides-cart-splitcriteria-regression.pdf&laquo;
+    </button>
+  </a>
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-04-splitcomputation/">Chapter 06.04: Computational Aspects of Finding Splits</a>
-    
-      
-        <p>In this section, we explain the computational aspects of the node-splitting procedure, especially for nominal features. In addition, we illustrate how to deal with missing values.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-05-stoppingpruning/">Chapter 06.05: Stopping Criteria &amp; Pruning</a>
-    
-      
-        <p>The recursive partitioning procedure used to grow a CART usually leads to problems such as exponential growth of computations, overfitting, and the horizon effect. To deal with these problems, we can use stopping criteria and pruning. In this section, we explain the basis of these two solutions.
-</p>
-      
-      
-</li>
+<ul class="section_skipper list-unstyled">
 
-<li>
-    <a class="title" href="/i2ml/chapters/06_trees/06-06-discussion/">Chapter 06.06: Discussion</a>
-    
-      
-        <p>In this section we discuss the advantages and disadvantages of CART and mention other tree methodologies.
-</p>
-      
-      
-</li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-02-treegrowing/">&#xab; Chapter 06.02: Growing a Tree</a></li>
 
+
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-04-splitcriteria-classification/">Chapter 06.04: Splitting Criteria for Classification &#xbb;</a></li>
 
 </ul>
-</div>
+
+
 
 
         </div><footer class="bg-light text-center text-lg-start fixed-bottom">
