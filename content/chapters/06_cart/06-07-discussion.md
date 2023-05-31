@@ -9,7 +9,7 @@ In this section we discuss the advantages and disadvantages of CART and mention 
 
 ### Lecture video
 
-{{< video id="nKULLVAUk74" >}}
+{{< video id="Jrr2BCnYtlI" >}}
 
 ### Lecture slides
 

@@ -9,7 +9,7 @@ In this section, we explain the computational aspects of the node-splitting proc
 
 ### Lecture video
 
-{{< video id="RujQ_xP-NFA" >}}
+{{< video id="6yAgoECJAP0" >}}
 
 ### Lecture slides
 

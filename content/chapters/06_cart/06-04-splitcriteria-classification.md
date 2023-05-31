@@ -11,7 +11,7 @@ The interested reader can refer to chapter 11 of this lecture, where we proof th
 
 <!--THIS NEEDS TO BE UPDATED AS SOON AS VIDEOS EXIST; SO FAR DUPLICATED-->
 
-{{< video id="IgHTJsAJTok" >}}
+{{< video id="Q0DSNh6qEQw" >}}
 
 ### Lecture slides
 

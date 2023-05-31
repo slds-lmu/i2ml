@@ -10,7 +10,7 @@ Thus, we think of CART for now only as a predictor.
 
 ### Lecture video
 
-{{< video id="R_PqefI-ON8" >}}
+{{< video id="mouBj4qiHRs" >}}
 
 ### Lecture slides
 

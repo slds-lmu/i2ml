@@ -8,7 +8,7 @@ In this section, we explain how to grow a tree starting with an empty tree, i.e.
 
 ### Lecture video
 
-{{< video id="UjuJCgeZ6HA" >}}
+{{< video id="SWbrSLJv8wc" >}}
 
 ### Lecture slides
 

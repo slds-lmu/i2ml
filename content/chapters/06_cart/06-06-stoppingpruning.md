@@ -9,7 +9,7 @@ The recursive partitioning procedure used to grow a CART usually leads to proble
 
 ### Lecture video
 
-{{< video id="oQj3N2T-T90" >}}
+{{< video id="8CSGRjM8E0g" >}}
 
 ### Lecture slides
 

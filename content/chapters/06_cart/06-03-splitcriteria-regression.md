@@ -8,7 +8,7 @@ CART algorithms require splitting criteria for trees, which are usually defined 
 
 ### Lecture video
 
-{{< video id="IgHTJsAJTok" >}}
+{{< video id="3Zzp64RgUoY" >}}
 
 ### Lecture slides
 
