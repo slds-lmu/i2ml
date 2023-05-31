@@ -9,10 +9,10 @@ title: Errata
 - Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix
 - Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
 - Chapter 4.7 (Classification measures): Slide 6/9 cost computation
-- Chapter 5.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
-- Chapter 6.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error
-- Chapter 6.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance
-- Chapter 6.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini
+- Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
+- Chapter 7.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error
+- Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance
+- Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
 - Chapter 13.6: Slide 2/7 typos in formula and bullet point 3
 - Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy
