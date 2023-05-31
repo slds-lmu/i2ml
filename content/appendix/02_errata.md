@@ -9,7 +9,7 @@ title: Errata
 - Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix
 - Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
 - Chapter 4.7 (Classification measures): Slide 6/9 cost computation
-- Chapter 5.2 (CART: Splitting Criteria) - slide 12/12: Error in result of Gini
+- Chapter 5.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
 - Chapter 6.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error
 - Chapter 6.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance
 - Chapter 6.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini
