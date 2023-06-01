@@ -20,7 +20,7 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
 <br>
 
-__Exercises for Chapters 11-20 (LMU Lecture SL):__
+__Exercises for Chapters 11-19 (LMU Lecture SL):__
 
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
@@ -36,6 +36,14 @@ __Exercises for Chapters 11-20 (LMU Lecture SL):__
 | Exercise 10 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_2.pdf" >}} |
 | Exercise 11 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_1.pdf" >}} |
 | Exercise 12 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_2.pdf" >}} |
+
+<br>
+
+__Exercises for Chapters 20-23 (LMU Lecture AdvML):__
+
+|            | Exercise    | Solution |
+| ---------| -------------- | -------------|
+| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1_2.pdf" >}} |  |
 
 <br>
 
