@@ -39,14 +39,6 @@ __Exercises for Chapters 11-19 (LMU Lecture SL):__
 
 <br>
 
-__Exercises for Chapters 20-23 (LMU Lecture AdvML):__
-
-|            | Exercise    | Solution |
-| ---------| -------------- | -------------|
-| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1_2.pdf" >}} |  |
-
-<br>
-
 __Live Session Exercises for Chapters 11-20 (LMU Lecture SL):__
 
 |            | Exercise    | 
@@ -63,4 +55,12 @@ __Live Session Exercises for Chapters 11-20 (LMU Lecture SL):__
 |Session 11| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_boosting_1.pdf" >}} | 
 |Session 12| - | 
 |Session 13| - | 
+
+<br>
+
+__Exercises for Chapters 20-23 (LMU Lecture AdvML):__
+
+|            | Exercise    | Solution |
+| ---------| -------------- | -------------|
+| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1_2.pdf" >}} |  |
 
