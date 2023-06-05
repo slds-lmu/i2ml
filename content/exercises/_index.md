@@ -39,7 +39,7 @@ __Exercises for Chapters 11-19 (LMU Lecture SL):__
 
 <br>
 
-__Live Session Exercises for Chapters 11-20 (LMU Lecture SL):__
+__Live Session Exercises for Chapters 11-19 (LMU Lecture SL):__
 
 |            | Exercise    | 
 | ---------| -------------- | 
