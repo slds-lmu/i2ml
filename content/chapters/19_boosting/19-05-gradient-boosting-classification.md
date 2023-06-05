@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.05: Boosting for Classification"
-weight: 20005
+title: "Chapter 19.05: Boosting for Classification"
+weight: 19005
 ---
 We introduce boosting algorithms for both binary and multiclass classification with several examples.
 

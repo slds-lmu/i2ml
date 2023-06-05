@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.03: Boosting Illustration"
-weight: 20003
+title: "Chapter 19.03: Boosting Illustration"
+weight: 19003
 ---
 We show several illustrative regression examples to visualize the boosting 
 principle.
