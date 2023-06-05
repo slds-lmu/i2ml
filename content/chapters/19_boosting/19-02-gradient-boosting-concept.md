@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.02: Boosting Concept"
-weight: 20002
+title: "Chapter 19.02: Boosting Concept"
+weight: 19002
 ---
 In this section, we discuss the general boosting principle: performing gradient descent in function space by repeatedly fitting new base learner components to the current pseudo-residuals.
 

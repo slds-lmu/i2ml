@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.08: XGBoost"
-weight: 20008
+title: "Chapter 19.08: XGBoost"
+weight: 19008
 ---
 We introduce XGBoost, a highly efficient, tree-based boosting system with additional regularizers.
 

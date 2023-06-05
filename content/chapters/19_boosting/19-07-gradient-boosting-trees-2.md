@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.07: Gradient Boosting with Trees II"
-weight: 20007
+title: "Chapter 19.07: Gradient Boosting with Trees II"
+weight: 19007
 ---
 We explain how terminal coefficients are found in a risk-minimal manner and briefly discuss tree-based boosting for multiclass problems.
 

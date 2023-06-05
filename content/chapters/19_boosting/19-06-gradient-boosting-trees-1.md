@@ -1,6 +1,6 @@
 ---
-title: "Chapter 20.06: Gradient Boosting with Trees I"
-weight: 20006
+title: "Chapter 19.06: Gradient Boosting with Trees I"
+weight: 19006
 ---
 We discuss trees as the most popular base learners in gradient boosting, with special emphasis on model structure and interaction depth.
 
