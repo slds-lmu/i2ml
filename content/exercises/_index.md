@@ -62,5 +62,5 @@ __Exercises for Chapters 20-23 (LMU Lecture AdvML):__
 
 |            | Exercise    | Solution |
 | ---------| -------------- | -------------|
-| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1_2.pdf" >}} |  |
+| Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1.pdf" >}} |  |
 
