@@ -15,8 +15,9 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | Exercise 7  &nbsp;| [ex_eval_3.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_eval_3.pdf) | [sol_eval_3.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_eval_3.pdf) |  [sol_eval_3_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/evaluation/sol_eval_3_py.ipynb)   |
 | Exercise 8  &nbsp;| [ex_trees.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_trees.pdf) | [sol_trees.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_trees.pdf) |  [sol_trees_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/trees/sol_trees_py.ipynb)   |
 | Exercise 9  &nbsp;| [ex_forests.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_forests.pdf) | [sol_forests.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_forests.pdf) | [sol_forests_py.ipynb](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/forests/sol_forests_py.ipynb)    |
-| Exercise 10 &nbsp;| [ex_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf) | [sol_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf) |          |
-| Exercise 11 &nbsp;| [ex_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nested_resampling.pdf) &emsp;| [sol_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nested_resampling.pdf) &emsp;|          |
+| Exercise 10 &nbsp;| [ex_nn.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nn.pdf) | [sol_nn.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nn.pdf) |
+| Exercise 11 &nbsp;| [ex_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf) | [sol_tuning.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf) |          |
+| Exercise 12 &nbsp;| [ex_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nested_resampling.pdf) &emsp;| [sol_nested_resampling.pdf](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nested_resampling.pdf) &emsp;|          |
 
 <br>
 
