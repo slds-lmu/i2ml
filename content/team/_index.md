@@ -12,6 +12,8 @@
   is a PhD at Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
 - ![](https://www.slds.stat.uni-muenchen.de/images/wimmer.jpg) [Lisa Wimmer](https://www.slds.stat.uni-muenchen.de/people/wimmer/)
   is a PhD at Bernd’s group and contributed to slides and exercises.
+- ![](https://www.slds.stat.uni-muenchen.de/images/yawei_li.JPG) [Yawei Li](https://www.slds.stat.uni-muenchen.de/people/li/)
+  is a PhD student at Bernd's group and contributed to the slides and exercises of AdvML.
 
 ## Current student assistants
 
@@ -19,6 +21,7 @@
 - Holger Löwe
 - Patricio Massaro
 - Stefanie Schwarz
+- Tobias Brock
 
 
 ## Alumni
