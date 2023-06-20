@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.12: Optimal constant model for the empirical log loss risk"
-weight: 11012
+title: "Chapter 11.10: Optimal constant model for the empirical log loss risk"
+weight: 11010
 ---
 In this deep-dive, we derive the optimal constant model for the empirical log loss risk 
 
