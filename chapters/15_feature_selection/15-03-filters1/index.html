@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Errata</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 15.03: Filter Methods I</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,41 +66,39 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Errata</h1>
-<h2 id="errata-in-the-slides-shown-in-the-videos">Errata in the slides shown in the videos</h2>
-<ul>
-<li>Chapter 1.4 (Models &amp; Parameters) - slide 5/10: d-dimensional vector, not p-dimensional</li>
-<li>Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4</li>
-<li>Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix</li>
-<li>Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE</li>
-<li>Chapter 4.7 (Classification measures): Slide 6/9 cost computation</li>
-<li>Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)</li>
-<li>Chapter 7.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error</li>
-<li>Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance</li>
-<li>Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini</li>
-<li>Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion</li>
-<li>Chapter 13.6: Slide 2/7 typos in formula and bullet point 3</li>
-<li>Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy</li>
-<li>Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian</li>
-<li>Chapter 13.7: Slide 14/14 added parentheses to make log less ambiguous</li>
-<li>Chapter 17.1: Slide 6/11 Typo in f</li>
-<li>Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances</li>
-<li>Chapter 18.1: Slide 5/7: Typo in Monomials; it should be (d+p-1 over d) and ( (d+p) over d) -1</li>
-<li>Chapter 19.2: Slide 1/15: R_emp formula contains x_{i}, not x.</li>
-<li>Chapter 19.5: Slide 3/11: bullet point 1 added &ldquo;if&rdquo;, bullet point 2 changed &ldquo;decrease&rdquo; to &ldquo;increase&rdquo;</li>
-<li>Chapter 20.1: Slide 6/12: fix error in step 6 and clarify that b-hat is a hard label classifier</li>
-<li>Chapter 20.1: Slides 7 and 8/12: improved plot and text</li>
-<li>Chapter 20.2: Slide 14/15: error in step 1 of the algorithm</li>
-</ul>
+<h1>Chapter 15.03: Filter Methods I</h1>
+<p>We introduce how filter methods work and how they can be used for feature selection.</p>
+<!--
+### Lecture video
 
+<div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/4wLJVWSLowo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
+
+-->
+<h3 id="lecture-slides">Lecture slides</h3>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-fs-filters1.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;slides-fs-filters1.pdf&laquo;
+    </button>
+  </a>
 
 
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/appendix/04_data/">&#xab; Data sets</a></li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/15_feature_selection/15-02-motivating-examples/">&#xab; Chapter 15.02: Motivating Examples</a></li>
 
 
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/appendix/00_learner_slides/">Important Learners in ML &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/15_feature_selection/15-04-filters2/">Chapter 15.04: Filter Methods II (Examples and Caveats) &#xbb;</a></li>
 
 </ul>
 
