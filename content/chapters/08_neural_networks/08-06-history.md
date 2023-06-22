@@ -1,6 +1,6 @@
 ---
 title: "Extra: Brief History"
-weight: 8007
+weight: 8006
 ---
 We overview history of DL development.
 
