@@ -1,6 +1,6 @@
 ---
 title: "Extra: Basic Backpropagation 1"
-weight: 8008
+weight: 8007
 ---
 This section introduces forward and backward passes, chain rule, and the details of backprop in deep learning.
 <!--more-->
