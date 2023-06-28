@@ -67,5 +67,6 @@ __Exercises for Chapters 20-23 (LMU Lecture AdvML):__
 | Exercise 1 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_gp_1.pdf" >}} |
 | Exercise 2 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_gp_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_gp_2.pdf" >}} |
 | Exercise 3 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_imbal_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_imbal_1.pdf" >}} |
-| Exercise 4 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_imbal_2.pdf" >}} | |
+| Exercise 4 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_imbal_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_imbal_2.pdf" >}} |
+| Exercise 5 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_multitarget_1.pdf" >}} | |
 
