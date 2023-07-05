@@ -8,7 +8,7 @@ We explain the relationship between CWB and GLMs.
 
 ### Lecture video
 
-{{< video id="6jKXf8FRY1E-8aU" >}}
+{{< video id="6jKXf8FRY1E" >}}
 
 ### Lecture slides
 
