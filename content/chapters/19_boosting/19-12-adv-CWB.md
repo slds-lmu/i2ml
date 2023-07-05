@@ -1,5 +1,5 @@
 ---
-title: "Chapter 19.12: CWB and GLMs"
+title: "Chapter 19.12: Advanced CWB"
 weight: 190012
 ---
 We explain the details of nonlinear BLs and splines, decomposition for splines, fair base learner selection and feature importance and PDPs.
