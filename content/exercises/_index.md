@@ -16,7 +16,7 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 | Exercise 8  &nbsp;| [CART](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_trees.pdf) | [CART](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_trees.pdf) |  [CART](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/trees/sol_trees_py.ipynb)   |
 | Exercise 9  &nbsp;| [Random forests](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_forests.pdf) | [Random forests](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_forests.pdf) | [Random forests](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/forests/sol_forests_py.ipynb)    |
 | Exercise 10 &nbsp;| [Neural networks](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nn.pdf) | [Neural networks](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nn.pdf) |
-| Exercise 11 &nbsp;| [Tuning](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf) | [Tuning](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf) |          |
+| Exercise 11 &nbsp;| [Tuning](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_tuning.pdf) | [Tuning](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_tuning.pdf) |   [Tuning](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/tuning/sol_tuning_py.ipynb)     |
 | Exercise 12 &nbsp;| [Nested resampling](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_nested_resampling.pdf) &emsp;| [Nested resampling](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_nested_resampling.pdf) &emsp;|          |
 
 <br>
