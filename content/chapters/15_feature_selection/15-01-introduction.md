@@ -7,7 +7,7 @@ We motivate feature selection and discuss the difference to feature extraction.
 <!--more-->
 ### Lecture video
 
-{{< video id="8Oy9flzIhQ8" >}}
+{{< video id="xiVB1EmlU9A" >}}
 
 ### Lecture slides
 
