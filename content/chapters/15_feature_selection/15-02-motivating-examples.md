@@ -6,11 +6,10 @@ In this section, we explain the practical importance of feature selection and sh
 integrated selection do not always work.
 
 <!--more-->
-<!--
 ### Lecture video
 
-{{< video id="YHHX_fi7m8s" >}}
--->
+{{< video id="1BwgTptjDs4" >}}
+
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-fs-motivating-examples.pdf" >}}
