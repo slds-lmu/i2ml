@@ -29,6 +29,8 @@ If you need to read up on some of the required topics (see [Prerequisites](../pr
 - N. Japkowicz. Evaluating Learning Algorithms (A Classification Perspective). Cambridge University Press, 2011. *Nice reading on performance measures, resampling methods and (some) statistical tests for benchmarking in ML; only for classification.*
 - B. Bischl et al. Hyperparameter Optimization: Foundations, Algorithms, Best Practices and Open Challenges. arXiv preprint 2021. [URL](https://arxiv.org/pdf/2107.05847.pdf) *Our tutorial paper on HPO.*
 - I. Goodfellow, Y. Bengio, A. Courville. Deep Learning. MIT Press, 2016. [URL](https://www.deeplearningbook.org/) *Standard, modern reference for DL.*
+- J. Friedman, T. Hastie, R. Tibshirani. Additive logistic regression: a statistical view of boosting (With discussion and a rejoinder by the authors). Ann. Statist. 2000. [URL](
+https://projecteuclid.org/journals/annals-of-statistics/volume-28/issue-2/Additive-logistic-regression--a-statistical-view-of-boosting-With/10.1214/aos/1016218223.full)
 
 ## Mathematical & Statistical Theory
 
