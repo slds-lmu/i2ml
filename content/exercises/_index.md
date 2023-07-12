@@ -70,4 +70,4 @@ __Exercises for Chapters 20-23 (LMU Lecture AdvML):__
 | Exercise 4 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_imbal_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_imbal_2.pdf" >}} |
 | Exercise 5 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_multitarget_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/sol_multitarget_1.pdf" >}} |
 | Exercise 6 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_multitarget_2.pdf" >}} | |
-
+| Exercise 7 | {{< pdfjs file="https://github.com/slds-lmu/lecture_advml/raw/main/exercises-pdf/ex_online_learning_1.pdf" >}} | |
