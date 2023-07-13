@@ -38,6 +38,7 @@ __Exercises for Chapters 11-19 (LMU Lecture SL):__
 | Exercise 11 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_svm_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_svm_2.pdf" >}} |
 | Exercise 12 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_1.pdf" >}} |
 | Exercise 13 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_boosting_2.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_boosting_2.pdf" >}} |
+| Exercise 14 | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ex_feature_selection_1.pdf" >}} | {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/sol_feature_selection_1.pdf" >}} |
 
 <br>
 
