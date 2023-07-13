@@ -7,7 +7,7 @@ In this chapter we introduce the formalization of online learning algorithms and
 
 ### Lecture video
 
-{{< video id="Fp9zu8fPm3Y" >}}
+{{< video id="bomA-elLg40" >}}
 
 ### Lecture slides
 
