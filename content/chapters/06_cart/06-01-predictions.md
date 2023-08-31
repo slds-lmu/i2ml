@@ -12,7 +12,7 @@ Thus, we think of CART for now only as a predictor.
 
 {{< video id="mouBj4qiHRs" >}}
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/mouBj4qiHRs?si=8j28kFDwZSV2nASB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/mouBj4qiHRs?si=8j28kFDwZSV2nASB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay = "0"; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Lecture slides
 
