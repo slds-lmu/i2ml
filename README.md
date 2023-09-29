@@ -26,8 +26,10 @@
   - the `video_id` is the last part of the youtube url, e.g. for `https://www.youtube.com/watch?v=BmSvhDCdJro` it is `BmSvhDCdJro`.
   - You can also embed videos from other platforms by changing `video_base_url` in `config.toml`
   - Or use a custom shortcode.
+  - To directly change aspects in the video embedding you can also use the explicit HTML-iframe tag e.g. `<iframe width="560" height="315" src="https://www.youtube.com/embed/8CSGRjM8E0g?si=5Ms3XDe8zZba26Vb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay = "0"; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>` 
+  - To ensure that the views are counted properly explicitly set the `autoplay = "0"`-HTML attribute either directly in the HTML-iframe tag or in the video.html in the layouts of the website theme
 - mathjax enabled if `mathjax: true` in yaml-frontmatter
- - if mathjax should be supported in index page, add it to respective `_index.md` or enable it in `config.toml`
+- if mathjax should be supported in index page, add it to respective `_index.md` or enable it in `config.toml`
 - make quizzes using https://github.com/bonartm/hugo-quiz
   - put `quizdown: true` in yaml-frontmatter
   - quizzes support mathjax without the `mathjax: true`
