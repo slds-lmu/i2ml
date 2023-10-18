@@ -12,4 +12,4 @@ In this nutshell chunk, we dive into the foundational principles of Machine Lear
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-ml-basics-nutshell.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-nutshell.pdf" >}}
