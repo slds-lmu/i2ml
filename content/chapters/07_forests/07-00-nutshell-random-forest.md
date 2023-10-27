@@ -12,4 +12,4 @@ In this nutshell chunk, we delve into Random Forests, an ensemble method that ha
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/slides-pdf/slides-forests-nutshell.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-forests-nutshell.pdf" >}}
