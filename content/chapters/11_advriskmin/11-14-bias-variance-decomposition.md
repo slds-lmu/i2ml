@@ -6,9 +6,9 @@ We discuss how to decompose the generalization error of a learner.
 
 <!--more-->
 
-<!--### Lecture video-->
+### Lecture video
 
-<!--{{< video id="5gE6oSQlEsw" >}}-->
+{{< video id="5J9mafVroqw" >}}
 
 ### Lecture slides
 
