@@ -8,7 +8,7 @@ We discuss the concept of robustness, analytical and functional properties of lo
 
 ### Lecture video
 
-{{< video id="P4lmv3hy0zg" >}}
+{{< video id="5J9mafVroqw" >}}
 
 ### Lecture slides
 
