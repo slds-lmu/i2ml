@@ -8,7 +8,7 @@ We discuss the connection between maximum likelihood estimation and risk minimiz
 
 ### Lecture video
 
-{{< video id="5gE6oSQlEsw" >}}
+{{< video id="iDAEdlvEtEQ" >}}
 
 ### Lecture slides
 
