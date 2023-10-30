@@ -12,14 +12,13 @@
   is a PhD at Bernd’s group and contributed to slides and exercises.
 - ![](https://www.slds.stat.uni-muenchen.de/images/yawei_li.JPG) [Yawei Li](https://www.slds.stat.uni-muenchen.de/people/li/)
   is a PhD student at Bernd's group and contributed to the slides and exercises of AdvML.
-- ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.JPG) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
+- ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.jpg) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
   is a PhD student at Bernd's group and contributed to the slides and exercises.
 
 ## Current student assistants
 
 - Laetitia Frost
 - Holger Löwe
-- Patricio Massaro
 - Stefanie Schwarz
 - Tobias Brock
 
