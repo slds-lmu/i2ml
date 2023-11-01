@@ -12,4 +12,4 @@ In this nutshell chunk, we learn about neural networks, the driving force behind
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-nn-nutshell.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-neuralnetworks-nutshell.pdf" >}}
