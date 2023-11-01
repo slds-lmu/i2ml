@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 06.01: Predictions with CART</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 06.00: CART: In a Nutshell</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,12 +66,11 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 06.01: Predictions with CART</h1>
-<p>Decision trees are an important type of machine learning model and come in two main types: classification and regression trees. In this section, we explain the general idea of CART and show how they recursively divide up the input space into ever smaller rectangular partitions.
-Thus, we think of CART for now only as a predictor.</p>
+<h1>Chapter 06.00: CART: In a Nutshell</h1>
+<p>In this nutshell chunk, we unravel the workings of CARTs (Classification and Regression Trees).</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/mouBj4qiHRs" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/t2PB42edS7Q" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -84,41 +83,17 @@ Thus, we think of CART for now only as a predictor.</p>
 
   
   
-  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-predictions.pdf">
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/slides-pdf/slides-cart-nutshell.pdf">
     <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-cart-predictions.pdf&laquo;
+      Download &raquo;slides-cart-nutshell.pdf&laquo;
     </button>
   </a>
 
 
-<h3 id="quiz">Quiz</h3>
-
-
-<div class='quizdown'>
-  
-
----
-shuffle_questions: false
----
-
-## Which statements are true? 
-
-- [x] The prediction function defined by a CART divides the feature space into disjoint hyperrectangles.
-- [x] The root node contains all data.
-- [ ] The leaf node contains all data.
-- [ ] Observations can end up in several leaf nodes at the same time.
-- [x] The CART algorithm recursively splits nodes into child nodes.
-
-
-</div>
-
-
 <ul class="section_skipper list-unstyled">
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-00-nutshell-cart/">&#xab; Chapter 06.00: CART: In a Nutshell</a></li>
 
-
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-02-treegrowing/">Chapter 06.02: Growing a Tree &#xbb;</a></li>
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/06_cart/06-01-predictions/">Chapter 06.01: Predictions with CART &#xbb;</a></li>
 
 </ul>
 
@@ -162,16 +137,5 @@ shuffle_questions: false
 <script type="text/javascript" id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/quizdown.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownKatex.js">
-</script>
-<script 
-src="https://cdn.jsdelivr.net/npm/quizdown@latest/public/build/extensions/quizdownHighlight.js">
-</script>
-<script>quizdown.register(quizdownHighlight).register(quizdownKatex).init()</script> 
-</script>
 </body>
 </html>
