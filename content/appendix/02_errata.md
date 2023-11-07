@@ -14,6 +14,7 @@ title: Errata
 - Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance
 - Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
+- Chapter 11.12 (MLE2): Slides 2/5 wrong negative sign in NLL equation 
 - Chapter 13.6: Slide 2/7 typos in formula and bullet point 3
 - Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy
 - Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian
