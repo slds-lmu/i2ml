@@ -54,6 +54,11 @@ unsafe= true
     pre = "news"
     url = "news/"
     weight = 8
+  [[menu.main]]
+    name = "Test"
+    pre = "test"
+    url = "test/"
+    weight = 9
 # can contain as main items as you want
   [[menu.footer]] # name here does not matter
     name = "Main Course Website"
