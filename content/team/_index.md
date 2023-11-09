@@ -49,7 +49,3 @@ We are developing the course on [GitHub](https://github.com/compstat-lmu/lecture
 
 We would appreciate if you contact us in case you are re-using our course.
 Knowing this helps us to keep the project alive. Thank you!
-
-## Test
-
-{{< fileurl file="regression.html" >}}
