@@ -1,6 +1,6 @@
 ---
-title: "Chapter 13.04: Entropy and Optimal Code Length"
-weight: 13004
+title: "Chapter 13.05: Entropy and Optimal Code Length"
+weight: 13005
 ---
 In this section, we introduce source coding and discuss how entropy can be understood as optimal code length. 
 

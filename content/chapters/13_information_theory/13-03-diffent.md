@@ -1,6 +1,6 @@
 ---
-title: "Chapter 13.02: Differential Entropy"
-weight: 13002
+title: "Chapter 13.03: Differential Entropy"
+weight: 13003
 ---
 In this section, we extend the definition of entropy to the continuous case.
 
