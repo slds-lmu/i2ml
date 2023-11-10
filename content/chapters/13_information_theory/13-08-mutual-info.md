@@ -1,6 +1,6 @@
 ---
-title: "Chapter 13.07: Joint Entropy and Mutual Information"
-weight: 13007
+title: "Chapter 13.08: Joint Entropy and Mutual Information"
+weight: 13008
 ---
 Information theory also provides means of quantifying relations between two random variables that extend the concept of (linear) correlation. We discuss joint entropy, conditional entropy, and mutual information in this context. 
 
