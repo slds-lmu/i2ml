@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 13: Information Theory</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 13.06: Cross-Entropy, KL and Source Coding</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,99 +66,40 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 13: Information Theory</h1>
+<h1>Chapter 13.06: Cross-Entropy, KL and Source Coding</h1>
+<p>We introduce cross-entropy as a further information-theoretic concept and discuss the connection between entropy, cross-entropy, and Kullback-Leibler divergence.</p>
+<h3 id="lecture-video">Lecture video</h3>
+<div class="embedded_video">
+  <iframe src="https://www.youtube-nocookie.com/embed/V5nYGjhRfY0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+</div>
 
-<p><p>This chapter covers basic information-theoretic concepts and discusses their relation to machine learning.</p>
-</p>
+<h3 id="lecture-slides">Lecture slides</h3>
 
 
-<div class="chapter_overview">
-<ul class="list-unstyled">
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
 
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-01-entropy/">Chapter 13.01: Entropy</a>
-    
-      
-        <p>We introduce entropy, which expresses the expected information for discrete random variables, as a central concept in information theory.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-02-entropy/">Chapter 13.02: Entropy</a>
-    
-      
-        <p>We continue our discussion about entropy and introduce joint entropy, the uniqueness theorem and the maximum entropy principle.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-03-diffent/">Chapter 13.03: Differential Entropy</a>
-    
-      
-        <p>In this section, we extend the definition of entropy to the continuous case.
-</p>
-      
-      
-</li>
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-cross-entropy-kld.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;slides-info-cross-entropy-kld.pdf&laquo;
+    </button>
+  </a>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-04-kl/">Chapter 13.04: Kullback-Leibler Divergence</a>
-    
-      
-        <p>The Kullback-Leibler divergence (KL) is an important quantity for measuring the difference between two probability distributions. We discuss different intuitions for KL and relate it to risk minimization and likelihood ratios.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-05-sourcecoding/">Chapter 13.05: Entropy and Optimal Code Length</a>
-    
-      
-        <p>In this section, we introduce source coding and discuss how entropy can be understood as optimal code length.
-</p>
-      
-      
-</li>
+<ul class="section_skipper list-unstyled">
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-06-cross-entropy-kld/">Chapter 13.06: Cross-Entropy, KL and Source Coding</a>
-    
-      
-        <p>We introduce cross-entropy as a further information-theoretic concept and discuss the connection between entropy, cross-entropy, and Kullback-Leibler divergence.
-</p>
-      
-      
-</li>
+  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/13_information_theory/13-05-sourcecoding/">&#xab; Chapter 13.05: Entropy and Optimal Code Length</a></li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-07-ml/">Chapter 13.07: Information Theory for Machine Learning</a>
-    
-      
-        <p>In this section, we discuss how information-theoretic concepts are used in machine learning and demonstrate the equivalence of KL minimization and maximum likelihood maximization, as well as how (cross-)entropy can be used as a loss function.
-</p>
-      
-      
-</li>
 
-<li>
-    <a class="title" href="/i2ml/chapters/13_information_theory/13-08-mutual-info/">Chapter 13.08: Joint Entropy and Mutual Information</a>
-    
-      
-        <p>Information theory also provides means of quantifying relations between two random variables that extend the concept of (linear) correlation. We discuss joint entropy, conditional entropy, and mutual information in this context.
-</p>
-      
-      
-</li>
-
+  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/13_information_theory/13-07-ml/">Chapter 13.07: Information Theory for Machine Learning &#xbb;</a></li>
 
 </ul>
-</div>
+
+
 
 
         </div><footer class="bg-light text-center text-lg-start fixed-bottom">
