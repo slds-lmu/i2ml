@@ -11,6 +11,8 @@ The recursive partitioning procedure used to grow a CART usually leads to proble
 
 {{< video id="8CSGRjM8E0g" >}}
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8CSGRjM8E0g?si=5Ms3XDe8zZba26Vb" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay = "0"; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-stoppingpruning.pdf" >}}
