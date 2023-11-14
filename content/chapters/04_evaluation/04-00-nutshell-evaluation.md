@@ -2,7 +2,7 @@
 title: "Chapter 04.00: Evaluation: In a Nutshell"
 weight: 4000
 ---
-n this nutshell chunk, we delve into the critical aspects of evaluation, unraveling how we measure and ensure the effectiveness and accuracy of machine learning models.
+In this nutshell chunk, we delve into the critical aspects of evaluation, unraveling how we measure and ensure the effectiveness and accuracy of machine learning models.
 
 <!--more-->
 
