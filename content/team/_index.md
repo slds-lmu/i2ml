@@ -17,10 +17,12 @@
 
 ## Current student assistants
 
+- Tobias Brock
 - Laetitia Frost
+- Manuel Helmerichs
 - Holger Löwe
 - Stefanie Schwarz
-- Tobias Brock
+
 
 
 ## Alumni
