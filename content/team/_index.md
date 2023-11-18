@@ -3,7 +3,7 @@
 - ![](https://www.slds.stat.uni-muenchen.de/images/bernd.jpg) [Bernd Bischl](https://www.compstat.statistik.uni-muenchen.de/people/bischl/)
   wrote the initial version of most of the course material, and teaches various master courses in ML and DL at the LMU for stats and data science.
 - ![](https://www.slds.stat.uni-muenchen.de/images/ludwig.jpg) [Ludwig Bothmann](https://www.compstat.statistik.uni-muenchen.de/people/bothmann/)
-  joined the team in summer 2020, held the classes in winter 2020/21, winter 2021/22 and is in charge of the classes held in summer 2022 at LMU Munich.
+  joined the team in summer 2020, contributes to the material and is in charge of the classes held at LMU Munich.
 - ![](https://www.biostat.statistik.uni-muenchen.de/bilder/fscheipl.png) [Fabian Scheipl](https://www.biostat.statistik.uni-muenchen.de/personen/mitarbeiter/scheipl/index.html)
   joined the team in fall 2018 and contributed to the slides, videos and code demos.
 - ![](https://www.slds.stat.uni-muenchen.de/images/tobias_pielok.jpg) [Tobias Pielok](https://www.slds.stat.uni-muenchen.de/people/pielok/)
