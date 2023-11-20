@@ -21,7 +21,7 @@ __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
 <br>
 
-<iframe src="regression.html"></iframe>
+[link]<"regression.html">
 
 __Exercises for Chapters 11-19 (LMU Lecture SL):__
 
