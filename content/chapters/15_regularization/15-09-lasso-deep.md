@@ -6,10 +6,6 @@ In this section, we prove the previously stated proposition regarding soft-thres
 
 <!--more-->
 
-### Lecture video
-
-{{<>}}
-
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-lasso-deepdive.pdf" >}}
