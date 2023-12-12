@@ -20,6 +20,7 @@ title: Errata
 - Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian
 - Chapter 13.7: Slide 14/14 added parentheses to make log less ambiguous
 - Chapter 17.1: Slide 6/11 Typo in f
+- Chapter 17.3: Slide 2/6 Show how to get phi(x) explicitly, and the last component of phi(x) should be b instead of sqrt(b).
 - Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances
 - Chapter 18.1: Slide 5/7: Typo in Monomials; it should be (d+p-1 over d) and ( (d+p) over d) -1
 - Chapter 19.2: Slide 1/15: R_emp formula contains x_{i}, not x.
