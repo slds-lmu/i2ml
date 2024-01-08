@@ -2,7 +2,7 @@
 title: "Chapter 09.00: Tuning & Nested Resampling: In a Nutshell"
 weight: 9000
 ---
-In this nutshell chunk, we explore tuning and nested resampling, focusing on their roles in evaluating and optimizing the performance of machine learning models for enhanced accuracy and effectiveness.
+In this nutshell chunk, we explore tuning and nested resampling, focusing on their roles in evaluating and optimizing the performance of machine learning models.
 
 <!--more-->
 
