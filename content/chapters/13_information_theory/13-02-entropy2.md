@@ -8,7 +8,7 @@ We continue our discussion about entropy and introduce joint entropy, the unique
 
 ### Lecture video
 
-{{< video id="" >}}
+{{< video id="aFYF459PE-w" >}}
 
 ### Lecture slides
 

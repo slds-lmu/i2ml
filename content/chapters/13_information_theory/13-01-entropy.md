@@ -8,7 +8,7 @@ We introduce entropy, which expresses the expected information for discrete rand
 
 ### Lecture video
 
-{{< video id="9H-DkQN0nxM" >}}
+{{< video id="UWv2ZPnifvw" >}}
 
 ### Lecture slides
 

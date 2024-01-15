@@ -8,7 +8,7 @@ We introduce cross-entropy as a further information-theoretic concept and discus
 
 ### Lecture video
 
-{{< video id="V5nYGjhRfY0" >}}
+{{< video id="vtS6h0UYs4E" >}}
 
 ### Lecture slides
 
