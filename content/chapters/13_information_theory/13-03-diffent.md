@@ -8,7 +8,7 @@ In this section, we extend the definition of entropy to the continuous case.
 
 ### Lecture video
 
-{{< video id="nTCwnRPLIsU" >}}
+{{< video id="aeJzIzKNLWI" >}}
 
 ### Lecture slides
 
