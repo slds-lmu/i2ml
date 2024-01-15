@@ -6,7 +6,7 @@ This website offers an open and free introductory course on (supervised) machine
 
 The quite extensive material can roughly be divided into an introductory undergraduate part (chapters 1-10), a more advanced second one on MSc level (chapters 11-19), and a third course, on MSc level (chapters 20-23). At the [LMU Munich](https://www.slds.stat.uni-muenchen.de/teaching/) we teach all parts in an inverted-classroom style (B.Sc. lecture "Introduction to ML" and M.Sc. lectures "Supervised Learning" and "Advanced Machine Learning"). While the first part aims at a practical and operational understanding of concepts, the second and third parts focus on theoretical foundations and more complex algorithms. 
 
-__Remarks on deep-Dive sections__: Certain sections exclusively present mathematical proofs, acting as deep-dives into the respective topics. It's important to note that these deep-dive sections do not have accompanying videos.
+__Remarks on Deep Dive sections__: Certain sections exclusively present mathematical proofs, acting as deep-dives into the respective topics. It's important to note that these deep-dive sections do not have accompanying videos.
 
 __Why another ML course:__ A key goal of the course is to teach the fundamental building blocks behind ML, instead of introducing “yet another algorithm with yet another name”. We discuss, compare, and contrast risk minimization, statistical parameter estimation, the Bayesian viewpoint, and information theory and demonstrate that all of these are equally valid entry points to ML. Developing the ability to take on and switch between these perspectives is a major goal of this course, and in our opinion not always ideally presented in other courses. 
 
