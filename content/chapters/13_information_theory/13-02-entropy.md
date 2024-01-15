@@ -1,5 +1,5 @@
 ---
-title: "Chapter 13.02: Entropy"
+title: "Chapter 13.02: Entropy II"
 weight: 13002
 ---
 We continue our discussion about entropy and introduce joint entropy, the uniqueness theorem and the maximum entropy principle.
@@ -8,7 +8,7 @@ We continue our discussion about entropy and introduce joint entropy, the unique
 
 ### Lecture video
 
-{{< video id="" >}}
+{{< video id="aFYF459PE-w" >}}
 
 ### Lecture slides
 
