@@ -14,6 +14,8 @@
   is a PhD student at Bernd's group and contributed to the slides and exercises of AdvML.
 - ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.jpg) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
   is a PhD student at Bernd's group and contributed to the slides and exercises.
+- ![](https://www.slds.stat.uni-muenchen.de/images/PhilippK.jpg) [Philipp Kopper](https://www.slds.stat.uni-muenchen.de/people/kopper/)
+  is a PhD student at Bernd's group and contributed to the slides and exercises.
 
 ## Current student assistants
 
