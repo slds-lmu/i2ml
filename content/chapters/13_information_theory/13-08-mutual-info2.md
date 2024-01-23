@@ -8,7 +8,7 @@ Information theory also provides means of quantifying relations between two rand
 
 ### Lecture video
 
-{{< video id="" >}}
+{{< video id="DQxMJENXIG8" >}}
 
 ### Lecture slides
 
