@@ -30,3 +30,4 @@ title: Errata
 - Chapter 20.2: Slide 14/15: error in step 1 of the algorithm
 - Chapter 21.4: Slide 2/5: increased number of boosting iterations from 1 to 300 in plot
 - Chapter 21.4: Slide 5/5: add to for loops over i=1,..,n samples and initialize empty data set
+- Chapter 13.1: Slide 10/10: fixed incorrect derivative
