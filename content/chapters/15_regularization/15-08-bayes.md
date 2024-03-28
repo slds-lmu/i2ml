@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15.06: Regularization in NonLinear Models and Bayesian Priors"
-weight: 15006
+title: "Chapter 15.08: Regularization and Bayesian Priors"
+weight: 15008
 ---
 In this section, we motivate regularization from a Bayesian perspective, showing how different penalty terms correspond to different Bayesian priors.
 
@@ -12,4 +12,4 @@ In this section, we motivate regularization from a Bayesian perspective, showing
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-nonlin-bayes.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-bayes.pdf" >}}

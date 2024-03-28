@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15.07: Geometric Analysis of L2 Regularization and Weight Decay"
-weight: 15007
+title: "Chapter 15.09: Geometric Analysis of L2 Regularization and Weight Decay"
+weight: 15009
 ---
 In this section, we provide a geometric understanding of \\(L2\\) regularization, showing how parameters are shrunk according to the eigenvalues of the Hessian of empirical risk, and discuss its correspondence to weight decay. 
 
