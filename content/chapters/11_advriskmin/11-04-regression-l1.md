@@ -1,5 +1,5 @@
 ---
-title: "Chapter 11.04: L1 Loss Deepdive"
+title: "Chapter 11.04: L1 Loss"
 weight: 11004
 ---
 In this section, we revisit \\(L1\\) loss and derive its risk minimizer -- the conditional median -- and optimal constant model -- the empirical median of observed target values. 
@@ -12,4 +12,4 @@ In this section, we revisit \\(L1\\) loss and derive its risk minimizer -- the c
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l1-deepdive.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l1.pdf" >}}
