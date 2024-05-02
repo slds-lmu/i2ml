@@ -4,7 +4,7 @@
   wrote the initial version of most of the course material, and teaches various master courses in ML and DL at the LMU for stats and data science.
 - ![](https://www.slds.stat.uni-muenchen.de/images/ludwig.jpg) [Ludwig Bothmann](https://www.compstat.statistik.uni-muenchen.de/people/bothmann/)
   joined the team in summer 2020, contributes to the material and is in charge of the classes held at LMU Munich.
-- ![](https://www.biostat.statistik.uni-muenchen.de/bilder/fscheipl.png) [Fabian Scheipl](https://www.biostat.statistik.uni-muenchen.de/personen/mitarbeiter/scheipl/index.html)
+- ![](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/scheipl-small.jpg) [Fabian Scheipl](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/index.html)
   joined the team in fall 2018 and contributed to the slides, videos and code demos.
 - ![](https://www.slds.stat.uni-muenchen.de/images/tobias_pielok.jpg) [Tobias Pielok](https://www.slds.stat.uni-muenchen.de/people/pielok/)
   is a PhD at Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
@@ -12,7 +12,7 @@
   is a PhD at Bernd’s group and contributed to slides and exercises.
 - ![](https://www.slds.stat.uni-muenchen.de/images/yawei_li.JPG) [Yawei Li](https://www.slds.stat.uni-muenchen.de/people/li/)
   is a PhD student at Bernd's group and contributed to the slides and exercises of AdvML.
-- ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.jpg) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
+- ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.png) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
   is a PhD student at Bernd's group and contributed to the slides and exercises.
 
 ## Current student assistants
