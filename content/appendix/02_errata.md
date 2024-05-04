@@ -13,6 +13,7 @@ title: Errata
 - Chapter 7.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error
 - Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance
 - Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini
+- Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
 - Chapter 11.12 (MLE2): Slides 2/5 wrong negative sign in NLL equation 
 - Chapter 13.6: Slide 2/7 typos in formula and bullet point 3
