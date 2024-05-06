@@ -6,6 +6,7 @@ title: Errata
 
 - Chapter 1.4 (Models & Parameters) - slide 5/10: d-dimensional vector, not p-dimensional
 - Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4
+- Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column
 - Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix
 - Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
 - Chapter 4.7 (Classification measures): Slide 6/9 cost computation
