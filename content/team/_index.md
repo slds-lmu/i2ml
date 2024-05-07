@@ -17,8 +17,7 @@
 
 ## Current student assistants
 
-- Tobias Brock
-- Laetitia Frost
+- Ziyu Mu
 - Manuel Helmerichs
 - Holger Löwe
 - Stefanie Schwarz
