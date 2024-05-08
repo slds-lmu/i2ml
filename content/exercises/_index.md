@@ -4,9 +4,9 @@ title: Exercises
 
 __Exercises for Chapters 1-10 (LMU Lecture I2ML):__
 
-|             | Exercise         | Solution           | Python Solution    |
+|             | HTML         | Jupyter         | PDF    |
 | ------------| ---------------- | ------------------ | ------------------ |
-| Exercise 1  &nbsp;| [ML basics](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_ml-basics.pdf) | [ML basics](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_ml-basics.pdf) |          |
+| Exercise 1  &nbsp;| [ML basics](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/ml-basics/ml-basics.html) | | [Exercise](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_ml-basics.pdf), [Solution](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_ml-basics.pdf) | 
 | Exercise 2  &nbsp;| [Regression](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_regression.pdf) | [Regression](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_regression.pdf) | [Regression](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-regression/sol_regression_py.ipynb) | 
 | Exercise 3  &nbsp;| [Classification I](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_1.pdf) | [Classification I](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_1.pdf) |          |
 | Exercise 4  &nbsp;| [Classification II](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/ex_classification_2.pdf) | [Classification II](https://github.com/slds-lmu/lecture_i2ml/raw/master/exercises-pdf/sol_classification_2.pdf) | [Classification II](https://github.com/slds-lmu/lecture_i2ml/blob/master/exercises/supervised-classification/sol_classification_2_py.ipynb) |
