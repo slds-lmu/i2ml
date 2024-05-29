@@ -8,7 +8,7 @@ In this section, we revisit overfitting and introduce regularization as a remedy
 
 ### Lecture video
 
-{{< video id="uTjhXYOpmow" >}}
+{{< video id="EjmPEAD9twg" >}}
 
 ### Lecture slides
 
