@@ -8,7 +8,7 @@ In this section, we introduce the elastic net as a combination of Ridge and Lass
 
 ### Lecture video
 
-{{< video id="9bUQWdsdDkE" >}}
+{{< video id="Bfy_Vgxwxro" >}}
 
 ### Lecture slides
 

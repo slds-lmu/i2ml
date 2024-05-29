@@ -8,7 +8,7 @@ In this section, we introduce other regularization approaches besides the import
 
 ### Lecture video
 
-{{< video id="gw6yLFoQzdQ" >}}
+{{< video id="wrK1lvI8VDY" >}}
 
 ### Lecture slides
 
