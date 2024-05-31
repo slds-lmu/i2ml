@@ -6,10 +6,6 @@ In this section, we introduce source coding and discuss how entropy can be under
 
 <!--more-->
 
-### Lecture video
-
-{{< video id="-zgNBnYkWc4" >}}
-
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-sourcecoding.pdf" >}}
