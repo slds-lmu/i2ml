@@ -1,5 +1,5 @@
 ---
-title: "Chapter 15.08: Regularization and Bayesian Priors"
+title: "Chapter 15.08: Bayesian Priors"
 weight: 15008
 ---
 In this section, we motivate regularization from a Bayesian perspective, showing how different penalty terms correspond to different Bayesian priors.
@@ -8,7 +8,7 @@ In this section, we motivate regularization from a Bayesian perspective, showing
 
 ### Lecture video
 
-{{< video id="MdwK9e2wR_U" >}}
+{{< video id="d_FB9Vyp7oE" >}}
 
 ### Lecture slides
 
