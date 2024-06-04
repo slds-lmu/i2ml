@@ -8,7 +8,7 @@ In this section, we introduce early stopping and show how it can act as a regula
 
 ### Lecture video
 
-{{< video id="wicBbjxFlS0" >}}
+{{< video id="5e2fgW4Ok3s" >}}
 
 ### Lecture slides
 

@@ -1,5 +1,5 @@
 ---
-title: "Chapter 15.07: Regularization in NonLinear Models"
+title: "Chapter 15.07: Non-Linear Models and Structural Risk Minimization"
 weight: 15007
 ---
 In this section, we demonstrate regularization in non-linear models like neural networks.
@@ -8,7 +8,7 @@ In this section, we demonstrate regularization in non-linear models like neural 
 
 ### Lecture video
 
-{{< video id="MdwK9e2wR_U" >}}
+{{< video id="_jNeD2AUJqI" >}}
 
 ### Lecture slides
 
