@@ -6,6 +6,10 @@ In this nutshell chunk, we explore tuning and nested resampling, focusing on the
 
 <!--more-->
 
+### Lecture video
+
+{{< video id="ArJtoONcT1o" >}}
+
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-tuning-nutshell.pdf" >}}
