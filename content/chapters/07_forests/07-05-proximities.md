@@ -10,7 +10,7 @@ The term *proximity* refers to the "closeness" between pairs of cases. Proximiti
 
 ### Lecture video
 
-{{< video id="8h3H0j2f24I" >}}
+{{< video id="TYqXaZ5HCtI" >}}
 
 ### Lecture slides
 
