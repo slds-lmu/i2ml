@@ -1,19 +1,20 @@
 ---
-title: "Chapter 07.03: Benchmarking Trees, Forests, and Bagging k-NN"
+title: "Chapter 07.03: Out-of-Bag Error Estimate"
 weight: 7003
 quizdown: true
 ---
-We compare the performance of random forests vs. (bagged) CART and (bagged) \\(k\\)-NN.
+
+We introduce the concepts of in-bag and out-of-bag observations and explain how to compute the out-of-bag error estimate.
 
 <!--more-->
 
 ### Lecture video
 
-{{< video id="uOamholBaZ0" >}}
+{{< video id="gucPQxcqPcY" >}}
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-benchmark.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-oob.pdf" >}}
 
 ### Quiz
 
