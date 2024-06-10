@@ -70,7 +70,7 @@
 <p>The term <em>proximity</em> refers to the &ldquo;closeness&rdquo; between pairs of cases. Proximities are calculated for each pair of observations and can be derived directly from random forests.</p>
 <h3 id="lecture-video">Lecture video</h3>
 <div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/RGa0Uc6ZbX4" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/8h3H0j2f24I" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
 </div>
 
 <h3 id="lecture-slides">Lecture slides</h3>
@@ -90,12 +90,50 @@
   </a>
 
 
+<h3 id="code-demo">Code demo</h3>
+<p><strong>Random Forests</strong></p>
+<p>You can run the code snippets in the demos on your local machine. The corresponding Rmd version of this demo can be found <a href="https://github.com/compstat-lmu/lecture_i2ml/blob/master/code-demos/code_demo_randforests.Rmd">here</a>. If you want to render the Rmd files to PDF, you need the accompanying <a href="https://github.com/compstat-lmu/lecture_i2ml/tree/master/style">style files</a>.</p>
+
+
+<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+
+
+
+
+  
+  
+  <a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/code-demos-pdf/code_demo_randforests.pdf">
+    <button class="btn btn-primary" style="margin-bottom:3rem">
+      Download &raquo;code_demo_randforests.pdf&laquo;
+    </button>
+  </a>
+
+
+<h3 id="quiz">Quiz</h3>
+
+
+<div class='quizdown'>
+  
+
+---
+shuffle_questions: false
+---
+
+## Which statements are true? 
+
+- [x] To compute permutation variable importance for feature $j$, we permute the feature and see how the performance changes (in OOB observations).
+- [ ] The random forest is a bad out-of-the box model and requires tuning of hyperparameters.
+- [x] Random forests and trees can be used for high-dimensional data.
+- [ ] Proximities are used in replacing missing data, but not in locating outliers.
+
+
+</div>
+
+
 <ul class="section_skipper list-unstyled">
 
   <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/07_forests/07-04-featureimportance/">&#xab; Chapter 07.04: Feature Importance</a></li>
 
-
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/07_forests/07-06-discussion/">Chapter 07.06: Discussion &#xbb;</a></li>
 
 </ul>
 
