@@ -23,6 +23,8 @@ title: Errata
 - Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy
 - Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian
 - Chapter 13.7: Slide 14/14 added parentheses to make log less ambiguous
+- Chapter 15.2 (Ridge Regression): Slide 4/10 clarified meaning of green dot in plot in comment
+- Chapter 15.8 (Bayesian Priors): Slide 5/5 renew plot and add comment on ybar
 - Chapter 17.1: Slide 6/11 Typo in f
 - Chapter 17.3: Slide 2/6 Show how to get phi(x) explicitly, and the last component of phi(x) should be b instead of sqrt(b).
 - Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances
