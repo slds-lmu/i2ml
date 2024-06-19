@@ -1,6 +1,6 @@
 # README
 
-### How to create a new website repository?
+## How to create a new website repository?
 
 1. Create a new repository with the name `website_xyz` and select `slds-lmu/website_template` as template repository
 2. There should already be a `gh-pages` branch. If not, create it.
@@ -11,7 +11,7 @@
 7. Edit the team page. Remove people not affiliated with the lecture and add add relevant people.
 8. Edit your files as described below.
 
-### Edit the content of the website
+## Edit the content of the website
 
 - Directories and filenames have to be lowercase
 - Chapters are ordered after filenames
@@ -38,6 +38,38 @@
 ## Deploying the website
 
 The deploy is done automatically via GitHub Actions. Nothing needs to be done to publish a new version of the website. Each build is triggered when a commit is done to the `main` branch.
+
+## Citation
+
+If you use our material, please consider citing us as follows:
+
+```
+@misc{bischl22i2ml,
+  author = {Bischl, Bernd and Bothmann, Ludwig and Scheipl, Fabian and Pielok, Tobias and Wimmer, Lisa and Li, Yawei and Kolb, Chris and Schalk, Daniel and Seibold, Heidi and Molnar, Christoph and Richter, Jakob},
+  title = {{Introduction to Machine Learning (I2ML)}},
+  howpublished = "\url{https://slds-lmu.github.io/i2ml/}",
+  year = {2022},
+  note = "[Online; accessed yyyy-mm-dd]"
+}
+```
+
+This course is based on our concept of open-source educational resources (OSER) as described in our paper:
+
+```
+@InProceedings{bothmann23oser,
+  title = 	 {Developing Open Source Educational Resources for Machine Learning and Data Science},
+  author =       {Bothmann, Ludwig and Strickroth, Sven and Casalicchio, Giuseppe and R\"ugamer, David and Lindauer, Marius and Scheipl, Fabian and Bischl, Bernd},
+  booktitle = 	 {Proceedings of the Third Teaching Machine Learning and Artificial Intelligence Workshop},
+  pages = 	 {1--6},
+  year = 	 {2023},
+  editor = 	 {Kinnaird, Katherine M. and Steinbach, Peter and Guhr, Oliver},
+  volume = 	 {207},
+  series = 	 {Proceedings of Machine Learning Research},
+  month = 	 {19--23 Sep},
+  publisher =    {PMLR},
+  url = 	 {https://proceedings.mlr.press/v207/bothmann23a.html},
+}
+```
 
 ## License
 
