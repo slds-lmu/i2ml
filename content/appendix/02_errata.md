@@ -37,3 +37,4 @@ title: Errata
 - Chapter 21.4: Slide 2/5: increased number of boosting iterations from 1 to 300 in plot
 - Chapter 21.4: Slide 5/5: add to for loops over i=1,..,n samples and initialize empty data set
 - Chapter 13.1: Slide 10/10: fixed incorrect derivative
+- Chapter 18.08: Slide 6/8: the slide set is correct, i.e., the given percentage is used to "dropout" / ignore the learners. (This is currently incorrectly stated in the video)
