@@ -1,2 +1,225 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Appendix on Introduction to Machine Learning (I2ML)</title><link>https://slds-lmu.github.io/i2ml/appendix/</link><description>Recent content in Appendix on Introduction to Machine Learning (I2ML)</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://slds-lmu.github.io/i2ml/appendix/index.xml" rel="self" type="application/rss+xml"/><item><title>Cheat Sheets</title><link>https://slds-lmu.github.io/i2ml/appendix/01_cheat_sheets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/01_cheat_sheets/</guid><description> I2ML :: BASICS Download &amp;raquo;cheatsheet_notation.pdf&amp;laquo; I2ML :: EVALUATION &amp;amp; TUNING Download &amp;raquo;cheatsheet_eval_tuning.pdf&amp;laquo;</description></item><item><title>Data sets</title><link>https://slds-lmu.github.io/i2ml/appendix/04_data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/04_data/</guid><description>Data sets used in the lecture Bikeshare Download &amp;raquo;bikeshare.pdf&amp;laquo; Boston Housing Download &amp;raquo;boston.pdf&amp;laquo; We are aware of the ethical issues regarding this data set (more information) and will replace it in upcoming revisions of the material.
-Circle Download &amp;raquo;circle.pdf&amp;laquo; German Credit Download &amp;raquo;credit.pdf&amp;laquo; Glass Download &amp;raquo;glass.pdf&amp;laquo; Ionosphere Download &amp;raquo;ionosphere.pdf&amp;laquo; Iris Download &amp;raquo;iris.pdf&amp;laquo; We are aware of the ethical issues regarding this data set (more information) and will replace it in upcoming revisions of the material.</description></item><item><title>Errata</title><link>https://slds-lmu.github.io/i2ml/appendix/02_errata/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/02_errata/</guid><description>Errata in the slides shown in the videos Chapter 1.4 (Models &amp;amp; Parameters) - slide 5/10: d-dimensional vector, not p-dimensional Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4 Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE Chapter 4.</description></item><item><title>Important Learners in ML</title><link>https://slds-lmu.github.io/i2ml/appendix/00_learner_slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/00_learner_slides/</guid><description>Look-up slides for important ML learners Download &amp;raquo;slides-learners.pdf&amp;laquo;</description></item><item><title>Related Courses</title><link>https://slds-lmu.github.io/i2ml/appendix/03_related/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/03_related/</guid><description>Other ML courses Deep Learning for NLP (DL4NLP) Introduction to Deep Learning (I2DL)</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Appendix on Introduction to Machine Learning (I2ML)</title><link>https://slds-lmu.github.io/i2ml/appendix/</link><description>Recent content in Appendix on Introduction to Machine Learning (I2ML)</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://slds-lmu.github.io/i2ml/appendix/index.xml" rel="self" type="application/rss+xml"/><item><title>Cheat Sheets</title><link>https://slds-lmu.github.io/i2ml/appendix/01_cheat_sheets/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/01_cheat_sheets/</guid><description>&lt;ul>
+&lt;li>I2ML :: BASICS&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/cheatsheets/cheatsheet_notation/cheatsheet_notation.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;cheatsheet_notation.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>I2ML :: EVALUATION &amp;amp; TUNING&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/cheatsheets/cheatsheet_eval_tuning/cheatsheet_eval_tuning.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;cheatsheet_eval_tuning.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a></description></item><item><title>Data sets</title><link>https://slds-lmu.github.io/i2ml/appendix/04_data/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/04_data/</guid><description>&lt;h2 id="data-sets-used-in-the-lecture">Data sets used in the lecture&lt;/h2>
+&lt;ul>
+&lt;li>Bikeshare&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/bikeshare.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;bikeshare.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>Boston Housing&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/boston.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;boston.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;p>We are aware of the ethical issues regarding this data set (&lt;a href="https://medium.com/@docintangible/racist-data-destruction-113e3eff54a8">more information&lt;/a>) and will replace it in upcoming revisions of the material.&lt;/p>
+&lt;ul>
+&lt;li>Circle&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/circle.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;circle.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>German Credit&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/credit.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;credit.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>Glass&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/glass.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;glass.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>Ionosphere&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/ionosphere.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;ionosphere.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;ul>
+&lt;li>Iris&lt;/li>
+&lt;/ul>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/datasets-pdf/iris.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;iris.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a>
+
+
+&lt;p>We are aware of the ethical issues regarding this data set (&lt;a href="https://armchairecology.blog/iris-dataset/">more information&lt;/a>) and will replace it in upcoming revisions of the material.&lt;/p></description></item><item><title>Errata</title><link>https://slds-lmu.github.io/i2ml/appendix/02_errata/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/02_errata/</guid><description>&lt;h2 id="errata-in-the-slides-shown-in-the-videos">Errata in the slides shown in the videos&lt;/h2>
+&lt;ul>
+&lt;li>Chapter 1.4 (Models &amp;amp; Parameters) - slide 5/10: d-dimensional vector, not p-dimensional&lt;/li>
+&lt;li>Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4&lt;/li>
+&lt;li>Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column&lt;/li>
+&lt;li>Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix&lt;/li>
+&lt;li>Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE&lt;/li>
+&lt;li>Chapter 4.7 (Classification measures): Slide 6/9 cost computation&lt;/li>
+&lt;li>Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)&lt;/li>
+&lt;li>Chapter 7.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error&lt;/li>
+&lt;li>Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance&lt;/li>
+&lt;li>Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini&lt;/li>
+&lt;li>Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation&lt;/li>
+&lt;li>Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion&lt;/li>
+&lt;li>Chapter 11.12 (MLE2): Slides 2/5 wrong negative sign in NLL equation&lt;/li>
+&lt;li>Chapter 13.1 (Entropy I): Slide 4,6,8/10 changed entropy calculation from nats to bits&lt;/li>
+&lt;li>Chapter 13.2 (Entropy II): Slide 1/7 corrected plot for entropy of Bernoulli distribution&lt;/li>
+&lt;li>Chapter 13.6: Slide 2/7 typos in formula and bullet point 3&lt;/li>
+&lt;li>Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy&lt;/li>
+&lt;li>Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian&lt;/li>
+&lt;li>Chapter 13.7: Slide 14/14 added parentheses to make log less ambiguous&lt;/li>
+&lt;li>Chapter 15.2 (Ridge Regression): Slide 4/10 clarified meaning of green dot in plot in comment&lt;/li>
+&lt;li>Chapter 15.8 (Bayesian Priors): Slide 5/5 renew plot and add comment on ybar&lt;/li>
+&lt;li>Chapter 17.1: Slide 6/11 Typo in f&lt;/li>
+&lt;li>Chapter 17.3: Slide 2/6 Show how to get phi(x) explicitly, and the last component of phi(x) should be b instead of sqrt(b).&lt;/li>
+&lt;li>Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances&lt;/li>
+&lt;li>Chapter 18.1: Slide 5/7: Typo in Monomials; it should be (d+p-1 over d) and ( (d+p) over d) -1&lt;/li>
+&lt;li>Chapter 19.2: Slide 1/15: R_emp formula contains x_{i}, not x.&lt;/li>
+&lt;li>Chapter 19.5: Slide 3/11: bullet point 1 added &amp;ldquo;if&amp;rdquo;, bullet point 2 changed &amp;ldquo;decrease&amp;rdquo; to &amp;ldquo;increase&amp;rdquo;&lt;/li>
+&lt;li>Chapter 20.1: Slide 6/12: fix error in step 6 and clarify that b-hat is a hard label classifier&lt;/li>
+&lt;li>Chapter 20.1: Slides 7 and 8/12: improved plot and text&lt;/li>
+&lt;li>Chapter 20.2: Slide 14/15: error in step 1 of the algorithm&lt;/li>
+&lt;li>Chapter 21.4: Slide 2/5: increased number of boosting iterations from 1 to 300 in plot&lt;/li>
+&lt;li>Chapter 21.4: Slide 5/5: add to for loops over i=1,..,n samples and initialize empty data set&lt;/li>
+&lt;li>Chapter 13.1: Slide 10/10: fixed incorrect derivative&lt;/li>
+&lt;li>Chapter 18.08: Slide 6/8: the slide set is correct, i.e., the given percentage is used to &amp;ldquo;dropout&amp;rdquo; / ignore the learners. (This is currently incorrectly stated in the video)&lt;/li>
+&lt;/ul></description></item><item><title>Important Learners in ML</title><link>https://slds-lmu.github.io/i2ml/appendix/00_learner_slides/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/00_learner_slides/</guid><description>&lt;h2 id="look-up-slides-for-important-ml-learners">Look-up slides for important ML learners&lt;/h2>
+
+
+&lt;script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous">&lt;/script>
+
+
+
+
+ 
+ 
+ &lt;a href="https://github.com/slds-lmu/lecture_i2ml/raw/master/learners-overview/slides-learners.pdf">
+ &lt;button class="btn btn-primary" style="margin-bottom:3rem">
+ Download &amp;raquo;slides-learners.pdf&amp;laquo;
+ &lt;/button>
+ &lt;/a></description></item><item><title>Related Courses</title><link>https://slds-lmu.github.io/i2ml/appendix/03_related/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://slds-lmu.github.io/i2ml/appendix/03_related/</guid><description>&lt;h2 id="other-ml-courses">Other ML courses&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://slds-lmu.github.io/dl4nlp/">Deep Learning for NLP (DL4NLP)&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://slds-lmu.github.io/i2dl/">Introduction to Deep Learning (I2DL)&lt;/a>&lt;/li>
+&lt;/ul></description></item></channel></rss>
