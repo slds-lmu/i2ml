@@ -6,4 +6,4 @@ title: "All Slides Chapters 1-10"
 
 Complete PDF of all lecture slides from chapters 1-10
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-i2ml.pdf" >}}
+{{< pdfjs file="https://drive.google.com/file/d/1jhh2Ddb5xESAC2K3ANGyu6fTG_ALGE7A/view?usp=share_link" >}}
