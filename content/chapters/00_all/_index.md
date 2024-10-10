@@ -10,4 +10,5 @@ Complete PDF of all lecture slides from chapters 1-10:
 
 Complete PDF of all lecture slides from chapters 11-19:
 
-[Download](https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/lecture_sl.pdf)
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/lecture_sl.pdf" >}}
+
