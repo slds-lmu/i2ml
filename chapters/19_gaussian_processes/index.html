@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
 
 
-<title>Introduction to Machine Learning (I2ML) | Chapter 19.04: Filter Methods II (Examples and Caveats)</title>
+<title>Introduction to Machine Learning (I2ML) | Chapter 19: Gaussian Processes</title>
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
@@ -66,40 +66,69 @@
         
     </nav>
 </div><div id="content" class="container">
-<h1>Chapter 19.04: Filter Methods II (Examples and Caveats)</h1>
-<p>In this section, we discuss how filter methods can be misleading and show how they work in practical applications.</p>
-<h3 id="lecture-video">Lecture video</h3>
-<div class="embedded_video">
-  <iframe src="https://www.youtube-nocookie.com/embed/X3FpzGnGA7o" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen title="YouTube Video"></iframe>
-</div>
+<h1>Chapter 19: Gaussian Processes</h1>
 
-<h3 id="lecture-slides">Lecture slides</h3>
+<p><p>This chapter introduces Gaussian processes as a model class. Gaussian processes are non-parametric approaches with ubiquitous application that model entire distributions in function space.</p>
+</p>
 
 
-<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@2.9.359/build/pdf.min.js" integrity="sha256-hEmjt7z3bB53X/awJyV81gmBLpVw2mj7EsvoJelZWow=" crossorigin="anonymous"></script>
+<div class="chapter_overview">
+<ul class="list-unstyled">
 
 
+<li>
+    <a class="title" href="/i2ml/chapters/19_gaussian_processes/19-01-bayes-lm/">Chapter 19.01: The Bayesian Linear Model</a>
+    
+      
+        <p>We begin by reviewing the Bayesian formulation of a linear model and show that instead of point estimates for parameters and predictions, we obtain an entire posterior and predictive distribution.
+</p>
+      
+      
+</li>
 
+<li>
+    <a class="title" href="/i2ml/chapters/19_gaussian_processes/19-02-basic/">Chapter 19.02: Gaussian Processes</a>
+    
+      
+        <p>In this section, we introduce the basic idea behind Gaussian processes. We move from weight to function space and build some intuition on distributions over functions, discuss GPs&rsquo; marginalization property, derive GP priors, and interpret GPs as indexed families.
+</p>
+      
+      
+</li>
 
-  
-  
-  <a href="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-fs-filters2.pdf">
-    <button class="btn btn-primary" style="margin-bottom:3rem">
-      Download &raquo;slides-fs-filters2.pdf&laquo;
-    </button>
-  </a>
+<li>
+    <a class="title" href="/i2ml/chapters/19_gaussian_processes/19-03-covariance/">Chapter 19.03: Covariance Functions for GPs</a>
+    
+      
+        <p>In this section, we discuss the role of covariance functions in GPs and introduce the most common choices.
+</p>
+      
+      
+</li>
 
+<li>
+    <a class="title" href="/i2ml/chapters/19_gaussian_processes/19-04-prediction/">Chapter 19.04: Gaussian Process Prediction</a>
+    
+      
+        <p>In this section, we show how to derive the posterior process and discuss further properties of GPs as well as noisy GPs.
+</p>
+      
+      
+</li>
 
-<ul class="section_skipper list-unstyled">
+<li>
+    <a class="title" href="/i2ml/chapters/19_gaussian_processes/19-05-training/">Chapter 19.05: Gaussian Process Training</a>
+    
+      
+        <p>In this section, we show how Gaussian processes are actually trained using maximum likelihood estimation and exploiting the fact that we can learn covariance functions&rsquo; hyperparameters on the fly.
+</p>
+      
+      
+</li>
 
-  <li id="next_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/19_feature_selection/19-03-filters1/">&#xab; Chapter 19.03: Filter Methods I</a></li>
-
-
-  <li id="prev_in_section"><a class="btn btn-primary" href="https://slds-lmu.github.io/i2ml/chapters/19_feature_selection/19-05-wrapper/">Chapter 19.05: Wrapper Methods &#xbb;</a></li>
 
 </ul>
-
-
+</div>
 
 
         </div><footer class="bg-light text-center text-lg-start fixed-bottom">
