@@ -1,4 +1,4 @@
 ---
-title: "Chapter 21: Imbalanced Learning"
+title: "Chapter 20: Imbalanced Learning"
 ---
 This chapter introduces techniques for learning on imbalanced datasets. 

@@ -1,6 +1,6 @@
 ---
-title: "Chapter 22.01: Introduction"
-weight: 22001
+title: "Chapter 21.01: Introduction"
+weight: 21001
 ---
 In this chapter we emphasize the practical relevance of  multi-target prediction problems. In addition, we name some special cases of multi-target prediction and establish the differences between transductive and inductive learning problems. 
 <!--more-->
