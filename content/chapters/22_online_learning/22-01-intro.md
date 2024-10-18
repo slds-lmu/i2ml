@@ -1,6 +1,6 @@
 ---
-title: "Chapter 23.01: Introduction"
-weight: 23001
+title: "Chapter 22.01: Introduction"
+weight: 22001
 ---
 In this chapter we explain the differences between online and batch learning, the extended learning protocol in online learning and the strategies to measure performance in online learning.
 <!--more-->

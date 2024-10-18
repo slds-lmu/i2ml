@@ -1,6 +1,6 @@
 ---
-title: "Chapter 22.03: Methods for Multi-target Prediction 1"
-weight: 22003
+title: "Chapter 21.03: Methods for Multi-target Prediction 1"
+weight: 21003
 ---
 In this chapter we introduce the concepts of independent models for targets, mean regularization, stacking and weight sharing in DL. 
 <!--more-->

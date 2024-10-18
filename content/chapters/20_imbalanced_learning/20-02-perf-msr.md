@@ -1,6 +1,6 @@
 ---
-title: "Chapter 21.02: Performance Measures"
-weight: 21002
+title: "Chapter 20.02: Performance Measures"
+weight: 20002
 ---
 We introduce performance measures other than accuracy and explain their advantages over accuracy for imbalanced date. In addition we introduce extensions of these measures for multiclass settings.
 <!--more-->

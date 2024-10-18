@@ -1,6 +1,6 @@
 ---
-title: "Chapter 21.01: Introduction"
-weight: 21001
+title: "Chapter 20.01: Introduction"
+weight: 20001
 ---
 We define the phenomenon of imbalanced data sets and explain its consequences on accuarcy. Furthermore, we introduce some techniques for handling imbalanced data sets.
 <!--more-->

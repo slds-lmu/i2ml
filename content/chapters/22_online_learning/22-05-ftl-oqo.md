@@ -1,6 +1,6 @@
 ---
-title: "Chapter 23.05: Follow the Leader on OQO problems"
-weight: 23005
+title: "Chapter 22.05: Follow the Leader on OQO problems"
+weight: 22005
 ---
 In this chapter we prove that FTL works for online quadratic problems. 
 <!--more-->
