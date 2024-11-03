@@ -9,7 +9,7 @@ Logistic regression is a discriminant approach toward constructing a classifier.
 
 ### Lecture video
 
-{{< video id="TLb29_fEzhU" >}}
+{{< video id="V24s9HkLyaw" >}}
 
 ### Lecture slides
 

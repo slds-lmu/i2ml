@@ -8,7 +8,7 @@ In classification, the task is to predict a categorical (binary or multiclass) l
 
 ### Lecture video
 
-{{< video id="JhNydqlMVeE" >}}
+{{< video id="KhKY8nlpMH0" >}}
 
 ### Lecture slides
 
