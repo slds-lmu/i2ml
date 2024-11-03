@@ -8,7 +8,7 @@ Although we are primarily interested in actual class labels, classification mode
 
 ### Lecture video
 
-{{< video id="cURlX3q69kk" >}}
+{{< video id="zIzIi8YI_xI" >}}
 
 ### Lecture slides
 
