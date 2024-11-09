@@ -6,7 +6,7 @@ title: "All Slides Chapters 1-10 and 11-19"
 
 Complete PDF of all lecture slides from chapters 1-10:
 
-[Download](https://drive.google.com/file/d/1jhh2Ddb5xESAC2K3ANGyu6fTG_ALGE7A/view?usp=share_link)
+[Download](https://drive.google.com/file/d/16O-rVIPJVpLIZ9-qb7BRIJxomCXcrNgL/view?usp=share_link)
 
 Complete PDF of all lecture slides from chapters 11-19:
 
