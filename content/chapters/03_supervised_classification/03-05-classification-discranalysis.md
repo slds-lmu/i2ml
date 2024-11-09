@@ -9,7 +9,7 @@ Discriminant analysis is a generative approach toward constructing a classifier.
 
 ### Lecture video 
 
-{{< video id="WHQLS9PBLig" >}}
+{{< video id="inIhdMwQ4Ik" >}}
 
 ### Lecture slides
 

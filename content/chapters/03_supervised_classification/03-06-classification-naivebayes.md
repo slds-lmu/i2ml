@@ -9,7 +9,7 @@ Naive Bayes is a generative approach based on an assumption of conditional indep
 
 ### Lecture video 
 
-{{< video id="TJ0ZSAyIi_c" >}}
+{{< video id="bvAYZsIt04U" >}}
 
 ### Lecture slides
 

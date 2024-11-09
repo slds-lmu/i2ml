@@ -9,7 +9,7 @@ Linear classifiers are an essential subclass of classification models. This sect
 
 ### Lecture video
 
-{{< video id="SkrQOtpD9d0" >}}
+{{< video id="wR43JOYxTZM" >}}
 
 ### Lecture slides
 
