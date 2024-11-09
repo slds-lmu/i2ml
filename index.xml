@@ -190,11 +190,13 @@ integrated selection do not always work.&lt;/p></description></item><item><title
 &lt;li>Chapter 1.4 (Models &amp;amp; Parameters) - slide 5/10: d-dimensional vector, not p-dimensional&lt;/li>
 &lt;li>Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4&lt;/li>
 &lt;li>Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column&lt;/li>
-&lt;li>Chapter 3.6 (Naive Bayes): Slide 3/6: Missing exponents in figure&lt;/li>
 &lt;li>Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix&lt;/li>
 &lt;li>Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE&lt;/li>
 &lt;li>Chapter 4.7 (Classification measures): Slide 6/9 cost computation&lt;/li>
 &lt;li>Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)&lt;/li>
+&lt;li>Chapter 7.2 (Forests: Intro) - slides 7/8 and 8/8: Error in OOB error&lt;/li>
+&lt;li>Chapter 7.4 (Forests: Feature importance) - slide 3/3: Error in permutation based variable importance&lt;/li>
+&lt;li>Chapter 7.4 (Forests: Feature importance) - new slide 4/4: Improve explanation of MeanDecreaseAccuracy and MeanDecreaseGini&lt;/li>
 &lt;li>Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation&lt;/li>
 &lt;li>Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion&lt;/li>
 &lt;li>Chapter 11.12 (MLE2): Slide 2/5 wrong negative sign in NLL equation&lt;/li>
