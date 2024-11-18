@@ -18,6 +18,7 @@ title: Errata
 - Chapter 12.2 (Softmax): Slide 2/9 [0,1]^g instead of R^g
 - Chapter 13.1 (Entropy I): Slide 4,6,8/10 changed entropy calculation from nats to bits
 - Chapter 13.2 (Entropy II): Slide 1/7 corrected plot for entropy of Bernoulli distribution
+- Chapter 13.5 (CE-KLD): Slide 6/7 typo in formula (1)
 - Chapter 13.6: Slide 2/7 typos in formula and bullet point 3
 - Chapter 13.7: Slide 4/14 switched x and y in the proposition regarding zero conditional entropy
 - Chapter 13.7: Slide 14/14 added missing 0.5 factor in the entropy of the multivariate Gaussian
