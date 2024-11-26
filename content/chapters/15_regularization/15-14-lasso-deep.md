@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15.13: Soft-thresholding and L1 regularization: Deep Dive"
-weight: 15013
+title: "Chapter 15.14: Soft-thresholding and L1 regularization: Deep Dive"
+weight: 15014
 ---
 In this section, we prove the previously stated proposition regarding soft-thresholding and L1 regularization.
 

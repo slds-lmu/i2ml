@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15.11: Early Stopping"
-weight: 15011
+title: "Chapter 15.12: Early Stopping"
+weight: 15012
 ---
 In this section, we introduce early stopping and show how it can act as a regularizer. 
 
