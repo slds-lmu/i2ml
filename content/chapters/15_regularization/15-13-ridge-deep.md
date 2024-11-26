@@ -1,6 +1,6 @@
 ---
-title: "Chapter 15.12: Details on Ridge Regression: Deep Dive"
-weight: 15012
+title: "Chapter 15.13: Details on Ridge Regression: Deep Dive"
+weight: 15013
 ---
 In this section, we consider Ridge regression as row-augmentation and as minimizing risk under feature noise. We also discuss the bias-variance tradeoff.
 
