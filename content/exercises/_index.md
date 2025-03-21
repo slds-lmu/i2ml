@@ -44,25 +44,6 @@ __Exercises for Chapters 11-19 (LMU Lecture SL):__
 
 <br>
 
-__Live Session Exercises for Chapters 11-19 (LMU Lecture SL):__
-
-|            | Exercise    | 
-| ---------| -------------- | 
-|Session 2| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_advriskmin_1.pdf" >}} | 
-|Session 3| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_multiclass.pdf" >}} | 
-|Session 4| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_information_theory_1.pdf" >}} | 
-|Session 5| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_information_theory_2.pdf" >}} | 
-|Session 6| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_cod.pdf" >}} | 
-|Session 7| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_regularization_1.pdf" >}} | 
-|Session 8| - | 
-|Session 9| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_svm_1.pdf" >}} | 
-|Session 10| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_svm_2.pdf" >}} | 
-|Session 11| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_boosting_1.pdf" >}} | 
-|Session 12| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_gp_1.pdf" >}} | 
-|Session 13| {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/exercises-pdf/ic_gp_2.pdf" >}} | 
-
-<br>
-
 __Exercises for Chapters 20-23 (LMU Lecture AdvML):__
 
 |            | Exercise    | Solution |
