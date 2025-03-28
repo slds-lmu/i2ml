@@ -7,7 +7,7 @@ Roughly speaking, learners (endowed with a specific hyperparameter configuration
 <!--more-->
 ### Lecture video
 
-{{< video id="amTGAHFY7Go">}}
+{{< video id="we4Y8z9naZk">}}
 
 ### Lecture slides
 

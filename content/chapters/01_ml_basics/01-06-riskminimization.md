@@ -8,7 +8,7 @@ In order to find good solutions we need a concept to evaluate and compare models
 
 ### Lecture video
 
-{{< video id="-t0Zx_FES3s">}}
+{{< video id="NMNfjOL40y0">}}
 
 ### Lecture slides
 

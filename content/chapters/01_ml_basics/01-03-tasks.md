@@ -8,7 +8,7 @@ The tasks of supervised learning can roughly be divided in two categories: regre
 
 ### Lecture video
 
-{{< video id="BmSvhDCdJro">}}
+{{< video id="RpgQX73RKUU">}}
 
 ### Lecture slides
 

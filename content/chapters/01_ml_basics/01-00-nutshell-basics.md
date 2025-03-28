@@ -8,7 +8,7 @@ In this nutshell chunk, we dive into the foundational principles of Machine Lear
 
 ### Lecture video
 
-{{< video id="dsYyEBTGgYQ" >}}
+{{< video id="1f0gilKVx2I" >}}
 
 ### Lecture slides
 
