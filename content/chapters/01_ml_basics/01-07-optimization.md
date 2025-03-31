@@ -8,7 +8,7 @@ In this section we study parameter optimization as computational solution to mac
 
 ### Lecture video
 
-{{< video id="R1OtZAi8bNE">}}
+{{< video id="W25BTei5zQU">}}
 
 ### Lecture slides
 

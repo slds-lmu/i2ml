@@ -8,7 +8,7 @@ We introduce models as functional hypotheses about the mapping from feature to t
 
 ### Lecture video
 
-{{< video id="GNnKL0DVyiY">}}
+{{< video id="ImjHkMc_esc">}}
 
 ### Lecture slides
 

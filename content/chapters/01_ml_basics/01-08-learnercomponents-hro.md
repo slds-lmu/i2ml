@@ -9,7 +9,7 @@ Nearly all supervised learning algorithms can be described in terms of three com
 
 ### Lecture video
 
-{{< video id="PL7pDX9BBRc">}}
+{{< video id="WzQVGfa-ikw">}}
 
 ### Lecture slides
 

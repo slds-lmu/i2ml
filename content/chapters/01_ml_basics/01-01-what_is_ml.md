@@ -8,7 +8,7 @@ As subtopic of artificial intelligence, machine learning is a mathematically wel
 
 ### Lecture video
 
-{{< video id="TfrSKiOecWI" >}}
+{{< video id="AvpS4lyLB_c" >}}
 
 ### Lecture slides
 
