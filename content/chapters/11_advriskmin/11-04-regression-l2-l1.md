@@ -8,7 +8,7 @@ In this section, we revisit L2 and L1 loss, highlighting that their risk minimiz
 
 ### Lecture video
 
-{{< video id="vpGUlcWJSb8" >}}
+{{< video id="4CqLlzUoVWU" >}}
 
 ### Lecture slides
 
