@@ -1,31 +1,28 @@
 # Team
 
 - ![](https://www.slds.stat.uni-muenchen.de/images/bernd.jpg) [Bernd Bischl](https://www.compstat.statistik.uni-muenchen.de/people/bischl/)
-  wrote the initial version of most of the course material, and teaches various master courses in ML and DL at the LMU for stats and data science.
+  wrote the initial version of most of the course material and actively develops and extends the material. At the LMU, he often teaches the later parts of the material, so the "Supervised Learning" and "Advanced Machine Learning" lectures.
 - ![](https://www.slds.stat.uni-muenchen.de/images/ludwig.jpg) [Ludwig Bothmann](https://www.compstat.statistik.uni-muenchen.de/people/bothmann/)
-  joined the team in summer 2020, contributes to the material and is in charge of the classes held at LMU Munich.
-- ![](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/scheipl-small.jpg) [Fabian Scheipl](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/index.html)
-  joined the team in fall 2018 and contributed to the slides, videos and code demos.
+  joined the team in summer 2020 and actively develops and extends the material. At the LMU, he often teaches "Introduction to Machine Learning" and "Supervised Learning".
 - ![](https://www.slds.stat.uni-muenchen.de/images/tobias_pielok.jpg) [Tobias Pielok](https://www.slds.stat.uni-muenchen.de/people/pielok/)
-  is a PhD at Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
+  is a PhD student in Bernd’s group and contributed to the code demos and exercises; he also presented the code demos at the classes held in spring 2020.
 - ![](https://www.slds.stat.uni-muenchen.de/images/lisa.jpg) [Lisa Wimmer](https://www.slds.stat.uni-muenchen.de/people/wimmer/)
-  is a PhD at Bernd’s group and contributed to slides and exercises.
+  is a PhD student in Bernd’s group and contributed to slides and exercises.
 - ![](https://www.slds.stat.uni-muenchen.de/images/yawei_li.JPG) [Yawei Li](https://www.slds.stat.uni-muenchen.de/people/li/)
-  is a PhD student at Bernd's group and contributed to the slides and exercises of AdvML.
+  is a PhD student in Bernd's group and contributed to the slides and exercises of AdvML.
 - ![](https://www.slds.stat.uni-muenchen.de/images/ChrisK.png) [Chris Kolb](https://www.slds.stat.uni-muenchen.de/people/kolb/)
-  is a PhD student at Bernd's group and contributed to the slides and exercises.
+  is a PhD student in Bernd's group and contributed to the slides and exercises.
 
 ## Current student assistants
 
 - Ziyu Mu
 - Manuel Helmerichs
 - Holger Löwe
-- Stefanie Schwarz
-
-
 
 ## Alumni
 
+- ![](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/scheipl-small.jpg) [Fabian Scheipl](https://www.fda.statistik.uni-muenchen.de/people/head/scheipl/index.html)
+  joined the team in fall 2018 and contributed to the slides, videos and code demos.
 - ![](https://avatars.githubusercontent.com/u/20367117?v=4) [Daniel Schalk](https://www.compstat.statistik.uni-muenchen.de/people/schalk)
   was a PhD at Bernd's group and organized the second round of the inverted classroom in spring 2019; he also provided the digital platform for videos, quizzes and exercises.
 - ![](https://avatars.githubusercontent.com/u/14146757?v=4) [Heidi Seibold](https://www.compstat.statistik.uni-muenchen.de/people/seibold) joined the team in fall 2019 and has been in charge of the classes held in spring 2020 at LMU Munich and University of Bielefeld.
