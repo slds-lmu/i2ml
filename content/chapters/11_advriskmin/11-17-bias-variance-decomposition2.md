@@ -2,13 +2,13 @@
 title: "Chapter 11.17: Bias Variance Decomposition II"
 weight: 11017
 ---
-We discuss how to decompose the generalization error of a learner.
+We discuss how to decompose the excess risk into the estimation, approximation and optimization error.
 
 <!--more-->
 
 ### Lecture video
 
-{{< video id="P4lmv3hy0zg" >}}
+{{< video id="RN7z3jL1lUs" >}}
 
 ### Lecture slides
 

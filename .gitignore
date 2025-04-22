@@ -1,5 +1,6 @@
 .hugo_build.lock
 .Rproj.user
 *.Rproj
+*.Rhistory
 
 .DS_Store

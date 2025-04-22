@@ -8,7 +8,7 @@ We discuss how to decompose the generalization error of a learner.
 
 ### Lecture video
 
-{{< video id="P4lmv3hy0zg" >}}
+{{< video id="AOHhV6pMxzk" >}}
 
 ### Lecture slides
 
