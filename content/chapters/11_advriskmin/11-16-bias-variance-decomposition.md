@@ -12,4 +12,4 @@ We discuss how to decompose the generalization error of a learner.
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition-1.pdf" >}}

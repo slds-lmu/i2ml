@@ -12,4 +12,4 @@ We discuss how to decompose the excess risk into the estimation, approximation a
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition-2.pdf" >}}
