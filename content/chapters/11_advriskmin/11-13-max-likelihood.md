@@ -1,5 +1,5 @@
 ---
-title: "Chapter 11.13: Maximum Likelihood Estimation vs Empirical Risk Minimization I"
+title: "Chapter 11.13: Maximum Likelihood Estimation vs Empirical Risk Minimization"
 weight: 11013
 ---
 We discuss the connection between maximum likelihood estimation and risk minimization, then demonstrate the correspondence between a Gaussian error distribution and \\(L2\\) loss. 

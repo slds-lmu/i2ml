@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.15: Properties of Loss Functions"
-weight: 11015
+title: "Chapter 11.14: Properties of Loss Functions"
+weight: 11014
 ---
 We discuss the concept of robustness, analytical and functional properties of loss functions and how they may influence the convergence of optimizers. 
 
