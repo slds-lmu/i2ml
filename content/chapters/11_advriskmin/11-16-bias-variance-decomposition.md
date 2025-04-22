@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.15: Bias Variance Decomposition I"
-weight: 11015
+title: "Chapter 11.16: Bias Variance Decomposition I"
+weight: 11016
 ---
 We discuss how to decompose the generalization error of a learner.
 
