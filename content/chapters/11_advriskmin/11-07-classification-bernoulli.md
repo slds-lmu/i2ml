@@ -8,7 +8,7 @@ We study the Bernoulli loss and derive its risk minimizer and optimal constant m
 
 ### Lecture video
 
-{{< video id="EihqrLb7mjU" >}}
+{{< video id="F_o_QrW2P6M" >}}
 
 ### Lecture slides
 

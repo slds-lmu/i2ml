@@ -8,7 +8,7 @@ In this section, we revisit the 0-1 loss and derive its risk minimizer .
 
 ### Lecture video
 
-{{< video id="SxgGVoyAmBw" >}}
+{{< video id="MKRn03fZS7A" >}}
 
 ### Lecture slides
 

@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.13: Maximum Likelihood Estimation vs Empirical Risk Minimization II"
-weight: 11013
+title: "Chapter 11.14: Maximum Likelihood Estimation vs Empirical Risk Minimization II"
+weight: 11014
 ---
 We discuss the connection between maximum likelihood estimation and risk minimization for further losses (\\(L1\\) loss, Bernoulli loss). 
 
