@@ -6,10 +6,6 @@ In this **deep dive**, we revisit \\(L1\\) loss and derive its risk minimizer --
 
 <!--more-->
 
-### Lecture video
-
-{{< video id="4CqLlzUoVWU" >}}
-
 ### Lecture slides
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l1-deepdive.pdf" >}}
