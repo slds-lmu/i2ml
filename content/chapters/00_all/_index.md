@@ -10,7 +10,7 @@ Complete PDF of all lecture slides from chapters 1-10:
 
 Complete PDF of all lecture slides from chapters 11-19:
 
-[Download](https://drive.google.com/file/d/1CdqUtnACsNeRrKVTm6JaxwhZRdMcLniR)
+[Download](https://drive.google.com/file/d/1og1D6s2tsPta7EGYmDlrxOvcQ6f4F9ka)
 
 <!-- 
 Defunct old link as lecture_sl.pdf has been moved to GDrive SLDS/Supervised Learning
