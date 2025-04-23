@@ -1,5 +1,5 @@
 ---
-title: "Chapter 11.15: Maximum Likelihood Estimation vs Empirical Risk Minimization"
+title: "Chapter 11.15: Maximum Likelihood Estimation vs. Empirical Risk Minimization"
 weight: 11015
 ---
 We discuss the connection between maximum likelihood estimation and risk minimization, then demonstrate the correspondence between a Gaussian error distribution and \\(L2\\) loss and that alternative likelihoods give rise to the \\(L1\\) and Bernoulli loss.
