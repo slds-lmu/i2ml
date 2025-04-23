@@ -1,14 +1,14 @@
 ---
-title: "Chapter 11.06: 0-1 Loss"
-weight: 11006
+title: "Chapter 11.07: Classification and 0-1-Loss"
+weight: 11007
 ---
-In this section, we revisit the 0-1 loss and derive its risk minimizer .
+In this section, we revisit the 0-1-loss and derive its risk minimizer.
 
 <!--more-->
 
 ### Lecture video
 
-{{< video id="SxgGVoyAmBw" >}}
+{{< video id="MKRn03fZS7A" >}}
 
 ### Lecture slides
 

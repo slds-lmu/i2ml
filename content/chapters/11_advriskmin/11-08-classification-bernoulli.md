@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.07: Bernoulli Loss"
-weight: 11007
+title: "Chapter 11.08: Bernoulli Loss"
+weight: 11008
 ---
 We study the Bernoulli loss and derive its risk minimizer and optimal constant model. We further discuss the connection between Bernoulli loss minimization and tree splitting according to the entropy criterion.
 
@@ -8,7 +8,7 @@ We study the Bernoulli loss and derive its risk minimizer and optimal constant m
 
 ### Lecture video
 
-{{< video id="EihqrLb7mjU" >}}
+{{< video id="F_o_QrW2P6M" >}}
 
 ### Lecture slides
 

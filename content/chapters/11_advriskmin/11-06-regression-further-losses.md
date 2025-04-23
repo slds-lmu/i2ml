@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.05: Advanced Regression Losses"
-weight: 11005
+title: "Chapter 11.06: Advanced Regression Losses"
+weight: 11006
 ---
 In this section, we introduce and discuss the following advanced regression losses: Huber, log-cosh, Cauchy, epsilon-insensitive, and quantile loss. 
 
