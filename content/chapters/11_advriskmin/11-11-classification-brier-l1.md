@@ -1,5 +1,5 @@
 ---
-title: "Chapter 11.11: L2/L1 Loss on Probabilities"
+title: "Chapter 11.11: Brier Score - L2/L1 Loss on Probabilities"
 weight: 11011
 ---
 In this section, we introduce the Brier score and derive its risk minimizer and optimal constant model.
