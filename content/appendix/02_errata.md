@@ -14,6 +14,7 @@ title: Errata
 - Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
 - Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
+- Chapter 11.7 (Classification and 0-1 Loss): Slides 2/6 Errors in law of total expectation, should also condition on x inside inner expectation
 - Chapter 11.12 (MLE2): Slide 2/5 wrong negative sign in NLL equation
 - Chapter 12.2 (Softmax): Slide 2/9 [0,1]^g instead of R^g
 - Chapter 13.1 (Entropy I): Slide 4,6,8/10 changed entropy calculation from nats to bits
