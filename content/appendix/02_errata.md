@@ -4,14 +4,15 @@ title: Errata
 
 ## Errata in the slides shown in the videos
 
-- Chapter 1.4 (Models & Parameters) - slide 5/10: d-dimensional vector, not p-dimensional
+- Chapter 1.4 (Models & Parameters): Slide 5/10: d-dimensional vector, not p-dimensional
 - Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4
 - Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column
 - Chapter 3.6 (Naive Bayes): Slide 3/6: Missing exponents in figure
-- Chapter 4.3 (Simple Measures for Classification) - slide 6/9: Error in cost matrix
-- Chapter 4.4 (Perfomance Evaluation: Test Error) - slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
+- Chapter 4.3 (Simple Measures for Classification): Slide 6/9: Error in cost matrix
+- Chapter 4.4 (Test Error): Slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
 - Chapter 4.7 (Classification measures): Slide 6/9 cost computation
-- Chapter 6.2 (CART: Growing a Tree) - slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
+- Chapter 6.2 (CART: Growing a Tree): Slide 5/8: Wrong plot is displayed in video (axis wrong, points missing)
+- Chapter 8.3 (Single Hidden Layer NN): Slides 9 & 11/14: missing minus sign in the sigmoid function
 - Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
 - Chapter 11.12 (MLE2): Slide 2/5 wrong negative sign in NLL equation
