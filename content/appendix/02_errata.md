@@ -7,6 +7,7 @@ title: Errata
 - Chapter 1.4 (Models & Parameters): Slide 5/10: d-dimensional vector, not p-dimensional
 - Chapter 2.1 (Regression losses): Slide 1/5 sign in bullet point 4
 - Chapter 2.2 (Deep Dive OLS): Slide 2/2 last lines in left column
+- Chapter 3.4 (Logistic Regression) - Slide 4/10: The alpha of the red (scaled) logistic function in the second plot is 5, not -5
 - Chapter 3.6 (Naive Bayes): Slide 3/6: Missing exponents in figure
 - Chapter 4.3 (Simple Measures for Classification): Slide 6/9: Error in cost matrix
 - Chapter 4.4 (Test Error): Slide 8/13: The variance of MSE decreases with test set size, not the mean of MSE
@@ -15,6 +16,7 @@ title: Errata
 - Chapter 8.3 (Single Hidden Layer NN): Slides 9 & 11/14: missing minus sign in the sigmoid function
 - Chapter 11.6 (0-1 Loss): Slides 2/5 and 4/5 Errors in notation of conditional probability inside of expectation
 - Chapter 11.7 (Bernoulli Loss): Slides 9/10 and 10/10 Errors in Bernoulli Loss and Entropy Splitting Criterion
+- Chapter 11.7 (Classification and 0-1 Loss): Slides 2/6 Errors in law of total expectation, should also condition on x inside inner expectation
 - Chapter 11.12 (MLE2): Slide 2/5 wrong negative sign in NLL equation
 - Chapter 12.2 (Softmax): Slide 2/9 [0,1]^g instead of R^g
 - Chapter 13.1 (Entropy I): Slide 4,6,8/10 changed entropy calculation from nats to bits
