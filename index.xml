@@ -211,6 +211,7 @@ integrated selection do not always work.&lt;/p></description></item><item><title
 &lt;li>Chapter 13.7: Slide 14/14 added parentheses to make log less ambiguous&lt;/li>
 &lt;li>Chapter 15.2 (Ridge Regression): Slide 4/10 clarified meaning of green dot in plot in comment&lt;/li>
 &lt;li>Chapter 15.8 (Bayesian Priors): Slide 5/5 renew plot and add comment on ybar&lt;/li>
+&lt;li>Chapter 16.1 (SVM linear hard-margin): Slide 11/11, fix ambiguity in defining SVs&lt;/li>
 &lt;li>Chapter 17.1: Slide 6/11 Typo in f&lt;/li>
 &lt;li>Chapter 17.3: Slide 2/6 Show how to get phi(x) explicitly, and the last component of phi(x) should be b instead of sqrt(b).&lt;/li>
 &lt;li>Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances&lt;/li>
