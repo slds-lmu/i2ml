@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.12: Advanced Classification Losses"
-weight: 11012
+title: "Chapter 11.11: Advanced Classification Losses"
+weight: 11011
 ---
 In this section, we introduce and discuss the following advanced classification losses: (squared) hinge loss, \\(L2\\) loss on scores, exponential loss, and AUC loss. 
 
