@@ -8,4 +8,4 @@ Learn how minimizing Bernoulli (log) loss yields entropy‐based splits and mini
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-tree-splitting.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-tree-splitting-deepdive.pdf" >}}
