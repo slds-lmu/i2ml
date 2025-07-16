@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.10: Proper Scoring Rules"
-weight: 11010
+title: "Chapter 11.12: Proper Scoring Rules"
+weight: 11012
 ---
 We dive into how proper scoring rules - like log loss and the Brier score (unlike L1) - guarantee strictly proper, probability-calibrated predictions by satisfying a first‑order optimality condition.
 
