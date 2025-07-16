@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.18: Bias Variance Decomposition: Deep Dive"
-weight: 11018
+title: "Chapter 11.19: Bias Variance Decomposition: Deep Dive"
+weight: 11019
 ---
 In this segment, we discuss details of the decomposition of the generalization error of a learner. This section is presented as a **deep-dive**. Please note that there are no videos accompanying this section.
 
