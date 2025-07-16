@@ -1,6 +1,6 @@
 ---
-title: "Chapter 11.18: Bias Variance Decomposition II"
-weight: 11018
+title: "Chapter 11.17: Bias Variance Decomposition II"
+weight: 11017
 ---
 We discuss how to decompose the excess risk into the estimation, approximation and optimization error.
 
