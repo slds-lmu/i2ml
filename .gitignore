@@ -4,3 +4,6 @@
 *.Rhistory
 
 .DS_Store
+
+# rendered content
+public

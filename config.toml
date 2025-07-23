@@ -40,7 +40,7 @@ unsafe= true
     url = "prerequisites/"
     weight = 5
   [[menu.main]]
-    name = "Refs"
+    name = "Literature"
     pre = "literature"
     url = "literature/"
     weight = 6
@@ -50,16 +50,12 @@ unsafe= true
     url = "team/"
     weight = 7
   [[menu.main]]
-    name = "Contrib"
+    name = "Contributing"
     pre = "contributing"
     url = "contributing/"
     weight = 8
-  # [[menu.main]]
-  #   name = "News"
-  #   pre = "news"
-  #   url = "news/"
-  #   weight = 8
-# can contain as main items as you want
+
+# can contain as many items as you want
   [[menu.footer]] # name here does not matter
     name = "Main Course Website"
     url = "."

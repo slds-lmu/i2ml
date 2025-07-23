@@ -10,7 +10,7 @@ Our contributing guidelines may be found [here](https://github.com/slds-lmu/lect
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
 This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
-We are developing the course on [GitHub](https://github.com/compstat-lmu/lecture_i2ml).
+We are developing the course on [GitHub](https://github.com/slds-lmu/lecture_i2ml).
 
 We would appreciate if you contact us in case you are re-using our course.
 Knowing this helps us to keep the project alive. Thank you!
