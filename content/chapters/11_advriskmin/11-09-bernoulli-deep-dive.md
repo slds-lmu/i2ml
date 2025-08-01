@@ -8,4 +8,4 @@ In this section, we will discuss the equivalence of different classification los
 
 ### Lecture slides
 
-{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-classification-deepdive.pdf" >}}
+{{< pdfjs file="https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-some-details-deepdive.pdf" >}}
