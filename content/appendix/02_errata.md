@@ -35,6 +35,7 @@ title: Errata
 - Chapter 17.3: Slide 2/7 Assume gamma = 1 to avoid conflict with geometric distances
 - Chapter 18.1: Slide 5/7: Typo in Monomials; it should be (d+p-1 over d) and ( (d+p) over d) -1
 - Chapter 19.2: Slide 1/15: R_emp formula contains x_{i}, not x.
+- Chapter 19.3: Slide 5/20 blue point moved from -2.5 to -2
 - Chapter 19.5: Slide 3/11: bullet point 1 added "if", bullet point 2 changed "decrease" to "increase"
 - Chapter 20.1: Slide 6/12: fix error in step 6 and clarify that b-hat is a hard label classifier
 - Chapter 20.1: Slides 7 and 8/12: improved plot and text
