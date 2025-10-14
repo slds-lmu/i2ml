@@ -17,7 +17,7 @@
 
 - Ziyu Mu
 - Manuel Helmerichs
-- Holger Löwe
+- Aik Tarkhanyan 
 
 ## Alumni
 
