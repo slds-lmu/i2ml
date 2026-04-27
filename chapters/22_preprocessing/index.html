@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="/i2ml/css/style.css">
+
+
+<title>Introduction to Machine Learning (I2ML) | Chapter 22: Preprocessing</title>
+
+
+<link rel="apple-touch-icon" sizes="180x180" href="/i2ml/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/i2ml/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/i2ml/favicon-16x16.png">
+<link rel="manifest" href="/i2ml/site.webmanifest">
+<link rel="mask-icon" href="/i2ml/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="theme-color" content="#ffffff">
+
+</head><body>
+<img id="logo" src="/i2ml/i2ml.svg" />
+
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        
+        <a class="nav-link" href="/i2ml">
+        
+        Home
+        </a>
+        
+        <a class="nav-link" href="/i2ml/chapters/">
+        
+        Chapters
+        </a>
+        
+        <a class="nav-link" href="/i2ml/exercises/">
+        
+        Exercises
+        </a>
+        
+        <a class="nav-link" href="/i2ml/appendix/">
+        
+        Appendix
+        </a>
+        
+        <a class="nav-link" href="/i2ml/prerequisites/">
+        
+        Prereqs
+        </a>
+        
+        <a class="nav-link" href="/i2ml/literature/">
+        
+        Literature
+        </a>
+        
+        <a class="nav-link" href="/i2ml/team/">
+        
+        Team
+        </a>
+        
+        <a class="nav-link" href="/i2ml/contributing/">
+        
+        Contributing
+        </a>
+        
+    </nav>
+</div><div id="content" class="container">
+<h1>Chapter 22: Preprocessing</h1>
+
+<p><p>This chapter covers essential preprocessing techniques for machine learning, including feature engineering, categorical encoding, feature and target transformations, handling missing data, and time series preprocessing.</p>
+</p>
+
+
+<div class="chapter_overview">
+<ul class="list-unstyled">
+
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-01-intro/">Chapter 22.01: Introduction to Feature Engineering</a>
+    
+      
+        <p>We place feature engineering in the ML workflow and pipeline context, explain how it addresses common data science challenges like skewed distributions, high-cardinality categorical features, and missingness, and discuss why it still matters in the age of deep learning.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-02-categorical-encoding/">Chapter 22.02: Categorical Encoding</a>
+    
+      
+        <p>We cover one-hot encoding and target/impact encoding for categorical features.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-03-feature-transformations/">Chapter 22.03: Feature Transformations</a>
+    
+      
+        <p>We discuss feature transformations including normalization (standardization) and Box-Cox transformations for stabilizing variance.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-04-target-transformations/">Chapter 22.04: Target Transformations</a>
+    
+      
+        <p>We explain why and when to transform the target variable using log, Box-Cox, and Yeo-Johnson transformations, and introduce the transform-fit-invert pipeline.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-05-leakage/">Chapter 22.05: Data Leakage</a>
+    
+      
+        <p>We explain the concept of train-test leakage, why it leads to overoptimistic performance estimates, and how to avoid it in preprocessing pipelines.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-06-missing-intro/">Chapter 22.06: Missing Data - Introduction</a>
+    
+      
+        <p>We motivate the problem of missing data, show how to visualize missingness in a dataset, and outline the main options for handling it (dropping observations, dropping features, models that tolerate missing values, and imputation).
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-07-imputation-simple/">Chapter 22.07: Simple Imputation Methods</a>
+    
+      
+        <p>We cover simple univariate imputation strategies (mean, median, mode, out-of-range constants), the use of missingness indicator variables, the distribution shift caused by constant imputation, and imputation by sampling from the empirical feature distribution.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-08-imputation-model-based/">Chapter 22.08: Model-Based Imputation</a>
+    
+      
+        <p>We introduce model-based imputation, where a surrogate model is trained on the other features to predict the missing values, and discuss its drawbacks: sensitivity to the choice of surrogate model, the need for the surrogate to handle missing values itself, and per-feature hyperparameter tuning.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-09-timeseries-intro/">Chapter 22.09: Time Series - Introduction</a>
+    
+      
+        <p>We introduce time series forecasting, explain how to apply tree-based models to time series, and cover detrending and multi-step forecasting.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-10-timeseries-features/">Chapter 22.10: Time Series Feature Engineering</a>
+    
+      
+        <p>We cover feature engineering for time series including calendar features, cyclic encoding, lagged and rolling features, and feature importance.
+</p>
+      
+      
+</li>
+
+<li>
+    <a class="title" href="/i2ml/chapters/22_preprocessing/22-11-timeseries-evaluation/">Chapter 22.11: Time Series Evaluation</a>
+    
+      
+        <p>We discuss time series cross-validation (expanding and sliding window), evaluation metrics, baselines, and practical guidance.
+</p>
+      
+      
+</li>
+
+
+</ul>
+</div>
+
+
+        </div><footer class="bg-light text-center text-lg-start fixed-bottom">
+<ul class="list-inline text-center">
+  <li class="list-inline-item">© 2022 Course Creator</li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="/i2ml" target="_blank">Main Course Website</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/lecture_i2ml" target="_blank">Material Source Code</a></li>
+  
+  <li class="list-inline-item"><a class="nav-link" href="https://github.com/slds-lmu/i2ml" target="_blank">Website Source Code</a></li>
+  
+</ul>
+</footer>
+
+<script>
+  MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      ignoreHtmlClass: ['quizdown']
+    }
+  };
+
+  window.addEventListener('load', (event) => {
+      document.querySelectorAll("mjx-container").forEach(function(x){
+        x.parentElement.classList += 'has-jax'})
+    });
+
+</script>
+<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</body>
+</html>
