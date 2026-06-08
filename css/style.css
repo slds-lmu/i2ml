@@ -45,7 +45,7 @@
 }
 
 p {
-  text-align: justify  
+  text-align: justify
 }
 
 /* Team */
@@ -57,6 +57,7 @@ h1#team + ul li {
   float: left;
   margin-bottom: 2em;
   margin-top: 1em;
+  width: 100%;
 }
 h1#team + ul li img{
   width:100px;
@@ -101,7 +102,7 @@ div.embedded_video {
 div.embedded_video iframe {
   min-height: 250px;
   width: 100%;
-  aspect-ratio: 16 / 9; 
+  aspect-ratio: 16 / 9;
   border: solid 1px #888888;
 }
 
@@ -136,7 +137,7 @@ ul.section_skipper {
   margin-right: auto;
   max-width: var(--text-width);
 }
- 
+
 ul.section_skipper #next_in_section {
   float: left;
 }
