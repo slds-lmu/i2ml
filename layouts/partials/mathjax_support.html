@@ -1,0 +1,32 @@
+<script>
+  MathJax = {
+    loader: {
+      load: ['ui/safe'],
+      paths: {
+        fonts: '{{ "vendor/mathjax-fonts" | relURL }}'
+      }
+    },
+    output: {
+      font: 'mathjax-newcm'
+    },
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+      displayMath: [['$$','$$'], ['\\[', '\\]']],
+      processEscapes: true,
+      processEnvironments: true
+    },
+    options: {
+      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      ignoreHtmlClass: ['quizdown'],
+      safeOptions: {
+        allow: {
+          URLs: 'none',
+          classes: 'safe',
+          cssIDs: 'safe',
+          styles: 'safe'
+        }
+      }
+    }
+  };
+</script>
+<script id="MathJax-script" async src="{{ "vendor/mathjax/tex-mml-chtml.js" | relURL }}"></script>

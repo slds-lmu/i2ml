@@ -17,6 +17,24 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.13.0'
+          cache: npm
+
+      - name: Install frontend dependencies
+        run: npm ci
+
+      - name: Check and build lecture frontend
+        run: npm run check
+
+      - name: Install browser test runtime
+        run: npx playwright install --with-deps chromium
+
+      - name: Run lecture browser tests
+        run: npm run test:e2e
+
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:

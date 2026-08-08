@@ -39,6 +39,17 @@
 
 The deploy is done automatically via GitHub Actions. Nothing needs to be done to publish a new version of the website. Each build is triggered when a commit is done to the `main` branch.
 
+### Development-only QA provider trace
+
+Lecture pages built by `hugo server` include a collapsed, plain-text QA trace.
+For a combined static build, opt in explicitly with
+`HUGO_PARAMS_QADEBUG=true`; the QA backend must separately have
+`I2ML_ENVIRONMENT=development` and `I2ML_QA_DEBUG=true`. Both gates are
+required before the backend returns prompt, tool, provider-reasoning, or
+response trace events. The backend rejects tracing in its `internal` runtime.
+Normal production builds set neither flag, omit the trace from the page, and do
+not request trace data.
+
 ## Citation
 
 If you use our material, please consider citing us as follows:

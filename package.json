@@ -1,0 +1,29 @@
+{
+  "name": "i2ml-modern-lecture-ui",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "build": "vite build && node scripts/vendor-assets.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "test:integration": "playwright test --config playwright.integration.config.ts",
+    "check": "npm run typecheck && npm test && npm run build"
+  },
+  "dependencies": {
+    "bootstrap": "5.0.2",
+    "dompurify": "3.4.13",
+    "marked": "18.0.9",
+    "mathjax": "4.1.3",
+    "pdfjs-dist": "6.2.108",
+    "quizdown": "0.6.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.62.1",
+    "jsdom": "27.4.0",
+    "typescript": "7.0.2",
+    "vite": "8.2.1",
+    "vitest": "4.1.10"
+  }
+}

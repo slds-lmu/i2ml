@@ -7,3 +7,10 @@
 
 # rendered content
 public
+
+# local frontend dependencies and browser-test output
+node_modules/
+playwright-report/
+test-results/
+/static/lecture/
+/static/vendor/

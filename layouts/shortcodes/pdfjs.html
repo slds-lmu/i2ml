@@ -1,0 +1,70 @@
+{{ $pdf_file := .Get "file" }}
+{{ $pdf_id := replaceRE "[^A-Za-z0-9_]" "_" $pdf_file }}
+{{ $pdf_url := "" }}
+{{ if findRE "^http" $pdf_file }}
+  {{ $download_name := replaceRE "^http.*/" "" $pdf_file }}
+  {{ $pdf_url = replaceRE "/(blob|tree)/" "/raw/" $pdf_file }}
+  <a class="btn btn-primary" href="{{ $pdf_url }}">Download &raquo;{{ $download_name }}&laquo;</a>
+{{ else }}
+  {{ $pdf_url = path.Join .Page.Dir $pdf_file | absURL }}
+  <div class="pdf" id="pdf_{{ $pdf_id }}" data-legacy-pdf data-url="{{ $pdf_url }}">
+    <div class="pdf-paginator" {{ if eq (.Get "hidePaginator") "true" }}hidden{{ end }}>
+      <button type="button" class="btn btn-primary" data-pdf-previous>Previous</button>
+      <span>Page: <span data-pdf-page>1</span> / <span data-pdf-count>…</span></span>
+      <button type="button" class="btn btn-primary" data-pdf-next>Next</button>
+      <a class="btn btn-secondary" href="{{ $pdf_url }}" target="_blank" rel="noopener">PDF</a>
+    </div>
+    <canvas class="pdf-canvas" aria-label="PDF page 1"></canvas>
+    <p data-pdf-error role="alert" hidden></p>
+  </div>
+  <script type="module">
+    import * as pdfjs from "{{ "vendor/pdfjs/pdf.min.mjs" | relURL }}";
+    pdfjs.GlobalWorkerOptions.workerSrc = "{{ "vendor/pdfjs/pdf.worker.min.mjs" | relURL }}";
+    const root = document.getElementById({{ printf "pdf_%s" $pdf_id | jsonify }});
+    const canvas = root.querySelector("canvas");
+    const context = canvas.getContext("2d");
+    const pageLabel = root.querySelector("[data-pdf-page]");
+    const countLabel = root.querySelector("[data-pdf-count]");
+    const error = root.querySelector("[data-pdf-error]");
+    let documentHandle;
+    let pageNumber = 1;
+    let rendering = false;
+    let pending;
+    async function render(number) {
+      rendering = true;
+      const page = await documentHandle.getPage(number);
+      const viewport = page.getViewport({ scale: 2 });
+      canvas.width = viewport.width;
+      canvas.height = viewport.height;
+      canvas.setAttribute("aria-label", `PDF page ${number}`);
+      await page.render({ canvas, canvasContext: context, viewport }).promise;
+      pageLabel.textContent = String(number);
+      rendering = false;
+      if (pending) {
+        const next = pending;
+        pending = undefined;
+        await render(next);
+      }
+    }
+    function queue(number) {
+      if (rendering) pending = number;
+      else void render(number);
+    }
+    root.querySelector("[data-pdf-previous]").addEventListener("click", () => {
+      if (pageNumber > 1) queue(--pageNumber);
+    });
+    root.querySelector("[data-pdf-next]").addEventListener("click", () => {
+      if (pageNumber < documentHandle.numPages) queue(++pageNumber);
+    });
+    try {
+      documentHandle = await pdfjs.getDocument(root.dataset.url).promise;
+      countLabel.textContent = String(documentHandle.numPages);
+      await render(pageNumber);
+    } catch (cause) {
+      error.hidden = false;
+      error.textContent = "The PDF preview could not be loaded. Use the PDF link instead.";
+      console.error("PDF preview failed", cause);
+    }
+  </script>
+{{ end }}
+
