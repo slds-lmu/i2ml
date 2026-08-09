@@ -38,15 +38,17 @@
         {{ end }}
       </ul>
     </noscript>
+    {{ $supplementMarker := "<!-- modern-lecture:supplements -->" }}
+    {{ $contentParts := split $page.Content $supplementMarker }}
+    {{ if gt (len $contentParts) 1 }}
+    <section
+      class="lecture-supplements"
+      aria-label="Supplementary lecture material"
+      data-lecture-supplements>
+      {{ index $contentParts 1 | safeHTML }}
+    </section>
+    {{ end }}
   </i2ml-lecture-app>
-
-  {{ $supplementMarker := "<!-- modern-lecture:supplements -->" }}
-  {{ $contentParts := split $page.Content $supplementMarker }}
-  {{ if gt (len $contentParts) 1 }}
-  <section class="lecture-supplements" aria-label="Supplementary lecture material">
-    {{ index $contentParts 1 | safeHTML }}
-  </section>
-  {{ end }}
 
   {{ if or ($page.NextInSection) ($page.PrevInSection)}}
   <ul class="section_skipper list-unstyled">

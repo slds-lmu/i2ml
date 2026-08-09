@@ -26,11 +26,13 @@ export class PdfViewer {
   private observer: IntersectionObserver | undefined;
   private resizeObserver: ResizeObserver | undefined;
   private readonly renderTasks = new Map<string, Promise<void>>();
+  private readonly thumbnails = new Map<string, string>();
   private resizeFrame: number | undefined;
   private observedWidth = 0;
   private generation = 0;
   private descriptionIndex = 0;
   private readonly descriptionPrefix = `lecture-slide-description-${++viewerInstance}`;
+  private readonly videoChip = createVideoChip();
 
   constructor(
     private readonly container: HTMLElement,
@@ -59,13 +61,26 @@ export class PdfViewer {
     }
 
     if (asset.decks.length === 0) this.renderStructuredFallback(asset.page_states, 1);
+    if (generation === this.generation) this.applyStripNumbers();
   }
 
+  /**
+   * Scrolls only the strip container (never the page) so automatic following
+   * cannot yank the surrounding document away from what the student reads.
+   */
   scrollTo(pageStateId: string, behavior: ScrollBehavior, focus = false): void {
-    const state = this.stateForId(pageStateId);
-    const target = [...this.elementStates].find(([, candidate]) => candidate === state)?.[0];
-    if (typeof target?.scrollIntoView === "function") {
-      target.scrollIntoView({ behavior, block: "center" });
+    const target = this.sectionFor(pageStateId);
+    if (target) {
+      const containerRect = this.container.getBoundingClientRect();
+      const targetRect = target.getBoundingClientRect();
+      const top = this.container.scrollTop +
+        (targetRect.top - containerRect.top) -
+        Math.max(0, (this.container.clientHeight - targetRect.height) / 2);
+      if (typeof this.container.scrollTo === "function") {
+        this.container.scrollTo({ top, behavior });
+      } else {
+        this.container.scrollTop = top;
+      }
     }
     if (focus) target?.focus({ preventScroll: true });
   }
@@ -76,6 +91,69 @@ export class PdfViewer {
       const active = Boolean(activeState && state === activeState);
       page.classList.toggle("is-active", active);
       page.setAttribute("aria-current", active ? "true" : "false");
+    }
+  }
+
+  /**
+   * Marks the slide currently shown in the video, independent of the slide the
+   * student is viewing. The chip carries the occurrence timestamp.
+   */
+  setVideoCurrent(pageStateId: string | undefined, label?: string): void {
+    const section = pageStateId ? this.sectionFor(pageStateId) : undefined;
+    for (const [page] of this.elementStates) {
+      page.classList.toggle("is-video-current", page === section);
+    }
+    if (!section) {
+      this.videoChip.remove();
+      return;
+    }
+    this.videoChip.querySelector("span")!.textContent = label ?? "Current";
+    if (this.videoChip.parentElement !== section) section.prepend(this.videoChip);
+  }
+
+  /** Adds a "revised after recording" style badge to the given page states. */
+  setRevisionBadges(pageStateIds: ReadonlySet<string>, label: string): void {
+    for (const [section, state] of this.elementStates) {
+      let badge = section.querySelector<HTMLElement>(".slide-revision-badge");
+      const wanted = pageStateIds.has(state.id);
+      if (wanted && !badge) {
+        badge = document.createElement("span");
+        badge.className = "slide-revision-badge";
+        badge.textContent = label;
+        section.append(badge);
+      } else if (!wanted && badge) {
+        badge.remove();
+      }
+    }
+  }
+
+  /** Low-resolution page snapshot for TOC rows; cached per page state. */
+  async thumbnail(pageStateId: string, width = 96): Promise<string | undefined> {
+    const cached = this.thumbnails.get(pageStateId);
+    if (cached) return cached;
+    const section = this.sectionFor(pageStateId);
+    const documentKey = section?.dataset.documentKey;
+    const pageNumber = Number(section?.dataset.assetPage);
+    const pdfDocument = documentKey ? this.documents.get(documentKey)?.document : undefined;
+    if (!section || !pdfDocument || !pageNumber) return undefined;
+    const generation = this.generation;
+    try {
+      const page = await pdfDocument.getPage(pageNumber);
+      if (generation !== this.generation) return undefined;
+      const baseViewport = page.getViewport({ scale: 1 });
+      const viewport = page.getViewport({ scale: width / baseViewport.width });
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.ceil(viewport.width);
+      canvas.height = Math.ceil(viewport.height);
+      const context = canvas.getContext("2d");
+      if (!context) return undefined;
+      await page.render({ canvas, canvasContext: context, viewport }).promise;
+      if (generation !== this.generation) return undefined;
+      const url = canvas.toDataURL("image/png");
+      this.thumbnails.set(pageStateId, url);
+      return url;
+    } catch {
+      return undefined;
     }
   }
 
@@ -95,6 +173,7 @@ export class PdfViewer {
     if (this.resizeFrame !== undefined) window.cancelAnimationFrame(this.resizeFrame);
     this.resizeFrame = undefined;
     this.observedWidth = 0;
+    this.videoChip.remove();
     for (const handle of this.documents.values()) {
       if (handle.document) {
         void handle.document
@@ -109,6 +188,7 @@ export class PdfViewer {
     this.elementStates.clear();
     this.visibleRatios.clear();
     this.renderTasks.clear();
+    this.thumbnails.clear();
   }
 
   private createObserver(): void {
@@ -209,11 +289,15 @@ export class PdfViewer {
         "aria-label",
         assetLabel(deck.order, state?.page ?? page)
       );
+      const surface = document.createElement("div");
+      surface.className = "pdf-page-surface";
       const loading = document.createElement("div");
       loading.className = "pdf-page-loading";
       loading.setAttribute("aria-live", "polite");
       loading.textContent = `Loading ${assetLabel(deck.order, state?.page ?? page).toLowerCase()}…`;
-      section.append(loading);
+      surface.append(loading);
+      section.append(surface);
+      this.appendPageNumber(section);
       this.appendLongDescription(section, state);
       this.container.append(section);
       this.observer?.observe(section);
@@ -244,6 +328,7 @@ export class PdfViewer {
     try {
       const page = await pdfDocument.getPage(pageNumber);
       if (generation !== this.generation || !section.isConnected) return;
+      const surface = section.querySelector<HTMLElement>(".pdf-page-surface") ?? section;
       const baseViewport = page.getViewport({ scale: 1 });
       const width = Math.max(section.clientWidth || this.container.clientWidth || 1, 1);
       const scale = width / baseViewport.width;
@@ -258,8 +343,7 @@ export class PdfViewer {
       if (!context) throw new Error("Canvas rendering is unavailable");
       const text = document.createElement("div");
       text.className = "textLayer pdf-text-layer";
-      const description = section.querySelector<HTMLElement>(".lecture-long-description");
-      section.replaceChildren(canvas, text, ...(description ? [description] : []));
+      surface.replaceChildren(canvas, text);
       await page.render({
         canvas,
         canvasContext: context,
@@ -289,17 +373,37 @@ export class PdfViewer {
       section.dataset.pageStateId = state.id;
       section.tabIndex = 0;
       section.setAttribute("aria-label", assetLabel(deckOrder, state.page));
+      const surface = document.createElement("div");
+      surface.className = "structured-slide-surface";
       const heading = document.createElement("h3");
       heading.textContent = assetLabel(deckOrder, state.page);
       const content = document.createElement("p");
       content.textContent = state.text || state.markdown || "Structured slide text unavailable.";
-      section.append(heading, content);
+      surface.append(heading, content);
+      section.append(surface);
+      this.appendPageNumber(section);
       this.appendLongDescription(section, state);
       section.addEventListener("focus", () => this.onVisible(state));
       this.elementStates.set(section, state);
       this.container.append(section);
       this.observer?.observe(section);
     }
+  }
+
+  private applyStripNumbers(): void {
+    const sections = [...this.container.querySelectorAll<HTMLElement>(
+      ".pdf-page, .structured-slide"
+    )];
+    for (const [index, section] of sections.entries()) {
+      const label = section.querySelector<HTMLElement>(".slide-page-num");
+      if (label) label.textContent = `${index + 1} / ${sections.length}`;
+      section.dataset.stripPosition = String(index + 1);
+    }
+  }
+
+  private sectionFor(pageStateId: string): HTMLElement | undefined {
+    const state = this.stateForId(pageStateId);
+    return [...this.elementStates].find(([, candidate]) => candidate === state)?.[0];
   }
 
   private stateForId(pageStateId: string): PageState | undefined {
@@ -310,6 +414,13 @@ export class PdfViewer {
 
   private renderKey(section: HTMLElement): string {
     return `${section.dataset.documentKey ?? ""}:${section.dataset.assetPage ?? ""}`;
+  }
+
+  private appendPageNumber(section: HTMLElement): void {
+    const label = document.createElement("span");
+    label.className = "slide-page-num";
+    label.setAttribute("aria-hidden", "true");
+    section.append(label);
   }
 
   private appendLongDescription(section: HTMLElement, state: PageState | undefined): void {
@@ -336,6 +447,14 @@ export class PdfViewer {
       }]
     };
   }
+}
+
+function createVideoChip(): HTMLElement {
+  const chip = document.createElement("span");
+  chip.className = "slide-current-chip";
+  const label = document.createElement("span");
+  chip.append(label);
+  return chip;
 }
 
 function assetLabel(deckOrder: number, page: number): string {

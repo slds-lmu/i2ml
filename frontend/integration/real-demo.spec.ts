@@ -91,13 +91,14 @@ test("combined FastAPI/Hugo demo loads the real release DTO and PDF", async ({ p
   await page.goto(lectureUrl);
   await expect(page.getByRole("region", { name: "Synchronized lecture" })).toBeVisible();
   await expect(page.locator(".qa-debug-trace")).toHaveCount(0);
-  await expect(page.getByRole("tab", { name: "Recorded slides" })).toHaveAttribute(
+  await expect(page.getByRole("tab", { name: "Slides as in video" })).toHaveAttribute(
     "aria-selected",
     "true"
   );
   await expect(page.locator(".pdf-page").first()).toBeVisible();
   await expect(page.locator(".pdf-page canvas").first()).toBeVisible();
   await expect(page.locator(".pdf-text-layer").first()).not.toBeEmpty();
+  await page.getByRole("button", { name: "PDF", exact: true }).click();
   await expect(page.getByRole("link", { name: /Download slides/ })).toHaveAttribute(
     "href",
     /course-assets\/pdfs\/[a-f0-9]{64}\.pdf/
@@ -193,9 +194,9 @@ test("debug Hugo and FastAPI render the ordered provider and tool trace", async 
   await expect(trace).toHaveCount(1);
   await expect(trace).not.toHaveAttribute("open", "");
 
-  await page.getByRole("button", { name: "Open course assistant" }).click();
+  await page.getByRole("button", { name: "Ask about this lecture" }).click();
   await page.getByLabel("Question").fill("Exercise the complete local debug trace.");
-  await page.getByRole("button", { name: "Ask" }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.locator(".chat-message.is-assistant")).toContainText(
     "Integration debug answer from the local provider."
   );
@@ -252,7 +253,6 @@ test("selection payload and malicious streamed answer remain safe", async ({ pag
     });
   });
   await page.goto(lectureUrl);
-  await page.getByRole("button", { name: "Open course assistant" }).click();
   await expect(page.locator(".pdf-text-layer span").first()).toBeVisible();
   const teachingText = await page.evaluate(async () => {
     const lecture = await fetch("/api/v1/lectures/i2ml-01-01").then((response) => response.json());
@@ -279,29 +279,26 @@ test("selection payload and malicious streamed answer remain safe", async ({ pag
     return "";
   }, teachingText);
   expect(selectedText).toBeTruthy();
-  const capture = page.getByRole("button", { name: "Use selected slide text" });
-  const pointerTarget = await capture.evaluate((button) => {
-    const bounds = button.getBoundingClientRect();
-    const target = document.elementFromPoint(
-      bounds.left + bounds.width / 2,
-      bounds.top + bounds.height / 2
-    );
-    return {
-      inside: target === button || button.contains(target),
-      button: {
-        left: bounds.left,
-        top: bounds.top,
-        right: bounds.right,
-        bottom: bounds.bottom
-      },
-      target: target?.outerHTML.slice(0, 300) ?? null
-    };
-  });
+  const popover = page.locator(".selection-popover");
+  await expect(popover).toBeVisible();
+  const pointerTarget = await popover.getByRole("button", { name: "Ask about this" })
+    .evaluate((button) => {
+      const bounds = button.getBoundingClientRect();
+      const target = document.elementFromPoint(
+        bounds.left + bounds.width / 2,
+        bounds.top + bounds.height / 2
+      );
+      return {
+        inside: target === button || button.contains(target),
+        target: target?.outerHTML.slice(0, 300) ?? null
+      };
+    });
   expect(pointerTarget.inside, JSON.stringify(pointerTarget)).toBe(true);
-  await capture.click();
+  await popover.getByRole("button", { name: "Ask about this" }).click();
+  await expect(page.locator(".chat-panel")).toBeVisible();
   await expect(page.locator(".selection-chip")).toContainText(selectedText);
   await page.getByLabel("Question").fill("Explain this selected text.");
-  await page.getByRole("button", { name: "Ask" }).click();
+  await page.getByRole("button", { name: "Ask", exact: true }).click();
   await expect(page.getByRole("button", { name: "Referenced slide" })).toBeVisible();
   await expect(page.locator(".chat-message.is-assistant img")).toHaveCount(0);
   await expect(page.locator(".chat-message.is-assistant")).not.toContainText("[[slide:");
@@ -383,9 +380,9 @@ test("supplementary material remains visible and non-lecture pages remain legacy
   for (const [, binding] of supplementBindings) {
     const response = await request.get(binding.internal_path);
     expect(response.ok()).toBe(true);
-    expect(await response.text()).toContain(
-      '<section class="lecture-supplements" aria-label="Supplementary lecture material">'
-    );
+    const html = await response.text();
+    expect(html).toContain('aria-label="Supplementary lecture material"');
+    expect(html).toContain("data-lecture-supplements");
   }
   for (const route of legacyRoutes) {
     const response = await request.get(route);
@@ -404,7 +401,7 @@ test("representative course routes load their real presentation modes and teachi
     await expect(page.locator(".pdf-page canvas").first()).toBeVisible();
     if (mode === "slide-only" || mode === "external") {
       await expect(page.locator(".video-container iframe")).toHaveCount(0);
-      await expect(page.locator(".sync-toolbar")).toBeHidden();
+      await expect(page.locator(".video-statusbar")).toBeHidden();
     } else {
       await expect(page.locator(".video-container iframe")).toHaveCount(1);
     }
@@ -444,7 +441,7 @@ test("deep links, revision-tab keys, and URL replacement work without history sp
     `${lectureUrl}?lecture=i2ml-01-01&slide=${encodeURIComponent(teachingId!)}&time=12.5`
   );
 
-  await expect(page.getByRole("tab", { name: "Corrected slides" })).toHaveAttribute(
+  await expect(page.getByRole("tab", { name: "Updated slides" })).toHaveAttribute(
     "aria-selected",
     "true"
   );
@@ -462,11 +459,11 @@ test("deep links, revision-tab keys, and URL replacement work without history sp
     () => (window as typeof window & { __pushStateCalls?: number }).__pushStateCalls
   )).toBe(0);
 
-  const corrected = page.getByRole("tab", { name: "Corrected slides" });
+  const corrected = page.getByRole("tab", { name: "Updated slides" });
   await corrected.focus();
   await corrected.press("ArrowLeft");
-  await expect(page.getByRole("tab", { name: "Recorded slides" })).toBeFocused();
-  await expect(page.getByRole("tab", { name: "Recorded slides" })).toHaveAttribute(
+  await expect(page.getByRole("tab", { name: "Slides as in video" })).toBeFocused();
+  await expect(page.getByRole("tab", { name: "Slides as in video" })).toHaveAttribute(
     "aria-selected",
     "true"
   );
@@ -490,7 +487,7 @@ test("desktop assistant and narrow mobile layout preserve PDF text geometry", as
   await page.setViewportSize({ width: 1440, height: 1000 });
   await page.goto(lectureUrl);
   await expect(page.locator(".pdf-page canvas").first()).toBeVisible();
-  await page.getByRole("button", { name: "Open course assistant" }).click();
+  await page.getByRole("button", { name: "Ask about this lecture" }).click();
 
   await expect.poll(() => page.evaluate(() => {
     const content = document.querySelector<HTMLElement>("#content")!;

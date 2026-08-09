@@ -1,19 +1,23 @@
+import { AssistantPanel, type ChatSelection } from "./assistant";
 import { cueAt, cuePageStateIds, nearestOccurrence } from "./cue-engine";
 import {
-  renderSafeMarkdown,
-  streamChat,
-  stripStructuredCitationMarkers,
-  typesetSafeMath,
-  type ChatPayload
-} from "./chat";
+  buildSlideIndex,
+  formatTimeMs,
+  occurrenceTimeMs,
+  revisedTeachingStateIds,
+  searchSlides,
+  slideTitle,
+  type SlideIndex
+} from "./lecture-data";
+import { MiniPlayer } from "./mini-player";
 import { PdfViewer } from "./pdf-viewer";
 import { QaDebugTraceView } from "./qa-debug";
+import { SelectionPopover } from "./selection-popover";
 import { SyncState } from "./sync-state";
 import {
   normalizeLectureManifest,
   pageStateForId,
   pageStateIdForRevision,
-  type CueInterval,
   type LectureManifest,
   type PageState,
   type RevisionAsset,
@@ -28,65 +32,77 @@ template.innerHTML = `
     <div class="lecture-fallback" hidden></div>
     <div class="lecture-main">
       <section class="media-panel" aria-label="Lecture media">
-        <div class="video-container"></div>
-        <p class="external-video" hidden></p>
-        <div class="sync-toolbar" aria-label="Synchronization controls">
-          <button type="button" data-action="follow">Follow video</button>
-          <button type="button" data-action="return">Return to video slide</button>
-          <button type="button" data-action="set-time">Set video to this slide</button>
-          <button type="button" data-action="play-time">Play from this slide</button>
-          <span class="sync-mode">Following video</span>
+        <div class="video-dock" hidden>
+          <div class="video-frame">
+            <div class="video-container"></div>
+            <div class="mini-player-bar" hidden>
+              <span class="mini-player-time" aria-hidden="true"></span>
+              <span class="mini-player-hint" aria-hidden="true">drag to move</span>
+              <button type="button" data-action="mini-expand" aria-label="Return the video to the page">⤢</button>
+              <button type="button" data-action="mini-close" aria-label="Hide the floating video">×</button>
+            </div>
+          </div>
         </div>
+        <p class="external-video" hidden></p>
+        <div class="video-statusbar" hidden>
+          <span class="video-time"><span data-time-now>0:00</span> / <span data-time-total>–:––</span></span>
+          <span class="follow-pill" data-follow-state="following">
+            <span class="follow-indicator"><span class="follow-dot" aria-hidden="true"></span><span
+              class="follow-label">Slides following video</span></span>
+            <span class="follow-paused-label">Auto-follow paused</span>
+            <button type="button" data-action="resume-follow">Resume following</button>
+          </span>
+          <span class="now-viewing"></span>
+        </div>
+        <div class="media-below" hidden></div>
       </section>
       <section class="slide-panel" role="tabpanel" aria-label="Lecture slides">
-        <div class="revision-tabs" role="tablist" aria-label="Slide revision">
-          <button type="button" role="tab" data-revision="recorded">Recorded slides</button>
-          <button type="button" role="tab" data-revision="teaching">Corrected slides</button>
+        <div class="slide-toolbar" aria-label="Slide controls">
+          <button type="button" data-action="toggle-toc" aria-expanded="false" aria-haspopup="true">
+            <span aria-hidden="true">☰</span> <span class="toolbar-label">Slides</span>
+          </button>
+          <div class="slide-search">
+            <input type="search" placeholder="Search in slides…" aria-label="Search in slides"
+              autocomplete="off">
+            <div class="search-results" hidden></div>
+          </div>
+          <div class="pdf-menu">
+            <button type="button" data-action="toggle-pdf-menu" aria-haspopup="true"
+              aria-expanded="false">PDF</button>
+            <div class="pdf-menu-list" hidden>
+              <div class="pdf-download" hidden></div>
+              <button type="button" data-action="print">Print slides</button>
+            </div>
+          </div>
+          <button type="button" class="play-from-slide" data-action="play-time">
+            <span aria-hidden="true">▶</span> <span class="toolbar-label">Play video from this slide</span>
+          </button>
+        </div>
+        <div class="revision-row">
+          <div class="revision-tabs" role="tablist" aria-label="Slide revision">
+            <button type="button" role="tab" data-revision="recorded">Slides as in video</button>
+            <button type="button" role="tab" data-revision="teaching">Updated slides</button>
+          </div>
+          <span class="revision-hint"></span>
         </div>
         <div class="correction-notice" hidden></div>
-        <div class="slide-scroll" tabindex="0" aria-label="Scrollable slides"></div>
-        <div class="slide-actions">
-          <div class="pdf-download" hidden></div>
-          <button type="button" data-action="print">Print slides</button>
+        <div class="slide-strip">
+          <div class="toc-drawer" hidden>
+            <header>
+              <h2 class="toc-title">All slides</h2>
+              <button type="button" data-action="close-toc" aria-label="Close the slide list">×</button>
+            </header>
+            <ul class="toc-list"></ul>
+          </div>
+          <div class="slide-scroll" tabindex="0" aria-label="Scrollable slides"></div>
         </div>
       </section>
     </div>
-    <div class="assistant-column">
-      <button
-        type="button"
-        class="assistant-toggle"
-        data-action="toggle-assistant"
-        aria-label="Open course assistant"
-        aria-expanded="false">
-        <span data-assistant-toggle-label>Open course assistant</span>
-      </button>
-      <aside class="chat-panel" aria-label="Course assistant" hidden>
-        <header>
-          <h2>Ask about this lecture</h2>
-          <div class="assistant-header-actions">
-            <button type="button" data-action="clear-chat">Clear</button>
-            <button type="button" data-action="close-assistant">Close</button>
-          </div>
-        </header>
-        <p class="assistant-warning">The assistant can be wrong. Check its slide citations.</p>
-        <p class="assistant-student-notice" data-student-notice-hook>
-          <strong>Student notice placeholder.</strong>
-          Required privacy and usage information will be added before student deployment.
-        </p>
-        <div class="selection-chip" hidden>
-          <span></span><button type="button" data-action="clear-selection" aria-label="Clear selected text">×</button>
-        </div>
-        <button type="button" data-action="capture-selection">Use selected slide text</button>
-        <div class="chat-messages" aria-live="polite"></div>
-        <form class="chat-form">
-          <label>Question<textarea name="question" maxlength="4000" required></textarea></label>
-          <button type="submit">Ask</button>
-        </form>
-      </aside>
-    </div>
+    <div class="assistant-region"></div>
+    <div class="selection-popover" hidden></div>
   </section>`;
 
-let assistantInstance = 0;
+let lectureInstance = 0;
 
 interface LectureUrlState {
   slideId?: string;
@@ -99,51 +115,93 @@ export class LectureApp extends HTMLElement {
   private state = new SyncState();
   private player = new YouTubeController();
   private viewer: PdfViewer | undefined;
+  private assistant: AssistantPanel | undefined;
+  private selectionPopover: SelectionPopover | undefined;
+  private miniPlayer: MiniPlayer | undefined;
+  private slideIndex: SlideIndex = { entries: [], total: 0, byStateId: new Map() };
+  private revisedIds = new Set<string>();
   private currentTimeMs = 0;
-  private selection: ChatPayload["selection"];
-  private conversationId: string | undefined;
+  private videoCueKey: string | undefined;
+  private lastSlideStateId: string | undefined;
   private debugTrace: QaDebugTraceView | undefined;
   private revisionRequest = 0;
   private pendingScrollTargetId: string | undefined;
   private urlStateReady = false;
+  private searchDebounce: number | undefined;
+  private tocThumbnailObserver: IntersectionObserver | undefined;
+  private readonly layoutQuery = window.matchMedia("(max-width: 1149.98px)");
+  private readonly layoutListener = () => this.placeSupplements();
   private readonly popStateHandler = () => {
     if (this.urlStateReady) void this.applyUrlState();
   };
 
   connectedCallback(): void {
     document.body.classList.add("has-modern-lecture");
+    const supplements = this.querySelector("[data-lecture-supplements]");
+    supplements?.remove();
     this.replaceChildren(template.content.cloneNode(true));
+    if (supplements) {
+      const below = this.element<HTMLElement>(".media-below");
+      below.append(supplements);
+      below.hidden = false;
+    }
     this.debugTrace = undefined;
-    const instance = ++assistantInstance;
-    const panelId = `i2ml-course-assistant-${instance}`;
-    const slidePanelId = `i2ml-lecture-slides-${instance}`;
+    const instance = ++lectureInstance;
     const slidePanel = this.element<HTMLElement>(".slide-panel");
-    slidePanel.id = slidePanelId;
+    slidePanel.id = `i2ml-lecture-slides-${instance}`;
     this.querySelectorAll<HTMLButtonElement>("[data-revision]").forEach((tab) => {
       tab.id = `i2ml-revision-${tab.dataset.revision}-${instance}`;
-      tab.setAttribute("aria-controls", slidePanelId);
+      tab.setAttribute("aria-controls", slidePanel.id);
     });
-    const chatPanel = this.element<HTMLElement>(".chat-panel");
-    chatPanel.id = panelId;
-    this.element<HTMLButtonElement>("[data-action=toggle-assistant]").setAttribute(
-      "aria-controls",
-      panelId
-    );
-    if (this.dataset.qaDebug === "true") {
-      this.debugTrace = new QaDebugTraceView();
-      chatPanel.classList.add("has-debug-trace");
-      this.element<HTMLElement>(".assistant-student-notice").after(this.debugTrace.element);
-    }
+    if (this.dataset.qaDebug === "true") this.debugTrace = new QaDebugTraceView();
     this.viewer = new PdfViewer(this.element(".slide-scroll"), (state) => this.visibleSlide(state));
+    this.assistant = new AssistantPanel(
+      this.element(".assistant-region"),
+      {
+        lectureId: () => this.manifest?.lecture_id ?? this.dataset.lectureId ?? "",
+        lectureTitle: () => this.manifest?.title ?? document.title,
+        contentRevision: () => this.manifest?.content_revision ?? "",
+        hasVideo: () => this.hasControllableVideo(),
+        activeSlideNumber: () => this.activeSlideNumber(),
+        citationTimeMs: (slideId) =>
+          this.manifest && this.hasControllableVideo()
+            ? occurrenceTimeMs(this.manifest, slideId)
+            : undefined,
+        prepareQuestion: (selection) => this.prepareQuestion(selection),
+        openCitation: (slideId) => {
+          void this.navigateToCitation(slideId).catch((error) =>
+            this.fail(error instanceof Error ? error.message : "Cited slide failed to load")
+          );
+        },
+        seekVideo: (timeMs) => this.seekFromCitation(timeMs),
+        announce: (message) => this.status(message)
+      },
+      this.debugTrace
+    );
+    this.selectionPopover = new SelectionPopover(
+      this.element(".selection-popover"),
+      this.element(".slide-scroll"),
+      {
+        onAsk: (text, slide) => this.askAboutSelection(text, slide),
+        announce: (message) => this.status(message)
+      }
+    );
     this.bindControls();
+    this.placeSupplements();
+    this.layoutQuery.addEventListener?.("change", this.layoutListener);
     window.addEventListener("popstate", this.popStateHandler);
     void this.load();
   }
 
   disconnectedCallback(): void {
+    this.layoutQuery.removeEventListener?.("change", this.layoutListener);
     window.removeEventListener("popstate", this.popStateHandler);
     this.player.destroy();
     this.viewer?.destroy();
+    this.selectionPopover?.destroy();
+    this.miniPlayer?.destroy();
+    this.assistant?.destroy();
+    this.tocThumbnailObserver?.disconnect();
     this.urlStateReady = false;
   }
 
@@ -158,6 +216,8 @@ export class LectureApp extends HTMLElement {
       this.manifest = normalizeLectureManifest(await response.json(), lectureId);
       if (!this.manifest.content_revision) throw new Error("Lecture data has no content revision");
       this.revision = this.manifest.revisions.recorded ? "recorded" : "teaching";
+      this.revisedIds = revisedTeachingStateIds(this.manifest);
+      this.assistant?.activate();
       const requestedUrlState = this.readUrlState();
       const requestedSlide = requestedUrlState.slideId
         ? this.resolveUrlSlide(requestedUrlState.slideId)
@@ -165,7 +225,6 @@ export class LectureApp extends HTMLElement {
       if (requestedSlide) {
         this.revision = requestedSlide.revision;
         this.state.explore();
-        this.updateMode();
       }
       await this.showRevision(this.revision, requestedSlide?.pageStateId, Boolean(requestedSlide));
       let mediaReady = false;
@@ -185,6 +244,7 @@ export class LectureApp extends HTMLElement {
         this.player.seek(requestedUrlState.timeMs, false);
         if (!requestedSlide) this.onVideoTime(requestedUrlState.timeMs);
       }
+      this.updateSyncUi();
       this.urlStateReady = true;
       this.replaceUrlState();
     } catch (error) {
@@ -192,27 +252,57 @@ export class LectureApp extends HTMLElement {
     }
   }
 
+  private hasControllableVideo(): boolean {
+    return (
+      this.manifest?.presentation.mode === "video_lecture" &&
+      !this.element<HTMLElement>(".media-panel").classList.contains("has-media-error")
+    );
+  }
+
+  /**
+   * Keeps the below-video content (description, quiz, downloads) under the
+   * video in the desktop two-column layout, but after the slide strip in the
+   * stacked and slide-only layouts, matching the agreed reading order.
+   */
+  private placeSupplements(): void {
+    const below = this.element<HTMLElement>(".media-below");
+    const main = this.element<HTMLElement>(".lecture-main");
+    const media = this.element<HTMLElement>(".media-panel");
+    const stackAfterSlides = this.layoutQuery.matches || main.classList.contains("is-slide-only");
+    const target = stackAfterSlides ? main : media;
+    if (below.parentElement !== target) target.append(below);
+  }
+
   private async mountPresentation(): Promise<void> {
     if (!this.manifest) return;
     const presentation = this.manifest.presentation;
     const media = this.element<HTMLElement>(".media-panel");
-    const toolbar = this.element<HTMLElement>(".sync-toolbar");
     if (
       presentation.mode === "video_lecture" &&
       presentation.provider === "youtube" &&
       presentation.provider_id
     ) {
+      this.element<HTMLElement>(".video-dock").hidden = false;
+      this.element<HTMLElement>(".video-statusbar").hidden = false;
       await this.player.mount(
         this.element(".video-container"),
         presentation.provider_id,
-        () => undefined
+        () => this.updateTimeDisplay()
       );
       this.player.onTime((time) => this.onVideoTime(time));
+      this.miniPlayer = new MiniPlayer(
+        this.element(".video-dock"),
+        this.element(".video-frame"),
+        this.element(".mini-player-bar")
+      );
+      this.updateTimeDisplay();
       return;
     }
     media.classList.add("is-slide-only");
-    toolbar.hidden = true;
-    this.element<HTMLElement>(".video-container").hidden = true;
+    this.element<HTMLElement>(".lecture-main").classList.add("is-slide-only");
+    this.element<HTMLElement>(".video-dock").hidden = true;
+    this.element<HTMLElement>(".video-statusbar").hidden = true;
+    let hasExternalLink = false;
     if (presentation.mode === "external_link_only" && presentation.external_url) {
       const paragraph = this.element<HTMLElement>(".external-video");
       const link = document.createElement("a");
@@ -223,7 +313,10 @@ export class LectureApp extends HTMLElement {
       link.rel = "noopener noreferrer";
       paragraph.replaceChildren(link);
       paragraph.hidden = false;
+      hasExternalLink = true;
     }
+    this.placeSupplements();
+    media.hidden = !hasExternalLink;
   }
 
   private async showRevision(
@@ -243,9 +336,26 @@ export class LectureApp extends HTMLElement {
       tab.hidden = tab.dataset.revision === "recorded" && !this.manifest.revisions.recorded;
       if (selected) this.element<HTMLElement>(".slide-panel").setAttribute("aria-labelledby", tab.id);
     }
-    this.renderDownloads(asset);
+    this.renderRevisionHint();
+    this.renderPdfMenu(asset);
     await this.viewer.load(asset);
     if (request !== this.revisionRequest) return;
+    this.slideIndex = buildSlideIndex(asset, this.manifest.cues, (state) => {
+      // Recorded pages without their own text inherit the mapped teaching title.
+      const manifest = this.manifest;
+      if (!manifest) return undefined;
+      const teachingId = pageStateIdForRevision(manifest, state.id, "teaching");
+      const teaching = teachingId
+        ? manifest.revisions.teaching.page_states.find((item) => item.id === teachingId)
+        : undefined;
+      return teaching ? slideTitle(teaching) : undefined;
+    });
+    if (revision === "teaching") {
+      this.viewer.setRevisionBadges(this.revisedIds, "revised after recording");
+    }
+    this.videoCueKey = undefined;
+    this.refreshVideoCue();
+    this.renderToc();
     const mappedPreferred = preferredStateId
       ? pageStateIdForRevision(this.manifest, preferredStateId, revision)
       : undefined;
@@ -259,6 +369,7 @@ export class LectureApp extends HTMLElement {
       : mappedPreferred ?? mappedCurrent ?? asset.page_states[0]?.id;
     if (target) this.setActive(target, Boolean(preferredStateId), focus);
     else if (keepNonSlide) this.viewer.setActive(undefined);
+    this.updateSyncUi();
   }
 
   private async switchRevision(revision: RevisionKind): Promise<void> {
@@ -287,7 +398,30 @@ export class LectureApp extends HTMLElement {
     return undefined;
   }
 
-  private renderDownloads(asset: RevisionAsset): void {
+  private renderRevisionHint(): void {
+    if (!this.manifest) return;
+    const hint = this.element<HTMLElement>(".revision-hint");
+    const revisedCount = this.revisedIds.size;
+    if (!this.manifest.revisions.recorded) {
+      hint.textContent = "current teaching slides";
+      return;
+    }
+    if (this.revision === "recorded") {
+      hint.textContent = revisedCount > 0
+        ? `exact match with the video · the updated version fixes errata on ${revisedCount} slide${
+            revisedCount === 1 ? "" : "s"
+          }`
+        : "exact match with the video";
+    } else {
+      hint.textContent = revisedCount > 0
+        ? `errata fixed on ${revisedCount} slide${
+            revisedCount === 1 ? "" : "s"
+          } — may differ slightly from the video`
+        : "viewing updated slides — may differ slightly from the video";
+    }
+  }
+
+  private renderPdfMenu(asset: RevisionAsset): void {
     const downloads = this.element<HTMLElement>(".pdf-download");
     downloads.replaceChildren();
     const available = asset.decks.filter((deck) => deck.download_url);
@@ -297,23 +431,30 @@ export class LectureApp extends HTMLElement {
       link.textContent = available.length === 1
         ? "Download slides (PDF)"
         : `Download deck ${deck.order || index + 1} (PDF)`;
-      if (index > 0) downloads.append(document.createTextNode(" · "));
       downloads.append(link);
     }
     downloads.hidden = available.length === 0;
+    this.element<HTMLButtonElement>("[data-action=toggle-pdf-menu]").disabled = false;
   }
 
   private onVideoTime(timeMs: number): void {
     this.currentTimeMs = timeMs;
-    if (!this.manifest || this.state.mode !== "follow") return;
+    this.updateTimeDisplay();
+    if (!this.manifest) return;
     const cue = cueAt(this.manifest.cues, timeMs);
+    this.refreshVideoCue();
+    if (this.state.mode !== "follow") {
+      this.updateSyncUi();
+      return;
+    }
     if (!cue || cue.state_kind === "non_slide") {
       const kind = cue?.non_slide_kind ?? cue?.state ?? "unmapped";
       if (!this.state.activePageStateId && this.state.activeNonSlideKind === kind) return;
       this.state.activateNonSlide(kind);
       this.viewer?.setActive(undefined);
       this.updateCorrection(undefined);
-      this.status(`Video segment: ${humanize(kind)} (no lecture slide).`);
+      this.updateSyncUi();
+      this.assistant?.refreshContext();
       this.replaceUrlState();
       return;
     }
@@ -324,12 +465,30 @@ export class LectureApp extends HTMLElement {
       this.viewer?.setActive(undefined);
       this.updateCorrection(undefined);
       this.status("This video segment has no reviewed slide mapping for the selected revision.");
+      this.updateSyncUi();
       this.replaceUrlState();
       return;
     }
     if (target === this.state.activePageStateId && !this.state.activeNonSlideKind) return;
     this.status("");
     this.setActive(target, true);
+  }
+
+  /** Keeps the "current in video" chip and TOC marker in sync with playback. */
+  private refreshVideoCue(): void {
+    if (!this.manifest || !this.hasControllableVideo()) return;
+    const cue = cueAt(this.manifest.cues, this.currentTimeMs);
+    const target = cue && cue.state_kind === "slide"
+      ? this.cueStateForRevision(cuePageStateIds(cue, this.revision))
+      : undefined;
+    const key = `${target ?? "none"}:${cue?.start_ms ?? -1}`;
+    if (key === this.videoCueKey) return;
+    this.videoCueKey = key;
+    this.viewer?.setVideoCurrent(
+      target,
+      cue ? `Current · ${formatTimeMs(cue.stable_at_ms ?? cue.start_ms)}` : undefined
+    );
+    this.decorateToc();
   }
 
   private visibleSlide(page: PageState): void {
@@ -340,8 +499,11 @@ export class LectureApp extends HTMLElement {
     if (this.pendingScrollTargetId && page.id !== this.pendingScrollTargetId) return;
     if (page.id === this.pendingScrollTargetId) this.pendingScrollTargetId = undefined;
     this.state.activatePage(page.id);
+    this.lastSlideStateId = page.id;
     this.viewer?.setActive(page.id);
     this.updateCorrection(page);
+    this.updateSyncUi();
+    this.assistant?.refreshContext();
     this.replaceUrlState();
   }
 
@@ -352,6 +514,7 @@ export class LectureApp extends HTMLElement {
     );
     if (!page) return;
     this.state.activatePage(page.id);
+    this.lastSlideStateId = page.id;
     this.viewer?.setActive(page.id);
     if (scroll) {
       const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
@@ -359,6 +522,8 @@ export class LectureApp extends HTMLElement {
       this.state.withProgrammaticScroll(() => this.viewer?.scrollTo(page.id, behavior, focus));
     }
     this.updateCorrection(page);
+    this.updateSyncUi();
+    this.assistant?.refreshContext();
     this.replaceUrlState();
   }
 
@@ -371,22 +536,42 @@ export class LectureApp extends HTMLElement {
     );
     if (!cue) return this.status("This slide has no video occurrence.");
     this.state.follow();
-    this.updateMode();
     const targetTime = cue.stable_at_ms ?? cue.start_ms;
     this.currentTimeMs = targetTime;
     this.player.seek(targetTime, play);
+    this.updateTimeDisplay();
+    this.refreshVideoCue();
+    this.updateSyncUi();
     this.replaceUrlState();
+  }
+
+  private seekFromCitation(timeMs: number): void {
+    if (!this.hasControllableVideo()) return;
+    this.state.follow();
+    this.currentTimeMs = timeMs;
+    this.player.seek(timeMs, true);
+    this.updateTimeDisplay();
+    this.onVideoTime(timeMs);
+    this.updateSyncUi();
   }
 
   private bindControls(): void {
     const scroll = this.element<HTMLElement>(".slide-scroll");
-    for (const event of ["wheel", "touchstart", "pointerdown", "keydown"] as const) {
-      scroll.addEventListener(event, () => {
-        this.pendingScrollTargetId = undefined;
-        this.state.manualIntent();
-        this.updateMode();
-      });
-    }
+    const manualKeys = new Set([
+      "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "PageUp", "PageDown", "Home", "End", " "
+    ]);
+    const manualIntent = () => {
+      this.pendingScrollTargetId = undefined;
+      const wasFollowing = this.state.mode === "follow";
+      this.state.manualIntent();
+      if (wasFollowing && this.state.mode === "explore") this.updateSyncUi();
+    };
+    scroll.addEventListener("wheel", manualIntent, { passive: true });
+    scroll.addEventListener("touchstart", manualIntent, { passive: true });
+    scroll.addEventListener("pointerdown", manualIntent);
+    scroll.addEventListener("keydown", (event) => {
+      if (manualKeys.has(event.key)) manualIntent();
+    });
     this.querySelectorAll<HTMLButtonElement>("[data-revision]").forEach((button) => {
       button.addEventListener("click", () => {
         void this.switchRevision(button.dataset.revision as RevisionKind).catch((error) =>
@@ -409,76 +594,359 @@ export class LectureApp extends HTMLElement {
         target.click();
       });
     });
-    this.action("follow", () => {
+    this.action("resume-follow", () => {
       this.state.follow();
-      this.updateMode();
+      this.updateSyncUi();
       this.onVideoTime(this.currentTimeMs);
+      this.status("Slides follow the video again.");
     });
-    this.action("return", () => {
-      this.state.follow();
-      this.updateMode();
-      this.onVideoTime(this.currentTimeMs);
-    });
-    this.action("set-time", () => this.syncVideo(false));
     this.action("play-time", () => this.syncVideo(true));
-    this.action("print", () => void this.printSlides());
-    this.action("capture-selection", () => this.captureSelection());
-    this.action("clear-selection", () => this.setSelection(undefined));
-    this.action("clear-chat", () => void this.clearChat());
-    this.action("toggle-assistant", () => {
-      const toggle = this.element<HTMLButtonElement>("[data-action=toggle-assistant]");
-      this.setAssistantExpanded(toggle.getAttribute("aria-expanded") !== "true");
+    this.action("print", () => {
+      this.setPdfMenuOpen(false);
+      void this.printSlides();
     });
-    this.action("close-assistant", () => this.setAssistantExpanded(false, true));
-    this.element<HTMLElement>(".chat-panel").addEventListener("keydown", (event) => {
+    this.action("toggle-pdf-menu", () =>
+      this.setPdfMenuOpen(Boolean(this.element<HTMLElement>(".pdf-menu-list").hidden))
+    );
+    this.action("toggle-toc", () =>
+      this.setTocOpen(Boolean(this.element<HTMLElement>(".toc-drawer").hidden))
+    );
+    this.action("close-toc", () => this.setTocOpen(false, true));
+    document.addEventListener("pointerdown", (event) => {
+      const target = event.target as Node;
+      const pdfMenu = this.querySelector<HTMLElement>(".pdf-menu");
+      if (pdfMenu && !pdfMenu.contains(target)) this.setPdfMenuOpen(false);
+      const search = this.querySelector<HTMLElement>(".slide-search");
+      if (search && !search.contains(target)) this.setSearchResultsOpen(false);
+      const drawer = this.querySelector<HTMLElement>(".toc-drawer");
+      const tocToggle = this.querySelector<HTMLElement>("[data-action=toggle-toc]");
+      if (
+        drawer && !drawer.hidden &&
+        !drawer.contains(target) &&
+        !(tocToggle && tocToggle.contains(target))
+      ) {
+        this.setTocOpen(false);
+      }
+    });
+    const drawer = this.element<HTMLElement>(".toc-drawer");
+    drawer.addEventListener("keydown", (event) => {
       if (event.key !== "Escape") return;
       event.preventDefault();
-      this.setAssistantExpanded(false, true);
+      event.stopPropagation();
+      this.setTocOpen(false, true);
     });
-    this.element<HTMLFormElement>(".chat-form").addEventListener("submit", (event) => {
-      event.preventDefault();
-      void this.ask().catch((error) =>
-        this.fail(error instanceof Error ? error.message : "Assistant context failed to load")
-      );
+    const searchInput = this.element<HTMLInputElement>(".slide-search input");
+    searchInput.addEventListener("input", () => {
+      if (this.searchDebounce !== undefined) window.clearTimeout(this.searchDebounce);
+      this.searchDebounce = window.setTimeout(() => this.renderSearchResults(), 120);
     });
-    this.addEventListener("lecture-citation", (event) => {
-      const slideId = (event as CustomEvent<string>).detail;
-      void this.navigateToCitation(slideId).catch((error) =>
-        this.fail(error instanceof Error ? error.message : "Cited slide failed to load")
-      );
+    searchInput.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        if (searchInput.value) {
+          searchInput.value = "";
+          this.setSearchResultsOpen(false);
+        }
+        return;
+      }
+      if (event.key === "ArrowDown") {
+        const first = this.querySelector<HTMLButtonElement>(".search-results button");
+        if (first) {
+          event.preventDefault();
+          first.focus();
+        }
+      }
+      if (event.key === "Enter") {
+        event.preventDefault();
+        this.querySelector<HTMLButtonElement>(".search-results button")?.click();
+      }
+    });
+    this.element<HTMLElement>(".search-results").addEventListener("keydown", (event) => {
+      const results = [...this.querySelectorAll<HTMLButtonElement>(".search-results button")];
+      const index = results.indexOf(document.activeElement as HTMLButtonElement);
+      if (event.key === "ArrowDown" && index >= 0 && index < results.length - 1) {
+        event.preventDefault();
+        results[index + 1]!.focus();
+      } else if (event.key === "ArrowUp") {
+        event.preventDefault();
+        if (index > 0) results[index - 1]!.focus();
+        else searchInput.focus();
+      } else if (event.key === "Escape") {
+        event.preventDefault();
+        this.setSearchResultsOpen(false);
+        searchInput.focus();
+      }
     });
   }
 
-  private captureSelection(): void {
-    const selection = window.getSelection();
-    const value = selection?.toString().trim().replace(/\s+/g, " ") ?? "";
-    const anchor = selection?.anchorNode;
-    const slide = anchor instanceof Node
-      ? anchor.parentElement?.closest<HTMLElement>(".pdf-page,.structured-slide")
-      : null;
-    if (!value || !slide?.dataset.pageStateId || slide.dataset.pageStateId !== this.state.activePageStateId) {
-      return this.status("Select text on the active slide first.");
-    }
-    if (!this.manifest) return;
-    const teachingId = pageStateIdForRevision(
-      this.manifest,
-      slide.dataset.pageStateId,
-      "teaching"
+  private setPdfMenuOpen(open: boolean): void {
+    const list = this.element<HTMLElement>(".pdf-menu-list");
+    list.hidden = !open;
+    this.element<HTMLButtonElement>("[data-action=toggle-pdf-menu]").setAttribute(
+      "aria-expanded",
+      String(open)
     );
-    if (!teachingId) {
-      this.setSelection(undefined);
-      return this.status(
-        "This recorded slide has no reviewed teaching-revision mapping; select text on the corrected slides instead."
-      );
-    }
-    this.setSelection({ text: value.slice(0, 2000), page_state_id: teachingId });
   }
 
-  private setSelection(selection: ChatPayload["selection"]): void {
-    this.selection = selection;
-    const chip = this.element<HTMLElement>(".selection-chip");
-    chip.hidden = !selection;
-    this.element<HTMLElement>(".selection-chip span").textContent = selection?.text ?? "";
+  private setSearchResultsOpen(open: boolean): void {
+    const results = this.element<HTMLElement>(".search-results");
+    results.hidden = !open;
+    if (!open) results.replaceChildren();
+  }
+
+  private renderSearchResults(): void {
+    const input = this.element<HTMLInputElement>(".slide-search input");
+    const hits = searchSlides(this.slideIndex, input.value);
+    const results = this.element<HTMLElement>(".search-results");
+    if (input.value.replace(/\s+/g, " ").trim().length < 2) {
+      this.setSearchResultsOpen(false);
+      return;
+    }
+    results.hidden = false;
+    if (hits.length === 0) {
+      const empty = document.createElement("p");
+      empty.className = "search-empty";
+      empty.textContent = "No slides match this search.";
+      results.replaceChildren(empty);
+      return;
+    }
+    results.replaceChildren(
+      ...hits.map((hit) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        const title = document.createElement("strong");
+        title.textContent = `${hit.entry.position} · ${hit.entry.title}`;
+        button.append(title);
+        if (hit.snippet && !hit.matchedTitle) {
+          const snippet = document.createElement("span");
+          snippet.textContent = hit.snippet;
+          button.append(snippet);
+        }
+        button.addEventListener("click", () => {
+          this.setSearchResultsOpen(false);
+          this.jumpToSlide(hit.entry.state.id, true);
+        });
+        return button;
+      })
+    );
+  }
+
+  private jumpToSlide(stateId: string, focus = false): void {
+    this.state.explore();
+    this.setActive(stateId, true, focus);
+  }
+
+  private setTocOpen(open: boolean, returnFocus = false): void {
+    const drawer = this.element<HTMLElement>(".toc-drawer");
+    const toggle = this.element<HTMLButtonElement>("[data-action=toggle-toc]");
+    drawer.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    if (open) {
+      this.renderToc();
+      drawer.querySelector<HTMLElement>(".toc-list button")?.focus();
+    } else {
+      this.tocThumbnailObserver?.disconnect();
+      this.tocThumbnailObserver = undefined;
+      if (returnFocus) toggle.focus();
+    }
+  }
+
+  private renderToc(): void {
+    const drawer = this.element<HTMLElement>(".toc-drawer");
+    if (drawer.hidden) return;
+    const list = this.element<HTMLElement>(".toc-list");
+    this.element<HTMLElement>(".toc-title").textContent =
+      `All slides (${this.slideIndex.entries.length})`;
+    this.tocThumbnailObserver?.disconnect();
+    this.tocThumbnailObserver = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (!entry.isIntersecting) continue;
+          const row = entry.target as HTMLElement;
+          this.tocThumbnailObserver?.unobserve(row);
+          const stateId = row.dataset.stateId;
+          const image = row.querySelector<HTMLImageElement>("img");
+          if (!stateId || !image) continue;
+          void this.viewer?.thumbnail(stateId, 120).then((url) => {
+            if (url) {
+              image.src = url;
+              image.hidden = false;
+            }
+          });
+        }
+      },
+      { root: list, threshold: 0.1 }
+    );
+    const showDecks = new Set(this.slideIndex.entries.map((entry) => entry.state.deck_id)).size > 1;
+    let renderedDeck: string | undefined;
+    const rows: HTMLElement[] = [];
+    for (const entry of this.slideIndex.entries) {
+      if (showDecks && entry.state.deck_id !== renderedDeck) {
+        renderedDeck = entry.state.deck_id;
+        const heading = document.createElement("li");
+        heading.className = "toc-deck-heading";
+        heading.textContent = `Deck ${rows.filter((row) => row.className === "toc-deck-heading").length + 1}`;
+        rows.push(heading);
+      }
+      const item = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.dataset.stateId = entry.state.id;
+      const thumb = document.createElement("span");
+      thumb.className = "toc-thumb";
+      const image = document.createElement("img");
+      image.alt = "";
+      image.hidden = true;
+      thumb.append(image);
+      const text = document.createElement("span");
+      text.className = "toc-text";
+      const title = document.createElement("strong");
+      title.textContent = `${entry.position} · ${entry.title}`;
+      const marker = document.createElement("span");
+      marker.className = "toc-marker";
+      text.append(title, marker);
+      if (entry.timeMs !== undefined) {
+        const time = document.createElement("span");
+        time.className = "toc-time";
+        time.textContent = formatTimeMs(entry.timeMs);
+        text.append(time);
+      }
+      button.append(thumb, text);
+      button.addEventListener("click", () => {
+        this.jumpToSlide(entry.state.id, true);
+        this.decorateToc();
+      });
+      item.append(button);
+      rows.push(item);
+      this.tocThumbnailObserver.observe(button);
+    }
+    list.replaceChildren(...rows);
+    this.decorateToc();
+  }
+
+  private decorateToc(): void {
+    const drawer = this.querySelector<HTMLElement>(".toc-drawer");
+    if (!drawer || drawer.hidden) return;
+    const videoStateId = this.videoCueStateId();
+    for (const button of drawer.querySelectorAll<HTMLElement>(".toc-list button")) {
+      const stateId = button.dataset.stateId;
+      const isVideo = Boolean(videoStateId && stateId === videoStateId);
+      const isViewing = Boolean(stateId && stateId === this.state.activePageStateId);
+      button.classList.toggle("is-video-current", isVideo);
+      button.classList.toggle("is-viewing", isViewing);
+      const marker = button.querySelector<HTMLElement>(".toc-marker");
+      if (marker) {
+        marker.textContent = isViewing && isVideo
+          ? "— video · viewing"
+          : isVideo
+            ? "— video"
+            : isViewing
+              ? "— viewing"
+              : "";
+      }
+    }
+  }
+
+  private videoCueStateId(): string | undefined {
+    if (!this.manifest || !this.hasControllableVideo()) return undefined;
+    const cue = cueAt(this.manifest.cues, this.currentTimeMs);
+    return cue && cue.state_kind === "slide"
+      ? this.cueStateForRevision(cuePageStateIds(cue, this.revision))
+      : undefined;
+  }
+
+  private activeSlideNumber(): number | undefined {
+    const stateId = this.state.activePageStateId ?? this.lastSlideStateId;
+    if (!stateId) return undefined;
+    return this.slideIndex.byStateId.get(stateId)?.position;
+  }
+
+  private updateTimeDisplay(): void {
+    if (!this.hasControllableVideo()) return;
+    const now = formatTimeMs(this.currentTimeMs);
+    this.element<HTMLElement>("[data-time-now]").textContent = now;
+    const durationMs = this.player.durationMs();
+    this.element<HTMLElement>("[data-time-total]").textContent = durationMs > 0
+      ? formatTimeMs(durationMs)
+      : "–:––";
+    const miniTime = this.element<HTMLElement>(".mini-player-time");
+    miniTime.textContent = durationMs > 0 ? `${now} / ${formatTimeMs(durationMs)}` : now;
+  }
+
+  /** Refreshes the follow pill, the now-viewing label, and control states. */
+  private updateSyncUi(): void {
+    const following = this.state.mode === "follow";
+    const pill = this.element<HTMLElement>(".follow-pill");
+    pill.dataset.followState = following ? "following" : "paused";
+    const nowViewing = this.element<HTMLElement>(".now-viewing");
+    nowViewing.replaceChildren();
+    if (this.hasControllableVideo()) {
+      const videoStateId = this.videoCueStateId();
+      const videoEntry = videoStateId ? this.slideIndex.byStateId.get(videoStateId) : undefined;
+      const activeEntry = this.state.activePageStateId
+        ? this.slideIndex.byStateId.get(this.state.activePageStateId)
+        : undefined;
+      if (following) {
+        if (activeEntry) {
+          nowViewing.append(
+            "Now: ",
+            strong(`Slide ${activeEntry.position}`),
+            ` — ${activeEntry.title}`
+          );
+        } else {
+          const kind = this.state.activeNonSlideKind;
+          nowViewing.append(kind ? `Now: ${humanize(kind)} (no slide)` : "");
+        }
+      } else {
+        const videoText = videoEntry ? `slide ${videoEntry.position}` : "no slide";
+        nowViewing.append("Video: ", strong(videoText));
+        if (activeEntry) nowViewing.append(" · viewing ", strong(`slide ${activeEntry.position}`));
+      }
+    }
+    const playButton = this.element<HTMLButtonElement>("[data-action=play-time]");
+    const stateId = this.state.activePageStateId;
+    const hasOccurrence = Boolean(
+      this.manifest &&
+      stateId &&
+      this.hasControllableVideo() &&
+      nearestOccurrence(this.manifest.cues, stateId, this.currentTimeMs)
+    );
+    playButton.disabled = !hasOccurrence;
+    playButton.hidden = !this.hasControllableVideo();
+    this.decorateToc();
+  }
+
+  private askAboutSelection(text: string, slide: HTMLElement): void {
+    if (!this.manifest || !this.assistant) return;
+    const stateId = slide.dataset.pageStateId;
+    if (!stateId) {
+      this.status("This page has no linked slide content to reference.");
+      return;
+    }
+    const teachingId = pageStateIdForRevision(this.manifest, stateId, "teaching");
+    const teaching = teachingId
+      ? this.manifest.revisions.teaching.page_states.find((state) => state.id === teachingId)
+      : undefined;
+    if (!teachingId || !teaching) {
+      this.status(
+        "This recorded slide has no reviewed teaching-revision mapping; the question will not quote it."
+      );
+      this.assistant.open();
+      return;
+    }
+    if (!normalized(teaching.text).includes(normalized(text))) {
+      this.status(
+        "The selected recorded text differs from the corrected slide, so it was not attached to the question."
+      );
+      this.assistant.open();
+      return;
+    }
+    const entry = this.slideIndex.byStateId.get(stateId) ??
+      this.slideIndex.byStateId.get(teachingId);
+    this.assistant.setSelection(
+      { text: text.slice(0, 2000), page_state_id: teachingId },
+      entry ? `Slide ${entry.position}` : slideTitle(teaching)
+    );
+    this.assistant.open();
   }
 
   private async navigateToCitation(slideId: string): Promise<void> {
@@ -496,7 +964,7 @@ export class LectureApp extends HTMLElement {
       return;
     }
     this.state.explore();
-    this.updateMode();
+    this.updateSyncUi();
     if (targetRevision === this.revision) this.setActive(targetId, true, true);
     else await this.showRevision(targetRevision, targetId, true);
   }
@@ -514,7 +982,6 @@ export class LectureApp extends HTMLElement {
       this.status("No teaching-revision slide is available for the assistant.");
       return undefined;
     }
-    this.setSelection(undefined);
     this.status(
       `The recorded slide has no reviewed teaching mapping; using corrected slide ${fallback.page} for this question.`
     );
@@ -522,110 +989,49 @@ export class LectureApp extends HTMLElement {
     return fallback.id;
   }
 
-  private validatedTeachingSelection(): ChatPayload["selection"] {
-    if (!this.selection || !this.manifest) return undefined;
-    const teachingId = pageStateIdForRevision(
-      this.manifest,
-      this.selection.page_state_id,
-      "teaching"
-    );
+  private validatedTeachingSelection(
+    selection: ChatSelection | undefined
+  ): ChatSelection | undefined {
+    if (!selection || !this.manifest) return undefined;
+    const teachingId = pageStateIdForRevision(this.manifest, selection.page_state_id, "teaching");
     const teaching = teachingId
       ? this.manifest.revisions.teaching.page_states.find((state) => state.id === teachingId)
       : undefined;
     if (
       !teachingId ||
       !teaching ||
-      !normalized(teaching.text).includes(normalized(this.selection.text))
+      !normalized(teaching.text).includes(normalized(selection.text))
     ) {
-      this.setSelection(undefined);
+      this.assistant?.setSelection(undefined);
       this.status(
-        "The selected recorded text is not present in its corrected slide, so it was omitted from the question."
+        "The selected text is not present in its corrected slide, so it was omitted from the question."
       );
       return undefined;
     }
-    return { ...this.selection, page_state_id: teachingId };
+    return { ...selection, page_state_id: teachingId };
   }
 
-  private async ask(): Promise<void> {
-    if (!this.manifest || !this.state.activePageStateId) return;
-    const form = this.element<HTMLFormElement>(".chat-form");
-    const question = new FormData(form).get("question")?.toString().trim();
-    if (!question) return;
-    const teachingContextId = await this.resolveTeachingContext(this.state.activePageStateId);
-    if (!teachingContextId) return;
-    const selection = this.validatedTeachingSelection();
-    const pageStateIds = [...new Set([
-      teachingContextId,
-      ...(selection ? [selection.page_state_id] : [])
-    ])];
-    const messages = this.element<HTMLElement>(".chat-messages");
-    const user = document.createElement("div");
-    user.className = "chat-message is-user";
-    user.textContent = question;
-    const answer = document.createElement("div");
-    answer.className = "chat-message is-assistant";
-    answer.textContent = "Thinking…";
-    messages.append(user, answer);
-    form.querySelector<HTMLButtonElement>("button[type=submit]")!.disabled = true;
-    this.debugTrace?.reset();
-    let markdown = "";
-    try {
-      const final = await streamChat(
-        {
-          lecture_id: this.manifest.lecture_id,
-          content_revision: this.manifest.content_revision,
-          page_state_ids: pageStateIds,
-          question,
-          selection,
-          conversation_id: this.conversationId,
-          ...(this.debugTrace ? { debug: true } : {})
-        },
-        (delta) => {
-          markdown += delta;
-          answer.innerHTML = renderSafeMarkdown(markdown);
-        },
-        (event) => this.debugTrace?.add(event)
-      );
-      this.conversationId = final.conversation_id;
-      answer.innerHTML = renderSafeMarkdown(
-        stripStructuredCitationMarkers(
-          final.answer_markdown,
-          final.citations.map((citation) => citation.slide_id)
-        )
-      );
-      await typesetSafeMath(answer).catch(() => undefined);
-      const citations = document.createElement("div");
-      citations.className = "chat-citations";
-      for (const citation of final.citations) {
-        const button = document.createElement("button");
-        button.type = "button";
-        button.textContent = citation.label;
-        button.addEventListener("click", () =>
-          this.dispatchEvent(
-            new CustomEvent("lecture-citation", { detail: citation.slide_id, bubbles: true })
-          )
-        );
-        citations.append(button);
-      }
-      answer.append(citations);
-      form.reset();
-    } catch (error) {
-      answer.textContent = error instanceof Error ? error.message : "The assistant is unavailable.";
-      answer.classList.add("is-error");
-    } finally {
-      form.querySelector<HTMLButtonElement>("button[type=submit]")!.disabled = false;
+  private async prepareQuestion(selection: ChatSelection | undefined): Promise<
+    { pageStateIds: string[]; selection?: ChatSelection } | undefined
+  > {
+    if (!this.manifest) return undefined;
+    const contextSource = this.state.activePageStateId ??
+      this.lastSlideStateId ??
+      this.manifest.revisions.teaching.page_states[0]?.id;
+    if (!contextSource) {
+      this.status("This lecture has no slide content for the assistant yet.");
+      return undefined;
     }
-  }
-
-  private async clearChat(): Promise<void> {
-    if (this.conversationId) {
-      await fetch(`/api/v1/conversations/${encodeURIComponent(this.conversationId)}`, {
-        method: "DELETE"
-      }).catch(() => undefined);
-    }
-    this.conversationId = undefined;
-    this.element(".chat-messages").replaceChildren();
-    this.debugTrace?.reset();
+    const teachingContextId = await this.resolveTeachingContext(contextSource);
+    if (!teachingContextId) return undefined;
+    const validated = this.validatedTeachingSelection(selection);
+    return {
+      pageStateIds: [...new Set([
+        teachingContextId,
+        ...(validated ? [validated.page_state_id] : [])
+      ])],
+      ...(validated ? { selection: validated } : {})
+    };
   }
 
   private async printSlides(): Promise<void> {
@@ -649,33 +1055,6 @@ export class LectureApp extends HTMLElement {
     notice.textContent = page?.correction
       ? `${page.correction.kind === "erratum" ? "Erratum" : "Correction"}: ${page.correction.summary}`
       : "";
-  }
-
-  private updateMode(): void {
-    const label = this.element<HTMLElement>(".sync-mode");
-    label.textContent = this.state.mode === "follow" ? "Following video" : "Exploring slides";
-    this.querySelector<HTMLButtonElement>("[data-action=follow]")!.setAttribute(
-      "aria-pressed",
-      String(this.state.mode === "follow")
-    );
-  }
-
-  private setAssistantExpanded(expanded: boolean, returnFocus = false): void {
-    const column = this.element<HTMLElement>(".assistant-column");
-    const toggle = this.element<HTMLButtonElement>("[data-action=toggle-assistant]");
-    const panel = this.element<HTMLElement>(".chat-panel");
-    const focusWasInside = panel.contains(document.activeElement);
-    toggle.setAttribute("aria-expanded", String(expanded));
-    toggle.setAttribute(
-      "aria-label",
-      expanded ? "Hide course assistant" : "Open course assistant"
-    );
-    this.element<HTMLElement>("[data-assistant-toggle-label]").textContent = expanded
-      ? "Hide course assistant"
-      : "Open course assistant";
-    column.classList.toggle("is-expanded", expanded);
-    panel.hidden = !expanded;
-    if (!expanded && (returnFocus || focusWasInside)) toggle.focus();
   }
 
   private currentAsset() {
@@ -708,12 +1087,18 @@ export class LectureApp extends HTMLElement {
   private mediaFailed(message: string): void {
     const media = this.element<HTMLElement>(".media-panel");
     media.classList.add("is-slide-only", "has-media-error");
-    this.element<HTMLElement>(".sync-toolbar").hidden = true;
-    const video = this.element<HTMLElement>(".video-container");
-    video.hidden = true;
-    video.replaceChildren();
+    this.element<HTMLElement>(".lecture-main").classList.add("is-slide-only");
+    this.element<HTMLElement>(".video-statusbar").hidden = true;
+    const dock = this.element<HTMLElement>(".video-dock");
+    dock.hidden = true;
+    this.element<HTMLElement>(".video-container").replaceChildren();
+    this.miniPlayer?.destroy();
+    this.miniPlayer = undefined;
+    this.placeSupplements();
+    media.hidden = true;
     this.status(`Video unavailable: ${message}. Slides and the assistant remain available.`);
     this.showFallbackLinks();
+    this.updateSyncUi();
   }
 
   private showFallbackLinks(): void {
@@ -810,14 +1195,14 @@ export class LectureApp extends HTMLElement {
       this.player.seek(requested.timeMs, false);
       if (!requested.slideId) {
         this.state.follow();
-        this.updateMode();
+        this.updateSyncUi();
         this.onVideoTime(requested.timeMs);
       }
     }
     const target = requested.slideId ? this.resolveUrlSlide(requested.slideId) : undefined;
     if (target) {
       this.state.explore();
-      this.updateMode();
+      this.updateSyncUi();
       if (target.revision === this.revision) this.setActive(target.pageStateId, true, true);
       else await this.showRevision(target.revision, target.pageStateId, true);
     }
@@ -838,6 +1223,12 @@ export class LectureApp extends HTMLElement {
     }
     if (url.href !== window.location.href) history.replaceState(history.state, "", url);
   }
+}
+
+function strong(text: string): HTMLElement {
+  const element = document.createElement("strong");
+  element.textContent = text;
+  return element;
 }
 
 function normalized(value: string): string {

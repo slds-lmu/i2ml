@@ -68,6 +68,31 @@ and writes `data/lecture_bindings.json`. It does not download content. The
 combined backend staging command copies the corresponding self-hosted PDFs to
 `/course-assets/pdfs/`; see the backend README for the complete launch command.
 
+### Modern lecture view (2026 redesign)
+
+Lecture pages follow the agreed `MOOC_design/` mockups: on desktop the video
+sits left with a time/follow status bar, the synchronized slide strip right
+(toolbar with slide list drawer, slide search, PDF menu, and
+"Play video from this slide"), and the assistant docks as a third column.
+Below ~1150px the layout stacks, the strip becomes an internal scroller
+narrower than the page, the video docks as a dismissable mini-player once
+scrolled off-screen, and the assistant opens as a right sheet. Frontend
+modules live in `frontend/src/`:
+
+- `lecture-app.ts` — orchestration, layout state, follow/explore sync, URL state;
+- `pdf-viewer.ts` — PDF.js strip with selectable text, page numbers, badges,
+  thumbnails;
+- `assistant.ts` + `conversation-store.ts` — chat panel; conversations and the
+  language/answer-style preferences persist only in the browser
+  (localStorage), and export produces local Markdown/JSON downloads;
+- `selection-popover.ts`, `mini-player.ts`, `lecture-data.ts`,
+  `cue-engine.ts`, `youtube.ts` — selection → ask flow, video docking, derived
+  slide metadata, cue lookup, player control.
+
+The language and answer-style selectors are stored client-side but not yet
+sent to the QA backend (its request schema rejects unknown fields); wire them
+through once the backend supports the fields.
+
 ## Citation
 
 If you use our material, please consider citing us as follows:

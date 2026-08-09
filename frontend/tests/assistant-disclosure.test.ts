@@ -50,12 +50,12 @@ describe("assistant disclosure", () => {
 
     expect(toggle.getAttribute("aria-expanded")).toBe("true");
     expect(panel.hidden).toBe(false);
-    expect(lecture.querySelector(".assistant-column")?.classList).toContain("is-expanded");
+    expect([...lecture.querySelector(".assistant-region")!.classList]).toContain("is-expanded");
     expect(lecture.querySelector("[data-student-notice-hook]")?.textContent).toContain(
       "Student notice placeholder"
     );
     expect(lecture.querySelector(".assistant-warning")?.textContent).toContain(
-      "The assistant can be wrong"
+      "AI-generated answers can be wrong"
     );
   });
 
@@ -126,8 +126,8 @@ describe("assistant disclosure", () => {
         "Slides and the assistant remain available"
       );
     });
-    expect(lecture.querySelector<HTMLElement>(".sync-toolbar")?.hidden).toBe(true);
-    expect(lecture.querySelector<HTMLElement>(".video-container")?.hidden).toBe(true);
+    expect(lecture.querySelector<HTMLElement>(".video-statusbar")?.hidden).toBe(true);
+    expect(lecture.querySelector<HTMLElement>(".video-dock")?.hidden).toBe(true);
     expect(lecture.querySelector<HTMLAnchorElement>(".lecture-fallback a")?.href).toBe(
       "https://video.example.test/demo"
     );

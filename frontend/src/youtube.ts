@@ -3,11 +3,15 @@ type PlayerStateHandler = (state: number) => void;
 interface YouTubePlayer {
   destroy(): void;
   getCurrentTime(): number;
+  getDuration?(): number;
   getPlayerState(): number;
   pauseVideo(): void;
   playVideo(): void;
   seekTo(seconds: number, allowSeekAhead: boolean): void;
 }
+
+/** Stable YouTube IFrame API player states used by the lecture UI. */
+export const PLAYER_STATE = { ENDED: 0, PLAYING: 1, PAUSED: 2 } as const;
 
 interface YouTubeApi {
   Player: new (
@@ -113,6 +117,16 @@ export class YouTubeController {
 
   currentTimeMs(): number {
     return Math.round((this.player?.getCurrentTime() ?? 0) * 1000);
+  }
+
+  /** Video length in milliseconds; 0 while the player has no metadata yet. */
+  durationMs(): number {
+    const seconds = this.player?.getDuration?.() ?? 0;
+    return Number.isFinite(seconds) && seconds > 0 ? Math.round(seconds * 1000) : 0;
+  }
+
+  playerState(): number | undefined {
+    return this.player?.getPlayerState();
   }
 
   seek(timeMs: number, play: boolean): void {
