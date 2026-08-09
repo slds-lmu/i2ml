@@ -15,6 +15,8 @@ In this section, we explain the ROC curve and how to calculate it. In addition, 
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-roccurves.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **ROC**

@@ -1,0 +1,63 @@
+{{ $page := .page }}
+{{ $binding := .binding }}
+{{ $lectureID := $page.Params.lecture_id | default "" }}
+{{ $fallbackVideo := $page.Params.fallback_video_url | default "" }}
+{{ $fallbackPdfs := slice }}
+{{ with $page.Params.fallback_pdf_urls }}
+  {{ $fallbackPdfs = . }}
+{{ else }}
+  {{ with $page.Params.fallback_pdf_url }}
+    {{ $fallbackPdfs = slice . }}
+  {{ end }}
+{{ end }}
+{{ with $binding }}
+  {{ $lectureID = .lecture_id }}
+  {{ $fallbackPdfs = .fallback_pdf_urls | default (slice) }}
+  {{ $fallbackVideo = .fallback_video_url | default "" }}
+{{ end }}
+
+<main class="lecture-page container">
+  <h1>{{ $page.Title }}</h1>
+  <div class="lecture-introduction">{{ $page.Summary }}</div>
+  <i2ml-lecture-app
+    data-lecture-id="{{ $lectureID }}"
+    {{ if or hugo.IsServer ($page.Site.Params.qadebug | default false) }}data-qa-debug="true"{{ end }}
+    {{ with $page.Params.lecture_manifest_url }}data-manifest-url="{{ . | relURL }}"{{ end }}
+    {{ with $fallbackVideo }}data-fallback-video-url="{{ . }}"{{ end }}
+    {{ range $index, $url := $fallbackPdfs }}
+    data-fallback-pdf-url-{{ add $index 1 }}="{{ $url }}"
+    {{ end }}>
+    <noscript>
+      <p>This lecture viewer requires JavaScript.</p>
+      <ul>
+        {{ with $fallbackVideo }}
+        <li><a href="{{ . }}" rel="noopener noreferrer">Open the lecture video</a></li>
+        {{ end }}
+        {{ range $fallbackPdfs }}
+        <li><a href="{{ . }}">Download a lecture slide deck (PDF)</a></li>
+        {{ end }}
+      </ul>
+    </noscript>
+  </i2ml-lecture-app>
+
+  {{ $supplementMarker := "<!-- modern-lecture:supplements -->" }}
+  {{ $contentParts := split $page.Content $supplementMarker }}
+  {{ if gt (len $contentParts) 1 }}
+  <section class="lecture-supplements" aria-label="Supplementary lecture material">
+    {{ index $contentParts 1 | safeHTML }}
+  </section>
+  {{ end }}
+
+  {{ if or ($page.NextInSection) ($page.PrevInSection)}}
+  <ul class="section_skipper list-unstyled">
+    {{ with $page.NextInSection }}
+    <li id="next_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">&#xab; {{ .Title }}</a></li>
+    {{ end }}
+    {{ with $page.PrevInSection }}
+    <li id="prev_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">{{ .Title }} &#xbb;</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+</main>
+<link rel="stylesheet" href="{{ "lecture/lecture-app.css" | relURL }}">
+<script type="module" src="{{ "lecture/lecture-app.js" | relURL }}"></script>

@@ -15,6 +15,8 @@ It is a crucial part of machine learning to evaluate the performance of a learne
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-generr.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

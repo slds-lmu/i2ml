@@ -1,0 +1,13 @@
+{{ $binding := false }}
+{{ with .File }}
+  {{ $contentPath := printf "content/%s" .Path }}
+  {{ with site.Data.lecture_bindings }}
+    {{ with .bindings }}
+      {{ with index . $contentPath }}
+        {{ $binding = . }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+{{ return $binding }}
+

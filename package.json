@@ -4,6 +4,7 @@
   "version": "0.1.0",
   "type": "module",
   "scripts": {
+    "sync:course-bindings": "node scripts/sync-course-bindings.mjs",
     "build": "vite build && node scripts/vendor-assets.mjs",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",

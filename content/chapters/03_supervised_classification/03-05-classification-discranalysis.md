@@ -15,6 +15,8 @@ Discriminant analysis is a generative approach toward constructing a classifier.
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-discranalysis.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

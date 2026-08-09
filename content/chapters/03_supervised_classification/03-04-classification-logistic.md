@@ -15,6 +15,8 @@ Logistic regression is a discriminant approach toward constructing a classifier.
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-logistic.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **Logistic regression & Newton-Raphson**

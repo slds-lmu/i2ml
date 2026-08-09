@@ -15,6 +15,8 @@ In this section we familiarize ourselves with two simple but popular tuning stra
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-basicalgos.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

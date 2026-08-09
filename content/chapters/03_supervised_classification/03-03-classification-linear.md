@@ -15,6 +15,8 @@ Linear classifiers are an essential subclass of classification models. This sect
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-linear.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

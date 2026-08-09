@@ -15,6 +15,8 @@ Nearly all supervised learning algorithms can be described in terms of three com
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-learnercomponents-hro.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

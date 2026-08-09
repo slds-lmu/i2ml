@@ -1,0 +1,3221 @@
+{
+  "bindings": {
+    "content/chapters/01_ml_basics/01-00-nutshell-basics.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d8f2183aeb33331285172841e3587513a23c0088571568c0d86832a539e03dd8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=1f0gilKVx2I",
+      "internal_path": "/chapters/01_ml_basics/01-00-nutshell-basics/",
+      "lecture_id": "i2ml-01-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "1f0gilKVx2I",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-00-nutshell-basics/",
+      "title": "Chapter 01.00: ML Basics: In a Nutshell"
+    },
+    "content/chapters/01_ml_basics/01-01-what_is_ml.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/e2868f04630a0611447fc5e322b66bd8745f2ad5c4fe06f8f18786f7354fd0f9.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=AvpS4lyLB_c",
+      "internal_path": "/chapters/01_ml_basics/01-01-what_is_ml/",
+      "lecture_id": "i2ml-01-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-whatisml.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "AvpS4lyLB_c",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-01-what_is_ml/",
+      "title": "Chapter 01.01: What is ML?"
+    },
+    "content/chapters/01_ml_basics/01-02-data.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c1e1dad960221f1bee5a59f64584deb81fda73ab28e0cd1972a8ecffd254c168.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=j7-Ci5VWILA",
+      "internal_path": "/chapters/01_ml_basics/01-02-data/",
+      "lecture_id": "i2ml-01-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-data.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "j7-Ci5VWILA",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-02-data/",
+      "title": "Chapter 01.02: Data"
+    },
+    "content/chapters/01_ml_basics/01-03-tasks.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/709cd0c5506856c8631fd173531ed08c6547fabfb9242a8ffad2891610498e97.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=RpgQX73RKUU",
+      "internal_path": "/chapters/01_ml_basics/01-03-tasks/",
+      "lecture_id": "i2ml-01-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-task.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "RpgQX73RKUU",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-03-tasks/",
+      "title": "Chapter 01.03: Tasks"
+    },
+    "content/chapters/01_ml_basics/01-04-models-parameters.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a4aa519b830bbc1753e8f2a945a853c9290b0020d543acf304a97f44a38da1b8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=ImjHkMc_esc",
+      "internal_path": "/chapters/01_ml_basics/01-04-models-parameters/",
+      "lecture_id": "i2ml-01-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-models-parameters.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "ImjHkMc_esc",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-04-models-parameters/",
+      "title": "Chapter 01.04: Models and Parameters"
+    },
+    "content/chapters/01_ml_basics/01-05-learner.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/070b7c14f91688e90a764441cc50fd7b8d279d6faf71b421b86e24a60dc2397c.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=we4Y8z9naZk",
+      "internal_path": "/chapters/01_ml_basics/01-05-learner/",
+      "lecture_id": "i2ml-01-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-learner.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "we4Y8z9naZk",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-05-learner/",
+      "title": "Chapter 01.05: Learner"
+    },
+    "content/chapters/01_ml_basics/01-06-riskminimization.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ae06fc1d501613cdf7984217c8259258d5b1d63b17501691898c04102037c936.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=NMNfjOL40y0",
+      "internal_path": "/chapters/01_ml_basics/01-06-riskminimization/",
+      "lecture_id": "i2ml-01-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-riskminimization.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "NMNfjOL40y0",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-06-riskminimization/",
+      "title": "Chapter 01.06: Losses and Risk Minimization"
+    },
+    "content/chapters/01_ml_basics/01-07-optimization.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/bd977c5427c4f2160c709c9d2652f416057641efe4bce90b1f026ddccd16e2d6.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=W25BTei5zQU",
+      "internal_path": "/chapters/01_ml_basics/01-07-optimization/",
+      "lecture_id": "i2ml-01-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-optimization.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "W25BTei5zQU",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-07-optimization/",
+      "title": "Chapter 01.07: Optimization"
+    },
+    "content/chapters/01_ml_basics/01-08-learnercomponents-hro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ee97b40c12c77a24def4e9b05b4dc19f6c5350b19bf42f553f667e28e335b013.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=WzQVGfa-ikw",
+      "internal_path": "/chapters/01_ml_basics/01-08-learnercomponents-hro/",
+      "lecture_id": "i2ml-01-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-basics-learnercomponents-hro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "WzQVGfa-ikw",
+      "public_path": "/i2ml/chapters/01_ml_basics/01-08-learnercomponents-hro/",
+      "title": "Chapter 01.08: Components of a Learner"
+    },
+    "content/chapters/02_supervised_regression/02-00-nutshell-regression.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/95a4c364a77d68786742ad95e67f601286246c36fe9331792fe87c58616f9256.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=jGxycO-QkM4",
+      "internal_path": "/chapters/02_supervised_regression/02-00-nutshell-regression/",
+      "lecture_id": "i2ml-02-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "jGxycO-QkM4",
+      "public_path": "/i2ml/chapters/02_supervised_regression/02-00-nutshell-regression/",
+      "title": "Chapter 02.00: Supervised Regression: In a Nutshell"
+    },
+    "content/chapters/02_supervised_regression/02-01-l2-loss.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/214ff29c51717bb1e64437a4e1d0a1f0b82dae356fa64a2892041a29f7929dd1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=ajqQ3NUuNzE",
+      "internal_path": "/chapters/02_supervised_regression/02-01-l2-loss/",
+      "lecture_id": "i2ml-02-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-linearmodel-l2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "ajqQ3NUuNzE",
+      "public_path": "/i2ml/chapters/02_supervised_regression/02-01-l2-loss/",
+      "title": "Chapter 02.01: Linear Models with L2 Loss"
+    },
+    "content/chapters/02_supervised_regression/02-02-ols.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/1d7d506fd9a087fd25420fb3519e60016b00ffd33fe250095b8403927bd16064.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=JyIdkeBaqD8",
+      "internal_path": "/chapters/02_supervised_regression/02-02-ols/",
+      "lecture_id": "i2ml-02-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-deepdive-ols.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "JyIdkeBaqD8",
+      "public_path": "/i2ml/chapters/02_supervised_regression/02-02-ols/",
+      "title": "Chapter 02.02: Proof OLS Regression: Deep Dive"
+    },
+    "content/chapters/02_supervised_regression/02-03-l1-loss.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6d4be8e1e50285e15523d9e4d03f158c57070412b42f6975d5ca4f57359029be.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=kAZclFFAkhA",
+      "internal_path": "/chapters/02_supervised_regression/02-03-l1-loss/",
+      "lecture_id": "i2ml-02-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-linearmodel-l1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "kAZclFFAkhA",
+      "public_path": "/i2ml/chapters/02_supervised_regression/02-03-l1-loss/",
+      "title": "Chapter 02.03: Linear Models with L1 Loss"
+    },
+    "content/chapters/02_supervised_regression/02-04-polynomials.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/530efeee59ab06db783ce06f717df173bf31da51b45c2f88a329e598292029be.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=dsO2sNiuxug",
+      "internal_path": "/chapters/02_supervised_regression/02-04-polynomials/",
+      "lecture_id": "i2ml-02-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-polynomials.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "dsO2sNiuxug",
+      "public_path": "/i2ml/chapters/02_supervised_regression/02-04-polynomials/",
+      "title": "Chapter 02.04: Polynomial Regression Models"
+    },
+    "content/chapters/03_supervised_classification/03-00-nutshell-classification.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/49ddba02c5aa55a2995d27be8f329e9c57135dcfe6005ed810cd510d696745e1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=x8TG-Jrb_80",
+      "internal_path": "/chapters/03_supervised_classification/03-00-nutshell-classification/",
+      "lecture_id": "i2ml-03-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "x8TG-Jrb_80",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-00-nutshell-classification/",
+      "title": "Chapter 03.00: Supervised Classification: In a Nutshell"
+    },
+    "content/chapters/03_supervised_classification/03-01-tasks.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/bd00548cd5e5e1320043dac7580ac190292269d5fda6f9404bf8ddd4b33b7e77.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=KhKY8nlpMH0",
+      "internal_path": "/chapters/03_supervised_classification/03-01-tasks/",
+      "lecture_id": "i2ml-03-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-tasks.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "KhKY8nlpMH0",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-01-tasks/",
+      "title": "Chapter 03.01: Classification Tasks"
+    },
+    "content/chapters/03_supervised_classification/03-02-classification-basicdefs.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/fdcf8fb5702c9189bc89670b94cde3b9a77336fa41f06af9426ea0c18f11f2ee.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=zIzIi8YI_xI",
+      "internal_path": "/chapters/03_supervised_classification/03-02-classification-basicdefs/",
+      "lecture_id": "i2ml-03-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-basicdefs.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "zIzIi8YI_xI",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-02-classification-basicdefs/",
+      "title": "Chapter 03.02: Basic Definitions"
+    },
+    "content/chapters/03_supervised_classification/03-03-classification-linear.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ac5d24e7eaf33cdc2c92ad3389c269b01a40881c1cb4d14261af9b3f6afc0fd1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=SkrQOtpD9d0",
+      "internal_path": "/chapters/03_supervised_classification/03-03-classification-linear/",
+      "lecture_id": "i2ml-03-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-linear.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "SkrQOtpD9d0",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-03-classification-linear/",
+      "title": "Chapter 03.03: Linear Classifiers"
+    },
+    "content/chapters/03_supervised_classification/03-04-classification-logistic.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ff93ab98fef82170eacf1795b66ac4b9e9c6869a1ff67ddc07d880b215b68904.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=V24s9HkLyaw",
+      "internal_path": "/chapters/03_supervised_classification/03-04-classification-logistic/",
+      "lecture_id": "i2ml-03-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-logistic.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "V24s9HkLyaw",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-04-classification-logistic/",
+      "title": "Chapter 03.04: Logistic Regression"
+    },
+    "content/chapters/03_supervised_classification/03-05-classification-discranalysis.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f592509dea71e03a0705d0646f19c01a0fe72094ff71961235223ab63b567488.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=WHQLS9PBLig",
+      "internal_path": "/chapters/03_supervised_classification/03-05-classification-discranalysis/",
+      "lecture_id": "i2ml-03-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-discranalysis.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "WHQLS9PBLig",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-05-classification-discranalysis/",
+      "title": "Chapter 03.05: Discriminant Analysis"
+    },
+    "content/chapters/03_supervised_classification/03-06-classification-naivebayes.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/de6ebfcaea061be83b9ae23ae3c81ca294a3488c686144d62b5474135803e4ec.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=TJ0ZSAyIi_c",
+      "internal_path": "/chapters/03_supervised_classification/03-06-classification-naivebayes/",
+      "lecture_id": "i2ml-03-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-classification-naivebayes.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "TJ0ZSAyIi_c",
+      "public_path": "/i2ml/chapters/03_supervised_classification/03-06-classification-naivebayes/",
+      "title": "Chapter 03.06: Naive Bayes"
+    },
+    "content/chapters/04_evaluation/04-00-nutshell-evaluation.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/e8fd72ddc842bfb17deb238fccdebfa61931f40376375edf0b41d1c8f01594d7.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=grZ8V0lo0LA",
+      "internal_path": "/chapters/04_evaluation/04-00-nutshell-evaluation/",
+      "lecture_id": "i2ml-04-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "grZ8V0lo0LA",
+      "public_path": "/i2ml/chapters/04_evaluation/04-00-nutshell-evaluation/",
+      "title": "Chapter 04.00: Evaluation: In a Nutshell"
+    },
+    "content/chapters/04_evaluation/04-01-generalization-error.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f0dfc58474103ce342b31ffc0181821087416122326fe4fc2fda88d639e66969.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=gkQ6jXeIEzU",
+      "internal_path": "/chapters/04_evaluation/04-01-generalization-error/",
+      "lecture_id": "i2ml-04-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-generr.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "gkQ6jXeIEzU",
+      "public_path": "/i2ml/chapters/04_evaluation/04-01-generalization-error/",
+      "title": "Chapter 04.01: Generalization Error"
+    },
+    "content/chapters/04_evaluation/04-02-measures-regression.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/bd61c2e06ef270315a724b45d80769a37f27b039e9c8331ada45270048a50a8e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=FUHs6hu88MI",
+      "internal_path": "/chapters/04_evaluation/04-02-measures-regression/",
+      "lecture_id": "i2ml-04-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-measures-regression.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "FUHs6hu88MI",
+      "public_path": "/i2ml/chapters/04_evaluation/04-02-measures-regression/",
+      "title": "Chapter 04.02: Measures Regression"
+    },
+    "content/chapters/04_evaluation/04-03-train.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/10efacb3fb8ac5ad4415c822babc9ef56dfe89de90b8d7ed09a1411bc28827ea.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=XskndmMybfM",
+      "internal_path": "/chapters/04_evaluation/04-03-train/",
+      "lecture_id": "i2ml-04-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-train.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "XskndmMybfM",
+      "public_path": "/i2ml/chapters/04_evaluation/04-03-train/",
+      "title": "Chapter 04.03: Training Error"
+    },
+    "content/chapters/04_evaluation/04-04-test.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/beee8ff6cdd16b86eb8a248405db45abac4b2524e1d1a65f03bb9a8519d50114.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=ikz87m84um8",
+      "internal_path": "/chapters/04_evaluation/04-04-test/",
+      "lecture_id": "i2ml-04-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-test.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "ikz87m84um8",
+      "public_path": "/i2ml/chapters/04_evaluation/04-04-test/",
+      "title": "Chapter 04.04: Test Error"
+    },
+    "content/chapters/04_evaluation/04-05-overfitting-underfitting.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ced6e55b341936e04d8fc873287193c72e435a853336f1b0054b3a29a071f6ee.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=eNMM1b98kow",
+      "internal_path": "/chapters/04_evaluation/04-05-overfitting-underfitting/",
+      "lecture_id": "i2ml-04-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-overfitting-underfitting.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "eNMM1b98kow",
+      "public_path": "/i2ml/chapters/04_evaluation/04-05-overfitting-underfitting/",
+      "title": "Chapter 04.05: Overfitting & Underfitting"
+    },
+    "content/chapters/04_evaluation/04-06-resampling-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/dc21ee1d6a8621e83d2beeabe61cb87898baa949e3993a3c51176f7ee093f2be.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=YWmC0C_NBLk",
+      "internal_path": "/chapters/04_evaluation/04-06-resampling-1/",
+      "lecture_id": "i2ml-04-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-resampling-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "YWmC0C_NBLk",
+      "public_path": "/i2ml/chapters/04_evaluation/04-06-resampling-1/",
+      "title": "Chapter 04.06: Resampling 1"
+    },
+    "content/chapters/04_evaluation/04-07-resampling-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9ca1b16de10ee5b85a21277fdb29a3248a671a7d6dbf85116e2bf1ecc8f6e6cc.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=7O2N5idB8iw",
+      "internal_path": "/chapters/04_evaluation/04-07-resampling-2/",
+      "lecture_id": "i2ml-04-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-resampling-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "7O2N5idB8iw",
+      "public_path": "/i2ml/chapters/04_evaluation/04-07-resampling-2/",
+      "title": "Chapter 04.07: Resampling 2"
+    },
+    "content/chapters/04_evaluation/04-08-measures-classification.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/708d131bee4b04bb3d5d92f0a304062f19290ec5d0b0ef03604c4fb4d0e5c78d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=K8rUkpq6IYg",
+      "internal_path": "/chapters/04_evaluation/04-08-measures-classification/",
+      "lecture_id": "i2ml-04-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-measures-classification.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "K8rUkpq6IYg",
+      "public_path": "/i2ml/chapters/04_evaluation/04-08-measures-classification/",
+      "title": "Chapter 04.08: Measures Classification"
+    },
+    "content/chapters/04_evaluation/04-09-rocbasics.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8e0c1991c727457c074451b005c2ab0d9f6c92325456a7a27baf771857880cf3.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=fzuk7glzpC0",
+      "internal_path": "/chapters/04_evaluation/04-09-rocbasics/",
+      "lecture_id": "i2ml-04-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-rocbasics.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "fzuk7glzpC0",
+      "public_path": "/i2ml/chapters/04_evaluation/04-09-rocbasics/",
+      "title": "Chapter 04.09: ROC Basics"
+    },
+    "content/chapters/04_evaluation/04-10-roccurves.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/0de109899b8382a73a99309f4fc881177b62e238c8a74ae2ac01d1bf5a56fd85.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=91PXeV65x5Y",
+      "internal_path": "/chapters/04_evaluation/04-10-roccurves/",
+      "lecture_id": "i2ml-04-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-roccurves.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "91PXeV65x5Y",
+      "public_path": "/i2ml/chapters/04_evaluation/04-10-roccurves/",
+      "title": "Chapter 04.10: ROC Curves"
+    },
+    "content/chapters/04_evaluation/04-11-partialauc-mcauc.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/32097aa66607215cc709498c43f0f46c631df8ae0b4159da6cf096c450a057fb.pdf",
+        "/course-assets/pdfs/6a3cc48307dfd21a429c0e811533e3069b32fb1ff41de010858150025fad163d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=JGag-IwJ93E",
+      "internal_path": "/chapters/04_evaluation/04-11-partialauc-mcauc/",
+      "lecture_id": "i2ml-04-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-partialauc.pdf",
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-mcauc.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "JGag-IwJ93E",
+      "public_path": "/i2ml/chapters/04_evaluation/04-11-partialauc-mcauc/",
+      "title": "Chapter 04.11: Partial AUC & Multi-Class AUC"
+    },
+    "content/chapters/04_evaluation/04-12-prcurves.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/44370580a85fb3084c00acb30e9ca432d7b4e41bbc3279bed29ca1633b04b07d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6tJXX3vmYl0",
+      "internal_path": "/chapters/04_evaluation/04-12-prcurves/",
+      "lecture_id": "i2ml-04-12",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-prcurves.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6tJXX3vmYl0",
+      "public_path": "/i2ml/chapters/04_evaluation/04-12-prcurves/",
+      "title": "Chapter 04.12: Precision-Recall Curves"
+    },
+    "content/chapters/04_evaluation/04-13-auc-mwu.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f578f332f7ef1994bfa4b89c2a5c7d4eb2b3aa46b16706dc7254344beade86f2.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/04_evaluation/04-13-auc-mwu/",
+      "lecture_id": "i2ml-04-13",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-auc-mwu.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/04_evaluation/04-13-auc-mwu/",
+      "title": "Chapter 04.13: AUC & Mann-Whitney-U Test"
+    },
+    "content/chapters/05_knn/05-01-knn.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/e87a2ce61125698bc89cfdd7ab92a96e61ae8fc7d0dd4de45b79a375d1940dba.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=BMCgd1et_2E",
+      "internal_path": "/chapters/05_knn/05-01-knn/",
+      "lecture_id": "i2ml-05-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-knn.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "BMCgd1et_2E",
+      "public_path": "/i2ml/chapters/05_knn/05-01-knn/",
+      "title": "Chapter 05.01: k-Nearest Neighbors (k-NN)"
+    },
+    "content/chapters/06_cart/06-00-nutshell-cart.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8cbd9eb2e4804c4c0c62bebbae19050c8be5100d91ef1090fc06a259164d75c2.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=t2PB42edS7Q",
+      "internal_path": "/chapters/06_cart/06-00-nutshell-cart/",
+      "lecture_id": "i2ml-06-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-cart-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "t2PB42edS7Q",
+      "public_path": "/i2ml/chapters/06_cart/06-00-nutshell-cart/",
+      "title": "Chapter 06.00: CART: In a Nutshell"
+    },
+    "content/chapters/06_cart/06-01-predictions.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/35ad02c7a365bf1074064ee035e8400febec944d339dcfe4032e94b1f613bd44.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=mouBj4qiHRs",
+      "internal_path": "/chapters/06_cart/06-01-predictions/",
+      "lecture_id": "i2ml-06-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-predictions.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "mouBj4qiHRs",
+      "public_path": "/i2ml/chapters/06_cart/06-01-predictions/",
+      "title": "Chapter 06.01: Predictions with CART"
+    },
+    "content/chapters/06_cart/06-02-treegrowing.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/217e900dd58a3e49742fed2c3fb89c16fed9135e1b2df84b9bbf85b0b9087cc8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=SWbrSLJv8wc",
+      "internal_path": "/chapters/06_cart/06-02-treegrowing/",
+      "lecture_id": "i2ml-06-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-treegrowing.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "SWbrSLJv8wc",
+      "public_path": "/i2ml/chapters/06_cart/06-02-treegrowing/",
+      "title": "Chapter 06.02: Growing a Tree"
+    },
+    "content/chapters/06_cart/06-03-splitcriteria-regression.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d9c66b3da052d9cb07511be366a268e89e5b27333303ae8bfa191f80d9b6ee6e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=3Zzp64RgUoY",
+      "internal_path": "/chapters/06_cart/06-03-splitcriteria-regression/",
+      "lecture_id": "i2ml-06-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-splitcriteria-regression.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "3Zzp64RgUoY",
+      "public_path": "/i2ml/chapters/06_cart/06-03-splitcriteria-regression/",
+      "title": "Chapter 06.03: Splitting Criteria for Regression"
+    },
+    "content/chapters/06_cart/06-04-splitcriteria-classification.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/1962d0033f4a823c06f25deb7361cd1880412d1305d33d41918e6c662dfd4126.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Q0DSNh6qEQw",
+      "internal_path": "/chapters/06_cart/06-04-splitcriteria-classification/",
+      "lecture_id": "i2ml-06-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-splitcriteria-classification.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Q0DSNh6qEQw",
+      "public_path": "/i2ml/chapters/06_cart/06-04-splitcriteria-classification/",
+      "title": "Chapter 06.04: Splitting Criteria for Classification"
+    },
+    "content/chapters/06_cart/06-05-computationalaspects.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a50e8df43e3c749b80a3d0ccd42acfd612249215a055e43943db4982363057d6.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6yAgoECJAP0",
+      "internal_path": "/chapters/06_cart/06-05-computationalaspects/",
+      "lecture_id": "i2ml-06-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-computationalaspects.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6yAgoECJAP0",
+      "public_path": "/i2ml/chapters/06_cart/06-05-computationalaspects/",
+      "title": "Chapter 06.05: Computational Aspects of Finding Splits"
+    },
+    "content/chapters/06_cart/06-06-stoppingpruning.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d1027bc3220c07ad1c2d5b115e851356fb022250951e6ba9caceb688dc1a9b04.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=8CSGRjM8E0g",
+      "internal_path": "/chapters/06_cart/06-06-stoppingpruning/",
+      "lecture_id": "i2ml-06-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-stoppingpruning.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "8CSGRjM8E0g",
+      "public_path": "/i2ml/chapters/06_cart/06-06-stoppingpruning/",
+      "title": "Chapter 06.06: Stopping Criteria & Pruning"
+    },
+    "content/chapters/06_cart/06-07-discussion.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/83b12e2e466461dc0a57e46dde1bd7fe04d559280c74541f81a59fd7c3dc8afa.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Jrr2BCnYtlI",
+      "internal_path": "/chapters/06_cart/06-07-discussion/",
+      "lecture_id": "i2ml-06-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-discussion.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Jrr2BCnYtlI",
+      "public_path": "/i2ml/chapters/06_cart/06-07-discussion/",
+      "title": "Chapter 06.07: Discussion"
+    },
+    "content/chapters/07_forests/07-00-nutshell-random-forest.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/78bdbbe580746613ee03d30b6b89be5a2e412622486567e909954f55dbcadb3e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=fD9WPzkD93c",
+      "internal_path": "/chapters/07_forests/07-00-nutshell-random-forest/",
+      "lecture_id": "i2ml-07-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-forests-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "fD9WPzkD93c",
+      "public_path": "/i2ml/chapters/07_forests/07-00-nutshell-random-forest/",
+      "title": "Chapter 07.00: Random Forests: In a Nutshell"
+    },
+    "content/chapters/07_forests/07-01-bagging.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/319bda84f8df56d961df5995e037943d51414fbab7516650ae5652a96844dbd8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=S4Sa6YEXq7g",
+      "internal_path": "/chapters/07_forests/07-01-bagging/",
+      "lecture_id": "i2ml-07-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-bagging.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "S4Sa6YEXq7g",
+      "public_path": "/i2ml/chapters/07_forests/07-01-bagging/",
+      "title": "Chapter 07.01: Bagging Ensembles"
+    },
+    "content/chapters/07_forests/07-02-basics.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/207de1c3720cbd424e394ff06f6ae7b169edcf62db544c004c4cc6e911dd46f3.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=NY3Tux1Zt4g",
+      "internal_path": "/chapters/07_forests/07-02-basics/",
+      "lecture_id": "i2ml-07-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-basics.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "NY3Tux1Zt4g",
+      "public_path": "/i2ml/chapters/07_forests/07-02-basics/",
+      "title": "Chapter 07.02: Basics"
+    },
+    "content/chapters/07_forests/07-03-oob-error.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/12fdea72d564ce6731a3b2290f15064d9d5ce15052cd7ada6337fa2fbefc37f3.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=gucPQxcqPcY",
+      "internal_path": "/chapters/07_forests/07-03-oob-error/",
+      "lecture_id": "i2ml-07-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-oob.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "gucPQxcqPcY",
+      "public_path": "/i2ml/chapters/07_forests/07-03-oob-error/",
+      "title": "Chapter 07.03: Out-of-Bag Error Estimate"
+    },
+    "content/chapters/07_forests/07-04-featureimportance.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d062199ded2285e72727f426870d21c6f3048b3096bb08ce4ed067f1b26ca81e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=8h3H0j2f24I",
+      "internal_path": "/chapters/07_forests/07-04-featureimportance/",
+      "lecture_id": "i2ml-07-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-featureimportance.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "8h3H0j2f24I",
+      "public_path": "/i2ml/chapters/07_forests/07-04-featureimportance/",
+      "title": "Chapter 07.04: Feature Importance"
+    },
+    "content/chapters/07_forests/07-05-proximities.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/355b72c2a519a627db02075e31ca5c2356e2e115318843122a9dbb9f01126a08.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=TYqXaZ5HCtI",
+      "internal_path": "/chapters/07_forests/07-05-proximities/",
+      "lecture_id": "i2ml-07-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-proximities.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "TYqXaZ5HCtI",
+      "public_path": "/i2ml/chapters/07_forests/07-05-proximities/",
+      "title": "Chapter 07.05: Proximities"
+    },
+    "content/chapters/08_neural_networks/08-00-nutshell-nn.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/726f8a38fbd1722e9c4dc37fdd366cc9f772614db900005ce6c80c5248225ee5.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=htwEzmtc2M0",
+      "internal_path": "/chapters/08_neural_networks/08-00-nutshell-nn/",
+      "lecture_id": "i2ml-08-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-nn-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "htwEzmtc2M0",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-00-nutshell-nn/",
+      "title": "Chapter 08.00: Neural Networks: In a Nutshell"
+    },
+    "content/chapters/08_neural_networks/08-01-intro.md": {
+      "external_url": "https://drive.google.com/file/d/1SiN3Zo12lUOrTY5ISBCDemNbS-vlwUa8/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ce559467a612cbb44175ac7569dc19f5faef487a2eed54fd980413f0bf7c2c7b.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1SiN3Zo12lUOrTY5ISBCDemNbS-vlwUa8/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-01-intro/",
+      "lecture_id": "i2ml-08-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-intro-introduction.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1SiN3Zo12lUOrTY5ISBCDemNbS-vlwUa8",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-01-intro/",
+      "title": "Chapter 08.01: Introduction"
+    },
+    "content/chapters/08_neural_networks/08-02-single-neuron.md": {
+      "external_url": "https://drive.google.com/file/d/1EMIA3KPyyAWMfwyr3WUGao3JZDQceiPC/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6e0325549b41949d64249a32d53a40f504ca9ee01bae6c3d4d5410dfaba852f4.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1EMIA3KPyyAWMfwyr3WUGao3JZDQceiPC/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-02-single-neuron/",
+      "lecture_id": "i2ml-08-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-single-neuron.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1EMIA3KPyyAWMfwyr3WUGao3JZDQceiPC",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-02-single-neuron/",
+      "title": "Chapter 08.02: Single Neuron"
+    },
+    "content/chapters/08_neural_networks/08-03-single-hidden-layer.md": {
+      "external_url": "https://drive.google.com/file/d/1OL3RSWHPvwzt1dDJ6DlZ6Md6cVUX0MST/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/96df783f7abe79a19ff37323a0fb741ca99d1b051d281860458079ad1b12685f.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1OL3RSWHPvwzt1dDJ6DlZ6Md6cVUX0MST/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-03-single-hidden-layer/",
+      "lecture_id": "i2ml-08-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-single-hidden-layer-networks.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1OL3RSWHPvwzt1dDJ6DlZ6Md6cVUX0MST",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-03-single-hidden-layer/",
+      "title": "Chapter 08.03: Single Hidden Layer NN"
+    },
+    "content/chapters/08_neural_networks/08-04-NN4multiclass.md": {
+      "external_url": "https://drive.google.com/file/d/1UQzYXirQsYPfSPf-u8JY2S21lGnLhPxK/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3619c2bf59da3eaefe370cd0504151e158360b87f8590b466e402ea7c1bc371a.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1UQzYXirQsYPfSPf-u8JY2S21lGnLhPxK/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-04-nn4multiclass/",
+      "lecture_id": "i2ml-08-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-multiclass-classification.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1UQzYXirQsYPfSPf-u8JY2S21lGnLhPxK",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-04-nn4multiclass/",
+      "title": "Chapter 08.04: Single Hidden Layer Networks for Multi-Class Classification"
+    },
+    "content/chapters/08_neural_networks/08-05-mulitlayerNN.md": {
+      "external_url": "https://drive.google.com/file/d/1cK5Iu-NSUQkSUPq6x4wnbr7jwuQ32rbZ/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/45d5b5d2e02357469afed2d1bc017f8a0fdeeaef8af2a0add7a182144beab26f.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1cK5Iu-NSUQkSUPq6x4wnbr7jwuQ32rbZ/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-05-mulitlayernn/",
+      "lecture_id": "i2ml-08-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-mlps-multilayer-FNNs.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1cK5Iu-NSUQkSUPq6x4wnbr7jwuQ32rbZ",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-05-mulitlayernn/",
+      "title": "Chapter 08.05: MLP: Multi-Layer Feedforward Neural Networks"
+    },
+    "content/chapters/08_neural_networks/08-06-history.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/caec468c77e4e1ef516f2df23f96a456024df9e7a75ee75725d2fe015c470cb4.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/08_neural_networks/08-06-history/",
+      "lecture_id": "i2ml-08-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-intro-brief-history.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/08_neural_networks/08-06-history/",
+      "title": "Extra: Brief History"
+    },
+    "content/chapters/08_neural_networks/08-07-backprob1.md": {
+      "external_url": "https://drive.google.com/file/d/1rLKDhBrFE92x7ysoU0rlw_k8ojnKMMz6/view?usp=sharing",
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9537b5767de3bf0bacaa366d93849470a9f9ce5cc930b5e1cdf3b87d949f6bc9.pdf"
+      ],
+      "fallback_video_url": "https://drive.google.com/file/d/1rLKDhBrFE92x7ysoU0rlw_k8ojnKMMz6/view?usp=sharing",
+      "internal_path": "/chapters/08_neural_networks/08-07-backprob1/",
+      "lecture_id": "i2ml-08-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nn-basic-backpropagation1.pdf"
+      ],
+      "presentation_mode": "external_link_only",
+      "provider": "google_drive",
+      "provider_id": "1rLKDhBrFE92x7ysoU0rlw_k8ojnKMMz6",
+      "public_path": "/i2ml/chapters/08_neural_networks/08-07-backprob1/",
+      "title": "Extra: Basic Backpropagation 1"
+    },
+    "content/chapters/09_tuning/09-00-nutshell-tuning.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d02b6ecfc3490c9c73103f6a0b3a4be9191eb8f84a5db47e18cb0eb247e6ae74.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=ArJtoONcT1o",
+      "internal_path": "/chapters/09_tuning/09-00-nutshell-tuning/",
+      "lecture_id": "i2ml-09-00",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-tuning-nutshell.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "ArJtoONcT1o",
+      "public_path": "/i2ml/chapters/09_tuning/09-00-nutshell-tuning/",
+      "title": "Chapter 09.00: Tuning & Nested Resampling: In a Nutshell"
+    },
+    "content/chapters/09_tuning/09-01-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/aefc9acc4729d42f5525c170462e0d0bd6a025511338ca501cc8df3bd8e3a552.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Lc0u2iiQn0E",
+      "internal_path": "/chapters/09_tuning/09-01-intro/",
+      "lecture_id": "i2ml-09-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-intro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Lc0u2iiQn0E",
+      "public_path": "/i2ml/chapters/09_tuning/09-01-intro/",
+      "title": "Chapter 09.01: Introduction"
+    },
+    "content/chapters/09_tuning/09-02-tuning-tuningproblem.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/779ad2353836b55e05a8b5088dc8bb5e393cb349c7785fdfdd8bb136e9ce1129.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=3Su1jA6Ed1g",
+      "internal_path": "/chapters/09_tuning/09-02-tuning-tuningproblem/",
+      "lecture_id": "i2ml-09-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-tuningproblem.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "3Su1jA6Ed1g",
+      "public_path": "/i2ml/chapters/09_tuning/09-02-tuning-tuningproblem/",
+      "title": "Chapter 09.02: Problem Definition"
+    },
+    "content/chapters/09_tuning/09-03-basicalgos.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a2f80c8c6123e3b0a7d3c012b66fdd232edf33a6759a05bd834157327ce4891d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=LSt1KcsHAK0",
+      "internal_path": "/chapters/09_tuning/09-03-basicalgos/",
+      "lecture_id": "i2ml-09-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-basicalgos.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "LSt1KcsHAK0",
+      "public_path": "/i2ml/chapters/09_tuning/09-03-basicalgos/",
+      "title": "Chapter 09.03: Basic Techniques"
+    },
+    "content/chapters/09_tuning/09-04-tuning-advanced.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/475a7ac2233af215800ad9113f0218a6ec2a7a32bff2d5b8b20e35d7aec5d4bb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=z84ArbJuJmQ",
+      "internal_path": "/chapters/09_tuning/09-04-tuning-advanced/",
+      "lecture_id": "i2ml-09-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-tuning-advanced.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "z84ArbJuJmQ",
+      "public_path": "/i2ml/chapters/09_tuning/09-04-tuning-advanced/",
+      "title": "Chapter 09.04: Advanced Tuning Techniques"
+    },
+    "content/chapters/09_tuning/09-05-tuning-pipelines.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/73dbc219ddebd88516c235348bc79404d6e8c6a94055ad67f1f69270c25eb4cb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=BB_8zQVCN3Q",
+      "internal_path": "/chapters/09_tuning/09-05-tuning-pipelines/",
+      "lecture_id": "i2ml-09-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-tuning-pipelines.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "BB_8zQVCN3Q",
+      "public_path": "/i2ml/chapters/09_tuning/09-05-tuning-pipelines/",
+      "title": "Chapter 09.05: Pipelines and AutoML"
+    },
+    "content/chapters/10_nested_resampling/10-01-nestedintro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a52bb86bf798b216a678cb49eec2cd91b1ecb0b90ba0359a8190c0fc6cc5e35d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=_GVysctg5sY",
+      "internal_path": "/chapters/10_nested_resampling/10-01-nestedintro/",
+      "lecture_id": "i2ml-10-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nested-nestedintro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "_GVysctg5sY",
+      "public_path": "/i2ml/chapters/10_nested_resampling/10-01-nestedintro/",
+      "title": "Chapter 10.01: Motivation"
+    },
+    "content/chapters/10_nested_resampling/10-02-trainvalidtest.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a52c6c8b62ab0c1ee80dde7fbb45b88e57d31c695115f4ca0f051e66aa3f8f23.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=8LdpxLyH34c",
+      "internal_path": "/chapters/10_nested_resampling/10-02-trainvalidtest/",
+      "lecture_id": "i2ml-10-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nested-trainvalidtest.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "8LdpxLyH34c",
+      "public_path": "/i2ml/chapters/10_nested_resampling/10-02-trainvalidtest/",
+      "title": "Chapter 10.02: Training - Validation - Testing"
+    },
+    "content/chapters/10_nested_resampling/10-03-nestedresampling.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9ab87cf21e9b552038e0562927270ada8121e39b0e1612d5005c80b877b24a4f.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=-d338rc076s",
+      "internal_path": "/chapters/10_nested_resampling/10-03-nestedresampling/",
+      "lecture_id": "i2ml-10-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nested-nestedresampling.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "-d338rc076s",
+      "public_path": "/i2ml/chapters/10_nested_resampling/10-03-nestedresampling/",
+      "title": "Chapter 10.03: Nested Resampling"
+    },
+    "content/chapters/11_advriskmin/11-01-risk-minimizer.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/72feb1fc0aa0f49693f5f43390a09a105cf2656ec88d0519890686b948137ff1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=WPKzlanJhS0",
+      "internal_path": "/chapters/11_advriskmin/11-01-risk-minimizer/",
+      "lecture_id": "sl-11-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-risk-minimization-basics.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "WPKzlanJhS0",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-01-risk-minimizer/",
+      "title": "Chapter 11.01: Risk Minimization Basics"
+    },
+    "content/chapters/11_advriskmin/11-02-loss-properties.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/1958040385455edaf770aea3f48757208b3b1a0469fc04d346a07fbbb1004fd2.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=gwvc2uw_GI4",
+      "internal_path": "/chapters/11_advriskmin/11-02-loss-properties/",
+      "lecture_id": "sl-11-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-losses-properties.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "gwvc2uw_GI4",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-02-loss-properties/",
+      "title": "Chapter 11.02: Properties of Loss Functions"
+    },
+    "content/chapters/11_advriskmin/11-03-pseudo-residuals.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c0661fe5856a6d4984ac9fa25f67d825a65c509be56ef7a56ac9346e79ba6d1e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=kzJjTcioC1Q",
+      "internal_path": "/chapters/11_advriskmin/11-03-pseudo-residuals/",
+      "lecture_id": "sl-11-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-pseudo-residuals.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "kzJjTcioC1Q",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-03-pseudo-residuals/",
+      "title": "Chapter 11.03: Pseudo-Residuals"
+    },
+    "content/chapters/11_advriskmin/11-04-regression-l2-l1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/448a5363b5a843e17098331792243f64e04934c109713b1334472af248e567b1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=4CqLlzUoVWU",
+      "internal_path": "/chapters/11_advriskmin/11-04-regression-l2-l1/",
+      "lecture_id": "sl-11-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l2-l1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "4CqLlzUoVWU",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-04-regression-l2-l1/",
+      "title": "Chapter 11.04: Regression Losses: L2 and L1 loss"
+    },
+    "content/chapters/11_advriskmin/11-05-l1-deep-dive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/29d6f6dcc5dbdf2cfbbafafce37334fc9b297461f5012b128dec46741fd46637.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/11_advriskmin/11-05-l1-deep-dive/",
+      "lecture_id": "sl-11-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-l1-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/11_advriskmin/11-05-l1-deep-dive/",
+      "title": "Chapter 11.05: L1 loss: Deep Dive"
+    },
+    "content/chapters/11_advriskmin/11-06-regression-further-losses.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/29c742dfe05a48dce24dbb626ceb0e07b4b815866a37ef465ea184524086502a.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=mLZQxHdqdOM",
+      "internal_path": "/chapters/11_advriskmin/11-06-regression-further-losses/",
+      "lecture_id": "sl-11-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-regression-further-losses.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "mLZQxHdqdOM",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-06-regression-further-losses/",
+      "title": "Chapter 11.06: Advanced Regression Losses"
+    },
+    "content/chapters/11_advriskmin/11-07-classification-01.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a9c354ebcc5f7c50e56b4d94aba45e28dd45682ff4cf9cb4572cae69ced0d1f6.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=MKRn03fZS7A",
+      "internal_path": "/chapters/11_advriskmin/11-07-classification-01/",
+      "lecture_id": "sl-11-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-classification-01.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "MKRn03fZS7A",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-07-classification-01/",
+      "title": "Chapter 11.07: Classification and 0-1-Loss"
+    },
+    "content/chapters/11_advriskmin/11-08-classification-bernoulli.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/752b872f030bca20c683d5668fff81aa1e67d02e7e7efa08c0eb133433494591.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=F_o_QrW2P6M",
+      "internal_path": "/chapters/11_advriskmin/11-08-classification-bernoulli/",
+      "lecture_id": "sl-11-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-classification-bernoulli.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "F_o_QrW2P6M",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-08-classification-bernoulli/",
+      "title": "Chapter 11.08: Bernoulli Loss"
+    },
+    "content/chapters/11_advriskmin/11-09-bernoulli-deep-dive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/53c5ca7b5315b44a2edeadab2392790588f7fe1d4601b7b47e398f15a87e269a.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/11_advriskmin/11-09-bernoulli-deep-dive/",
+      "lecture_id": "sl-11-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-some-details-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/11_advriskmin/11-09-bernoulli-deep-dive/",
+      "title": "Chapter 11.09: Some details on classification losses: Deep Dive"
+    },
+    "content/chapters/11_advriskmin/11-10-classification-logreg-deep-dive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/bdee2d91cee3d76da85f675858bf813353d3591665a74579865b89da2c7169f8.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/11_advriskmin/11-10-classification-logreg-deep-dive/",
+      "lecture_id": "sl-11-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-logreg-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/11_advriskmin/11-10-classification-logreg-deep-dive/",
+      "title": "Chapter 11.10: Logistic Regression: Deep Dive"
+    },
+    "content/chapters/11_advriskmin/11-11-classification-brier-l1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/faf21e66a61d48bdb470a4a556dccb590fa7ad0ca042ce6161f56b34ebc7f57f.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=gS7QP7PwiUw",
+      "internal_path": "/chapters/11_advriskmin/11-11-classification-brier-l1/",
+      "lecture_id": "sl-11-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-classification-brier-l1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "gS7QP7PwiUw",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-11-classification-brier-l1/",
+      "title": "Chapter 11.11: Brier Score - L2/L1 Loss on Probabilities"
+    },
+    "content/chapters/11_advriskmin/11-12-classification-further-losses.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ad94f014dbf2ff92697bc22bdb599b11f164c3c38e249762faaa4dcac35a7c62.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=XNk2NpX5K3A",
+      "internal_path": "/chapters/11_advriskmin/11-12-classification-further-losses/",
+      "lecture_id": "sl-11-12",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-classification-furtherlosses.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "XNk2NpX5K3A",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-12-classification-further-losses/",
+      "title": "Chapter 11.12: Advanced Classification Losses"
+    },
+    "content/chapters/11_advriskmin/11-13-proper-scoring-rules.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a496641330417bc1d9e57a66a54f7286ddb0fe351fb082dc6fbed7f1e0617b42.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=1nydD0QSnXk",
+      "internal_path": "/chapters/11_advriskmin/11-13-proper-scoring-rules/",
+      "lecture_id": "sl-11-13",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-proper-scoring-rules.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "1nydD0QSnXk",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-13-proper-scoring-rules/",
+      "title": "Chapter 11.13: Proper Scoring Rules"
+    },
+    "content/chapters/11_advriskmin/11-14-tree-splitting-deep-dive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/4ec77d3da2bf387248c86cd29bbf1f3072ee197573be409d52cb902a84951b97.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/11_advriskmin/11-14-tree-splitting-deep-dive/",
+      "lecture_id": "sl-11-14",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-tree-splitting-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/11_advriskmin/11-14-tree-splitting-deep-dive/",
+      "title": "Chapter 11.14: Loss functions and Tree Splitting: Deep Dive"
+    },
+    "content/chapters/11_advriskmin/11-15-max-likelihood.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/1a8d8f0db76f7d7438f5b7c1cbdaf50db40d32a8b6854578c384caa2a36ff4c4.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=zrLxo3Evx_A",
+      "internal_path": "/chapters/11_advriskmin/11-15-max-likelihood/",
+      "lecture_id": "sl-11-15",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-max-likelihood.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "zrLxo3Evx_A",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-15-max-likelihood/",
+      "title": "Chapter 11.15: Maximum Likelihood Estimation vs. Empirical Risk Minimization"
+    },
+    "content/chapters/11_advriskmin/11-16-bias-variance-decomposition.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/afa92753815ec60073096513d0899d9a8a00dcb7646d684bfe60dc01c107d0cd.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=AOHhV6pMxzk",
+      "internal_path": "/chapters/11_advriskmin/11-16-bias-variance-decomposition/",
+      "lecture_id": "sl-11-16",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "AOHhV6pMxzk",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-16-bias-variance-decomposition/",
+      "title": "Chapter 11.16: Bias Variance Decomposition I"
+    },
+    "content/chapters/11_advriskmin/11-17-bias-variance-decomposition2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c2e4f5ae6e7d21f7058631bf1b55e29f693babc855a431285fb2ef9105d43d6d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=RN7z3jL1lUs",
+      "internal_path": "/chapters/11_advriskmin/11-17-bias-variance-decomposition2/",
+      "lecture_id": "sl-11-17",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-advriskmin-bias-variance-decomposition-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "RN7z3jL1lUs",
+      "public_path": "/i2ml/chapters/11_advriskmin/11-17-bias-variance-decomposition2/",
+      "title": "Chapter 11.17: Bias Variance Decomposition II"
+    },
+    "content/chapters/11_advriskmin/11-18-bias-variance-deep-dive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/60bbfd44ae517d4c7b2dfae0213c6effcb97962a9cd9ee9932ea4f5d7dc6dce5.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/11_advriskmin/11-18-bias-variance-deep-dive/",
+      "lecture_id": "sl-11-18",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-advriskmin-bias-variance-decomposition-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/11_advriskmin/11-18-bias-variance-deep-dive/",
+      "title": "Chapter 11.18: Bias Variance Decomposition: Deep Dive"
+    },
+    "content/chapters/12_multiclass/12-01-losses.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/943be6b4a4c29b296698a6f7f395d6a3267e702947fb390dff53004550600a46.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=sISj6dUCrro",
+      "internal_path": "/chapters/12_multiclass/12-01-losses/",
+      "lecture_id": "sl-12-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-losses.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "sISj6dUCrro",
+      "public_path": "/i2ml/chapters/12_multiclass/12-01-losses/",
+      "title": "Chapter 12.01: Multiclass Classification and Losses"
+    },
+    "content/chapters/12_multiclass/12-02-softmax-regression.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/4f819988c14388a689c0f082e690cb0ee08fab5e3490ab866a7582a70a95a11b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=cgQUG-ZWPL8",
+      "internal_path": "/chapters/12_multiclass/12-02-softmax-regression/",
+      "lecture_id": "sl-12-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-softmax-regression.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "cgQUG-ZWPL8",
+      "public_path": "/i2ml/chapters/12_multiclass/12-02-softmax-regression/",
+      "title": "Chapter 12.02: Softmax Regression"
+    },
+    "content/chapters/12_multiclass/12-03-binary-reduction.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/70d30dea0812090b71ccbcb96bf5a4c62bdcb8f52b5835318c540defe74b17b1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Q24cKI_BS7Q",
+      "internal_path": "/chapters/12_multiclass/12-03-binary-reduction/",
+      "lecture_id": "sl-12-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-binary-reduction.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Q24cKI_BS7Q",
+      "public_path": "/i2ml/chapters/12_multiclass/12-03-binary-reduction/",
+      "title": "Chapter 12.03: One-vs-One and One-vs-Rest"
+    },
+    "content/chapters/12_multiclass/12-04-codebooks.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/751e3dbfde300b9bc398558c5f32a102ab3bc6961fd410bbe9bbd97348fa5f7d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=sbT-1XUN3iM",
+      "internal_path": "/chapters/12_multiclass/12-04-codebooks/",
+      "lecture_id": "sl-12-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-mc-codebooks.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "sbT-1XUN3iM",
+      "public_path": "/i2ml/chapters/12_multiclass/12-04-codebooks/",
+      "title": "Chapter 12.04: Designing Codebooks and ECOC"
+    },
+    "content/chapters/13_information_theory/13-01-entropy.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/75597c6c840dc012421646e6ca6ba46c45f5389cfbd27b8d659207fb0c3f93e8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=UWv2ZPnifvw",
+      "internal_path": "/chapters/13_information_theory/13-01-entropy/",
+      "lecture_id": "sl-13-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-entropy.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "UWv2ZPnifvw",
+      "public_path": "/i2ml/chapters/13_information_theory/13-01-entropy/",
+      "title": "Chapter 13.01: Entropy I"
+    },
+    "content/chapters/13_information_theory/13-02-entropy2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/72d7ce8974b1817388bbb9b665de0a80138c46a6c40a17d2ad7b9fab1d8566e1.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=aFYF459PE-w",
+      "internal_path": "/chapters/13_information_theory/13-02-entropy2/",
+      "lecture_id": "sl-13-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-entropy2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "aFYF459PE-w",
+      "public_path": "/i2ml/chapters/13_information_theory/13-02-entropy2/",
+      "title": "Chapter 13.02: Entropy II"
+    },
+    "content/chapters/13_information_theory/13-03-diffent.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6cda07069f2da005416df4f5f09aea9d27a8f2f2d2c9b46f2bb73fe67d329416.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=aeJzIzKNLWI",
+      "internal_path": "/chapters/13_information_theory/13-03-diffent/",
+      "lecture_id": "sl-13-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-diffent.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "aeJzIzKNLWI",
+      "public_path": "/i2ml/chapters/13_information_theory/13-03-diffent/",
+      "title": "Chapter 13.03: Differential Entropy"
+    },
+    "content/chapters/13_information_theory/13-04-kl.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/34cd729e545d0b792de8602d1f395fbbedf5322f958afb1ad169ff72510e86a9.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=7ZaY4fvuFg0",
+      "internal_path": "/chapters/13_information_theory/13-04-kl/",
+      "lecture_id": "sl-13-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-kl.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "7ZaY4fvuFg0",
+      "public_path": "/i2ml/chapters/13_information_theory/13-04-kl/",
+      "title": "Chapter 13.04: Kullback-Leibler Divergence"
+    },
+    "content/chapters/13_information_theory/13-05-cross-entropy-kld.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f334ad52390e8590b998ebd1a514e06fc02f398f76b61798b16e1f4da55d317e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=vtS6h0UYs4E",
+      "internal_path": "/chapters/13_information_theory/13-05-cross-entropy-kld/",
+      "lecture_id": "sl-13-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-cross-entropy-kld.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "vtS6h0UYs4E",
+      "public_path": "/i2ml/chapters/13_information_theory/13-05-cross-entropy-kld/",
+      "title": "Chapter 13.05: Cross-Entropy and KL"
+    },
+    "content/chapters/13_information_theory/13-06-ml.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/33c0b09e22c4a1211c571cd488bbae848ca962be5060db543e67a104d9aa83fb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=setfSvof9Io",
+      "internal_path": "/chapters/13_information_theory/13-06-ml/",
+      "lecture_id": "sl-13-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-ml.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "setfSvof9Io",
+      "public_path": "/i2ml/chapters/13_information_theory/13-06-ml/",
+      "title": "Chapter 13.06: Information Theory for Machine Learning"
+    },
+    "content/chapters/13_information_theory/13-07-mutual-info.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6076e89037d6fb6f5064ce02b7f73cbe3b7bf22bf416dfef3a5bed6f2bad30c9.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=1iEYzS5NqL4",
+      "internal_path": "/chapters/13_information_theory/13-07-mutual-info/",
+      "lecture_id": "sl-13-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-mutual-info.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "1iEYzS5NqL4",
+      "public_path": "/i2ml/chapters/13_information_theory/13-07-mutual-info/",
+      "title": "Chapter 13.07: Joint Entropy and Mutual Information I"
+    },
+    "content/chapters/13_information_theory/13-08-mutual-info2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/41fa2a9f2c5f98fe9f8e16be4cdeec66f9dfb7c43c4c5463c9c0e48074ebbd81.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=DQxMJENXIG8",
+      "internal_path": "/chapters/13_information_theory/13-08-mutual-info2/",
+      "lecture_id": "sl-13-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-mutual-info2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "DQxMJENXIG8",
+      "public_path": "/i2ml/chapters/13_information_theory/13-08-mutual-info2/",
+      "title": "Chapter 13.08: Joint Entropy and Mutual Information II"
+    },
+    "content/chapters/13_information_theory/13-09-sourcecoding.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d579c0cfd6672be7f7979292425991d4abedeaad78e1753992647e27e0fb71e8.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/13_information_theory/13-09-sourcecoding/",
+      "lecture_id": "sl-13-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-sourcecoding.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/13_information_theory/13-09-sourcecoding/",
+      "title": "Chapter 13.09: Entropy and Optimal Code Length I"
+    },
+    "content/chapters/13_information_theory/13-10-sourcecoding2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6695bde2583a21df0c6dc55edca9f2bafd990ea13394627e0a0acb0894db36dd.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/13_information_theory/13-10-sourcecoding2/",
+      "lecture_id": "sl-13-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-sourcecoding2.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/13_information_theory/13-10-sourcecoding2/",
+      "title": "Chapter 13.10: Entropy and Optimal Code Length II"
+    },
+    "content/chapters/13_information_theory/13-11-mi-deepdive.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/cf638f897af731a7a24c8065412c21ebe67fb67785997b07f9992459a49081f7.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/13_information_theory/13-11-mi-deepdive/",
+      "lecture_id": "sl-13-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-info-mi-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/13_information_theory/13-11-mi-deepdive/",
+      "title": "Chapter 13.11: MI under Reparametrization: Deep Dive"
+    },
+    "content/chapters/14_cod/14-01-cod.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/fcc8acd761a03efe2bcaa246fb1303e54365e8f8f629cf82cb14ac262b19840e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=MYzDeYbkqV4",
+      "internal_path": "/chapters/14_cod/14-01-cod/",
+      "lecture_id": "sl-14-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-cod.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "MYzDeYbkqV4",
+      "public_path": "/i2ml/chapters/14_cod/14-01-cod/",
+      "title": "Chapter 14.01: Curse of Dimensionality"
+    },
+    "content/chapters/14_cod/14-02-cod-examples.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/b137f95b80e41eb5c6ba10dc2b779b136760e8bd5b3978d8eddc339546fa0ed9.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6xKwcos63jo",
+      "internal_path": "/chapters/14_cod/14-02-cod-examples/",
+      "lecture_id": "sl-14-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-cod-examples.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6xKwcos63jo",
+      "public_path": "/i2ml/chapters/14_cod/14-02-cod-examples/",
+      "title": "Chapter 14.02: Curse of Dimensionality - Examples"
+    },
+    "content/chapters/15_regularization/15-01-regu-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a357c86f12463fbbf4deffd86121e9a40fae8dd8942eb6ce16f999319b1a1a9d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=EjmPEAD9twg",
+      "internal_path": "/chapters/15_regularization/15-01-regu-intro/",
+      "lecture_id": "sl-15-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-intro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "EjmPEAD9twg",
+      "public_path": "/i2ml/chapters/15_regularization/15-01-regu-intro/",
+      "title": "Chapter 15.01: Introduction to Regularization"
+    },
+    "content/chapters/15_regularization/15-02-l2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8ac052b0e1ccef3b4c9cc2dd9aa3e8bb75f76cbadef0cd0231ad3ad570c48076.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=OzKjWchY-AU",
+      "internal_path": "/chapters/15_regularization/15-02-l2/",
+      "lecture_id": "sl-15-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-l2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "OzKjWchY-AU",
+      "public_path": "/i2ml/chapters/15_regularization/15-02-l2/",
+      "title": "Chapter 15.02: Ridge Regression"
+    },
+    "content/chapters/15_regularization/15-03-l1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/e4ae94ea2cbf7020da7786add4281a58e95fa4ad26dc7fdc0faa4bf22b7516dc.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=iqlQLg5u9Nc",
+      "internal_path": "/chapters/15_regularization/15-03-l1/",
+      "lecture_id": "sl-15-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-l1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "iqlQLg5u9Nc",
+      "public_path": "/i2ml/chapters/15_regularization/15-03-l1/",
+      "title": "Chapter 15.03: Lasso Regression"
+    },
+    "content/chapters/15_regularization/15-04-l1vsl12.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/cc54235d35b573e31081d0ebf0aa898b9db409db7b506ef55149ada363488073.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=XHZT-ZtOVf0",
+      "internal_path": "/chapters/15_regularization/15-04-l1vsl12/",
+      "lecture_id": "sl-15-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-l1vsl2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "XHZT-ZtOVf0",
+      "public_path": "/i2ml/chapters/15_regularization/15-04-l1vsl12/",
+      "title": "Chapter 15.04: Lasso vs Ridge Regression"
+    },
+    "content/chapters/15_regularization/15-05-enetlogreg.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/bfa7ed137a5dc19bff1016ad47283f9d855e425dc25c471766c3fd112af7726e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Bfy_Vgxwxro",
+      "internal_path": "/chapters/15_regularization/15-05-enetlogreg/",
+      "lecture_id": "sl-15-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-enetlogreg.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Bfy_Vgxwxro",
+      "public_path": "/i2ml/chapters/15_regularization/15-05-enetlogreg/",
+      "title": "Chapter 15.05: Elastic Net and Regularization for GLMs"
+    },
+    "content/chapters/15_regularization/15-06-other.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ff9299857bd7a2b7789321de3027f857eada10b48ef9b0bc820b0f7df42ccb5e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=wrK1lvI8VDY",
+      "internal_path": "/chapters/15_regularization/15-06-other/",
+      "lecture_id": "sl-15-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-others.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "wrK1lvI8VDY",
+      "public_path": "/i2ml/chapters/15_regularization/15-06-other/",
+      "title": "Chapter 15.06: Other Types of Regularization"
+    },
+    "content/chapters/15_regularization/15-07-nonlin.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/84c038feb7cad9f2bbc2d5771b2084b6a17a25357607c2487773ac37556eda34.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=_jNeD2AUJqI",
+      "internal_path": "/chapters/15_regularization/15-07-nonlin/",
+      "lecture_id": "sl-15-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-nonlin.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "_jNeD2AUJqI",
+      "public_path": "/i2ml/chapters/15_regularization/15-07-nonlin/",
+      "title": "Chapter 15.07: Non-Linear Models and Structural Risk Minimization"
+    },
+    "content/chapters/15_regularization/15-08-bayes.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3e42fe852bb997edb4467990bd6affe5571bba002761044a9eb0d09e975e33f0.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=d_FB9Vyp7oE",
+      "internal_path": "/chapters/15_regularization/15-08-bayes/",
+      "lecture_id": "sl-15-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-bayes.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "d_FB9Vyp7oE",
+      "public_path": "/i2ml/chapters/15_regularization/15-08-bayes/",
+      "title": "Chapter 15.08: Bayesian Priors"
+    },
+    "content/chapters/15_regularization/15-09-wd.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/125000960c351ae69b95b74b03418f06b3173d937733a6150e9440af9357d102.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=xASHDEAWP0U",
+      "internal_path": "/chapters/15_regularization/15-09-wd/",
+      "lecture_id": "sl-15-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-regu-wd-vs-l2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "xASHDEAWP0U",
+      "public_path": "/i2ml/chapters/15_regularization/15-09-wd/",
+      "title": "Chapter 15.09: Weight decay and L2"
+    },
+    "content/chapters/15_regularization/15-10-geom-l2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f5b8f630411cbf2cfe066edfb656e4c342a7949879668541f49cfaed1e3f5f0d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=PhOL5HB8FIw",
+      "internal_path": "/chapters/15_regularization/15-10-geom-l2/",
+      "lecture_id": "sl-15-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-geom-l2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "PhOL5HB8FIw",
+      "public_path": "/i2ml/chapters/15_regularization/15-10-geom-l2/",
+      "title": "Chapter 15.10: Geometry of L2 Regularization"
+    },
+    "content/chapters/15_regularization/15-11-geom-l1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9ee911160180b161895b0c44c6cfba6535c25463020bfc820b3b5abcfa913643.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=txVJzfLEPmU",
+      "internal_path": "/chapters/15_regularization/15-11-geom-l1/",
+      "lecture_id": "sl-15-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-geom-l1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "txVJzfLEPmU",
+      "public_path": "/i2ml/chapters/15_regularization/15-11-geom-l1/",
+      "title": "Chapter 15.11: Geometry of L1 Regularization"
+    },
+    "content/chapters/15_regularization/15-12-early-stopping.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/59a1d8c9b3c62f24d4eb29f3f063f03d7458a1eb4d3b28b1217083b1d2bdd9cb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=5e2fgW4Ok3s",
+      "internal_path": "/chapters/15_regularization/15-12-early-stopping/",
+      "lecture_id": "sl-15-12",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-early-stopping.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "5e2fgW4Ok3s",
+      "public_path": "/i2ml/chapters/15_regularization/15-12-early-stopping/",
+      "title": "Chapter 15.12: Early Stopping"
+    },
+    "content/chapters/15_regularization/15-13-ridge-deep.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/02faf675ab0beed1a657aa92a704ea518a0ce50422d82630e7d8f8429048df6e.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/15_regularization/15-13-ridge-deep/",
+      "lecture_id": "sl-15-13",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-ridge-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/15_regularization/15-13-ridge-deep/",
+      "title": "Chapter 15.13: Details on Ridge Regression: Deep Dive"
+    },
+    "content/chapters/15_regularization/15-14-lasso-deep.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/4ea0064cf00fab9021776a48f81cdb80fed00cfc698f8df569340d0c71377a6e.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/15_regularization/15-14-lasso-deep/",
+      "lecture_id": "sl-15-14",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-regu-lasso-deepdive.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/15_regularization/15-14-lasso-deep/",
+      "title": "Chapter 15.14: Soft-thresholding and L1 regularization: Deep Dive"
+    },
+    "content/chapters/16_linear_svm/16-01-hard-margin.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8e328f0a0e624d8aedce024b1b50d46778f81c596c6c24b07399460ceb8e0a27.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=hGxESuljZII",
+      "internal_path": "/chapters/16_linear_svm/16-01-hard-margin/",
+      "lecture_id": "sl-16-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-hard-margin.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "hGxESuljZII",
+      "public_path": "/i2ml/chapters/16_linear_svm/16-01-hard-margin/",
+      "title": "Chapter 16.01: Linear Hard Margin SVM"
+    },
+    "content/chapters/16_linear_svm/16-02-hard-margin-dual.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/aa9615318fc2cf15ce749ab29b64ddf7575309a2dbb7ada4fae659eca9f1ed62.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=YHHX_fi7m8s",
+      "internal_path": "/chapters/16_linear_svm/16-02-hard-margin-dual/",
+      "lecture_id": "sl-16-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-hard-margin-dual.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "YHHX_fi7m8s",
+      "public_path": "/i2ml/chapters/16_linear_svm/16-02-hard-margin-dual/",
+      "title": "Chapter 16.02: Hard Margin SVM Dual"
+    },
+    "content/chapters/16_linear_svm/16-03-soft-margin.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/63a4ee154458de7e6077fa6e691a1c350f06f08a795672344e8f62a227c8d9fb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=4wLJVWSLowo",
+      "internal_path": "/chapters/16_linear_svm/16-03-soft-margin/",
+      "lecture_id": "sl-16-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-soft-margin.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "4wLJVWSLowo",
+      "public_path": "/i2ml/chapters/16_linear_svm/16-03-soft-margin/",
+      "title": "Chapter 16.03: Soft Margin SVM"
+    },
+    "content/chapters/16_linear_svm/16-04-erm.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/28a88b6ff90695b7a66f744a27cb2b78f6314486e85dbb88515b738969b6a7de.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=bulWkppkZ4Y",
+      "internal_path": "/chapters/16_linear_svm/16-04-erm/",
+      "lecture_id": "sl-16-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-erm.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "bulWkppkZ4Y",
+      "public_path": "/i2ml/chapters/16_linear_svm/16-04-erm/",
+      "title": "Chapter 16.04: SVMs and Empirical Risk Minimization"
+    },
+    "content/chapters/16_linear_svm/16-05-optimization.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/66c606da4ceb59aba56706b5e75f6e26ac2e88813ebfb3e63f14c9f153f80fe6.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=14_0A1a9XtQ",
+      "internal_path": "/chapters/16_linear_svm/16-05-optimization/",
+      "lecture_id": "sl-16-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-linsvm-optimization.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "14_0A1a9XtQ",
+      "public_path": "/i2ml/chapters/16_linear_svm/16-05-optimization/",
+      "title": "Chapter 16.05: SVM Training"
+    },
+    "content/chapters/17_nonlinear_svm/17-01-featuregen.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/2d68fccec131bd4c9077f5031a112b5c60d2e1640696dfc309d98852d6dc598d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=RMEZXkDr7Ac",
+      "internal_path": "/chapters/17_nonlinear_svm/17-01-featuregen/",
+      "lecture_id": "sl-17-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-featuregen.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "RMEZXkDr7Ac",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-01-featuregen/",
+      "title": "Chapter 17.01: Feature Generation for Nonlinear Separation"
+    },
+    "content/chapters/17_nonlinear_svm/17-02-kernel-trick.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/4ade126d272a51ba59d763f550e82c9c86eae00841a7c03357690975026b61dd.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6_ykYgGENlA",
+      "internal_path": "/chapters/17_nonlinear_svm/17-02-kernel-trick/",
+      "lecture_id": "sl-17-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-kernel-trick.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6_ykYgGENlA",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-02-kernel-trick/",
+      "title": "Chapter 17.02: The Kernel Trick"
+    },
+    "content/chapters/17_nonlinear_svm/17-03-kernel-poly.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/431cb7f68b708ae0ffaea4f1987a210067b6ea9db77480a01272d80daf651a55.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=YsMdZ4tjuMM",
+      "internal_path": "/chapters/17_nonlinear_svm/17-03-kernel-poly/",
+      "lecture_id": "sl-17-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-kernel-poly.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "YsMdZ4tjuMM",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-03-kernel-poly/",
+      "title": "Chapter 17.03: The Polynomial Kernel"
+    },
+    "content/chapters/17_nonlinear_svm/17-04-rkhs-repr.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/2346899f90fa3bba75db3c04b96c6c506653b2b1a046ee0c7c497328451db3cc.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=TPmDwKc5MOg",
+      "internal_path": "/chapters/17_nonlinear_svm/17-04-rkhs-repr/",
+      "lecture_id": "sl-17-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-rkhs-repr.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "TPmDwKc5MOg",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-04-rkhs-repr/",
+      "title": "Chapter 17.04: Reproducing Kernel Hilbert Space and Representer Theorem"
+    },
+    "content/chapters/17_nonlinear_svm/17-05-kernel-rbf.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c921a0ae5279d9bd1efc79bf9257852e603ae8bfc6e0158252ce9ecd2fd7e722.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=hGqWSP8PzHg",
+      "internal_path": "/chapters/17_nonlinear_svm/17-05-kernel-rbf/",
+      "lecture_id": "sl-17-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-kernel-rbf.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "hGqWSP8PzHg",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-05-kernel-rbf/",
+      "title": "Chapter 17.05: The Gaussian RBF Kernel"
+    },
+    "content/chapters/17_nonlinear_svm/17-06-model-sel.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/2ebda3f130290cb21dc5e11acec6044123c7e874a804cb9eed8276b8fae4bcff.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=drcLf-c9Tv8",
+      "internal_path": "/chapters/17_nonlinear_svm/17-06-model-sel/",
+      "lecture_id": "sl-17-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-nonlinsvm-modelsel.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "drcLf-c9Tv8",
+      "public_path": "/i2ml/chapters/17_nonlinear_svm/17-06-model-sel/",
+      "title": "Chapter 17.06: SVM Model Selection"
+    },
+    "content/chapters/18_boosting/18-01-intro-adaboost.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3ff5fbda3d6253feac465e7d1b043ea92ee4d86f494554e4c3f4b0cad996209b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=EKatfc6W1DU",
+      "internal_path": "/chapters/18_boosting/18-01-intro-adaboost/",
+      "lecture_id": "sl-18-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-intro-adaboost.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "EKatfc6W1DU",
+      "public_path": "/i2ml/chapters/18_boosting/18-01-intro-adaboost/",
+      "title": "Chapter 18.01: Introduction to Boosting / AdaBoost"
+    },
+    "content/chapters/18_boosting/18-02-gradient-boosting-concept.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3409fbe909ad89b8bbd9c96b917ce34ccb2ebc39f7585331f36c669cf4b28385.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=cM4JeV7FLCA",
+      "internal_path": "/chapters/18_boosting/18-02-gradient-boosting-concept/",
+      "lecture_id": "sl-18-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gradient-boosting-concept.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "cM4JeV7FLCA",
+      "public_path": "/i2ml/chapters/18_boosting/18-02-gradient-boosting-concept/",
+      "title": "Chapter 18.02: Boosting Concept"
+    },
+    "content/chapters/18_boosting/18-03-gradient-boosting-illustration.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/5c6d70e0938681ceb0590b9adafce12cd10e3dc7c039115716f2a24b5b1f908b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=WGx3Jz5v5UE",
+      "internal_path": "/chapters/18_boosting/18-03-gradient-boosting-illustration/",
+      "lecture_id": "sl-18-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-regression-illustrations.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "WGx3Jz5v5UE",
+      "public_path": "/i2ml/chapters/18_boosting/18-03-gradient-boosting-illustration/",
+      "title": "Chapter 18.03: Boosting Illustration"
+    },
+    "content/chapters/18_boosting/18-04-gradient-boosting-regularization.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/acb64402307d3f4a81872ddc7c739e9f31c301692aa59a5bd51e723891884a7e.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=NGLosW3Z1IA",
+      "internal_path": "/chapters/18_boosting/18-04-gradient-boosting-regularization/",
+      "lecture_id": "sl-18-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-regularization.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "NGLosW3Z1IA",
+      "public_path": "/i2ml/chapters/18_boosting/18-04-gradient-boosting-regularization/",
+      "title": "Chapter 18.04: Boosting Regularization"
+    },
+    "content/chapters/18_boosting/18-05-gradient-boosting-classification.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/6de86e0d086051831953ff6e7dea85bf3e985d6d8af43a7fc1be5dd4286e855d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=1S5rRHp631s",
+      "internal_path": "/chapters/18_boosting/18-05-gradient-boosting-classification/",
+      "lecture_id": "sl-18-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-classification.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "1S5rRHp631s",
+      "public_path": "/i2ml/chapters/18_boosting/18-05-gradient-boosting-classification/",
+      "title": "Chapter 18.05: Boosting for Classification"
+    },
+    "content/chapters/18_boosting/18-06-gradient-boosting-trees-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/324df69ec0a813336249944014a4a918276c27e10062d294103f8fc2a76b4111.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=iOe-kTA3kxE",
+      "internal_path": "/chapters/18_boosting/18-06-gradient-boosting-trees-1/",
+      "lecture_id": "sl-18-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-with-trees-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "iOe-kTA3kxE",
+      "public_path": "/i2ml/chapters/18_boosting/18-06-gradient-boosting-trees-1/",
+      "title": "Chapter 18.06: Gradient Boosting with Trees I"
+    },
+    "content/chapters/18_boosting/18-07-gradient-boosting-trees-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f6114bab1a0b8a92eb578a368f0bd12b9660bfee223d63cc1904398eea1dd8ef.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=X0AnhTuWFrM",
+      "internal_path": "/chapters/18_boosting/18-07-gradient-boosting-trees-2/",
+      "lecture_id": "sl-18-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-gbm-with-trees-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "X0AnhTuWFrM",
+      "public_path": "/i2ml/chapters/18_boosting/18-07-gradient-boosting-trees-2/",
+      "title": "Chapter 18.07: Gradient Boosting with Trees II"
+    },
+    "content/chapters/18_boosting/18-08-gradient-boosting-xgboost.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/012b93d3f6ce25cc945856d541ffeab6e94f0f2233cccbf06c14007120313617.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=HnSPxlA7j6A",
+      "internal_path": "/chapters/18_boosting/18-08-gradient-boosting-xgboost/",
+      "lecture_id": "sl-18-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/raw/main/slides-pdf/slides-boosting-xgboost.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "HnSPxlA7j6A",
+      "public_path": "/i2ml/chapters/18_boosting/18-08-gradient-boosting-xgboost/",
+      "title": "Chapter 18.08: XGBoost"
+    },
+    "content/chapters/18_boosting/18-09-CWB-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9e61f7b1e525aa60f60f6cf018f759c1e9515dae9df3c3873a1f8fa061e90333.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=9l2mUSOkWRc",
+      "internal_path": "/chapters/18_boosting/18-09-cwb-1/",
+      "lecture_id": "sl-18-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-boosting-cwb-basics.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "9l2mUSOkWRc",
+      "public_path": "/i2ml/chapters/18_boosting/18-09-cwb-1/",
+      "title": "Chapter 18.09: Component Wise Boosting Basics 1"
+    },
+    "content/chapters/18_boosting/18-10-CWB-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/2f77c324c8da8b543d28ea3f62b0a0e39f60533b50fd1d0458419f189b446c0b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=ALA5F8n-8aU",
+      "internal_path": "/chapters/18_boosting/18-10-cwb-2/",
+      "lecture_id": "sl-18-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-boosting-cwb-basics2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "ALA5F8n-8aU",
+      "public_path": "/i2ml/chapters/18_boosting/18-10-cwb-2/",
+      "title": "Chapter 18.10: Component Wise Boosting Basics 2"
+    },
+    "content/chapters/18_boosting/18-11-CWB-GLM.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/755867bce73940bd4777a6f395addf75b3853e0698976b46bbbd31d75da050c8.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6jKXf8FRY1E",
+      "internal_path": "/chapters/18_boosting/18-11-cwb-glm/",
+      "lecture_id": "sl-18-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-boosting-cwb-glm.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6jKXf8FRY1E",
+      "public_path": "/i2ml/chapters/18_boosting/18-11-cwb-glm/",
+      "title": "Chapter 18.11: CWB and GLMs"
+    },
+    "content/chapters/18_boosting/18-12-adv-CWB.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/46f11ba5637df48cdd067693c45ca0fa74f28132f6bb8c5b1975bbd232931464.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=3RnpVW8uDzY",
+      "internal_path": "/chapters/18_boosting/18-12-adv-cwb/",
+      "lecture_id": "sl-18-12",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-boosting-cwb-advanced.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "3RnpVW8uDzY",
+      "public_path": "/i2ml/chapters/18_boosting/18-12-adv-cwb/",
+      "title": "Chapter 18.12: Advanced CWB"
+    },
+    "content/chapters/19_gaussian_processes/19-01-bayes-lm.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d7fa9f4679c5b1edbc63719bce1834fcb9be9f33e77039a403e26132c156834a.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=H7Qy1X12Ypo",
+      "internal_path": "/chapters/19_gaussian_processes/19-01-bayes-lm/",
+      "lecture_id": "sl-19-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-gp-bayes-lm.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "H7Qy1X12Ypo",
+      "public_path": "/i2ml/chapters/19_gaussian_processes/19-01-bayes-lm/",
+      "title": "Chapter 19.01: The Bayesian Linear Model"
+    },
+    "content/chapters/19_gaussian_processes/19-02-basic.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/10a781b764103e235b1f8df412bf2c6da870b3e13bfb352db2ae449eeaf34f51.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Uv54SlxflhQ",
+      "internal_path": "/chapters/19_gaussian_processes/19-02-basic/",
+      "lecture_id": "sl-19-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-gp-basic.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Uv54SlxflhQ",
+      "public_path": "/i2ml/chapters/19_gaussian_processes/19-02-basic/",
+      "title": "Chapter 19.02: Gaussian Processes"
+    },
+    "content/chapters/19_gaussian_processes/19-03-covariance.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/56b55a46bc99955ebf2a7a33ceb9108ac8013354175fb59fe082e1bc3a6e9f06.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=8fB3RwxNObw",
+      "internal_path": "/chapters/19_gaussian_processes/19-03-covariance/",
+      "lecture_id": "sl-19-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-gp-covariance.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "8fB3RwxNObw",
+      "public_path": "/i2ml/chapters/19_gaussian_processes/19-03-covariance/",
+      "title": "Chapter 19.03: Covariance Functions for GPs"
+    },
+    "content/chapters/19_gaussian_processes/19-04-prediction.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3050a5cd0d231503d4b21255c77e3d1d150f4f095c9a4b4bd7efc460e3fe396d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=qlfUlFaP94g",
+      "internal_path": "/chapters/19_gaussian_processes/19-04-prediction/",
+      "lecture_id": "sl-19-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-gp-prediction.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "qlfUlFaP94g",
+      "public_path": "/i2ml/chapters/19_gaussian_processes/19-04-prediction/",
+      "title": "Chapter 19.04: Gaussian Process Prediction"
+    },
+    "content/chapters/19_gaussian_processes/19-05-training.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/5ae684908e90f2cc68e61eb352810b94a44998cf4c6be20efb1b20a224558392.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=S0GqTy2gLf0",
+      "internal_path": "/chapters/19_gaussian_processes/19-05-training/",
+      "lecture_id": "sl-19-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_sl/blob/main/slides-pdf/slides-gp-training.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "S0GqTy2gLf0",
+      "public_path": "/i2ml/chapters/19_gaussian_processes/19-05-training/",
+      "title": "Chapter 19.05: Gaussian Process Training"
+    },
+    "content/chapters/20_data_science_lifecycle/20-01-lifecycle.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/721d6a7a14f5341a8d8de6239d8b7bc0cf15ce46dc8f48ec12ebe211e7266f41.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/20_data_science_lifecycle/20-01-lifecycle/",
+      "lecture_id": "appml-20-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-lifecycle.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/20_data_science_lifecycle/20-01-lifecycle/",
+      "title": "Chapter 20.01: The Data Science Lifecycle"
+    },
+    "content/chapters/20_data_science_lifecycle/20-02-best-practices.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/87e7c732bfc9b58149c5c301f1e6c0ca1f55116a5bacb06cce607d6122746666.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/20_data_science_lifecycle/20-02-best-practices/",
+      "lecture_id": "appml-20-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-best-practices.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/20_data_science_lifecycle/20-02-best-practices/",
+      "title": "Chapter 20.02: ML Competition Strategy"
+    },
+    "content/chapters/21_feature_selection/21-01-introduction.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9f6c153afae38fc0a27f0948d90fb3b7db3c09455c0499ac3bd3a04f6e1a59ac.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=xiVB1EmlU9A",
+      "internal_path": "/chapters/21_feature_selection/21-01-introduction/",
+      "lecture_id": "appml-21-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-fs-introduction.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "xiVB1EmlU9A",
+      "public_path": "/i2ml/chapters/21_feature_selection/21-01-introduction/",
+      "title": "Chapter 21.01: Introduction"
+    },
+    "content/chapters/21_feature_selection/21-02-motivating-examples.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/5d332b5d0a3d32971a01fdab13c701ba2a0bf004ea5b6afffc3026334d6b5446.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=1BwgTptjDs4",
+      "internal_path": "/chapters/21_feature_selection/21-02-motivating-examples/",
+      "lecture_id": "appml-21-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-fs-motivating-examples.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "1BwgTptjDs4",
+      "public_path": "/i2ml/chapters/21_feature_selection/21-02-motivating-examples/",
+      "title": "Chapter 21.02: Motivating Examples"
+    },
+    "content/chapters/21_feature_selection/21-03-filters1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8f0baa96f7ffee69d1cb5fdba0280d671228ca1fc31df7b89d35b63e52194bb3.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=RcDyvExpCSg",
+      "internal_path": "/chapters/21_feature_selection/21-03-filters1/",
+      "lecture_id": "appml-21-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-fs-filters1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "RcDyvExpCSg",
+      "public_path": "/i2ml/chapters/21_feature_selection/21-03-filters1/",
+      "title": "Chapter 21.03: Filter Methods I"
+    },
+    "content/chapters/21_feature_selection/21-04-filters2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/b1ab832f809dd677b5edbe106918af28af02768f69a91a69769ce7c166324333.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=X3FpzGnGA7o",
+      "internal_path": "/chapters/21_feature_selection/21-04-filters2/",
+      "lecture_id": "appml-21-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-fs-filters2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "X3FpzGnGA7o",
+      "public_path": "/i2ml/chapters/21_feature_selection/21-04-filters2/",
+      "title": "Chapter 21.04: Filter Methods II (Examples and Caveats)"
+    },
+    "content/chapters/21_feature_selection/21-05-wrapper.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8c539bf26679cd0af87106d18c7762fab97748208f0805863e8313d5309b9a71.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=XmvlHUCGNbc",
+      "internal_path": "/chapters/21_feature_selection/21-05-wrapper/",
+      "lecture_id": "appml-21-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-fs-wrapper.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "XmvlHUCGNbc",
+      "public_path": "/i2ml/chapters/21_feature_selection/21-05-wrapper/",
+      "title": "Chapter 21.05: Wrapper Methods"
+    },
+    "content/chapters/22_preprocessing/22-01-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f294eba2f1c49e35dff5a3be7bd10651b44b22562ab322f1a06c1c98ca9197c4.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-01-intro/",
+      "lecture_id": "appml-22-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-preprocessing-intro.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-01-intro/",
+      "title": "Chapter 22.01: Introduction to Feature Engineering"
+    },
+    "content/chapters/22_preprocessing/22-02-categorical-encoding.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/887b819c076e85076c23fad835c2cd4184704183cc0e592bdbaae12965140be4.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-02-categorical-encoding/",
+      "lecture_id": "appml-22-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-preprocessing-categorical-encoding.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-02-categorical-encoding/",
+      "title": "Chapter 22.02: Categorical Encoding"
+    },
+    "content/chapters/22_preprocessing/22-03-feature-transformations.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ca047ee6e50d2429516bec722bfb5802ac5d86f97089ef814bdcdfcd0fa231e6.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-03-feature-transformations/",
+      "lecture_id": "appml-22-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-preprocessing-feature-transformations.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-03-feature-transformations/",
+      "title": "Chapter 22.03: Feature Transformations"
+    },
+    "content/chapters/22_preprocessing/22-04-target-transformations.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/508a21a688a2090adda8e17d43603d063c1aa28cc0b8fadcfbce2e9cf91b8c76.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-04-target-transformations/",
+      "lecture_id": "appml-22-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-preprocessing-target-transformations.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-04-target-transformations/",
+      "title": "Chapter 22.04: Target Transformations"
+    },
+    "content/chapters/22_preprocessing/22-05-leakage.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3316df9faa1c5cb019627d037d2b569fa9bd8c5320bfe38baa1ac2ee25df1fee.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-05-leakage/",
+      "lecture_id": "appml-22-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-preprocessing-leakage.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-05-leakage/",
+      "title": "Chapter 22.05: Data Leakage"
+    },
+    "content/chapters/22_preprocessing/22-06-missing-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/17dbeb0f5f2d08eff61e6b9adff646f25484ea1d52c0040f87fce566ff099b0f.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-06-missing-intro/",
+      "lecture_id": "appml-22-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-imputation-intro.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-06-missing-intro/",
+      "title": "Chapter 22.06: Missing Data - Introduction"
+    },
+    "content/chapters/22_preprocessing/22-07-imputation-simple.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/fe377e521ba1ad64681be432d750f86e3f8443641c3d6b964d9940b15f454e33.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-07-imputation-simple/",
+      "lecture_id": "appml-22-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-imputation-simple.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-07-imputation-simple/",
+      "title": "Chapter 22.07: Simple Imputation Methods"
+    },
+    "content/chapters/22_preprocessing/22-08-imputation-model-based.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ca3545fa3631fbaedb6e8d05c6767a3e58db59a1b13fb75c60ae140a4f0db159.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-08-imputation-model-based/",
+      "lecture_id": "appml-22-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-imputation-model-based.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-08-imputation-model-based/",
+      "title": "Chapter 22.08: Model-Based Imputation"
+    },
+    "content/chapters/22_preprocessing/22-09-timeseries-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8ab6f9eb7a4e57e9071564c64d198de29d4819a6b25d5bfd381f8c7ed8344839.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-09-timeseries-intro/",
+      "lecture_id": "appml-22-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-timeseries-intro.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-09-timeseries-intro/",
+      "title": "Chapter 22.09: Time Series - Introduction"
+    },
+    "content/chapters/22_preprocessing/22-10-timeseries-features.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/282599c41405321faba170c762ff31f811e8a9183e609e6d074a76bab9f78b51.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-10-timeseries-features/",
+      "lecture_id": "appml-22-10",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-timeseries-features.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-10-timeseries-features/",
+      "title": "Chapter 22.10: Time Series Feature Engineering"
+    },
+    "content/chapters/22_preprocessing/22-11-timeseries-evaluation.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d86904771552aeec43dfe0d7ccf6831838e0b6e72657982363bd5e691f1109e8.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/22_preprocessing/22-11-timeseries-evaluation/",
+      "lecture_id": "appml-22-11",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-timeseries-evaluation.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/22_preprocessing/22-11-timeseries-evaluation/",
+      "title": "Chapter 22.11: Time Series Evaluation"
+    },
+    "content/chapters/23_calibration/23-01-calibration-discrimination.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/77b8729e0efaec99cc002db99f2e424aef5a3816f7a73492f60a0940689a320b.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/23_calibration/23-01-calibration-discrimination/",
+      "lecture_id": "appml-23-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-calibration-discrimination.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/23_calibration/23-01-calibration-discrimination/",
+      "title": "Chapter 23.01: Calibration vs Discrimination"
+    },
+    "content/chapters/23_calibration/23-02-calibration-methods.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/37143babf138dfd09580e0ae3e0bbc6db5c7f6f911cca85c6755713673e71a19.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/23_calibration/23-02-calibration-methods/",
+      "lecture_id": "appml-23-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-calibration-methods.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/23_calibration/23-02-calibration-methods/",
+      "title": "Chapter 23.02: Calibration Methods"
+    },
+    "content/chapters/24_imbalanced_learning/24-01-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c3a259bd7417563a1d0e832e7b5e57b3ef893bfb4929ac85a154a1dff418fdcb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=fKRuCjbmA6I",
+      "internal_path": "/chapters/24_imbalanced_learning/24-01-intro/",
+      "lecture_id": "advml-24-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-intro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "fKRuCjbmA6I",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-01-intro/",
+      "title": "Chapter 24.01: Introduction"
+    },
+    "content/chapters/24_imbalanced_learning/24-02-perf-msr.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/b9679b2897cc28ea635d8ebe1f02cc24d7a02e5144d03831040786cfc32e2133.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=50F3KlzyG6o",
+      "internal_path": "/chapters/24_imbalanced_learning/24-02-perf-msr/",
+      "lecture_id": "advml-24-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-performance-measures.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "50F3KlzyG6o",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-02-perf-msr/",
+      "title": "Chapter 24.02: Performance Measures"
+    },
+    "content/chapters/24_imbalanced_learning/24-03-cs-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/94d319f6ea0653e55a3ee2b99aa5f7808e159da03198b5aec9f2300924353478.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Yc1uWlRLdPU",
+      "internal_path": "/chapters/24_imbalanced_learning/24-03-cs-1/",
+      "lecture_id": "advml-24-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-cost-sensitive-learning-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Yc1uWlRLdPU",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-03-cs-1/",
+      "title": "Chapter 24.03: Cost-Sensitive Learning 1"
+    },
+    "content/chapters/24_imbalanced_learning/24-04-cs-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/e399d2bddf72ffae6f67287d19bf764c9e67d0e4b790b87adad2fff308b07300.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=aPYUKBaSLOo",
+      "internal_path": "/chapters/24_imbalanced_learning/24-04-cs-2/",
+      "lecture_id": "advml-24-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-cost-sensitive-learning-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "aPYUKBaSLOo",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-04-cs-2/",
+      "title": "Chapter 24.04: Cost-Sensitive Learning 2"
+    },
+    "content/chapters/24_imbalanced_learning/24-05-cs-3.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/65715a711de5303e8d09f4bf2caa2424a76fd704dfc4544e200e9e2c00d1ac5b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=qRb_nlJA7v0",
+      "internal_path": "/chapters/24_imbalanced_learning/24-05-cs-3/",
+      "lecture_id": "advml-24-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-cost-sensitive-learning-3.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "qRb_nlJA7v0",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-05-cs-3/",
+      "title": "Chapter 24.05: Cost-Sensitive Learning 3"
+    },
+    "content/chapters/24_imbalanced_learning/24-06-cc-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ec269207ad64c24dda9dcd46e9437cd1020befa624da5a3c9de8a30a87646c04.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=w2BFjL6LRwQ",
+      "internal_path": "/chapters/24_imbalanced_learning/24-06-cc-1/",
+      "lecture_id": "advml-24-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-costcurves-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "w2BFjL6LRwQ",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-06-cc-1/",
+      "title": "Chapter 24.06: Cost Curves 1"
+    },
+    "content/chapters/24_imbalanced_learning/24-07-cc-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/96fd561f68930be2de4acd4f17362d743b85d815421aa21854c88299ce466697.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=9qKCmVIqUbI",
+      "internal_path": "/chapters/24_imbalanced_learning/24-07-cc-2/",
+      "lecture_id": "advml-24-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-costcurves-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "9qKCmVIqUbI",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-07-cc-2/",
+      "title": "Chapter 24.07: Cost Curves 2"
+    },
+    "content/chapters/24_imbalanced_learning/24-08-smpl-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/cd6edd05bf808132550645b5f5140cc147c069ce789eaae3c8923c2e19948792.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=zCO6CPCvrAY",
+      "internal_path": "/chapters/24_imbalanced_learning/24-08-smpl-1/",
+      "lecture_id": "advml-24-08",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-sampling-methods-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "zCO6CPCvrAY",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-08-smpl-1/",
+      "title": "Chapter 24.08: Sampling Methods 1"
+    },
+    "content/chapters/24_imbalanced_learning/24-09-smpl-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/ed23a37d51f1dd240f915f51122a7e05fb234349a03e2a72f6a34646ea98c713.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=6T5_SJmuiR0",
+      "internal_path": "/chapters/24_imbalanced_learning/24-09-smpl-2/",
+      "lecture_id": "advml-24-09",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-imbalanced-learning-sampling-methods-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "6T5_SJmuiR0",
+      "public_path": "/i2ml/chapters/24_imbalanced_learning/24-09-smpl-2/",
+      "title": "Chapter 24.09: Sampling Methods 2"
+    },
+    "content/chapters/25_ensembling_stacking/25-01-ensembles-averaging.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/8466ee41861e236f41e62e1ceaa4a24ea63f3ba31e667c60bae97f803d1ddf67.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/25_ensembling_stacking/25-01-ensembles-averaging/",
+      "lecture_id": "appml-25-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-ensembles-averaging.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/25_ensembling_stacking/25-01-ensembles-averaging/",
+      "title": "Chapter 25.01: Ensembling and Model Averaging"
+    },
+    "content/chapters/25_ensembling_stacking/25-02-stacking.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/15ea662661e3307ea80e46eb816c20bbd54829c0e6395e5f70a5a627499e0e8f.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/25_ensembling_stacking/25-02-stacking/",
+      "lecture_id": "appml-25-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-ensembles-stacking.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/25_ensembling_stacking/25-02-stacking/",
+      "title": "Chapter 25.02: Stacking"
+    },
+    "content/chapters/26_openml_benchmarking/26-01-openml.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3f492a3724a83fdfcac5ca10fb884b71fc393c47e616bb60c85d28f4492e52a1.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/26_openml_benchmarking/26-01-openml/",
+      "lecture_id": "appml-26-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-openml.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/26_openml_benchmarking/26-01-openml/",
+      "title": "Chapter 26.01: Large-Scale Benchmarking and OpenML"
+    },
+    "content/chapters/26_openml_benchmarking/26-02-hypothesis-testing.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a6967605aabf5bf33e3437a5cc5927c34edd0d77dcc5c5ac559191934a89b6d3.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/26_openml_benchmarking/26-02-hypothesis-testing/",
+      "lecture_id": "appml-26-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-benchmark-hypothesis-testing.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/26_openml_benchmarking/26-02-hypothesis-testing/",
+      "title": "Chapter 26.02: Model Selection and Hypothesis Testing"
+    },
+    "content/chapters/26_openml_benchmarking/26-03-practical.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/44b89941c738f12946da8f763a90c911cef2f948f1d52e25d8c0573148b7711b.pdf"
+      ],
+      "fallback_video_url": null,
+      "internal_path": "/chapters/26_openml_benchmarking/26-03-practical/",
+      "lecture_id": "appml-26-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_appml/blob/main/slides-pdf/slides-benchmark-practical.pdf"
+      ],
+      "presentation_mode": "slide_only",
+      "provider": "none",
+      "provider_id": null,
+      "public_path": "/i2ml/chapters/26_openml_benchmarking/26-03-practical/",
+      "title": "Chapter 26.03: Practical Performance Evaluation"
+    },
+    "content/chapters/90_multitarget_learning/90-01-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/c11052148a36ca18a86e72f947d984afd71a0cc383c45b50c1247d91b5cf061f.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=Or2clVNB5Bo",
+      "internal_path": "/chapters/90_multitarget_learning/90-01-intro/",
+      "lecture_id": "advml-90-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-multitarget-intro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "Or2clVNB5Bo",
+      "public_path": "/i2ml/chapters/90_multitarget_learning/90-01-intro/",
+      "title": "Extra Chapter: Multitarget Learning - Introduction"
+    },
+    "content/chapters/90_multitarget_learning/90-02-losses.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/dffbd36a1420dd57e2983a6a650385a1dd7ec7517b7bcf351a627d99424f041d.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=0HsXwhvb5Sc",
+      "internal_path": "/chapters/90_multitarget_learning/90-02-losses/",
+      "lecture_id": "advml-90-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-multitarget-losses.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "0HsXwhvb5Sc",
+      "public_path": "/i2ml/chapters/90_multitarget_learning/90-02-losses/",
+      "title": "Extra Chapter: Multitarget Learning - Loss Functions"
+    },
+    "content/chapters/90_multitarget_learning/90-03-methods-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/03c8dedfba8818ae7060c54ac22159962d27566f046787d8542f0bceeb6ffba3.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=pq_k1aFsYi8",
+      "internal_path": "/chapters/90_multitarget_learning/90-03-methods-1/",
+      "lecture_id": "advml-90-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-multitarget-methods-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "pq_k1aFsYi8",
+      "public_path": "/i2ml/chapters/90_multitarget_learning/90-03-methods-1/",
+      "title": "Extra Chapter: Multitarget Learning - Methods 1"
+    },
+    "content/chapters/90_multitarget_learning/90-04-methods-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/9275f0396879ad44c0a9778e5becb54c46c5fdd525eda48c54ee78abfdeb8751.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=sGkjzOOchqg",
+      "internal_path": "/chapters/90_multitarget_learning/90-04-methods-2/",
+      "lecture_id": "advml-90-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-multitarget-methods-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "sGkjzOOchqg",
+      "public_path": "/i2ml/chapters/90_multitarget_learning/90-04-methods-2/",
+      "title": "Extra Chapter: Multitarget Learning - Methods 2"
+    },
+    "content/chapters/91_online_learning/91-01-intro.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/d7824a95e8b1f9dd89c21b1ab38fddba76a72fc141497fb7d931bd797690c90c.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=afNt5wuPmm4",
+      "internal_path": "/chapters/91_online_learning/91-01-intro/",
+      "lecture_id": "advml-91-01",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-intro.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "afNt5wuPmm4",
+      "public_path": "/i2ml/chapters/91_online_learning/91-01-intro/",
+      "title": "Extra Chapter: Online Learning - Introduction"
+    },
+    "content/chapters/91_online_learning/91-02-simple.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/4a432f13c08f73b6a1f3617cc8f0f03a630fc08abb72c6beb98fb8883399de22.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=bomA-elLg40",
+      "internal_path": "/chapters/91_online_learning/91-02-simple/",
+      "lecture_id": "advml-91-02",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-simple-learners.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "bomA-elLg40",
+      "public_path": "/i2ml/chapters/91_online_learning/91-02-simple/",
+      "title": "Extra Chapter: Online Learning - Simple Algorithms"
+    },
+    "content/chapters/91_online_learning/91-03-ftl.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/a903a020836405c1b8f8b1c0327ebd8343d35c47e3db65c3dbb255d6ac194f94.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=tvRxb8GHHM8",
+      "internal_path": "/chapters/91_online_learning/91-03-ftl/",
+      "lecture_id": "advml-91-03",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-simple-learners-ftl-olo.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "tvRxb8GHHM8",
+      "public_path": "/i2ml/chapters/91_online_learning/91-03-ftl/",
+      "title": "Extra Chapter: Online Learning - Follow the Leader on Online Linear Optimization"
+    },
+    "content/chapters/91_online_learning/91-04-ftrl.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/b1c68b05860375ac1c48a49c7c3cc649ed68404a1c56271934d557b494164ccb.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=9qyHz1kXx3s",
+      "internal_path": "/chapters/91_online_learning/91-04-ftrl/",
+      "lecture_id": "advml-91-04",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-simple-learners-ftrl.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "9qyHz1kXx3s",
+      "public_path": "/i2ml/chapters/91_online_learning/91-04-ftrl/",
+      "title": "Extra Chapter: Online Learning - Follow the Regularized Leader"
+    },
+    "content/chapters/91_online_learning/91-05-ftl-oqo.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/03388f049d1327851a86b024b406df7f9d2d47b0e4520836c52520af4319e0ab.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=UK-pCAD9GRY",
+      "internal_path": "/chapters/91_online_learning/91-05-ftl-oqo/",
+      "lecture_id": "advml-91-05",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-simple-learners-ftl-oqo-deep-dive.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "UK-pCAD9GRY",
+      "public_path": "/i2ml/chapters/91_online_learning/91-05-ftl-oqo/",
+      "title": "Extra Chapter: Online Learning - Follow the Leader on Online Quadratic Optimization"
+    },
+    "content/chapters/91_online_learning/91-06-oco-1.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/f52863f9ccfeb5db34309ced434d207bc1a7d9d186c542fd73be338356eb557b.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=f5i5clqlU-8",
+      "internal_path": "/chapters/91_online_learning/91-06-oco-1/",
+      "lecture_id": "advml-91-06",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-oco-1.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "f5i5clqlU-8",
+      "public_path": "/i2ml/chapters/91_online_learning/91-06-oco-1/",
+      "title": "Extra Chapter: Online Learning - Online Convex Optimization 1"
+    },
+    "content/chapters/91_online_learning/91-07-oco-2.md": {
+      "external_url": null,
+      "fallback_pdf_urls": [
+        "/course-assets/pdfs/3ba7529964cf1d5f761c94d24c8f84f06f06fcdae134d6ac22d7232a35871025.pdf"
+      ],
+      "fallback_video_url": "https://www.youtube.com/watch?v=A8dbluBNw-8",
+      "internal_path": "/chapters/91_online_learning/91-07-oco-2/",
+      "lecture_id": "advml-91-07",
+      "original_pdf_urls": [
+        "https://github.com/slds-lmu/lecture_advml/blob/main/slides-pdf/slides-online-learning-oco-2.pdf"
+      ],
+      "presentation_mode": "video_lecture",
+      "provider": "youtube",
+      "provider_id": "A8dbluBNw-8",
+      "public_path": "/i2ml/chapters/91_online_learning/91-07-oco-2/",
+      "title": "Extra Chapter: Online Learning - Online Convex Optimization 2"
+    }
+  },
+  "content_revision": "corpus-v1-132a3804be385902",
+  "schema_version": 1
+}

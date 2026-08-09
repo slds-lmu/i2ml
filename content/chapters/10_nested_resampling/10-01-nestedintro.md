@@ -15,6 +15,8 @@ Selecting the best model from a set of candidates is an important part of most m
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nested-nestedintro.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **Nested Resampling**

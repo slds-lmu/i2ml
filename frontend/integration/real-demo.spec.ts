@@ -1,7 +1,39 @@
 import { expect, test } from "@playwright/test";
+import { readFileSync } from "node:fs";
+
+interface CourseBinding {
+  lecture_id: string;
+  internal_path: string;
+  presentation_mode: "video_lecture" | "slide_only" | "external_link_only";
+  fallback_pdf_urls: string[];
+}
+
+const bindingDocument = JSON.parse(
+  readFileSync("/workspace/i2ml/data/lecture_bindings.json", "utf8")
+) as {
+  content_revision: string;
+  bindings: Record<string, CourseBinding>;
+};
+const courseBindings = Object.entries(bindingDocument.bindings);
+const supplementBindings = courseBindings.filter(([contentPath]) =>
+  readFileSync(`/workspace/i2ml/${contentPath}`, "utf8").includes(
+    "<!-- modern-lecture:supplements -->"
+  )
+);
+const legacyRoutes = [
+  "/chapters/06_cart/06-08-literature/",
+  "/chapters/07_forests/07-06-literature/",
+  "/chapters/09_tuning/further-material/",
+  "/chapters/11_advriskmin/11-19-literature/",
+  "/chapters/13_information_theory/13-12-literature/",
+  "/chapters/15_regularization/15-15-literature/",
+  "/chapters/18_boosting/18-13-literature/",
+  "/chapters/19_gaussian_processes/19-06-literature/",
+  "/chapters/21_feature_selection/21-06-literature/"
+];
 
 const lectureUrl = "/chapters/01_ml_basics/01-01-what_is_ml/";
-const pilotRoutes = [
+const representativeRoutes = [
   ["i2ml-01-01", lectureUrl, "video"],
   ["i2ml-03-06", "/chapters/03_supervised_classification/03-06-classification-naivebayes/", "video"],
   ["i2ml-04-11", "/chapters/04_evaluation/04-11-partialauc-mcauc/", "two-deck"],
@@ -68,7 +100,7 @@ test("combined FastAPI/Hugo demo loads the real release DTO and PDF", async ({ p
   await expect(page.locator(".pdf-text-layer").first()).not.toBeEmpty();
   await expect(page.getByRole("link", { name: /Download slides/ })).toHaveAttribute(
     "href",
-    /pilot-assets\/pdfs\/[a-f0-9]{64}\.pdf/
+    /course-assets\/pdfs\/[a-f0-9]{64}\.pdf/
   );
   await page.evaluate(() => {
     const state = window as typeof window & { __printCalled?: boolean };
@@ -294,10 +326,78 @@ test("selection payload and malicious streamed answer remain safe", async ({ pag
   expect((submitted?.selection as { text?: string } | undefined)?.text).toBeTruthy();
 });
 
-test("all pilot routes load their real presentation modes and teaching assets", async ({ page }) => {
+test("every course binding resolves through the site and checksum-gated backend", async ({
+  request
+}) => {
+  test.setTimeout(180_000);
+  const failures: string[] = [];
+  const modeCounts: Record<string, number> = {};
+  for (const [contentPath, binding] of courseBindings) {
+    const siteResponse = await request.get(binding.internal_path);
+    const html = await siteResponse.text();
+    if (!siteResponse.ok()) failures.push(`${binding.lecture_id}: site ${siteResponse.status()}`);
+    if (!html.includes(`data-lecture-id="${binding.lecture_id}"`)) {
+      failures.push(`${binding.lecture_id}: site binding missing for ${contentPath}`);
+    }
+    for (const pdfUrl of binding.fallback_pdf_urls) {
+      if (!html.includes(pdfUrl)) failures.push(`${binding.lecture_id}: missing PDF fallback`);
+    }
+
+    const apiResponse = await request.get(`/api/v1/lectures/${binding.lecture_id}`);
+    if (!apiResponse.ok()) {
+      failures.push(`${binding.lecture_id}: API ${apiResponse.status()}`);
+      continue;
+    }
+    const lecture = await apiResponse.json() as {
+      lecture_id: string;
+      content_revision: string;
+      presentation: { mode: string };
+      decks: unknown[];
+    };
+    if (lecture.lecture_id !== binding.lecture_id) failures.push(`${binding.lecture_id}: ID drift`);
+    if (lecture.content_revision !== bindingDocument.content_revision) {
+      failures.push(`${binding.lecture_id}: revision drift`);
+    }
+    if (lecture.presentation.mode !== binding.presentation_mode) {
+      failures.push(`${binding.lecture_id}: presentation-mode drift`);
+    }
+    if (binding.lecture_id === "i2ml-04-11" && lecture.decks.length !== 2) {
+      failures.push("i2ml-04-11: two-deck ordering was lost");
+    }
+    modeCounts[binding.presentation_mode] = (modeCounts[binding.presentation_mode] ?? 0) + 1;
+  }
+
+  expect(courseBindings).toHaveLength(189);
+  expect(modeCounts).toEqual({
+    external_link_only: 6,
+    slide_only: 32,
+    video_lecture: 151
+  });
+  expect(failures).toEqual([]);
+});
+
+test("supplementary material remains visible and non-lecture pages remain legacy", async ({
+  request
+}) => {
+  expect(supplementBindings).toHaveLength(26);
+  for (const [, binding] of supplementBindings) {
+    const response = await request.get(binding.internal_path);
+    expect(response.ok()).toBe(true);
+    expect(await response.text()).toContain(
+      '<section class="lecture-supplements" aria-label="Supplementary lecture material">'
+    );
+  }
+  for (const route of legacyRoutes) {
+    const response = await request.get(route);
+    expect(response.ok()).toBe(true);
+    expect(await response.text()).not.toContain("<i2ml-lecture-app");
+  }
+});
+
+test("representative course routes load their real presentation modes and teaching assets", async ({ page }) => {
   const pageErrors: string[] = [];
   page.on("pageerror", (error) => pageErrors.push(error.message));
-  for (const [lectureId, route, mode] of pilotRoutes) {
+  for (const [lectureId, route, mode] of representativeRoutes) {
     await page.goto(route);
     await expect(page.locator(`i2ml-lecture-app[data-lecture-id="${lectureId}"]`)).toBeVisible();
     await expect(page.locator(".pdf-page").first()).toBeVisible();

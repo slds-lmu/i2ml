@@ -15,6 +15,8 @@ In this section we discuss the advantages and disadvantages of CART and mention 
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-cart-discussion.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **CART**

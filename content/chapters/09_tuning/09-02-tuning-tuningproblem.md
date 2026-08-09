@@ -15,6 +15,8 @@ Hyperparameter tuning is the process of finding good model hyperparameters. In t
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-tuning-tuningproblem.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

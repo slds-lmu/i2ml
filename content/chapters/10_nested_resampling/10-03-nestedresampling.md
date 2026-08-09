@@ -14,6 +14,8 @@ In this section, we will explain why and how nested resampling is done.
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-nested-nestedresampling.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **Kaggle Challenge**

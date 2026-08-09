@@ -13,13 +13,17 @@ const websiteRoot = "/workspace/i2ml";
 const backendRoot = "/workspace/i2ml-qa-backend";
 const testResultsRoot = resolve(websiteRoot, "test-results");
 const staticRoot = resolve(testResultsRoot, `${mode}-static`);
-const stagedPdfRoot = resolve(backendRoot, "build", "static", "pilot-assets");
+const stagedPdfRoot = resolve(backendRoot, "build", "static", "course-assets");
 
 if (!staticRoot.startsWith(`${testResultsRoot}/`)) {
   throw new Error("refusing to prepare integration static files outside test-results");
 }
 await rm(staticRoot, { recursive: true, force: true });
 await mkdir(staticRoot, { recursive: true });
+execFileSync("node", ["scripts/sync-course-bindings.mjs"], {
+  cwd: websiteRoot,
+  stdio: "inherit"
+});
 const hugoEnvironment = { ...process.env };
 delete hugoEnvironment.HUGO_PARAMS_QADEBUG;
 if (debug) hugoEnvironment.HUGO_PARAMS_QADEBUG = "true";
@@ -32,7 +36,7 @@ execFileSync(
     stdio: "inherit"
   }
 );
-await cp(stagedPdfRoot, resolve(staticRoot, "pilot-assets"), { recursive: true });
+await cp(stagedPdfRoot, resolve(staticRoot, "course-assets"), { recursive: true });
 
 const child = spawn(
   "/usr/bin/uv",
@@ -55,7 +59,7 @@ const child = spawn(
       I2ML_QA_DEBUG: debug ? "true" : "false",
       I2ML_CONTENT_MANIFEST: resolve(
         backendRoot,
-        "build/content/manifests/pilot-content-release.json"
+        "build/content/manifests/corpus-app-release.json"
       ),
       I2ML_STATIC_ROOT: staticRoot,
       I2ML_PROVIDER_BASE_URL: "http://127.0.0.1:8999",

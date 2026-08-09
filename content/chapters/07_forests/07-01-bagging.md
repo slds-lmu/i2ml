@@ -15,6 +15,8 @@ Bagging (bootstrap aggregation) is a method for combining many models into a met
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-bagging.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

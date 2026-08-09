@@ -50,6 +50,24 @@ response trace events. The backend rejects tracing in its `internal` runtime.
 Normal production builds set neither flag, omit the trace from the page, and do
 not request trace data.
 
+### Full-course internal demo build
+
+The modern lecture layout is data-driven for all 189 lecture pages. Refresh
+its checksum-bound Hugo map after regenerating the course application release,
+then build normally:
+
+```sh
+npm run sync:course-bindings
+npm run check
+/workspace/tools/hugo/0.145.0/hugo --baseURL / --destination /tmp/i2ml-site
+```
+
+The sync command reads
+`/workspace/i2ml-course-data/application/corpus/v1/hugo-lecture-bindings.json`
+and writes `data/lecture_bindings.json`. It does not download content. The
+combined backend staging command copies the corresponding self-hosted PDFs to
+`/course-assets/pdfs/`; see the backend README for the complete launch command.
+
 ## Citation
 
 If you use our material, please consider citing us as follows:

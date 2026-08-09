@@ -15,6 +15,8 @@ This section introduces polynomials to obtain more flexible models for the regre
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-regression-polynomials.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

@@ -16,6 +16,8 @@ Different resampling techniques help to assess the performance of a learner whil
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/blob/master/slides-pdf/slides-evaluation-resampling-1.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **Resampling**

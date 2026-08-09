@@ -16,6 +16,8 @@ We introduce the concepts of in-bag and out-of-bag observations and explain how 
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-oob.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Quiz
 
 {{< quizdown >}}

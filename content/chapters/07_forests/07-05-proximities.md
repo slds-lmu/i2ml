@@ -16,6 +16,8 @@ The term *proximity* refers to the "closeness" between pairs of cases. Proximiti
 
 {{< pdfjs file="https://github.com/slds-lmu/lecture_i2ml/tree/master/slides-pdf/slides-forests-proximities.pdf" >}}
 
+<!-- modern-lecture:supplements -->
+
 ### Code demo
 
 **Random Forests**

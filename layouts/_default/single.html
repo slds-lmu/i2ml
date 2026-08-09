@@ -1,0 +1,21 @@
+{{ define "main" }}
+{{ $binding := partial "lecture-binding.html" . }}
+{{ if $binding }}
+  {{ partial "lecture-main.html" (dict "page" . "binding" $binding) }}
+{{ else }}
+  <h1>{{ .Title }}</h1>
+  {{ .Content }}
+
+  {{ if or (.NextInSection) (.PrevInSection)}}
+  <ul class="section_skipper list-unstyled">
+    {{ with .NextInSection }}
+      <li id="next_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">&#xab; {{ .Title }}</a></li>
+    {{ end }}
+    {{ with .PrevInSection }}
+      <li id="prev_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">{{ .Title }} &#xbb;</a></li>
+    {{ end }}
+  </ul>
+  {{ end }}
+{{ end }}
+{{ end }}
+
