@@ -35,6 +35,36 @@ export function cuePageStateIds(
   return [...new Set(selected.length > 0 ? selected : legacy)];
 }
 
+/**
+ * Slide-cue navigation for the transport controls, skipping non-slide
+ * segments: `current` is the slide cue at `timeMs` (or the most recent one
+ * when inside an interlude), `previous`/`next` are its slide-cue neighbours.
+ * Cues are assumed sorted by start time, as everywhere else.
+ */
+export function slideCueNavigation(
+  cues: readonly CueInterval[],
+  timeMs: number
+): {
+  previous: CueInterval | undefined;
+  current: CueInterval | undefined;
+  next: CueInterval | undefined;
+} {
+  let previous: CueInterval | undefined;
+  let current: CueInterval | undefined;
+  let next: CueInterval | undefined;
+  for (const cue of cues) {
+    if (cue.state_kind !== "slide") continue;
+    if (cue.start_ms <= timeMs) {
+      previous = current;
+      current = cue;
+    } else {
+      next = cue;
+      break;
+    }
+  }
+  return { previous, current, next };
+}
+
 export function occurrencesFor(
   cues: readonly CueInterval[],
   pageStateIds: string | readonly string[]

@@ -5,9 +5,10 @@ import {
   type PDFDocumentLoadingTask,
   type PDFDocumentProxy
 } from "pdfjs-dist";
-import workerUrl from "pdfjs-dist/build/pdf.worker.min.mjs?url";
+import workerUrl from "./pdf-worker?worker&url";
 import "pdfjs-dist/web/pdf_viewer.css";
 
+import type { StripScrollBehavior } from "./follow-sync";
 import type { PageState, RevisionAsset, RevisionDeckAsset } from "./types";
 
 GlobalWorkerOptions.workerSrc = workerUrl;
@@ -17,27 +18,75 @@ interface DocumentHandle {
   document?: PDFDocumentProxy;
 }
 
+/**
+ * The strip's "top position": a stuck slide sits this many px below the top
+ * edge of the scroller; the gap between slides is half of it, so a slide in
+ * the top position shows a sliver of its predecessor above it.
+ */
+export const STRIP_TOP_GAP = 16;
+
+/**
+ * Where the strip's "top-position line" (STRIP_TOP_GAP below the scroller's
+ * top edge) cuts the strip: the slide it goes through and the fraction of
+ * that slide's height above the line. Captured before a revision switch and
+ * restored after, so the strip keeps its place even when slide heights
+ * differ between revisions (4:3 vs 16:9). The fraction can be slightly
+ * negative (line in the gap above the slide) or above 1 (line in the tail
+ * spacer after the last slide).
+ */
+export interface StripAnchor {
+  /** Page state id of the anchor slide; the caller re-maps it across revisions. */
+  stateId: string | undefined;
+  /** 0-based strip index, the fallback when the id has no counterpart. */
+  stripIndex: number;
+  fraction: number;
+}
+
 let viewerInstance = 0;
 
 export class PdfViewer {
   private readonly documents = new Map<string, DocumentHandle>();
   private readonly elementStates = new Map<HTMLElement, PageState>();
-  private readonly visibleRatios = new Map<HTMLElement, number>();
   private observer: IntersectionObserver | undefined;
   private resizeObserver: ResizeObserver | undefined;
   private readonly renderTasks = new Map<string, Promise<void>>();
   private readonly thumbnails = new Map<string, string>();
   private resizeFrame: number | undefined;
   private observedWidth = 0;
+  private observedHeight = 0;
+  private observedClientWidth = 0;
+  private observedClientHeight = 0;
   private generation = 0;
+  private animationToken = 0;
+  private animationActive = false;
+  private animationTarget: number | undefined;
+  /**
+   * The maintained top-position-line anchor: where the line currently sits,
+   * updated on user scrolls and programmatic placements. When the container
+   * resizes (column drag, window resize, orientation switch), the strip is
+   * re-placed so the line keeps cutting the same slide at the same fraction.
+   */
+  private lineAnchor: StripAnchor | undefined;
+  private resizeSettleUntil = 0;
+  private aspectPublished = false;
   private descriptionIndex = 0;
   private readonly descriptionPrefix = `lecture-slide-description-${++viewerInstance}`;
   private readonly videoChip = createVideoChip();
+  private readonly tailSpacer = createTailSpacer();
+  private readonly playCta = createPlayCta();
+  private playCtaState: PageState | undefined;
 
   constructor(
     private readonly container: HTMLElement,
-    private readonly onVisible: (state: PageState) => void
-  ) {}
+    private readonly onSelect: (state: PageState) => void,
+    onPlayFromSlide?: (state: PageState) => void
+  ) {
+    // Selection handlers skip clicks that land on buttons, so the pill's own
+    // click never doubles as a slide (re)selection.
+    this.playCta.addEventListener("click", () => {
+      if (this.playCtaState && !this.playCta.disabled) onPlayFromSlide?.(this.playCtaState);
+    });
+  }
 
   async load(asset: RevisionAsset): Promise<void>;
   async load(pdfUrl: string | undefined, states: PageState[]): Promise<void>;
@@ -47,6 +96,8 @@ export class PdfViewer {
   ): Promise<void> {
     this.destroy();
     this.container.replaceChildren();
+    // A new document may have a different page aspect (4:3 vs 16:9).
+    this.aspectPublished = false;
     const generation = this.generation;
     const asset = typeof assetOrPdfUrl === "object" && assetOrPdfUrl !== null
       ? assetOrPdfUrl
@@ -61,30 +112,139 @@ export class PdfViewer {
     }
 
     if (asset.decks.length === 0) this.renderStructuredFallback(asset.page_states, 1);
-    if (generation === this.generation) this.applyStripNumbers();
+    if (generation === this.generation) {
+      this.applyStripNumbers();
+      this.updateTailSpacer();
+    }
+  }
+
+  /** True while a programmatic strip animation is in flight. */
+  scrollActive(): boolean {
+    return this.animationActive;
+  }
+
+  /** User input takes over: abandon any in-flight programmatic animation. */
+  cancelProgrammaticScroll(): void {
+    this.animationToken += 1;
+    this.animationActive = false;
+    this.animationTarget = undefined;
+  }
+
+  /** A user scroll moved the strip: the line anchor follows it. */
+  noteUserScroll(): void {
+    this.lineAnchor = this.captureStripAnchor();
   }
 
   /**
-   * Scrolls only the strip container (never the page) so automatic following
-   * cannot yank the surrounding document away from what the student reads.
+   * True while resize re-placements are settling. Layout-shift scroll events
+   * (lazy renders, browser scroll anchoring) should refresh the line anchor
+   * during normal viewing — they track what the user actually sees — but not
+   * while the strip is being re-anchored after a resize, where they would
+   * overwrite the anchor being enforced. The size comparison covers the
+   * window between the resize layout (whose scroll-anchoring adjustment
+   * fires a scroll event immediately) and the ResizeObserver callback.
    */
-  scrollTo(pageStateId: string, behavior: ScrollBehavior, focus = false): void {
-    const target = this.sectionFor(pageStateId);
-    if (target) {
-      const containerRect = this.container.getBoundingClientRect();
-      const targetRect = target.getBoundingClientRect();
-      const top = this.container.scrollTop +
-        (targetRect.top - containerRect.top) -
-        Math.max(0, (this.container.clientHeight - targetRect.height) / 2);
-      if (typeof this.container.scrollTo === "function") {
-        this.container.scrollTo({ top, behavior });
-      } else {
-        this.container.scrollTop = top;
-      }
-    }
-    if (focus) target?.focus({ preventScroll: true });
+  resizeSettling(): boolean {
+    return (
+      performance.now() < this.resizeSettleUntil ||
+      Math.abs(this.container.clientWidth - this.observedClientWidth) >= 1 ||
+      Math.abs(this.container.clientHeight - this.observedClientHeight) >= 1
+    );
   }
 
+  /**
+   * Captures the current strip position as a top-position-line anchor. While
+   * a programmatic scroll is in flight, the anchor is taken at its target
+   * position, not at the mid-flight offset.
+   */
+  captureStripAnchor(): StripAnchor | undefined {
+    const sections = this.stripSections();
+    if (sections.length === 0) return undefined;
+    const containerRect = this.container.getBoundingClientRect();
+    const scrollTop = this.container.scrollTop;
+    const line = (this.animationTarget ?? scrollTop) + STRIP_TOP_GAP;
+    let index = sections.length - 1;
+    for (let i = 0; i < sections.length; i += 1) {
+      const rect = sections[i]!.getBoundingClientRect();
+      const bottom = scrollTop + (rect.bottom - containerRect.top);
+      if (bottom > line) {
+        index = i;
+        break;
+      }
+    }
+    const rect = sections[index]!.getBoundingClientRect();
+    const top = scrollTop + (rect.top - containerRect.top);
+    return {
+      stateId: sections[index]!.dataset.pageStateId,
+      stripIndex: index,
+      fraction: (line - top) / Math.max(rect.height, 1)
+    };
+  }
+
+  /**
+   * Restores a strip anchor: places the line instantly, then renders the
+   * anchor's neighbourhood (placeholder slides are a fixed min-height until
+   * their page renders, which would shift the target) and places it again.
+   * A user scroll in between wins and cancels the second placement.
+   */
+  async restoreStripAnchor(anchor: StripAnchor): Promise<void> {
+    const generation = this.generation;
+    const sections = this.stripSections();
+    if (sections.length === 0) return;
+    const section =
+      (anchor.stateId ? this.sectionFor(anchor.stateId) : undefined) ??
+      sections[Math.max(0, Math.min(anchor.stripIndex, sections.length - 1))]!;
+    this.placeLineThrough(section, anchor.fraction);
+    const token = this.animationToken;
+    const index = sections.indexOf(section);
+    const neighbourhood = sections
+      .slice(Math.max(0, index - 2), index + 2)
+      .map((neighbour) => this.renderPage(neighbour));
+    await Promise.allSettled(neighbourhood);
+    // Always let a real frame pass: the rough placement may have been
+    // clamped against a scrollHeight that did not include the freshly
+    // updated tail spacer yet (structured slides render synchronously, so
+    // the render wait alone does not leave the current task).
+    await nextFrame();
+    if (generation !== this.generation || token !== this.animationToken) return;
+    this.updateTailSpacer();
+    this.placeLineThrough(section, anchor.fraction);
+  }
+
+  /**
+   * Scrolls only the strip container (never the page) so the slide sits at
+   * the top position. Resolves true when it settled at the target.
+   */
+  scrollToTopPosition(pageStateId: string, behavior: StripScrollBehavior): Promise<boolean> {
+    const target = this.topPositionScrollTop(pageStateId);
+    if (target === undefined) return Promise.resolve(false);
+    return this.animateScrollTo(target, behavior);
+  }
+
+  focusSlide(pageStateId: string): void {
+    this.sectionFor(pageStateId)?.focus({ preventScroll: true });
+  }
+
+  /** Fraction (0..1) of the slide's lower half visible in the strip viewport. */
+  lowerHalfVisibleFraction(pageStateId: string): number | undefined {
+    const section = this.sectionFor(pageStateId);
+    if (!section) return undefined;
+    const containerRect = this.container.getBoundingClientRect();
+    const rect = section.getBoundingClientRect();
+    const half = rect.height / 2;
+    if (half <= 0) return undefined;
+    const lowerTop = rect.top + half;
+    const visible = Math.min(rect.bottom, containerRect.bottom) - Math.max(lowerTop, containerRect.top);
+    return Math.min(1, Math.max(0, visible / half));
+  }
+
+  /** Signed px distance of the strip from the slide's top position. */
+  distanceFromTopPosition(pageStateId: string): number | undefined {
+    const target = this.topPositionScrollTop(pageStateId);
+    return target === undefined ? undefined : this.container.scrollTop - target;
+  }
+
+  /** Blue selection highlight (explicit selection; mirrors video on follow). */
   setActive(pageStateId: string | undefined): void {
     const activeState = pageStateId ? this.stateForId(pageStateId) : undefined;
     for (const [page, state] of this.elementStates) {
@@ -95,8 +255,8 @@ export class PdfViewer {
   }
 
   /**
-   * Marks the slide currently shown in the video, independent of the slide the
-   * student is viewing. The chip carries the occurrence timestamp.
+   * Marks the slide currently shown in the video (green highlight and chip),
+   * independent of the selected slide. The chip carries the timestamp.
    */
   setVideoCurrent(pageStateId: string | undefined, label?: string): void {
     const section = pageStateId ? this.sectionFor(pageStateId) : undefined;
@@ -109,6 +269,27 @@ export class PdfViewer {
     }
     this.videoChip.querySelector("span")!.textContent = label ?? "Current";
     if (this.videoChip.parentElement !== section) section.prepend(this.videoChip);
+  }
+
+  /**
+   * Floating "Play from start of this slide" pill on the explicitly selected
+   * slide: it starts at the slide's horizontal middle and straddles the
+   * slide's bottom edge (the edge cuts the pill at half the pill's height).
+   * Pass `undefined` to remove it.
+   */
+  setPlayCta(pageStateId: string | undefined, options: { disabled?: boolean } = {}): void {
+    const section = pageStateId ? this.sectionFor(pageStateId) : undefined;
+    const state = section ? this.elementStates.get(section) : undefined;
+    if (!section || !state) {
+      this.playCtaState = undefined;
+      this.playCta.remove();
+      return;
+    }
+    this.playCtaState = state;
+    this.playCta.disabled = Boolean(options.disabled);
+    if (options.disabled) this.playCta.title = "This slide has no video occurrence.";
+    else this.playCta.removeAttribute("title");
+    if (this.playCta.parentElement !== section) section.append(this.playCta);
   }
 
   /** Adds a "revised after recording" style badge to the given page states. */
@@ -157,15 +338,10 @@ export class PdfViewer {
     }
   }
 
-  async prepareForPrint(): Promise<void> {
-    const pages = [...this.container.querySelectorAll<HTMLElement>(
-      ".pdf-page[data-document-key][data-asset-page]"
-    )];
-    await Promise.all(pages.map((page) => this.renderPage(page)));
-  }
-
   destroy(): void {
     this.generation += 1;
+    this.cancelProgrammaticScroll();
+    this.lineAnchor = undefined;
     this.observer?.disconnect();
     this.observer = undefined;
     this.resizeObserver?.disconnect();
@@ -173,7 +349,12 @@ export class PdfViewer {
     if (this.resizeFrame !== undefined) window.cancelAnimationFrame(this.resizeFrame);
     this.resizeFrame = undefined;
     this.observedWidth = 0;
+    this.observedHeight = 0;
+    this.observedClientWidth = 0;
+    this.observedClientHeight = 0;
     this.videoChip.remove();
+    this.playCta.remove();
+    this.playCtaState = undefined;
     for (const handle of this.documents.values()) {
       if (handle.document) {
         void handle.document
@@ -186,36 +367,119 @@ export class PdfViewer {
     }
     this.documents.clear();
     this.elementStates.clear();
-    this.visibleRatios.clear();
     this.renderTasks.clear();
     this.thumbnails.clear();
   }
 
+  /** Scroll offset that puts the slide's top at the top position. */
+  private topPositionScrollTop(pageStateId: string): number | undefined {
+    const section = this.sectionFor(pageStateId);
+    if (!section) return undefined;
+    const containerRect = this.container.getBoundingClientRect();
+    const rect = section.getBoundingClientRect();
+    const raw = this.container.scrollTop + (rect.top - containerRect.top) - STRIP_TOP_GAP;
+    const max = Math.max(0, this.container.scrollHeight - this.container.clientHeight);
+    return Math.min(Math.max(0, raw), max);
+  }
+
+  /** Instantly scrolls so the top-position line cuts the slide at `fraction`. */
+  private placeLineThrough(section: HTMLElement, fraction: number): void {
+    const containerRect = this.container.getBoundingClientRect();
+    const rect = section.getBoundingClientRect();
+    const top = this.container.scrollTop + (rect.top - containerRect.top);
+    const raw = top + fraction * rect.height - STRIP_TOP_GAP;
+    const max = Math.max(0, this.container.scrollHeight - this.container.clientHeight);
+    void this.animateScrollTo(Math.min(Math.max(0, raw), max), "instant");
+  }
+
+  private stripSections(): HTMLElement[] {
+    return [...this.container.querySelectorAll<HTMLElement>(".pdf-page, .structured-slide")];
+  }
+
+  /**
+   * Drives the animation itself (rAF, ease-out) instead of relying on native
+   * smooth scrolling: consistent across browsers (Firefox maps desktop
+   * "reduce animations" settings onto native smooth scrolling), cancellable
+   * by user input, and with a reliable settle signal.
+   */
+  private animateScrollTo(top: number, behavior: StripScrollBehavior): Promise<boolean> {
+    const container = this.container;
+    const from = container.scrollTop;
+    const token = ++this.animationToken;
+    this.animationActive = true;
+    this.animationTarget = top;
+    // Every placement moves the line anchor to its (eventual) target.
+    this.lineAnchor = this.captureStripAnchor();
+    // Trailing scroll events are delivered asynchronously; keep the
+    // programmatic flag up briefly so they do not read as user scrolls.
+    const release = () => {
+      if (this.animationToken === token) this.animationTarget = undefined;
+      window.setTimeout(() => {
+        if (this.animationToken === token) this.animationActive = false;
+      }, 120);
+    };
+    if (
+      behavior === "instant" ||
+      Math.abs(top - from) < 2 ||
+      typeof requestAnimationFrame !== "function"
+    ) {
+      container.scrollTop = top;
+      release();
+      return Promise.resolve(true);
+    }
+    const duration = 320;
+    let start: number | undefined;
+    return new Promise((resolve) => {
+      const step = (now: number) => {
+        if (this.animationToken !== token) return resolve(false);
+        start ??= now;
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        container.scrollTop = from + (top - from) * eased;
+        if (progress >= 1) {
+          release();
+          resolve(true);
+        } else {
+          requestAnimationFrame(step);
+        }
+      };
+      requestAnimationFrame(step);
+    });
+  }
+
   private createObserver(): void {
+    // Lazy rendering only; visibility no longer drives the selection.
     this.observer = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
           const element = entry.target as HTMLElement;
-          this.visibleRatios.set(element, entry.isIntersecting ? entry.intersectionRatio : 0);
           if (entry.isIntersecting && element.dataset.documentKey && element.dataset.assetPage) {
             void this.renderPage(element);
           }
         }
-        const visible = [...this.visibleRatios]
-          .filter(([, ratio]) => ratio > 0)
-          .sort((left, right) => right[1] - left[1])[0]?.[0];
-        const state = visible ? this.elementStates.get(visible) : undefined;
-        if (state) this.onVisible(state);
       },
-      { root: this.container, threshold: [0.1, 0.5, 0.8] }
+      { root: this.container, rootMargin: "50% 0px", threshold: 0 }
     );
   }
 
   private createResizeObserver(): void {
     this.resizeObserver = new ResizeObserver((entries) => {
-      const width = entries.find((entry) => entry.target === this.container)?.contentRect.width;
+      const rect = entries.find((entry) => entry.target === this.container)?.contentRect;
+      if (!rect) return;
+      this.observedClientWidth = this.container.clientWidth;
+      this.observedClientHeight = this.container.clientHeight;
+      if (Math.abs(rect.height - this.observedHeight) >= 1) {
+        this.observedHeight = rect.height;
+        this.updateTailSpacer();
+      }
+      const width = rect.width;
       if (!width || Math.abs(width - this.observedWidth) < 1) return;
+      const priorWidth = this.observedWidth;
       this.observedWidth = width;
+      // Slide heights scale with the width (canvases keep their aspect), so
+      // hold the top-position line steady through the resize. The initial
+      // observation is not a resize.
+      if (priorWidth > 0) this.placeStoredAnchor();
       if (this.resizeFrame !== undefined) window.cancelAnimationFrame(this.resizeFrame);
       this.resizeFrame = window.requestAnimationFrame(() => {
         this.resizeFrame = undefined;
@@ -223,6 +487,39 @@ export class PdfViewer {
       });
     });
     this.resizeObserver.observe(this.container);
+  }
+
+  /**
+   * Re-places the line at the maintained anchor after a container resize.
+   * The stored anchor stays authoritative so repeated resizes (a column
+   * drag fires one per frame) cannot accumulate rounding drift. After the
+   * anchor's neighbourhood re-renders at the new width (placeholder slides
+   * grow to their real height), the line is placed once more.
+   */
+  private placeStoredAnchor(): void {
+    const anchor = this.lineAnchor;
+    if (!anchor) return;
+    const sections = this.stripSections();
+    if (sections.length === 0) return;
+    this.resizeSettleUntil = performance.now() + 1500;
+    const section =
+      (anchor.stateId ? this.sectionFor(anchor.stateId) : undefined) ??
+      sections[Math.max(0, Math.min(anchor.stripIndex, sections.length - 1))]!;
+    this.updateTailSpacer();
+    this.placeLineThrough(section, anchor.fraction);
+    this.lineAnchor = anchor;
+    const token = this.animationToken;
+    const generation = this.generation;
+    const index = sections.indexOf(section);
+    void Promise.allSettled(
+      sections.slice(Math.max(0, index - 2), index + 2).map((neighbour) => this.renderPage(neighbour))
+    )
+      .then(() => nextFrame())
+      .then(() => {
+        if (generation !== this.generation || token !== this.animationToken) return;
+        this.placeLineThrough(section, anchor.fraction);
+        this.lineAnchor = anchor;
+      });
   }
 
   private async reflowRenderedPages(): Promise<void> {
@@ -243,6 +540,7 @@ export class PdfViewer {
     });
     for (const section of changed) this.renderTasks.delete(this.renderKey(section));
     await Promise.all(changed.map((section) => this.renderPage(section)));
+    if (generation === this.generation) this.updateTailSpacer();
   }
 
   private async loadPdfDeck(
@@ -267,6 +565,16 @@ export class PdfViewer {
       return;
     }
     handle.document = pdfDocument;
+    try {
+      // Publish the aspect before any page renders: portrait sizes the strip
+      // from it, and the anchor restore needs settled container geometry.
+      const first = await pdfDocument.getPage(1);
+      if (generation !== this.generation) return;
+      const viewport = first.getViewport({ scale: 1 });
+      this.publishSlideAspect(viewport.height / viewport.width);
+    } catch {
+      // Falls back to publishing from the first rendered page.
+    }
     const byPage = new Map<number, PageState>();
     for (const state of deck.page_states) {
       const page = state.asset_page ?? state.page;
@@ -283,6 +591,7 @@ export class PdfViewer {
       if (state) {
         section.dataset.pageStateId = state.id;
         this.elementStates.set(section, state);
+        this.bindSelection(section, state);
       }
       section.tabIndex = 0;
       section.setAttribute(
@@ -302,6 +611,35 @@ export class PdfViewer {
       this.container.append(section);
       this.observer?.observe(section);
     }
+  }
+
+  /**
+   * A slide is selected already on pointer-down for mouse input (so starting
+   * a text selection in a different slide selects it too) or with
+   * Enter/Space; scrolling never selects. Touch/pen pointer-downs start
+   * scroll gestures, so they select on the resulting tap (click) instead — a
+   * scroll never produces one.
+   */
+  private bindSelection(section: HTMLElement, state: PageState): void {
+    let pointerType = "mouse";
+    section.addEventListener("pointerdown", (event) => {
+      pointerType = event.pointerType || "mouse";
+      if (event.button !== 0 || pointerType !== "mouse") return;
+      const target = event.target as HTMLElement;
+      if (target.closest("a, button")) return;
+      this.onSelect(state);
+    });
+    section.addEventListener("click", (event) => {
+      if (pointerType === "mouse") return;
+      const target = event.target as HTMLElement;
+      if (target.closest("a, button")) return;
+      this.onSelect(state);
+    });
+    section.addEventListener("keydown", (event) => {
+      if (event.target !== section || (event.key !== "Enter" && event.key !== " ")) return;
+      event.preventDefault();
+      this.onSelect(state);
+    });
   }
 
   private renderPage(section: HTMLElement): Promise<void> {
@@ -330,6 +668,7 @@ export class PdfViewer {
       if (generation !== this.generation || !section.isConnected) return;
       const surface = section.querySelector<HTMLElement>(".pdf-page-surface") ?? section;
       const baseViewport = page.getViewport({ scale: 1 });
+      this.publishSlideAspect(baseViewport.height / baseViewport.width);
       const width = Math.max(section.clientWidth || this.container.clientWidth || 1, 1);
       const scale = width / baseViewport.width;
       const viewport = page.getViewport({ scale });
@@ -343,6 +682,10 @@ export class PdfViewer {
       if (!context) throw new Error("Canvas rendering is unavailable");
       const text = document.createElement("div");
       text.className = "textLayer pdf-text-layer";
+      // pdf.js positions and sizes the glyph spans through this variable
+      // (via --total-scale-factor); without it they keep the page font size
+      // and selection highlights drift along the line.
+      text.style.setProperty("--scale-factor", String(scale));
       surface.replaceChildren(canvas, text);
       await page.render({
         canvas,
@@ -358,6 +701,7 @@ export class PdfViewer {
       });
       await textLayer.render();
       section.dataset.renderWidth = String(width);
+      this.updateTailSpacer();
     } catch (error) {
       this.renderTasks.delete(renderKey);
       throw error;
@@ -383,7 +727,7 @@ export class PdfViewer {
       section.append(surface);
       this.appendPageNumber(section);
       this.appendLongDescription(section, state);
-      section.addEventListener("focus", () => this.onVisible(state));
+      this.bindSelection(section, state);
       this.elementStates.set(section, state);
       this.container.append(section);
       this.observer?.observe(section);
@@ -399,6 +743,36 @@ export class PdfViewer {
       if (label) label.textContent = `${index + 1} / ${sections.length}`;
       section.dataset.stripPosition = String(index + 1);
     }
+  }
+
+  /**
+   * Keeps enough space after the last slide that it can still reach the top
+   * position. A real element with an inline height (not a pseudo-element fed
+   * by a CSS variable): custom-property changes on pseudo-elements can lag a
+   * style-recalc cycle behind forced layout, which made scrollHeight-clamped
+   * placements land on stale maximums right after a revision switch.
+   */
+  private updateTailSpacer(): void {
+    const sections = this.stripSections();
+    const last = sections[sections.length - 1];
+    if (!last) {
+      this.tailSpacer.remove();
+      return;
+    }
+    const tail = Math.max(
+      0,
+      this.container.clientHeight - last.offsetHeight - STRIP_TOP_GAP - Math.round(STRIP_TOP_GAP / 2)
+    );
+    this.tailSpacer.style.height = `${tail}px`;
+    if (this.container.lastElementChild !== this.tailSpacer) this.container.append(this.tailSpacer);
+  }
+
+  private publishSlideAspect(aspect: number): void {
+    if (this.aspectPublished || !Number.isFinite(aspect) || aspect <= 0) return;
+    this.aspectPublished = true;
+    this.container
+      .closest<HTMLElement>(".lecture-shell")
+      ?.style.setProperty("--lect-slide-aspect", String(Math.round(aspect * 1000) / 1000));
   }
 
   private sectionFor(pageStateId: string): HTMLElement | undefined {
@@ -447,6 +821,33 @@ export class PdfViewer {
       }]
     };
   }
+}
+
+function createTailSpacer(): HTMLElement {
+  const spacer = document.createElement("div");
+  spacer.className = "slide-strip-tail";
+  spacer.setAttribute("aria-hidden", "true");
+  return spacer;
+}
+
+function createPlayCta(): HTMLButtonElement {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "slide-play-cta";
+  const icon = document.createElement("span");
+  icon.setAttribute("aria-hidden", "true");
+  icon.textContent = "▶";
+  const label = document.createElement("span");
+  label.className = "slide-play-cta-label";
+  label.textContent = "Play from start of this slide";
+  button.append(icon, label);
+  return button;
+}
+
+/** Resolves after one animation frame (or a microtask when rAF is missing). */
+function nextFrame(): Promise<void> {
+  if (typeof requestAnimationFrame !== "function") return Promise.resolve();
+  return new Promise((resolve) => requestAnimationFrame(() => resolve()));
 }
 
 function createVideoChip(): HTMLElement {

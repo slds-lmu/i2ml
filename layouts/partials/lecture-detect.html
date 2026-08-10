@@ -1,0 +1,9 @@
+{{- /* True when this page renders the modern lecture view (bound lecture,
+       explicit lecture layout, or lecture_id front matter). */ -}}
+{{- $isLecture := false -}}
+{{- if eq .Layout "lecture" -}}{{- $isLecture = true -}}{{- end -}}
+{{- with .Params.lecture_id -}}{{- $isLecture = true -}}{{- end -}}
+{{- if not $isLecture -}}
+  {{- if partial "lecture-binding.html" . -}}{{- $isLecture = true -}}{{- end -}}
+{{- end -}}
+{{- return $isLecture -}}

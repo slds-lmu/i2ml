@@ -8,6 +8,8 @@ interface YouTubePlayer {
   pauseVideo(): void;
   playVideo(): void;
   seekTo(seconds: number, allowSeekAhead: boolean): void;
+  setPlaybackRate?(suggestedRate: number): void;
+  getPlaybackRate?(): number;
 }
 
 /** Stable YouTube IFrame API player states used by the lecture UI. */
@@ -62,12 +64,27 @@ export class YouTubeController {
 
   constructor(private readonly readyTimeoutMs = 10_000) {}
 
-  async mount(element: HTMLElement, videoId: string, onState: PlayerStateHandler): Promise<void> {
+  /**
+   * Mounts the player; `startSeconds` cues the video at that position via
+   * playerVars, so the poster and play button stay visible (seeking an
+   * unstarted player and pausing it leaves a black, uncontrollable box).
+   */
+  async mount(
+    element: HTMLElement,
+    videoId: string,
+    onState: PlayerStateHandler,
+    startSeconds?: number
+  ): Promise<void> {
     const api = await withTimeout(
       loadYouTubeApi(),
       this.readyTimeoutMs,
       "YouTube API did not become ready"
     );
+    // The IFrame API REPLACES the element it is given. Hand it a throwaway
+    // child so the styled container (and its sizing) always survives and the
+    // resulting iframe stays inside it.
+    const target = document.createElement("div");
+    element.replaceChildren(target);
     await new Promise<void>((resolve, reject) => {
       const timeout = window.setTimeout(() => {
         try {
@@ -79,14 +96,17 @@ export class YouTubeController {
         reject(new Error("YouTube player did not become ready"));
       }, this.readyTimeoutMs);
       try {
-        this.player = new api.Player(element, {
+        this.player = new api.Player(target, {
           host: "https://www.youtube-nocookie.com",
           videoId,
           playerVars: {
             enablejsapi: 1,
             origin: window.location.origin,
             playsinline: 1,
-            rel: 0
+            rel: 0,
+            ...(startSeconds !== undefined && startSeconds > 0
+              ? { start: Math.floor(startSeconds) }
+              : {})
           },
           events: {
             onReady: () => {
@@ -133,6 +153,30 @@ export class YouTubeController {
     this.player?.seekTo(timeMs / 1000, true);
     if (play) this.player?.playVideo();
     else this.player?.pauseVideo();
+  }
+
+  /** Seeks without touching the play state — like scrubbing the player bar. */
+  scrub(timeMs: number): void {
+    this.player?.seekTo(timeMs / 1000, true);
+  }
+
+  play(): void {
+    this.player?.playVideo();
+  }
+
+  pause(): void {
+    this.player?.pauseVideo();
+  }
+
+  /** Suggests a playback rate; the player may snap it to a supported value. */
+  setPlaybackRate(rate: number): void {
+    this.player?.setPlaybackRate?.(rate);
+  }
+
+  /** The rate the player actually runs at (it may have snapped a suggestion). */
+  playbackRate(): number | undefined {
+    const rate = this.player?.getPlaybackRate?.();
+    return typeof rate === "number" && Number.isFinite(rate) ? rate : undefined;
   }
 
   destroy(): void {

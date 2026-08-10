@@ -72,12 +72,13 @@ combined backend staging command copies the corresponding self-hosted PDFs to
 
 Lecture pages follow the agreed `MOOC_design/` mockups: on desktop the video
 sits left with a time/follow status bar, the synchronized slide strip right
-(toolbar with slide list drawer, slide search, PDF menu, and
-"Play video from this slide"), and the assistant docks as a third column.
-Below ~1150px the layout stacks, the strip becomes an internal scroller
-narrower than the page, the video docks as a dismissable mini-player once
-scrolled off-screen, and the assistant opens as a right sheet. Frontend
-modules live in `frontend/src/`:
+(toolbar with slide list drawer and slide search; selecting a slide floats a
+"Play from start of this slide" pill on the slide itself), and the assistant
+docks as a third column. Below ~1150px the layout stacks, the strip becomes
+an internal scroller narrower than the page, the video docks as a
+dismissable mini-player once more than half of it scrolls off-screen, and
+the assistant opens as a right sheet. Frontend modules live in
+`frontend/src/`:
 
 - `lecture-app.ts` — orchestration, layout state, follow/explore sync, URL state;
 - `pdf-viewer.ts` — PDF.js strip with selectable text, page numbers, badges,

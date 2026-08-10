@@ -77,7 +77,7 @@ describe("assistant disclosure", () => {
     document.body.append(lecture);
     const toggle = lecture.querySelector<HTMLButtonElement>("[data-action=toggle-assistant]")!;
     toggle.click();
-    const close = lecture.querySelector<HTMLButtonElement>("[data-action=close-assistant]")!;
+    const close = lecture.querySelector<HTMLButtonElement>("[data-action=collapse-assistant]")!;
     close.focus();
 
     close.click();

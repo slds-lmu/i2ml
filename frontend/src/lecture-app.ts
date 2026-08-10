@@ -1,5 +1,6 @@
 import { AssistantPanel, type ChatSelection } from "./assistant";
-import { cueAt, cuePageStateIds, nearestOccurrence } from "./cue-engine";
+import { cueAt, cuePageStateIds, nearestOccurrence, slideCueNavigation } from "./cue-engine";
+import { FollowSync, type StripScrollBehavior } from "./follow-sync";
 import {
   buildSlideIndex,
   formatTimeMs,
@@ -12,8 +13,8 @@ import {
 import { MiniPlayer } from "./mini-player";
 import { PdfViewer } from "./pdf-viewer";
 import { QaDebugTraceView } from "./qa-debug";
+import { matchSelectionToSlideText } from "./selection-match";
 import { SelectionPopover } from "./selection-popover";
-import { SyncState } from "./sync-state";
 import {
   normalizeLectureManifest,
   pageStateForId,
@@ -23,15 +24,16 @@ import {
   type RevisionAsset,
   type RevisionKind
 } from "./types";
-import { YouTubeController } from "./youtube";
+import { PLAYER_STATE, YouTubeController } from "./youtube";
 
 const template = document.createElement("template");
 template.innerHTML = `
   <section class="lecture-shell" aria-label="Synchronized lecture">
-    <div class="lecture-status" role="status" aria-live="polite"></div>
-    <div class="lecture-fallback" hidden></div>
     <div class="lecture-main">
       <section class="media-panel" aria-label="Lecture media">
+        <header class="lecture-heading-host" hidden></header>
+        <div class="lecture-status" role="status" aria-live="polite"></div>
+        <div class="lecture-fallback" hidden></div>
         <div class="video-dock" hidden>
           <div class="video-frame">
             <div class="video-container"></div>
@@ -47,18 +49,71 @@ template.innerHTML = `
         <div class="video-statusbar" hidden>
           <span class="video-time"><span data-time-now>0:00</span> / <span data-time-total>–:––</span></span>
           <span class="follow-pill" data-follow-state="following">
-            <span class="follow-indicator"><span class="follow-dot" aria-hidden="true"></span><span
-              class="follow-label">Slides following video</span></span>
+            <button type="button" class="follow-indicator" data-action="follow-pill"
+              title="Scroll the current slide back to the top position">
+              <span class="follow-dot" aria-hidden="true"></span><span
+              class="follow-label">Slides following video</span>
+            </button>
             <span class="follow-paused-label">Auto-follow paused</span>
             <button type="button" data-action="resume-follow">Resume following</button>
+          </span>
+          <span class="player-controls" role="group" aria-label="Playback controls">
+            <button type="button" data-action="prev-slide" title="Jump to the previous slide"
+              aria-label="Jump to the previous slide">
+              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+                <path d="M4 3v10" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round"/>
+                <path d="M13 3.5v9L6.5 8z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button type="button" data-action="slide-start" title="Jump to the start of this slide"
+              aria-label="Jump to the start of this slide">
+              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+                <path d="M11.5 3.5v9L5 8z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button type="button" data-action="toggle-play" title="Play" aria-label="Play">
+              <svg class="icon-play" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"
+                focusable="false">
+                <path d="M4.5 2.8v10.4L13.2 8z" fill="currentColor"/>
+              </svg>
+              <svg class="icon-pause" viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"
+                focusable="false">
+                <path d="M4.5 3h2.4v10H4.5zM9.1 3h2.4v10H9.1z" fill="currentColor"/>
+              </svg>
+            </button>
+            <button type="button" data-action="next-slide" title="Jump to the next slide"
+              aria-label="Jump to the next slide">
+              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true" focusable="false">
+                <path d="M12 3v10" fill="none" stroke="currentColor" stroke-width="1.8"
+                  stroke-linecap="round"/>
+                <path d="M3 3.5v9L9.5 8z" fill="currentColor"/>
+              </svg>
+            </button>
+            <span class="speed-wrap">
+              <button type="button" data-action="playback-speed" title="Playback speed"
+                aria-label="Playback speed" aria-haspopup="true" aria-expanded="false">
+                <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+                  <circle cx="8" cy="9.2" r="5.2" fill="none" stroke="currentColor"
+                    stroke-width="1.6"/>
+                  <path d="M8 6.6v2.6l1.9 1.2M6.3 1.4h3.4M8 1.4v2.1" fill="none"
+                    stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+                <span class="speed-value" hidden></span>
+              </button>
+              <div class="speed-menu" aria-label="Playback speed" hidden></div>
+            </span>
           </span>
           <span class="now-viewing"></span>
         </div>
         <div class="media-below" hidden></div>
       </section>
+      <div class="col-resizer" data-resizer="slides" role="separator" aria-orientation="vertical"
+        aria-label="Resize the slide panel"></div>
       <section class="slide-panel" role="tabpanel" aria-label="Lecture slides">
         <div class="slide-toolbar" aria-label="Slide controls">
-          <button type="button" data-action="toggle-toc" aria-expanded="false" aria-haspopup="true">
+          <button type="button" data-action="toggle-toc" aria-expanded="false" aria-haspopup="true"
+            aria-label="Slides">
             <span aria-hidden="true">☰</span> <span class="toolbar-label">Slides</span>
           </button>
           <div class="slide-search">
@@ -66,17 +121,6 @@ template.innerHTML = `
               autocomplete="off">
             <div class="search-results" hidden></div>
           </div>
-          <div class="pdf-menu">
-            <button type="button" data-action="toggle-pdf-menu" aria-haspopup="true"
-              aria-expanded="false">PDF</button>
-            <div class="pdf-menu-list" hidden>
-              <div class="pdf-download" hidden></div>
-              <button type="button" data-action="print">Print slides</button>
-            </div>
-          </div>
-          <button type="button" class="play-from-slide" data-action="play-time">
-            <span aria-hidden="true">▶</span> <span class="toolbar-label">Play video from this slide</span>
-          </button>
         </div>
         <div class="revision-row">
           <div class="revision-tabs" role="tablist" aria-label="Slide revision">
@@ -85,11 +129,11 @@ template.innerHTML = `
           </div>
           <span class="revision-hint"></span>
         </div>
-        <div class="correction-notice" hidden></div>
         <div class="slide-strip">
           <div class="toc-drawer" hidden>
             <header>
               <h2 class="toc-title">All slides</h2>
+              <span class="toc-downloads"></span>
               <button type="button" data-action="close-toc" aria-label="Close the slide list">×</button>
             </header>
             <ul class="toc-list"></ul>
@@ -98,7 +142,10 @@ template.innerHTML = `
         </div>
       </section>
     </div>
+    <div class="col-resizer" data-resizer="assistant" role="separator" aria-orientation="vertical"
+      aria-label="Resize the assistant panel"></div>
     <div class="assistant-region"></div>
+    <div class="chat-pull-handle" aria-hidden="true"></div>
     <div class="selection-popover" hidden></div>
   </section>`;
 
@@ -109,10 +156,27 @@ interface LectureUrlState {
   timeMs?: number;
 }
 
+/**
+ * Minimum landscape column widths. With the chat docked, their sum plus
+ * dividers (320+300+280+12 = 912) stays below the 1000px docking threshold,
+ * so opening the chat can always be absorbed without violating a minimum.
+ * With the chat closed there is more room, so the minimums are larger
+ * (scaled down via a viewport fraction on small landscape windows).
+ */
+const MIN_MEDIA_DOCKED = 320;
+const MIN_SLIDES_DOCKED = 300;
+/** Slide-only pages have one flowing column next to the docked chat. */
+const MIN_MAIN_SLIDE_ONLY = 480;
+const MIN_MEDIA_SOLO = 380;
+const MIN_SLIDES_SOLO = 340;
+const MIN_CHAT_W = 280;
+/** Dragging the chat this far below its minimum closes it (pill returns). */
+const CHAT_CLOSE_SLACK = 60;
+
 export class LectureApp extends HTMLElement {
   private manifest: LectureManifest | undefined;
   private revision: RevisionKind = "recorded";
-  private state = new SyncState();
+  private sync!: FollowSync;
   private player = new YouTubeController();
   private viewer: PdfViewer | undefined;
   private assistant: AssistantPanel | undefined;
@@ -122,29 +186,57 @@ export class LectureApp extends HTMLElement {
   private revisedIds = new Set<string>();
   private currentTimeMs = 0;
   private videoCueKey: string | undefined;
+  private nonSlideKind: string | undefined;
   private lastSlideStateId: string | undefined;
   private debugTrace: QaDebugTraceView | undefined;
   private revisionRequest = 0;
-  private pendingScrollTargetId: string | undefined;
   private urlStateReady = false;
   private searchDebounce: number | undefined;
+  private scrollSettleTimer: number | undefined;
   private tocThumbnailObserver: IntersectionObserver | undefined;
-  private readonly layoutQuery = window.matchMedia("(max-width: 1149.98px)");
+  private hintResizeObserver: ResizeObserver | undefined;
+  private playbackRate = 1;
+  private speedReadbackTimer: number | undefined;
+  private readonly portraitQuery = window.matchMedia("(orientation: portrait)");
   private readonly layoutListener = () => this.placeSupplements();
+  private layoutMetricsFrame: number | undefined;
+  private readonly layoutMetricsListener = () => {
+    if (this.layoutMetricsFrame !== undefined) window.cancelAnimationFrame(this.layoutMetricsFrame);
+    this.layoutMetricsFrame = window.requestAnimationFrame(() => {
+      this.layoutMetricsFrame = undefined;
+      this.refreshHintTruncation();
+      this.clampColumns();
+    });
+  };
   private readonly popStateHandler = () => {
     if (this.urlStateReady) void this.applyUrlState();
   };
 
   connectedCallback(): void {
-    document.body.classList.add("has-modern-lecture");
-    const supplements = this.querySelector("[data-lecture-supplements]");
-    supplements?.remove();
+    // has-modern-lecture is also set server-side; has-lecture-app gates the
+    // viewport-locked landscape shell on a successful upgrade.
+    document.body.classList.add("has-modern-lecture", "has-lecture-app");
+    const adopt = (selector: string): HTMLElement | undefined => {
+      const node = this.querySelector<HTMLElement>(selector);
+      node?.remove();
+      return node ?? undefined;
+    };
+    const heading = adopt("[data-lecture-heading]");
+    const introduction = adopt("[data-lecture-introduction]");
+    const supplements = adopt("[data-lecture-supplements]");
+    const downloads = adopt("[data-lecture-downloads]");
+    const sectionNav = adopt("[data-lecture-nav]");
     this.replaceChildren(template.content.cloneNode(true));
-    if (supplements) {
-      const below = this.element<HTMLElement>(".media-below");
-      below.append(supplements);
-      below.hidden = false;
+    if (heading) {
+      const host = this.element<HTMLElement>(".lecture-heading-host");
+      host.append(heading);
+      host.hidden = false;
     }
+    const below = this.element<HTMLElement>(".media-below");
+    for (const node of [introduction, supplements, downloads, sectionNav]) {
+      if (node) below.append(node);
+    }
+    below.hidden = below.childElementCount === 0;
     this.debugTrace = undefined;
     const instance = ++lectureInstance;
     const slidePanel = this.element<HTMLElement>(".slide-panel");
@@ -154,7 +246,18 @@ export class LectureApp extends HTMLElement {
       tab.setAttribute("aria-controls", slidePanel.id);
     });
     if (this.dataset.qaDebug === "true") this.debugTrace = new QaDebugTraceView();
-    this.viewer = new PdfViewer(this.element(".slide-scroll"), (state) => this.visibleSlide(state));
+    this.viewer = new PdfViewer(
+      this.element(".slide-scroll"),
+      (state) => this.selectSlide(state.id, { scrollIntoView: false }),
+      (state) => this.playFromSlide(state.id, { resume: true })
+    );
+    this.sync = new FollowSync({
+      lowerHalfVisibleFraction: (stateId) => this.viewer?.lowerHalfVisibleFraction(stateId),
+      distanceFromTopPosition: (stateId) => this.viewer?.distanceFromTopPosition(stateId),
+      scrollToTopPosition: (stateId, behavior) =>
+        this.viewer?.scrollToTopPosition(stateId, behavior) ?? Promise.resolve(false),
+      stateChanged: () => this.applySyncState()
+    });
     this.assistant = new AssistantPanel(
       this.element(".assistant-region"),
       {
@@ -162,7 +265,7 @@ export class LectureApp extends HTMLElement {
         lectureTitle: () => this.manifest?.title ?? document.title,
         contentRevision: () => this.manifest?.content_revision ?? "",
         hasVideo: () => this.hasControllableVideo(),
-        activeSlideNumber: () => this.activeSlideNumber(),
+        expandedChanged: () => window.requestAnimationFrame(() => this.clampColumns()),
         citationTimeMs: (slideId) =>
           this.manifest && this.hasControllableVideo()
             ? occurrenceTimeMs(this.manifest, slideId)
@@ -187,14 +290,21 @@ export class LectureApp extends HTMLElement {
       }
     );
     this.bindControls();
+    this.bindResizers();
     this.placeSupplements();
-    this.layoutQuery.addEventListener?.("change", this.layoutListener);
+    window.requestAnimationFrame(() => this.clampColumns());
+    this.portraitQuery.addEventListener?.("change", this.layoutListener);
+    window.addEventListener("resize", this.layoutMetricsListener);
     window.addEventListener("popstate", this.popStateHandler);
     void this.load();
   }
 
   disconnectedCallback(): void {
-    this.layoutQuery.removeEventListener?.("change", this.layoutListener);
+    this.portraitQuery.removeEventListener?.("change", this.layoutListener);
+    window.removeEventListener("resize", this.layoutMetricsListener);
+    if (this.layoutMetricsFrame !== undefined) window.cancelAnimationFrame(this.layoutMetricsFrame);
+    if (this.scrollSettleTimer !== undefined) window.clearTimeout(this.scrollSettleTimer);
+    if (this.speedReadbackTimer !== undefined) window.clearTimeout(this.speedReadbackTimer);
     window.removeEventListener("popstate", this.popStateHandler);
     this.player.destroy();
     this.viewer?.destroy();
@@ -202,6 +312,8 @@ export class LectureApp extends HTMLElement {
     this.miniPlayer?.destroy();
     this.assistant?.destroy();
     this.tocThumbnailObserver?.disconnect();
+    this.hintResizeObserver?.disconnect();
+    this.hintResizeObserver = undefined;
     this.urlStateReady = false;
   }
 
@@ -222,14 +334,11 @@ export class LectureApp extends HTMLElement {
       const requestedSlide = requestedUrlState.slideId
         ? this.resolveUrlSlide(requestedUrlState.slideId)
         : undefined;
-      if (requestedSlide) {
-        this.revision = requestedSlide.revision;
-        this.state.explore();
-      }
-      await this.showRevision(this.revision, requestedSlide?.pageStateId, Boolean(requestedSlide));
+      if (requestedSlide) this.revision = requestedSlide.revision;
+      await this.showRevision(this.revision);
       let mediaReady = false;
       try {
-        await this.mountPresentation();
+        await this.mountPresentation(requestedUrlState.timeMs);
         mediaReady = true;
         this.status("");
       } catch (error) {
@@ -240,9 +349,24 @@ export class LectureApp extends HTMLElement {
         requestedUrlState.timeMs !== undefined &&
         this.manifest.presentation.mode === "video_lecture"
       ) {
+        // The video is cued at this time via playerVars (mountPresentation);
+        // seeking + pausing an unstarted player would leave a black box.
         this.currentTimeMs = requestedUrlState.timeMs;
-        this.player.seek(requestedUrlState.timeMs, false);
-        if (!requestedSlide) this.onVideoTime(requestedUrlState.timeMs);
+        this.updateTimeDisplay();
+        this.onVideoTime(requestedUrlState.timeMs);
+      }
+      if (requestedSlide) {
+        this.selectSlide(requestedSlide.pageStateId, {
+          scrollIntoView: true,
+          behavior: "instant"
+        });
+        // Re-pin once the neighbourhood has rendered: the instant scroll above
+        // was computed against placeholder slide heights.
+        void this.viewer?.restoreStripAnchor({
+          stateId: this.sync.selectedStateId ?? requestedSlide.pageStateId,
+          stripIndex: 0,
+          fraction: 0
+        });
       }
       this.updateSyncUi();
       this.urlStateReady = true;
@@ -260,23 +384,22 @@ export class LectureApp extends HTMLElement {
   }
 
   /**
-   * Keeps the below-video content (description, quiz, downloads) under the
-   * video in the desktop two-column layout, but after the slide strip in the
-   * stacked and slide-only layouts, matching the agreed reading order.
+   * Keeps the below-video content (description, quiz, downloads, chapter
+   * navigation) under the video in the landscape column layout, but after the
+   * slide strip in the portrait and slide-only layouts.
    */
   private placeSupplements(): void {
     const below = this.element<HTMLElement>(".media-below");
     const main = this.element<HTMLElement>(".lecture-main");
     const media = this.element<HTMLElement>(".media-panel");
-    const stackAfterSlides = this.layoutQuery.matches || main.classList.contains("is-slide-only");
+    const stackAfterSlides = this.portraitQuery.matches || main.classList.contains("is-slide-only");
     const target = stackAfterSlides ? main : media;
     if (below.parentElement !== target) target.append(below);
   }
 
-  private async mountPresentation(): Promise<void> {
+  private async mountPresentation(startTimeMs?: number): Promise<void> {
     if (!this.manifest) return;
     const presentation = this.manifest.presentation;
-    const media = this.element<HTMLElement>(".media-panel");
     if (
       presentation.mode === "video_lecture" &&
       presentation.provider === "youtube" &&
@@ -287,7 +410,11 @@ export class LectureApp extends HTMLElement {
       await this.player.mount(
         this.element(".video-container"),
         presentation.provider_id,
-        () => this.updateTimeDisplay()
+        (state) => {
+          this.refreshPlayToggle(state);
+          this.updateTimeDisplay();
+        },
+        startTimeMs !== undefined ? startTimeMs / 1000 : undefined
       );
       this.player.onTime((time) => this.onVideoTime(time));
       this.miniPlayer = new MiniPlayer(
@@ -298,11 +425,13 @@ export class LectureApp extends HTMLElement {
       this.updateTimeDisplay();
       return;
     }
-    media.classList.add("is-slide-only");
+    this.element<HTMLElement>(".media-panel").classList.add("is-slide-only");
     this.element<HTMLElement>(".lecture-main").classList.add("is-slide-only");
+    // The shell-level marker keeps the assistant a floating sheet: there is
+    // no column split to dock into on slide-only pages.
+    this.element<HTMLElement>(".lecture-shell").classList.add("is-slide-only");
     this.element<HTMLElement>(".video-dock").hidden = true;
     this.element<HTMLElement>(".video-statusbar").hidden = true;
-    let hasExternalLink = false;
     if (presentation.mode === "external_link_only" && presentation.external_url) {
       const paragraph = this.element<HTMLElement>(".external-video");
       const link = document.createElement("a");
@@ -313,21 +442,27 @@ export class LectureApp extends HTMLElement {
       link.rel = "noopener noreferrer";
       paragraph.replaceChildren(link);
       paragraph.hidden = false;
-      hasExternalLink = true;
     }
     this.placeSupplements();
-    media.hidden = !hasExternalLink;
   }
 
-  private async showRevision(
-    revision: RevisionKind,
-    preferredStateId?: string,
-    focus = false
-  ): Promise<void> {
+  /**
+   * Loads a revision, preserving the follow state and the scroll state: the
+   * video slide and the selection are re-mapped, and the strip is restored so
+   * the top-position line cuts the same slide at the same height fraction as
+   * before (taken at the target of any in-flight scroll animation). A slide
+   * stuck at the top position stays stuck, pinned exactly. An explicit
+   * `anchorStateId` (citation into the other revision) wins instead.
+   */
+  private async showRevision(revision: RevisionKind, anchorStateId?: string): Promise<void> {
     if (!this.manifest || !this.viewer) return;
     const asset = this.manifest.revisions[revision];
     if (!asset) return;
     const request = ++this.revisionRequest;
+    const previousSelected = this.sync.selectedStateId;
+    const previousExplicit = this.sync.explicitSelectionId;
+    const stripAnchor = anchorStateId ? undefined : this.viewer.captureStripAnchor();
+    const wasStuck = this.sync.stuck;
     this.revision = revision;
     for (const tab of this.querySelectorAll<HTMLButtonElement>("[data-revision]")) {
       const selected = tab.dataset.revision === revision;
@@ -337,8 +472,20 @@ export class LectureApp extends HTMLElement {
       if (selected) this.element<HTMLElement>(".slide-panel").setAttribute("aria-labelledby", tab.id);
     }
     this.renderRevisionHint();
-    this.renderPdfMenu(asset);
-    await this.viewer.load(asset);
+    this.renderDownloads(asset);
+    try {
+      await this.viewer.load(asset);
+    } catch (error) {
+      // A PDF render failure (unsupported browser, broken download) must not
+      // take down the lecture: fall back to the structured slide text.
+      if (request !== this.revisionRequest) return;
+      await this.viewer.load(undefined, asset.page_states);
+      this.status(
+        "Slide images could not be rendered in this browser, so the slide text is shown instead. " +
+        "Use the PDF download for the original layout." +
+        (error instanceof Error && error.message ? ` (${error.message})` : "")
+      );
+    }
     if (request !== this.revisionRequest) return;
     this.slideIndex = buildSlideIndex(asset, this.manifest.cues, (state) => {
       // Recorded pages without their own text inherit the mapped teaching title.
@@ -354,36 +501,52 @@ export class LectureApp extends HTMLElement {
       this.viewer.setRevisionBadges(this.revisedIds, "revised after recording");
     }
     this.videoCueKey = undefined;
+    const mappedSelected = previousSelected
+      ? pageStateIdForRevision(this.manifest, previousSelected, revision)
+      : undefined;
+    const mappedVideo = this.videoCueStateId();
+    this.sync.rebind(mappedVideo, mappedSelected, {
+      keepStuck: wasStuck && mappedVideo !== undefined,
+      // The explicit selection maps through its own id, not the derived one.
+      explicitSelectionId: previousExplicit
+        ? pageStateIdForRevision(this.manifest, previousExplicit, revision)
+        : undefined
+    });
+    if (this.manifest.presentation.mode !== "video_lecture" && !this.sync.selectedStateId) {
+      const first = asset.page_states[0];
+      if (first) this.sync.onSelect(first.id, { scrollIntoView: false });
+    }
     this.refreshVideoCue();
     this.renderToc();
-    const mappedPreferred = preferredStateId
-      ? pageStateIdForRevision(this.manifest, preferredStateId, revision)
-      : undefined;
-    const mappedCurrent = this.state.activePageStateId
-      ? pageStateIdForRevision(this.manifest, this.state.activePageStateId, revision)
-      : undefined;
-    const keepNonSlide =
-      this.state.mode === "follow" && Boolean(this.state.activeNonSlideKind);
-    const target = keepNonSlide
-      ? undefined
-      : mappedPreferred ?? mappedCurrent ?? asset.page_states[0]?.id;
-    if (target) this.setActive(target, Boolean(preferredStateId), focus);
-    else if (keepNonSlide) this.viewer.setActive(undefined);
+    if (anchorStateId) {
+      const mapped = pageStateIdForRevision(this.manifest, anchorStateId, revision) ?? anchorStateId;
+      void this.viewer.restoreStripAnchor({ stateId: mapped, stripIndex: 0, fraction: 0 });
+    } else if (this.sync.stuck && this.sync.videoStateId) {
+      // Freshly read: a cue advance during the reload moves the pin along.
+      void this.viewer.restoreStripAnchor({
+        stateId: this.sync.videoStateId,
+        stripIndex: stripAnchor?.stripIndex ?? 0,
+        fraction: 0
+      });
+    } else if (stripAnchor) {
+      void this.viewer.restoreStripAnchor({
+        ...stripAnchor,
+        stateId: stripAnchor.stateId
+          ? pageStateIdForRevision(this.manifest, stripAnchor.stateId, revision)
+          : undefined
+      });
+    } else {
+      const fallback = this.sync.selectedStateId ?? mappedVideo;
+      if (fallback) {
+        void this.viewer.restoreStripAnchor({ stateId: fallback, stripIndex: 0, fraction: 0 });
+      }
+    }
     this.updateSyncUi();
   }
 
   private async switchRevision(revision: RevisionKind): Promise<void> {
     if (!this.manifest || revision === this.revision || !this.manifest.revisions[revision]) return;
-    const cue = this.state.mode === "follow"
-      ? cueAt(this.manifest.cues, this.currentTimeMs)
-      : undefined;
-    const cueTarget = cue?.state_kind === "slide"
-      ? this.cueStateForRevision(cuePageStateIds(cue, revision), revision)
-      : undefined;
-    const activeTarget = this.state.activePageStateId
-      ? pageStateIdForRevision(this.manifest, this.state.activePageStateId, revision)
-      : undefined;
-    await this.showRevision(revision, cueTarget ?? activeTarget);
+    await this.showRevision(revision);
   }
 
   private cueStateForRevision(
@@ -404,9 +567,7 @@ export class LectureApp extends HTMLElement {
     const revisedCount = this.revisedIds.size;
     if (!this.manifest.revisions.recorded) {
       hint.textContent = "current teaching slides";
-      return;
-    }
-    if (this.revision === "recorded") {
+    } else if (this.revision === "recorded") {
       hint.textContent = revisedCount > 0
         ? `exact match with the video · the updated version fixes errata on ${revisedCount} slide${
             revisedCount === 1 ? "" : "s"
@@ -419,22 +580,47 @@ export class LectureApp extends HTMLElement {
           } — may differ slightly from the video`
         : "viewing updated slides — may differ slightly from the video";
     }
+    this.refreshHintTruncation();
   }
 
-  private renderPdfMenu(asset: RevisionAsset): void {
-    const downloads = this.element<HTMLElement>(".pdf-download");
-    downloads.replaceChildren();
+  /**
+   * The truncated hint expands to a wrapped overlay on hover. Whether it IS
+   * truncated depends on the current column width, so it is re-measured on
+   * every hint resize (chat toggling, divider drags, window resizes).
+   */
+  private refreshHintTruncation(): void {
+    const hint = this.querySelector<HTMLElement>(".revision-hint");
+    if (!hint) return;
+    this.hintResizeObserver ??= (() => {
+      const observer = new ResizeObserver(() => this.refreshHintTruncation());
+      observer.observe(hint);
+      return observer;
+    })();
+    hint.dataset.full = hint.textContent ?? "";
+    hint.classList.toggle("is-truncated", hint.scrollWidth > hint.clientWidth + 1);
+  }
+
+  /** Slide PDF downloads in the below-video area and the slide-list header. */
+  private renderDownloads(asset: RevisionAsset): void {
     const available = asset.decks.filter((deck) => deck.download_url);
-    for (const [index, deck] of available.entries()) {
-      const link = document.createElement("a");
-      link.href = deck.download_url!;
-      link.textContent = available.length === 1
-        ? "Download slides (PDF)"
-        : `Download deck ${deck.order || index + 1} (PDF)`;
-      downloads.append(link);
+    const links = (compact: boolean) =>
+      available.map((deck, index) => {
+        const link = document.createElement("a");
+        link.href = deck.download_url!;
+        link.className = compact ? "toc-download-link" : "lecture-download-link";
+        const deckLabel = deck.order || index + 1;
+        link.textContent = compact
+          ? available.length === 1 ? "Download PDF" : `Deck ${deckLabel} PDF`
+          : available.length === 1 ? "Download slides (PDF)" : `Download deck ${deckLabel} (PDF)`;
+        return link;
+      });
+    const block = this.querySelector<HTMLElement>("[data-lecture-downloads]");
+    if (block) {
+      const target = block.querySelector<HTMLElement>(".lecture-downloads-links") ?? block;
+      target.replaceChildren(...links(false));
+      block.hidden = available.length === 0;
     }
-    downloads.hidden = available.length === 0;
-    this.element<HTMLButtonElement>("[data-action=toggle-pdf-menu]").disabled = false;
+    this.element<HTMLElement>(".toc-downloads").replaceChildren(...links(true));
   }
 
   private onVideoTime(timeMs: number): void {
@@ -443,35 +629,20 @@ export class LectureApp extends HTMLElement {
     if (!this.manifest) return;
     const cue = cueAt(this.manifest.cues, timeMs);
     this.refreshVideoCue();
-    if (this.state.mode !== "follow") {
-      this.updateSyncUi();
-      return;
-    }
+    let target: string | undefined;
     if (!cue || cue.state_kind === "non_slide") {
-      const kind = cue?.non_slide_kind ?? cue?.state ?? "unmapped";
-      if (!this.state.activePageStateId && this.state.activeNonSlideKind === kind) return;
-      this.state.activateNonSlide(kind);
-      this.viewer?.setActive(undefined);
-      this.updateCorrection(undefined);
-      this.updateSyncUi();
-      this.assistant?.refreshContext();
-      this.replaceUrlState();
-      return;
+      this.nonSlideKind = cue?.non_slide_kind ?? cue?.state ?? "unmapped";
+    } else {
+      target = this.cueStateForRevision(cuePageStateIds(cue, this.revision));
+      this.nonSlideKind = target ? undefined : "unmapped_slide";
     }
-    const target = this.cueStateForRevision(cuePageStateIds(cue, this.revision));
-    if (!target) {
-      if (this.state.activeNonSlideKind === "unmapped_slide") return;
-      this.state.activateNonSlide("unmapped_slide");
-      this.viewer?.setActive(undefined);
-      this.updateCorrection(undefined);
-      this.status("This video segment has no reviewed slide mapping for the selected revision.");
-      this.updateSyncUi();
-      this.replaceUrlState();
-      return;
+    if (target !== this.sync.videoStateId) {
+      if (target && this.sync.following) this.status("");
+      else if (!target && this.nonSlideKind === "unmapped_slide" && this.sync.following) {
+        this.status("This video segment has no reviewed slide mapping for the selected revision.");
+      }
     }
-    if (target === this.state.activePageStateId && !this.state.activeNonSlideKind) return;
-    this.status("");
-    this.setActive(target, true);
+    this.sync.onVideoSlide(target);
   }
 
   /** Keeps the "current in video" chip and TOC marker in sync with playback. */
@@ -491,68 +662,156 @@ export class LectureApp extends HTMLElement {
     this.decorateToc();
   }
 
-  private visibleSlide(page: PageState): void {
-    if (
-      this.manifest?.presentation.mode === "video_lecture" &&
-      this.state.mode === "follow"
-    ) return;
-    if (this.pendingScrollTargetId && page.id !== this.pendingScrollTargetId) return;
-    if (page.id === this.pendingScrollTargetId) this.pendingScrollTargetId = undefined;
-    this.state.activatePage(page.id);
-    this.lastSlideStateId = page.id;
-    this.viewer?.setActive(page.id);
-    this.updateCorrection(page);
+  /** All follow-state changes funnel through here (FollowSync host hook). */
+  private applySyncState(): void {
+    const selected = this.sync.selectedStateId;
+    if (selected) this.lastSlideStateId = selected;
+    this.viewer?.setActive(selected);
     this.updateSyncUi();
-    this.assistant?.refreshContext();
     this.replaceUrlState();
   }
 
-  private setActive(pageStateId: string | undefined, scroll: boolean, focus = false): void {
-    if (!pageStateId) return;
+  /** Explicit selection: strip card, drawer row, search hit, citation, URL. */
+  private selectSlide(
+    pageStateId: string,
+    options: { scrollIntoView: boolean; focus?: boolean; behavior?: StripScrollBehavior }
+  ): void {
     const page = this.currentAsset()?.page_states.find(
       (item) => item.id === pageStateId || item.aliases.includes(pageStateId)
     );
     if (!page) return;
-    this.state.activatePage(page.id);
-    this.lastSlideStateId = page.id;
-    this.viewer?.setActive(page.id);
-    if (scroll) {
-      const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
-      this.pendingScrollTargetId = page.id;
-      this.state.withProgrammaticScroll(() => this.viewer?.scrollTo(page.id, behavior, focus));
-    }
-    this.updateCorrection(page);
-    this.updateSyncUi();
-    this.assistant?.refreshContext();
-    this.replaceUrlState();
+    this.sync.onSelect(page.id, {
+      scrollIntoView: options.scrollIntoView,
+      ...(options.behavior ? { behavior: options.behavior } : {})
+    });
+    if (options.focus) this.viewer?.focusSlide(page.id);
   }
 
-  private syncVideo(play: boolean): void {
-    if (!this.manifest || !this.state.activePageStateId) return;
-    const cue = nearestOccurrence(
-      this.manifest.cues,
-      this.state.activePageStateId,
-      this.currentTimeMs
-    );
+  /**
+   * Seeks the video to a slide's nearest occurrence and plays from there.
+   * `resume` (the slide's floating play pill) turns following back on without
+   * scrolling or sticking the strip.
+   */
+  private playFromSlide(stateId: string | undefined, options: { resume?: boolean } = {}): void {
+    if (!this.manifest || !this.hasControllableVideo() || !stateId) return;
+    const cue = nearestOccurrence(this.manifest.cues, stateId, this.currentTimeMs);
     if (!cue) return this.status("This slide has no video occurrence.");
-    this.state.follow();
     const targetTime = cue.stable_at_ms ?? cue.start_ms;
     this.currentTimeMs = targetTime;
-    this.player.seek(targetTime, play);
+    this.player.seek(targetTime, true);
+    const mapped = this.cueStateForRevision(cuePageStateIds(cue, this.revision)) ?? stateId;
+    this.nonSlideKind = undefined;
+    this.sync.onPlayFrom(mapped, options.resume ? { resume: true } : {});
     this.updateTimeDisplay();
     this.refreshVideoCue();
-    this.updateSyncUi();
-    this.replaceUrlState();
   }
 
   private seekFromCitation(timeMs: number): void {
     if (!this.hasControllableVideo()) return;
-    this.state.follow();
     this.currentTimeMs = timeMs;
     this.player.seek(timeMs, true);
     this.updateTimeDisplay();
     this.onVideoTime(timeMs);
-    this.updateSyncUi();
+  }
+
+  /**
+   * Transport controls: cue-level jumps with plain scrubbing semantics — the
+   * play state is untouched, slides follow only while auto-follow is on, and
+   * stuck-vs-animated strip behaviour is the same as for natural playback.
+   */
+  private jumpSlide(which: "previous" | "current" | "next"): void {
+    if (!this.manifest || !this.hasControllableVideo()) return;
+    const cue = slideCueNavigation(this.manifest.cues, this.currentTimeMs)[which];
+    if (!cue) return;
+    const targetTime = cue.stable_at_ms ?? cue.start_ms;
+    this.currentTimeMs = targetTime;
+    this.player.scrub(targetTime);
+    this.updateTimeDisplay();
+    this.onVideoTime(targetTime);
+  }
+
+  private togglePlayback(): void {
+    if (!this.hasControllableVideo()) return;
+    if (this.player.playerState() === PLAYER_STATE.PLAYING) this.player.pause();
+    else this.player.play();
+  }
+
+  private refreshPlayToggle(state: number): void {
+    const button = this.querySelector<HTMLButtonElement>("[data-action=toggle-play]");
+    if (!button) return;
+    const playing = state === PLAYER_STATE.PLAYING;
+    button.classList.toggle("is-playing", playing);
+    const label = playing ? "Pause" : "Play";
+    button.title = label;
+    button.setAttribute("aria-label", label);
+  }
+
+  /**
+   * A continuous speed slider, 0.5×–2× in 0.05 steps (linear). 2× is the
+   * ceiling of the YouTube IFrame API — faster playback is a Premium-only
+   * feature of YouTube's own player and not exposed to embeds.
+   */
+  private buildSpeedMenu(): void {
+    const menu = this.element<HTMLElement>(".speed-menu");
+    const slider = document.createElement("input");
+    slider.type = "range";
+    slider.className = "speed-slider";
+    slider.min = "0.5";
+    slider.max = "2";
+    slider.step = "0.05";
+    slider.value = String(this.playbackRate);
+    slider.setAttribute("aria-label", "Playback speed");
+    slider.addEventListener("input", () => this.applyPlaybackRate(Number(slider.value)));
+    const readout = document.createElement("output");
+    readout.className = "speed-readout";
+    readout.textContent = `${this.playbackRate.toFixed(2)}×`;
+    menu.replaceChildren(slider, readout);
+  }
+
+  private applyPlaybackRate(rate: number): void {
+    this.reflectPlaybackRate(rate);
+    this.player.setPlaybackRate(rate);
+    // The player may snap the suggestion (older embeds round to quarter
+    // steps); reflect the rate that actually took effect.
+    if (this.speedReadbackTimer !== undefined) window.clearTimeout(this.speedReadbackTimer);
+    this.speedReadbackTimer = window.setTimeout(() => {
+      this.speedReadbackTimer = undefined;
+      const effective = this.player.playbackRate();
+      if (effective !== undefined && Math.abs(effective - this.playbackRate) > 0.005) {
+        this.reflectPlaybackRate(effective);
+      }
+    }, 250);
+  }
+
+  private reflectPlaybackRate(rate: number): void {
+    const rounded = Number(rate.toFixed(2));
+    this.playbackRate = rounded;
+    // Always two decimals ("1.00×", "1.20×"): a changing digit count makes
+    // the readout jitter while dragging.
+    const label = `${rounded.toFixed(2)}×`;
+    const slider = this.querySelector<HTMLInputElement>(".speed-slider");
+    if (slider) slider.value = String(rounded);
+    const readout = this.querySelector<HTMLElement>(".speed-readout");
+    if (readout) readout.textContent = label;
+    const value = this.element<HTMLElement>(".speed-value");
+    // While the slider popup is open the badge keeps its (fixed-width) spot
+    // even at 1× — appearing or disappearing mid-drag would move the
+    // popup's anchor and with it the slider under the pointer.
+    value.hidden = rounded === 1 && this.element<HTMLElement>(".speed-menu").hidden;
+    value.textContent = label;
+    const trigger = this.element<HTMLButtonElement>("[data-action=playback-speed]");
+    const title = rounded === 1 ? "Playback speed" : `Playback speed · ${label}`;
+    trigger.title = title;
+    trigger.setAttribute("aria-label", title);
+  }
+
+  private setSpeedMenuOpen(open: boolean): void {
+    this.element<HTMLElement>(".speed-menu").hidden = !open;
+    this.element<HTMLButtonElement>("[data-action=playback-speed]").setAttribute(
+      "aria-expanded",
+      String(open)
+    );
+    this.reflectPlaybackRate(this.playbackRate);
   }
 
   private bindControls(): void {
@@ -560,17 +819,66 @@ export class LectureApp extends HTMLElement {
     const manualKeys = new Set([
       "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "PageUp", "PageDown", "Home", "End", " "
     ]);
-    const manualIntent = () => {
-      this.pendingScrollTargetId = undefined;
-      const wasFollowing = this.state.mode === "follow";
-      this.state.manualIntent();
-      if (wasFollowing && this.state.mode === "explore") this.updateSyncUi();
+    // User input takes over from any in-flight programmatic strip animation.
+    let stripInputAt = -Infinity;
+    const takeOver = () => {
+      stripInputAt = performance.now();
+      this.viewer?.cancelProgrammaticScroll();
     };
-    scroll.addEventListener("wheel", manualIntent, { passive: true });
-    scroll.addEventListener("touchstart", manualIntent, { passive: true });
-    scroll.addEventListener("pointerdown", manualIntent);
+    scroll.addEventListener("wheel", takeOver, { passive: true });
+    scroll.addEventListener("touchstart", takeOver, { passive: true });
+    scroll.addEventListener("pointerdown", takeOver);
     scroll.addEventListener("keydown", (event) => {
-      if (manualKeys.has(event.key)) manualIntent();
+      // Keyboard scrolling also works with a slide (a descendant) focused.
+      if (manualKeys.has(event.key) && scroll.contains(event.target as Node)) takeOver();
+    });
+    // Scrolls not caused by our own animations count as user scrolling.
+    scroll.addEventListener(
+      "scroll",
+      () => {
+        if (this.viewer?.scrollActive()) return;
+        // The line anchor follows scrolls the user actually sees — direct
+        // input and, during normal viewing, layout shifts (lazy renders
+        // growing placeholder slides, browser scroll anchoring). While a
+        // resize re-anchoring settles, scroll events are the browser's own
+        // adjustments and must not overwrite the anchor being enforced —
+        // regardless of how recent the last input was (a resize can land
+        // mid-gesture). Real input still takes over instantly through the
+        // wheel/touch/pointer/key listeners themselves.
+        if (!this.viewer?.resizeSettling()) {
+          if (performance.now() - stripInputAt < 1500) this.viewer?.cancelProgrammaticScroll();
+          this.viewer?.noteUserScroll();
+        }
+        this.sync.onUserScroll();
+        if (this.scrollSettleTimer !== undefined) window.clearTimeout(this.scrollSettleTimer);
+        this.scrollSettleTimer = window.setTimeout(() => {
+          this.scrollSettleTimer = undefined;
+          this.sync.onUserScrollSettled();
+        }, 160);
+      },
+      { passive: true }
+    );
+    this.action("prev-slide", () => this.jumpSlide("previous"));
+    this.action("slide-start", () => this.jumpSlide("current"));
+    this.action("next-slide", () => this.jumpSlide("next"));
+    this.action("toggle-play", () => this.togglePlayback());
+    this.action("playback-speed", () =>
+      this.setSpeedMenuOpen(Boolean(this.element<HTMLElement>(".speed-menu").hidden))
+    );
+    this.buildSpeedMenu();
+    document.addEventListener("pointerdown", (event) => {
+      const menu = this.querySelector<HTMLElement>(".speed-menu");
+      if (!menu || menu.hidden) return;
+      const target = event.target as Node;
+      if (!menu.contains(target) && !this.element("[data-action=playback-speed]").contains(target)) {
+        this.setSpeedMenuOpen(false);
+      }
+    });
+    this.element<HTMLElement>(".speed-wrap").addEventListener("keydown", (event) => {
+      if (event.key !== "Escape" || this.element<HTMLElement>(".speed-menu").hidden) return;
+      event.stopPropagation();
+      this.setSpeedMenuOpen(false);
+      this.element<HTMLButtonElement>("[data-action=playback-speed]").focus();
     });
     this.querySelectorAll<HTMLButtonElement>("[data-revision]").forEach((button) => {
       button.addEventListener("click", () => {
@@ -594,28 +902,14 @@ export class LectureApp extends HTMLElement {
         target.click();
       });
     });
-    this.action("resume-follow", () => {
-      this.state.follow();
-      this.updateSyncUi();
-      this.onVideoTime(this.currentTimeMs);
-      this.status("Slides follow the video again.");
-    });
-    this.action("play-time", () => this.syncVideo(true));
-    this.action("print", () => {
-      this.setPdfMenuOpen(false);
-      void this.printSlides();
-    });
-    this.action("toggle-pdf-menu", () =>
-      this.setPdfMenuOpen(Boolean(this.element<HTMLElement>(".pdf-menu-list").hidden))
-    );
+    this.action("resume-follow", () => this.sync.onResumeButton());
+    this.action("follow-pill", () => this.sync.onFollowPill());
     this.action("toggle-toc", () =>
       this.setTocOpen(Boolean(this.element<HTMLElement>(".toc-drawer").hidden))
     );
     this.action("close-toc", () => this.setTocOpen(false, true));
     document.addEventListener("pointerdown", (event) => {
       const target = event.target as Node;
-      const pdfMenu = this.querySelector<HTMLElement>(".pdf-menu");
-      if (pdfMenu && !pdfMenu.contains(target)) this.setPdfMenuOpen(false);
       const search = this.querySelector<HTMLElement>(".slide-search");
       if (search && !search.contains(target)) this.setSearchResultsOpen(false);
       const drawer = this.querySelector<HTMLElement>(".toc-drawer");
@@ -678,13 +972,154 @@ export class LectureApp extends HTMLElement {
     });
   }
 
-  private setPdfMenuOpen(open: boolean): void {
-    const list = this.element<HTMLElement>(".pdf-menu-list");
-    list.hidden = !open;
-    this.element<HTMLButtonElement>("[data-action=toggle-pdf-menu]").setAttribute(
-      "aria-expanded",
-      String(open)
-    );
+  /** Drag handling for the landscape column dividers and the pull handle. */
+  private bindResizers(): void {
+    for (const resizer of this.querySelectorAll<HTMLElement>(".col-resizer")) {
+      resizer.addEventListener("pointerdown", (event) => this.startColumnDrag(event, resizer));
+    }
+    // The window's right edge pulls the closed chat out: nothing happens
+    // until the drag reaches the minimum chat width, then it opens live.
+    const pull = this.querySelector<HTMLElement>(".chat-pull-handle");
+    pull?.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0 || this.assistant?.isOpen) return;
+      this.startChatWidthDrag(event, pull, 0);
+    });
+  }
+
+  private startColumnDrag(event: PointerEvent, resizer: HTMLElement): void {
+    if (event.button !== 0) return;
+    const shell = this.element<HTMLElement>(".lecture-shell");
+    if (resizer.dataset.resizer === "assistant") {
+      if (!shell.classList.contains("assistant-open")) return;
+      const startChat = this.element<HTMLElement>(".assistant-region").getBoundingClientRect().width;
+      this.startChatWidthDrag(event, resizer, startChat);
+      return;
+    }
+    event.preventDefault();
+    resizer.setPointerCapture?.(event.pointerId);
+    const startX = event.clientX;
+    const slides = this.element<HTMLElement>(".slide-panel");
+    const region = this.element<HTMLElement>(".assistant-region");
+    const startSlides = slides.getBoundingClientRect().width;
+    const shellWidth = shell.clientWidth;
+    const move = (moveEvent: PointerEvent) => {
+      const dx = moveEvent.clientX - startX;
+      const docked =
+        shell.classList.contains("assistant-open") &&
+        !shell.classList.contains("chat-drag-closed");
+      const chatWidth = docked ? region.getBoundingClientRect().width + 6 : 0;
+      const { media: minMedia, slides: minSlides } = this.minColumnWidths(docked, shellWidth);
+      const available = shellWidth - 6 - chatWidth;
+      const width = Math.min(
+        Math.max(startSlides - dx, minSlides),
+        Math.max(minSlides, available - minMedia)
+      );
+      // The px widths become the fr weights: the drag lands exactly where
+      // the pointer is, and later chat resizes scale both columns
+      // proportionally to this ratio.
+      shell.style.setProperty("--lect-media-fr", `${Math.round(available - width)}fr`);
+      shell.style.setProperty("--lect-slides-fr", `${Math.round(width)}fr`);
+    };
+    const finish = (endEvent: PointerEvent) => {
+      resizer.releasePointerCapture?.(endEvent.pointerId);
+      resizer.removeEventListener("pointermove", move);
+      resizer.removeEventListener("pointerup", finish);
+      resizer.removeEventListener("pointercancel", finish);
+      this.clampColumns();
+    };
+    resizer.addEventListener("pointermove", move);
+    resizer.addEventListener("pointerup", finish);
+    resizer.addEventListener("pointercancel", finish);
+  }
+
+  /** Widest the docked chat may get while the other columns keep their minimums. */
+  private maxChatWidth(shellWidth: number): number {
+    const slideOnly = this.querySelector<HTMLElement>(".lecture-shell")
+      ?.classList.contains("is-slide-only");
+    if (slideOnly) return Math.max(MIN_CHAT_W, shellWidth - 6 - MIN_MAIN_SLIDE_ONLY);
+    return Math.max(MIN_CHAT_W, shellWidth - 12 - MIN_MEDIA_DOCKED - MIN_SLIDES_DOCKED);
+  }
+
+  /** Effective column minimums; larger when the chat is not docked. */
+  private minColumnWidths(chatDocked: boolean, shellWidth: number): {
+    media: number;
+    slides: number;
+  } {
+    if (chatDocked) return { media: MIN_MEDIA_DOCKED, slides: MIN_SLIDES_DOCKED };
+    return {
+      media: Math.min(MIN_MEDIA_SOLO, Math.floor(shellWidth * 0.34)),
+      slides: Math.min(MIN_SLIDES_SOLO, Math.floor(shellWidth * 0.32))
+    };
+  }
+
+  /**
+   * Shared chat-width drag for the chat divider (open) and the right-edge
+   * pull handle (closed). Below the minimum minus some slack the chat
+   * collapses live (the pill returns) but the gesture stays hot, so pulling
+   * back re-opens it; releasing while collapsed closes it for real.
+   */
+  private startChatWidthDrag(event: PointerEvent, handle: HTMLElement, startChat: number): void {
+    const shell = this.element<HTMLElement>(".lecture-shell");
+    event.preventDefault();
+    handle.setPointerCapture?.(event.pointerId);
+    shell.classList.add("chat-dragging");
+    const startX = event.clientX;
+    const shellWidth = shell.clientWidth;
+    const move = (moveEvent: PointerEvent) => {
+      const desired = startChat + (startX - moveEvent.clientX);
+      if (desired >= MIN_CHAT_W) {
+        if (!this.assistant?.isOpen) this.assistant?.open(false);
+        shell.classList.remove("chat-drag-closed");
+        // The content columns share the remaining space proportionally (their
+        // fr weights); the grid's minmax() enforces their minimums.
+        const max = this.maxChatWidth(shellWidth);
+        shell.style.setProperty("--lect-chat-w", `${Math.round(Math.min(desired, max))}px`);
+      } else if (desired < MIN_CHAT_W - CHAT_CLOSE_SLACK) {
+        if (this.assistant?.isOpen) {
+          shell.classList.add("chat-drag-closed");
+          shell.style.setProperty("--lect-chat-w", "0px");
+        }
+      } else if (this.assistant?.isOpen && !shell.classList.contains("chat-drag-closed")) {
+        // Dead zone under the minimum: the open chat resists at MIN width.
+        shell.style.setProperty("--lect-chat-w", `${MIN_CHAT_W}px`);
+      }
+    };
+    const finish = (endEvent: PointerEvent) => {
+      handle.releasePointerCapture?.(endEvent.pointerId);
+      handle.removeEventListener("pointermove", move);
+      handle.removeEventListener("pointerup", finish);
+      handle.removeEventListener("pointercancel", finish);
+      shell.classList.remove("chat-dragging");
+      if (shell.classList.contains("chat-drag-closed")) {
+        shell.classList.remove("chat-drag-closed");
+        shell.style.removeProperty("--lect-chat-w");
+        this.assistant?.close();
+      }
+      this.clampColumns();
+    };
+    handle.addEventListener("pointermove", move);
+    handle.addEventListener("pointerup", finish);
+    handle.addEventListener("pointercancel", finish);
+  }
+
+  /**
+   * The media/slides minimums are enforced by the grid's minmax() itself;
+   * the only thing to re-clamp (on window resize or chat open) is a docked
+   * chat width that no longer leaves room for the other minimums.
+   */
+  private clampColumns(): void {
+    const shell = this.querySelector<HTMLElement>(".lecture-shell");
+    if (!shell || this.portraitQuery.matches) return;
+    const shellWidth = shell.clientWidth;
+    if (!shellWidth) return;
+    const chatDocked =
+      shell.classList.contains("assistant-open") &&
+      !shell.classList.contains("chat-drag-closed") &&
+      window.matchMedia("(min-width: 1000px)").matches;
+    if (!chatDocked) return;
+    const chatWidth = this.element<HTMLElement>(".assistant-region").getBoundingClientRect().width;
+    const max = this.maxChatWidth(shellWidth);
+    if (chatWidth > max + 1) shell.style.setProperty("--lect-chat-w", `${Math.round(max)}px`);
   }
 
   private setSearchResultsOpen(open: boolean): void {
@@ -723,16 +1158,11 @@ export class LectureApp extends HTMLElement {
         }
         button.addEventListener("click", () => {
           this.setSearchResultsOpen(false);
-          this.jumpToSlide(hit.entry.state.id, true);
+          this.selectSlide(hit.entry.state.id, { scrollIntoView: true, focus: true });
         });
         return button;
       })
     );
-  }
-
-  private jumpToSlide(stateId: string, focus = false): void {
-    this.state.explore();
-    this.setActive(stateId, true, focus);
   }
 
   private setTocOpen(open: boolean, returnFocus = false): void {
@@ -811,11 +1241,24 @@ export class LectureApp extends HTMLElement {
         text.append(time);
       }
       button.append(thumb, text);
+      // Selecting from the list keeps the list open (markers update in place).
       button.addEventListener("click", () => {
-        this.jumpToSlide(entry.state.id, true);
-        this.decorateToc();
+        this.selectSlide(entry.state.id, { scrollIntoView: true });
       });
       item.append(button);
+      // "Play from here" appears on the hovered/focused row only (CSS).
+      if (this.hasControllableVideo() && entry.timeMs !== undefined) {
+        const play = document.createElement("button");
+        play.type = "button";
+        play.className = "toc-play";
+        play.textContent = "▶ Play from here";
+        // Playing keeps the list open, exactly like selecting does.
+        play.addEventListener("click", (event) => {
+          event.stopPropagation();
+          this.playFromSlide(entry.state.id);
+        });
+        item.append(play);
+      }
       rows.push(item);
       this.tocThumbnailObserver.observe(button);
     }
@@ -826,38 +1269,25 @@ export class LectureApp extends HTMLElement {
   private decorateToc(): void {
     const drawer = this.querySelector<HTMLElement>(".toc-drawer");
     if (!drawer || drawer.hidden) return;
-    const videoStateId = this.videoCueStateId();
-    for (const button of drawer.querySelectorAll<HTMLElement>(".toc-list button")) {
+    const videoStateId = this.sync.videoStateId;
+    const selectedStateId = this.sync.selectedStateId;
+    for (const button of drawer.querySelectorAll<HTMLElement>(".toc-list button[data-state-id]")) {
       const stateId = button.dataset.stateId;
       const isVideo = Boolean(videoStateId && stateId === videoStateId);
-      const isViewing = Boolean(stateId && stateId === this.state.activePageStateId);
+      const isSelected = Boolean(stateId && stateId === selectedStateId);
       button.classList.toggle("is-video-current", isVideo);
-      button.classList.toggle("is-viewing", isViewing);
+      button.classList.toggle("is-viewing", isSelected);
       const marker = button.querySelector<HTMLElement>(".toc-marker");
       if (marker) {
-        marker.textContent = isViewing && isVideo
-          ? "— video · viewing"
+        marker.textContent = isSelected && isVideo
+          ? "— video · selected"
           : isVideo
             ? "— video"
-            : isViewing
-              ? "— viewing"
+            : isSelected
+              ? "— selected"
               : "";
       }
     }
-  }
-
-  private videoCueStateId(): string | undefined {
-    if (!this.manifest || !this.hasControllableVideo()) return undefined;
-    const cue = cueAt(this.manifest.cues, this.currentTimeMs);
-    return cue && cue.state_kind === "slide"
-      ? this.cueStateForRevision(cuePageStateIds(cue, this.revision))
-      : undefined;
-  }
-
-  private activeSlideNumber(): number | undefined {
-    const stateId = this.state.activePageStateId ?? this.lastSlideStateId;
-    if (!stateId) return undefined;
-    return this.slideIndex.byStateId.get(stateId)?.position;
   }
 
   private updateTimeDisplay(): void {
@@ -874,44 +1304,50 @@ export class LectureApp extends HTMLElement {
 
   /** Refreshes the follow pill, the now-viewing label, and control states. */
   private updateSyncUi(): void {
-    const following = this.state.mode === "follow";
+    const following = this.sync.following;
     const pill = this.element<HTMLElement>(".follow-pill");
     pill.dataset.followState = following ? "following" : "paused";
     const nowViewing = this.element<HTMLElement>(".now-viewing");
     nowViewing.replaceChildren();
     if (this.hasControllableVideo()) {
-      const videoStateId = this.videoCueStateId();
-      const videoEntry = videoStateId ? this.slideIndex.byStateId.get(videoStateId) : undefined;
-      const activeEntry = this.state.activePageStateId
-        ? this.slideIndex.byStateId.get(this.state.activePageStateId)
+      const videoEntry = this.sync.videoStateId
+        ? this.slideIndex.byStateId.get(this.sync.videoStateId)
+        : undefined;
+      const selectedEntry = this.sync.selectedStateId
+        ? this.slideIndex.byStateId.get(this.sync.selectedStateId)
         : undefined;
       if (following) {
-        if (activeEntry) {
+        if (videoEntry) {
           nowViewing.append(
             "Now: ",
-            strong(`Slide ${activeEntry.position}`),
-            ` — ${activeEntry.title}`
+            strong(`Slide ${videoEntry.position}`),
+            ` — ${videoEntry.title}`
           );
         } else {
-          const kind = this.state.activeNonSlideKind;
+          const kind = this.nonSlideKind;
           nowViewing.append(kind ? `Now: ${humanize(kind)} (no slide)` : "");
         }
       } else {
         const videoText = videoEntry ? `slide ${videoEntry.position}` : "no slide";
         nowViewing.append("Video: ", strong(videoText));
-        if (activeEntry) nowViewing.append(" · viewing ", strong(`slide ${activeEntry.position}`));
+        if (selectedEntry) {
+          nowViewing.append(" · selected ", strong(`slide ${selectedEntry.position}`));
+        }
       }
     }
-    const playButton = this.element<HTMLButtonElement>("[data-action=play-time]");
-    const stateId = this.state.activePageStateId;
+    // The floating play pill is only offered once the user explicitly
+    // selected a slide (even the one currently playing); never by default.
+    const stateId = this.sync.selectedStateId;
+    const explicitSelected = Boolean(
+      this.hasControllableVideo() && stateId && stateId === this.sync.explicitSelectionId
+    );
     const hasOccurrence = Boolean(
+      explicitSelected &&
       this.manifest &&
       stateId &&
-      this.hasControllableVideo() &&
       nearestOccurrence(this.manifest.cues, stateId, this.currentTimeMs)
     );
-    playButton.disabled = !hasOccurrence;
-    playButton.hidden = !this.hasControllableVideo();
+    this.viewer?.setPlayCta(explicitSelected ? stateId : undefined, { disabled: !hasOccurrence });
     this.decorateToc();
   }
 
@@ -933,17 +1369,15 @@ export class LectureApp extends HTMLElement {
       this.assistant.open();
       return;
     }
-    if (!normalized(teaching.text).includes(normalized(text))) {
-      this.status(
-        "The selected recorded text differs from the corrected slide, so it was not attached to the question."
-      );
-      this.assistant.open();
-      return;
-    }
+    // Best-effort: quote the slide's mined text matching the selection (PDF
+    // text-layer extraction differs from the mined text in spacing and the
+    // like); when nothing matches, the raw selection still goes along — the
+    // model can reconstruct what it is about.
+    const matched = matchSelectionToSlideText(text, teaching.text) ?? text;
     const entry = this.slideIndex.byStateId.get(stateId) ??
       this.slideIndex.byStateId.get(teachingId);
     this.assistant.setSelection(
-      { text: text.slice(0, 2000), page_state_id: teachingId },
+      { text: matched.slice(0, 2000), page_state_id: teachingId },
       entry ? `Slide ${entry.position}` : slideTitle(teaching)
     );
     this.assistant.open();
@@ -963,10 +1397,8 @@ export class LectureApp extends HTMLElement {
       this.status("That citation is not part of this lecture revision.");
       return;
     }
-    this.state.explore();
-    this.updateSyncUi();
-    if (targetRevision === this.revision) this.setActive(targetId, true, true);
-    else await this.showRevision(targetRevision, targetId, true);
+    if (targetRevision !== this.revision) await this.showRevision(targetRevision, targetId);
+    this.selectSlide(targetId, { scrollIntoView: true, focus: true });
   }
 
   private async resolveTeachingContext(stateId: string): Promise<string | undefined> {
@@ -986,6 +1418,7 @@ export class LectureApp extends HTMLElement {
       `The recorded slide has no reviewed teaching mapping; using corrected slide ${fallback.page} for this question.`
     );
     await this.showRevision("teaching", fallback.id);
+    this.selectSlide(fallback.id, { scrollIntoView: true });
     return fallback.id;
   }
 
@@ -997,25 +1430,19 @@ export class LectureApp extends HTMLElement {
     const teaching = teachingId
       ? this.manifest.revisions.teaching.page_states.find((state) => state.id === teachingId)
       : undefined;
-    if (
-      !teachingId ||
-      !teaching ||
-      !normalized(teaching.text).includes(normalized(selection.text))
-    ) {
+    if (!teachingId || !teaching) {
       this.assistant?.setSelection(undefined);
-      this.status(
-        "The selected text is not present in its corrected slide, so it was omitted from the question."
-      );
       return undefined;
     }
-    return { ...selection, page_state_id: teachingId };
+    const matched = matchSelectionToSlideText(selection.text, teaching.text) ?? selection.text;
+    return { text: matched.slice(0, 2000), page_state_id: teachingId };
   }
 
   private async prepareQuestion(selection: ChatSelection | undefined): Promise<
     { pageStateIds: string[]; selection?: ChatSelection } | undefined
   > {
     if (!this.manifest) return undefined;
-    const contextSource = this.state.activePageStateId ??
+    const contextSource = this.sync.selectedStateId ??
       this.lastSlideStateId ??
       this.manifest.revisions.teaching.page_states[0]?.id;
     if (!contextSource) {
@@ -1034,31 +1461,16 @@ export class LectureApp extends HTMLElement {
     };
   }
 
-  private async printSlides(): Promise<void> {
-    const button = this.element<HTMLButtonElement>("[data-action=print]");
-    button.disabled = true;
-    this.status("Preparing every slide for printing…");
-    try {
-      await this.viewer?.prepareForPrint();
-      this.status("");
-      window.print();
-    } catch {
-      this.status("Slides could not be prepared for printing. Use the PDF download instead.");
-    } finally {
-      button.disabled = false;
-    }
-  }
-
-  private updateCorrection(page: PageState | undefined): void {
-    const notice = this.element<HTMLElement>(".correction-notice");
-    notice.hidden = !page?.correction;
-    notice.textContent = page?.correction
-      ? `${page.correction.kind === "erratum" ? "Erratum" : "Correction"}: ${page.correction.summary}`
-      : "";
-  }
-
   private currentAsset() {
     return this.manifest?.revisions[this.revision];
+  }
+
+  private videoCueStateId(): string | undefined {
+    if (!this.manifest || this.manifest.presentation.mode !== "video_lecture") return undefined;
+    const cue = cueAt(this.manifest.cues, this.currentTimeMs);
+    return cue && cue.state_kind === "slide"
+      ? this.cueStateForRevision(cuePageStateIds(cue, this.revision))
+      : undefined;
   }
 
   private action(name: string, handler: () => void): void {
@@ -1088,6 +1500,9 @@ export class LectureApp extends HTMLElement {
     const media = this.element<HTMLElement>(".media-panel");
     media.classList.add("is-slide-only", "has-media-error");
     this.element<HTMLElement>(".lecture-main").classList.add("is-slide-only");
+    // Same shell marker as the slide-only mount path: the chat must dock
+    // against the single flowing column, not the video grid.
+    this.element<HTMLElement>(".lecture-shell").classList.add("is-slide-only");
     this.element<HTMLElement>(".video-statusbar").hidden = true;
     const dock = this.element<HTMLElement>(".video-dock");
     dock.hidden = true;
@@ -1095,7 +1510,10 @@ export class LectureApp extends HTMLElement {
     this.miniPlayer?.destroy();
     this.miniPlayer = undefined;
     this.placeSupplements();
-    media.hidden = true;
+    if (!this.sync.selectedStateId) {
+      const first = this.currentAsset()?.page_states[0];
+      if (first) this.sync.onSelect(first.id, { scrollIntoView: false });
+    }
     this.status(`Video unavailable: ${message}. Slides and the assistant remain available.`);
     this.showFallbackLinks();
     this.updateSyncUi();
@@ -1192,19 +1610,19 @@ export class LectureApp extends HTMLElement {
       this.manifest.presentation.mode === "video_lecture"
     ) {
       this.currentTimeMs = requested.timeMs;
-      this.player.seek(requested.timeMs, false);
-      if (!requested.slideId) {
-        this.state.follow();
-        this.updateSyncUi();
-        this.onVideoTime(requested.timeMs);
+      const state = this.player.playerState();
+      // seekTo+pause on a player that never started leaves a black box
+      // (iteration 3); an unstarted player only gets its UI state updated.
+      if (state === PLAYER_STATE.PLAYING) this.player.scrub(requested.timeMs);
+      else if (state === PLAYER_STATE.PAUSED || state === PLAYER_STATE.ENDED) {
+        this.player.seek(requested.timeMs, false);
       }
+      this.onVideoTime(requested.timeMs);
     }
     const target = requested.slideId ? this.resolveUrlSlide(requested.slideId) : undefined;
     if (target) {
-      this.state.explore();
-      this.updateSyncUi();
-      if (target.revision === this.revision) this.setActive(target.pageStateId, true, true);
-      else await this.showRevision(target.revision, target.pageStateId, true);
+      if (target.revision !== this.revision) await this.showRevision(target.revision, target.pageStateId);
+      this.selectSlide(target.pageStateId, { scrollIntoView: true, focus: true });
     }
     this.replaceUrlState();
   }
@@ -1213,7 +1631,8 @@ export class LectureApp extends HTMLElement {
     if (!this.urlStateReady || !this.manifest) return;
     const url = new URL(window.location.href);
     url.searchParams.set("lecture", this.manifest.lecture_id);
-    if (this.state.activePageStateId) url.searchParams.set("slide", this.state.activePageStateId);
+    const selected = this.sync.selectedStateId;
+    if (selected) url.searchParams.set("slide", selected);
     else url.searchParams.delete("slide");
     if (this.manifest.presentation.mode === "video_lecture" && this.currentTimeMs > 0) {
       const seconds = (this.currentTimeMs / 1000).toFixed(3).replace(/\.?0+$/, "");

@@ -32,7 +32,6 @@ function makeHost(): AssistantHost {
     lectureTitle: () => "Demo lecture",
     contentRevision: () => "revision-1234",
     hasVideo: () => true,
-    activeSlideNumber: () => 4,
     citationTimeMs: (slideId) => (slideId === "t-1" ? 727_000 : undefined),
     prepareQuestion: async () => ({ pageStateIds: ["t-1"] }),
     openCitation: vi.fn(),
@@ -83,9 +82,16 @@ describe("assistant panel", () => {
     panel.open();
     expect(
       container.querySelector<HTMLTextAreaElement>("textarea[name=question]")?.placeholder
-    ).toBe("Ask about slide 4 or the lecture…");
+    ).toBe("Ask about the lecture...");
+    // No scope chip in the header anymore.
+    expect(container.querySelector(".scope-chip")).toBeNull();
 
     await askQuestion(container, "Why L2?");
+    // The input is emptied as soon as the question is sent (checked settled
+    // here; the e2e suite covers the mid-stream state).
+    expect(
+      container.querySelector<HTMLTextAreaElement>("textarea[name=question]")?.value
+    ).toBe("");
 
     expect(payloads[0]).toMatchObject({
       lecture_id: "demo",
@@ -103,6 +109,10 @@ describe("assistant panel", () => {
       "Slide 4",
       "▶ 12:07 in video"
     ]);
+    // Every bubble carries a hover copy control with a plain title tooltip.
+    const copyButtons = container.querySelectorAll<HTMLButtonElement>(".chat-message .chat-copy");
+    expect(copyButtons).toHaveLength(2);
+    expect(copyButtons[0]?.title).toBe("copy");
     citations[1]!.click();
     expect(host.seekVideo).toHaveBeenCalledWith(727_000);
 
@@ -190,6 +200,54 @@ describe("assistant panel", () => {
     container.querySelector<HTMLButtonElement>(".conversation-delete")!.click();
     expect(new ConversationStore("demo").list()).toHaveLength(0);
     expect(container.querySelector(".conversation-list-empty")?.hasAttribute("hidden")).toBe(false);
+  });
+
+  it("offers History and New chat shortcuts in the header, mirroring the menu", async () => {
+    globalThis.fetch = vi.fn(async () => sseResponse(answerStream("A."))) as typeof fetch;
+    const panel = new AssistantPanel(container, makeHost());
+    panel.activate();
+    panel.open();
+    const history = container.querySelector<HTMLButtonElement>(
+      ".chat-header .assistant-header-icon[data-action=show-conversations]"
+    )!;
+    const newChat = container.querySelector<HTMLButtonElement>(
+      ".chat-header .assistant-header-icon[data-action=new-conversation]"
+    )!;
+    expect(history.title).toBe("History");
+    expect(newChat.title).toBe("New chat");
+
+    await askQuestion(container, "Header question");
+    expect(container.querySelectorAll(".chat-message")).toHaveLength(2);
+
+    // Header "New chat" starts a fresh conversation like the menu entry.
+    newChat.click();
+    expect(container.querySelectorAll(".chat-message")).toHaveLength(0);
+
+    // Header "History" opens the stored-conversations list.
+    history.click();
+    const list = container.querySelector<HTMLElement>(".conversation-list")!;
+    expect(list.hidden).toBe(false);
+    expect(container.querySelector(".conversation-open")?.textContent).toContain(
+      "Header question"
+    );
+    expect(history.getAttribute("aria-pressed")).toBe("true");
+
+    // Clicking History while the list shows toggles back to the chat,
+    // exactly like "Back to chat".
+    history.click();
+    expect(list.hidden).toBe(true);
+    expect(history.getAttribute("aria-pressed")).toBe("false");
+    history.click();
+    expect(list.hidden).toBe(false);
+
+    // The menu entries stay wired too — every control with the action fires.
+    container.querySelector<HTMLButtonElement>("[data-action=close-conversations]")!.click();
+    expect(list.hidden).toBe(true);
+    container.querySelector<HTMLButtonElement>("[data-action=assistant-menu]")!.click();
+    container
+      .querySelector<HTMLButtonElement>(".assistant-menu [data-action=show-conversations]")!
+      .click();
+    expect(list.hidden).toBe(false);
   });
 
   it("persists language and answer-style preferences without sending them to the backend", () => {

@@ -1,0 +1,34 @@
+{{ if partial "lecture-detect.html" . }}
+{{- /* Lecture pages: thin top bar. Landscape shows the inline menu; portrait
+       shows the lecture title and a no-JS <details> hamburger menu (CSS picks
+       which parts are visible). Other pages keep the theme header below. */ -}}
+<header class="lecture-topbar">
+  <a class="lecture-topbar-brand" href="{{ .Site.Home.RelPermalink }}" aria-label="Course home">
+    {{ if isset .Site.Params "logo" }}<img src="{{ .Site.Params.logo | relURL }}" alt="{{ .Site.Title }}">{{ end }}
+  </a>
+  <span class="lecture-topbar-title">{{ .Title }}</span>
+  <nav class="lecture-topbar-nav" aria-label="Site">
+    {{ range .Site.Menus.main }}<a class="nav-link" href="{{ .URL | relURL }}">{{ .Name | safeHTML }}</a>{{ end }}
+  </nav>
+  <details class="lecture-topbar-menu">
+    <summary><span aria-hidden="true">☰</span> Menu</summary>
+    <nav aria-label="Site menu">
+      {{ range .Site.Menus.main }}<a class="nav-link" href="{{ .URL | relURL }}">{{ .Name | safeHTML }}</a>{{ end }}
+    </nav>
+  </details>
+</header>
+{{ else }}
+{{ if isset .Site.Params "logo"}}
+<img id="logo" src="{{ .Site.Params.logo | relURL }}" />
+{{ end }}
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        {{ range .Site.Menus.main }}
+        <a class="nav-link" href="{{ .URL | relURL }}">
+        {{ $text := print .Name | safeHTML }}
+        {{ $text }}
+        </a>
+        {{ end }}
+    </nav>
+</div>
+{{ end }}

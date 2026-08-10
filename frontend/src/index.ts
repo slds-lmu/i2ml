@@ -1,3 +1,4 @@
+import "./runtime-compat";
 import "./lecture.css";
 import { LectureApp } from "./lecture-app";
 

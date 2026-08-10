@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 
-import { cueAt, nearestOccurrence } from "../src/cue-engine";
+import { cueAt, nearestOccurrence, slideCueNavigation } from "../src/cue-engine";
 import type { CueInterval } from "../src/types";
 
 const cues: CueInterval[] = [
@@ -63,6 +63,30 @@ describe("cue engine", () => {
   it("selects the occurrence nearest the current player time", () => {
     expect(nearestOccurrence(cues, "slide-1", 5000)?.occurrence).toBe(2);
     expect(nearestOccurrence(cues, "slide-1", 1500)?.occurrence).toBe(1);
+  });
+
+  it("navigates slide cues for the transport controls, skipping non-slide segments", () => {
+    // Inside the second slide cue: full neighbourhood.
+    expect(slideCueNavigation(cues, 3500)).toMatchObject({
+      previous: { start_ms: 1000 },
+      current: { start_ms: 3000 },
+      next: { start_ms: 4000 }
+    });
+
+    // Inside the non-slide intro: nothing current or previous yet.
+    const beforeSlides = slideCueNavigation(cues, 500);
+    expect(beforeSlides.previous).toBeUndefined();
+    expect(beforeSlides.current).toBeUndefined();
+    expect(beforeSlides.next?.start_ms).toBe(1000);
+
+    // After the last cue: current is the most recent slide, no next.
+    const atEnd = slideCueNavigation(cues, 9000);
+    expect(atEnd.current?.start_ms).toBe(4000);
+    expect(atEnd.previous?.start_ms).toBe(3000);
+    expect(atEnd.next).toBeUndefined();
+
+    // Exactly at a cue start: that cue is current, not next.
+    expect(slideCueNavigation(cues, 4000).current?.start_ms).toBe(4000);
   });
 
   it("matches teaching content IDs and falls back to the cue start time", () => {

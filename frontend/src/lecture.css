@@ -1,11 +1,15 @@
 /*
  * Modern lecture view, following the agreed MOOC_design mockups:
- *  - desktop (≥1150px): video left, synchronized slide strip right, the
- *    assistant docks as a third column when expanded;
- *  - narrow (<1150px): stacked layout with a capped video, an internal slide
- *    scroller narrower than the page, a dismissable floating mini-player, and
- *    the assistant as a right slide-over sheet.
- * Colors and fonts stay with the site (Bootstrap defaults, blue accent).
+ *  - landscape: a thin top bar (logo + site menu), below it independently
+ *    scrolling columns — video/description left, slide strip right, and the
+ *    assistant as a third column when open. The footer stays pinned to the
+ *    window bottom.
+ *  - portrait: logo + lecture title + hamburger menu on top, then video,
+ *    slide strip (internal scroller narrower than the page), description,
+ *    quiz, downloads and chapter navigation; the footer sits at the end of
+ *    the scroll range.
+ * Colors and fonts stay with the site (Bootstrap defaults, blue accent);
+ * green marks the slide currently in the video, blue the selected slide.
  */
 
 .lecture-shell {
@@ -13,6 +17,9 @@
   --lect-accent-dark: #0a58ca;
   --lect-accent-soft: #e7f1ff;
   --lect-accent-border: #9ec5fe;
+  --lect-video-accent: #198754;
+  --lect-video-dark: #146c43;
+  --lect-video-soft: #e8f5ee;
   --lect-border: #dee2e6;
   --lect-border-strong: #ced4da;
   --lect-muted-bg: #f8f9fa;
@@ -26,24 +33,466 @@
   --lect-radius: 0.5rem;
   --lect-shadow: 0 1px 3px rgb(0 0 0 / 10%);
   --lect-shadow-pop: 0 8px 28px rgb(0 0 0 / 18%);
+  --lect-strip-top-gap: 16px;
 
   color: var(--lect-text);
-  margin-block: 1rem 1.5rem;
 }
 
-body.has-modern-lecture footer {
-  position: static !important;
+/* ------------------------------------------------------------ page chrome */
+
+/*
+ * The thin top bar rendered for lecture pages (layouts/partials/header.html).
+ * Both orientations share the bar; landscape shows the inline menu, portrait
+ * shows the lecture title and a hamburger <details> menu instead.
+ */
+.lecture-topbar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem 1.1rem;
+  padding: 0.3rem 1rem;
+  border-bottom: 1px solid #dee2e6;
+  background: white;
+  flex: none;
+  z-index: 100;
 }
 
+.lecture-topbar-brand {
+  display: inline-flex;
+  align-items: center;
+  flex: none;
+}
+
+.lecture-topbar-brand img {
+  display: block;
+  height: 30px;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.lecture-topbar-title {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 700;
+  font-size: 1.02rem;
+}
+
+.lecture-topbar-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0 0.15rem;
+  min-width: 0;
+}
+
+.lecture-topbar-nav .nav-link {
+  padding: 0.25rem 0.6rem;
+  font-size: 0.92rem;
+}
+
+.lecture-topbar-menu {
+  margin-left: auto;
+  position: relative;
+  flex: none;
+}
+
+.lecture-topbar-menu summary {
+  list-style: none;
+  cursor: pointer;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  padding: 0.3rem 0.7rem;
+  background: white;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.lecture-topbar-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.lecture-topbar-menu[open] summary {
+  border-color: #0d6efd;
+  color: #0a58ca;
+  background: #e7f1ff;
+}
+
+.lecture-topbar-menu nav {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  min-width: 11rem;
+  background: white;
+  border: 1px solid #dee2e6;
+  border-radius: 0.45rem;
+  box-shadow: 0 8px 28px rgb(0 0 0 / 18%);
+  padding: 0.3rem;
+  z-index: 120;
+}
+
+.lecture-topbar-menu nav .nav-link {
+  display: block;
+  padding: 0.45rem 0.7rem;
+  border-radius: 0.3rem;
+}
+
+.lecture-topbar-menu nav .nav-link:hover {
+  background: #e7f1ff;
+}
+
+@media (orientation: landscape) {
+  .lecture-topbar-title,
+  .lecture-topbar-menu {
+    display: none;
+  }
+}
+
+@media (orientation: portrait) {
+  .lecture-topbar-nav {
+    display: none;
+  }
+
+  .lecture-topbar-title {
+    flex: 1;
+  }
+}
+
+/* Lecture pages use the full width; the site's text column stays elsewhere.
+   padding-inline: Bootstrap's .container gutter would keep the full-bleed
+   slide panel and docked chat 12px away from the screen edges. */
+body.has-modern-lecture #content,
 body.has-modern-lecture #content.container {
-  width: calc(100% - 2rem);
-  max-width: 1800px;
+  max-width: none;
+  width: 100%;
+  margin-top: 0;
+  padding-bottom: 0;
+  padding-inline: 0;
 }
 
 .lecture-page.container {
   width: 100%;
   max-width: none;
   padding-inline: 0;
+  margin: 0;
+}
+
+/* The footer never floats over lecture content. */
+body.has-modern-lecture footer,
+body.has-modern-lecture footer.fixed-bottom {
+  position: static !important;
+  flex: none;
+  margin-top: auto;
+}
+
+/*
+ * Portrait: one flowing page; the footer sits at the end of the scroll range
+ * (pushed to the viewport bottom on short pages).
+ */
+@media (orientation: portrait) {
+  body.has-modern-lecture {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+}
+
+/*
+ * Landscape app shell: the page is viewport-height, the columns scroll
+ * separately, the footer is always visible at the window bottom. Only
+ * engaged once the app upgraded (has-lecture-app), so a JS-less page
+ * still scrolls normally.
+ */
+@media (orientation: landscape) {
+  body.has-lecture-app {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+  }
+
+  body.has-lecture-app #content {
+    flex: 1 1 auto;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.has-lecture-app .lecture-page {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  body.has-lecture-app i2ml-lecture-app {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /*
+   * Columns: media | divider | slides [ | divider | chat ]. Media and
+   * slides are both flexible minmax(min, weight-fr) tracks: the fr weights
+   * carry the user's chosen ratio (the slides divider rewrites them), so
+   * chat resizes shrink/grow BOTH columns proportionally while the grid
+   * itself enforces the minimums. Minimums are larger while no chat column
+   * is docked (scaled down on small landscape windows).
+   */
+  body.has-lecture-app .lecture-shell {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns:
+      minmax(min(380px, 34vw), var(--lect-media-fr, 1.15fr))
+      6px
+      minmax(min(340px, 32vw), var(--lect-slides-fr, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+    grid-auto-rows: min-content;
+    column-gap: 0;
+    padding-inline: 0;
+  }
+
+  /* The region only becomes a real grid column while docked (≥1000px, open);
+     otherwise its floating pill/sheet children position themselves. */
+  body.has-lecture-app .lecture-shell > .assistant-region {
+    display: contents;
+  }
+
+  body.has-lecture-app .lecture-main {
+    display: contents;
+  }
+
+  body.has-lecture-app .media-panel {
+    grid-column: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 0.5rem 1rem 1.25rem;
+  }
+
+  /*
+   * The slide panel bleeds to the screen edges: from directly below the top
+   * bar to directly above the footer and to the very right, square-cornered,
+   * separated from the video column by the divider handle (mockup 1a).
+   */
+  body.has-lecture-app .slide-panel {
+    grid-column: 3;
+    min-height: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  /* Draggable column dividers (1px line inside a 6px hit area). */
+  body.has-lecture-app .col-resizer {
+    display: block;
+    position: relative;
+    cursor: col-resize;
+    touch-action: none;
+    z-index: 20;
+  }
+
+  body.has-lecture-app .col-resizer::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--lect-border);
+  }
+
+  body.has-lecture-app .col-resizer:hover::after,
+  body.has-lecture-app .col-resizer:active::after {
+    width: 3px;
+    margin-left: -1px;
+    background: var(--lect-accent-border);
+  }
+
+  /* The assistant divider exists only while the chat is docked (≥1000px). */
+  body.has-lecture-app [data-resizer="assistant"] {
+    display: none;
+  }
+
+  /*
+   * With the chat closed, the window's right edge is a grab zone that pulls
+   * the chat out (it opens once the drag reaches the minimum chat width).
+   * Kept alive during a drag so collapse/re-open works in one gesture.
+   */
+  @media (min-width: 1000px) {
+    body.has-lecture-app .lecture-shell .chat-pull-handle {
+      display: block;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: 10px;
+      cursor: ew-resize;
+      touch-action: none;
+      z-index: 1044;
+    }
+
+    /* Same idle line / blue hover glow as the column dividers. */
+    body.has-lecture-app .chat-pull-handle::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: var(--lect-border, #dee2e6);
+    }
+
+    body.has-lecture-app .chat-pull-handle:hover::after,
+    body.has-lecture-app .chat-pull-handle:active::after {
+      width: 3px;
+      background: var(--lect-accent-border, #9ec5fe);
+    }
+
+    body.has-lecture-app .lecture-shell.assistant-open:not(.chat-dragging) .chat-pull-handle {
+      display: none;
+    }
+  }
+
+  /* Assistant docks as a third column on wide landscape windows. */
+  @media (min-width: 1000px) {
+    body.has-lecture-app .lecture-shell.assistant-open:not(.is-slide-only) {
+      grid-template-columns:
+        minmax(320px, var(--lect-media-fr, 1.15fr))
+        6px
+        minmax(300px, var(--lect-slides-fr, 1fr))
+        6px
+        var(--lect-chat-w, clamp(280px, 24vw, 400px));
+    }
+
+    /* Slide-only shells dock the chat too: content | divider | chat. */
+    body.has-lecture-app .lecture-shell.is-slide-only.assistant-open {
+      grid-template-columns:
+        minmax(min(480px, 60vw), 1fr)
+        6px
+        var(--lect-chat-w, clamp(280px, 24vw, 400px));
+    }
+
+    body.has-lecture-app .lecture-shell.is-slide-only.assistant-open .lecture-main.is-slide-only {
+      grid-column: 1;
+    }
+
+    body.has-lecture-app .lecture-shell.is-slide-only.assistant-open .assistant-region {
+      grid-column: 3;
+    }
+
+    body.has-lecture-app .lecture-shell.assistant-open [data-resizer="assistant"] {
+      display: block;
+    }
+
+    body.has-lecture-app .lecture-shell.assistant-open .assistant-region {
+      display: block;
+      grid-column: 5;
+      grid-row: 1;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    /* Docked chat matches the slide panel: full height, square, no chrome.
+       width !important: a leftover inline width from a sheet resize must not
+       leak into the docked column. */
+    body.has-lecture-app .lecture-shell.assistant-open .chat-panel {
+      position: static;
+      inset: auto;
+      width: auto !important;
+      max-width: none;
+      height: 100%;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    body.has-lecture-app .lecture-shell.assistant-open .chat-sheet-resizer {
+      display: none;
+    }
+
+    body.has-lecture-app .lecture-shell.assistant-open .assistant-scrim {
+      display: none;
+    }
+
+    /*
+     * Mid-drag collapse: below the minimum chat width the column shrinks to
+     * zero and the pill comes back, but the panel stays mounted so dragging
+     * back to the left re-opens it in the same gesture.
+     */
+    body.has-lecture-app .lecture-shell.assistant-open.chat-drag-closed .chat-panel {
+      visibility: hidden;
+    }
+
+    body.has-lecture-app
+      .lecture-shell.assistant-open.chat-drag-closed
+      .assistant-region.is-expanded
+      .assistant-pill {
+      display: inline-flex;
+    }
+  }
+
+  body.has-lecture-app .lecture-shell.is-slide-only [data-resizer="slides"] {
+    display: none;
+  }
+
+  /* Slide-only lectures: single flowing column instead of the split. */
+  body.has-lecture-app .lecture-main.is-slide-only {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 0.5rem 1rem 1.25rem;
+  }
+
+  body.has-lecture-app .lecture-main.is-slide-only .media-panel,
+  body.has-lecture-app .lecture-main.is-slide-only .slide-panel {
+    grid-column: auto;
+    overflow: visible;
+    min-height: auto;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.has-lecture-app .lecture-main.is-slide-only .slide-scroll {
+    height: min(72vh, 46rem);
+    flex: none;
+  }
+}
+
+/* ---------------------------------------------------------------- heading */
+
+.lecture-heading-host[hidden] {
+  display: none;
+}
+
+/* Column dividers exist only in the landscape app shell. */
+.col-resizer,
+.chat-pull-handle {
+  display: none;
+}
+
+.lecture-heading-host h1 {
+  margin: 0.25rem 0 0.6rem;
+  font-size: 1.4rem;
+  line-height: 1.25;
+}
+
+/* Portrait shows the title in the top bar instead. */
+@media (orientation: portrait) {
+  body.has-lecture-app .lecture-heading-host {
+    display: none;
+  }
 }
 
 .lecture-shell button {
@@ -68,7 +517,7 @@ body.has-modern-lecture #content.container {
   border-left: 0.3rem solid var(--lect-accent);
   background: var(--lect-muted-bg);
   padding: 0.5rem 0.75rem;
-  margin-bottom: 0.75rem;
+  margin-block: 0.5rem 0.75rem;
   border-radius: 0 0.3rem 0.3rem 0;
 }
 
@@ -88,19 +537,29 @@ i2ml-lecture-app.has-error .lecture-status {
   display: none !important;
 }
 
+/* The video fills its area edge to edge at 16:9, without rounded corners. */
 .video-frame {
   position: relative;
   background: #000;
   overflow: hidden;
+  border-radius: 0;
 }
 
 .video-container {
+  position: relative;
   aspect-ratio: 16 / 9;
   background: #000;
+  width: 100%;
   margin-inline: auto;
 }
 
+/*
+ * The iframe is pinned to the container so it fills the 16:9 area whatever
+ * size attributes the YouTube API gives it.
+ */
 .video-container iframe {
+  position: absolute;
+  inset: 0;
   border: 0;
   height: 100%;
   width: 100%;
@@ -149,20 +608,74 @@ i2ml-lecture-app.has-error .lecture-status {
   background: rgb(255 255 255 / 15%);
 }
 
+/*
+ * Floating mini-player: position and width come from JS (left/top/width);
+ * the video area keeps 16:9, the bar below adds to the height.
+ */
 .video-frame.is-docked {
   position: fixed;
-  left: 0.75rem;
-  bottom: 0.75rem;
   width: min(320px, 58vw);
   z-index: 1040;
-  transform: translate(var(--mini-shift-x, 0px), var(--mini-shift-y, 0px));
   border-radius: 0.45rem;
   box-shadow: var(--lect-shadow-pop);
 }
 
 .video-frame.is-docked .video-container {
-  max-height: none;
+  aspect-ratio: 16 / 9;
   width: 100%;
+  height: auto;
+  max-height: none;
+}
+
+.mini-resize {
+  display: none;
+  position: absolute;
+  z-index: 6;
+  touch-action: none;
+}
+
+.video-frame.is-docked .mini-resize {
+  display: block;
+}
+
+.mini-resize[data-mini-edge="left"] {
+  left: -4px;
+  top: 12px;
+  bottom: 0;
+  width: 12px;
+  cursor: ew-resize;
+}
+
+.mini-resize[data-mini-edge="right"] {
+  right: -4px;
+  top: 12px;
+  bottom: 0;
+  width: 12px;
+  cursor: ew-resize;
+}
+
+.mini-resize[data-mini-edge="top"] {
+  top: -4px;
+  left: 12px;
+  right: 12px;
+  height: 12px;
+  cursor: ns-resize;
+}
+
+.mini-resize[data-mini-edge="top-left"] {
+  top: -4px;
+  left: -4px;
+  width: 16px;
+  height: 16px;
+  cursor: nwse-resize;
+}
+
+.mini-resize[data-mini-edge="top-right"] {
+  top: -4px;
+  right: -4px;
+  width: 16px;
+  height: 16px;
+  cursor: nesw-resize;
 }
 
 .video-statusbar {
@@ -196,10 +709,104 @@ i2ml-lecture-app.has-error .lecture-status {
   font-weight: 600;
 }
 
+/* Transport controls between the follow pill and the now-viewing label. */
+.player-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1rem;
+}
+
+.player-controls button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  border: 1px solid transparent;
+  background: none;
+  color: var(--lect-muted-text);
+  border-radius: 0.3rem;
+  padding: 0.25rem 0.35rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.player-controls button:hover {
+  color: var(--lect-accent-dark);
+  background: #eef3fb;
+  border-color: var(--lect-border);
+}
+
+.player-controls [data-action="toggle-play"] .icon-pause {
+  display: none;
+}
+
+.player-controls [data-action="toggle-play"].is-playing .icon-play {
+  display: none;
+}
+
+.player-controls [data-action="toggle-play"].is-playing .icon-pause {
+  display: inline;
+}
+
+.speed-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+/* Fixed width: the digit count must not resize the button (and with it the
+   right-anchored popup) while the slider is being dragged. */
+.speed-value {
+  min-width: 2.4rem;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.speed-menu {
+  position: absolute;
+  bottom: calc(100% + 0.3rem);
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.7rem;
+  background: white;
+  border: 1px solid var(--lect-border-strong);
+  border-radius: 0.35rem;
+  box-shadow: var(--lect-shadow-pop);
+  z-index: 60;
+}
+
+.speed-menu[hidden] {
+  display: none;
+}
+
+.speed-slider {
+  width: 9.5rem;
+  accent-color: var(--lect-accent);
+}
+
+.speed-readout {
+  width: 3.2rem;
+  flex: none;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--lect-text);
+}
+
 .follow-indicator {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font-weight: inherit;
+  padding: 0;
+  cursor: pointer;
 }
 
 .follow-dot {
@@ -266,10 +873,74 @@ i2ml-lecture-app.has-error .lecture-status {
   min-width: 0;
 }
 
-/* ------------------------------------------------------------ slide panel */
+.lecture-introduction {
+  margin-block: 0.5rem 1rem;
+}
+
+.lecture-downloads {
+  margin-top: 1.25rem;
+}
+
+.lecture-downloads[hidden] {
+  display: none;
+}
+
+.lecture-downloads h2 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--lect-muted-text);
+  margin: 0 0 0.5rem;
+}
+
+.lecture-downloads-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lecture-download-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--lect-border-strong);
+  border-radius: 0.375rem;
+  background: white;
+  color: var(--lect-text);
+  padding: 0.35rem 0.7rem;
+  text-decoration: none;
+}
+
+.lecture-download-link::before {
+  content: "⤓";
+  color: var(--lect-accent-dark);
+}
+
+.lecture-download-link:hover {
+  border-color: var(--lect-accent);
+  color: var(--lect-accent-dark);
+  text-decoration: none;
+}
+
+/* Chapter navigation buttons inside the below-video area. */
+.media-below .section_skipper {
+  margin: 1.5rem 0 0;
+  max-width: none;
+  overflow: auto;
+}
+
+/* ---------------------------------------------------------- slide panel */
 
 .slide-panel {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--lect-border);
+  border-radius: var(--lect-radius);
+  background: white;
+  overflow: hidden;
+  box-shadow: var(--lect-shadow);
 }
 
 .slide-toolbar {
@@ -277,11 +948,11 @@ i2ml-lecture-app.has-error .lecture-status {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.6rem 0.75rem;
+  padding: 0.6rem 0.75rem 0.55rem;
+  border-bottom: 1px solid var(--lect-border);
 }
 
-.slide-toolbar > button,
-.pdf-menu > button {
+.slide-toolbar > button {
   border: 1px solid var(--lect-border-strong);
   border-radius: 0.375rem;
   background: white;
@@ -291,8 +962,7 @@ i2ml-lecture-app.has-error .lecture-status {
   white-space: nowrap;
 }
 
-.slide-toolbar > button:hover,
-.pdf-menu > button:hover {
+.slide-toolbar > button:hover {
   border-color: var(--lect-accent);
   color: var(--lect-accent-dark);
 }
@@ -301,28 +971,6 @@ i2ml-lecture-app.has-error .lecture-status {
   border-color: var(--lect-accent);
   color: var(--lect-accent-dark);
   background: var(--lect-accent-soft);
-}
-
-.slide-toolbar .play-from-slide {
-  border-color: var(--lect-accent);
-  background: var(--lect-accent);
-  color: white;
-  font-weight: 600;
-}
-
-.slide-toolbar .play-from-slide:hover {
-  background: var(--lect-accent-dark);
-  border-color: var(--lect-accent-dark);
-  color: white;
-}
-
-.slide-toolbar .play-from-slide:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.slide-toolbar .play-from-slide[hidden] {
-  display: none;
 }
 
 .slide-search {
@@ -398,58 +1046,13 @@ i2ml-lecture-app.has-error .lecture-status {
   color: var(--lect-muted-text);
 }
 
-.pdf-menu {
-  position: relative;
-}
-
-.pdf-menu-list {
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  right: 0;
-  min-width: 15rem;
-  background: white;
-  border: 1px solid var(--lect-border);
-  border-radius: 0.45rem;
-  box-shadow: var(--lect-shadow-pop);
-  z-index: 30;
-  padding: 0.3rem;
-}
-
-.pdf-menu-list[hidden] {
-  display: none;
-}
-
-.pdf-download {
-  display: flex;
-  flex-direction: column;
-}
-
-.pdf-download a,
-.pdf-menu-list [data-action="print"] {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 0.45rem 0.6rem;
-  border: 0;
-  border-radius: 0.3rem;
-  background: transparent;
-  color: var(--lect-text);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.pdf-download a:hover,
-.pdf-menu-list [data-action="print"]:hover {
-  background: var(--lect-accent-soft);
-  color: var(--lect-accent-dark);
-}
-
 .revision-row {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
   gap: 0.35rem 0.75rem;
-  padding: 0 0.75rem 0.5rem;
+  padding: 0.5rem 0.75rem;
 }
 
 .revision-tabs {
@@ -485,7 +1088,8 @@ i2ml-lecture-app.has-error .lecture-status {
 }
 
 .revision-hint {
-  flex: 1 1 12rem;
+  position: relative;
+  flex: 1 1 6rem;
   min-width: 0;
   font-size: 0.8rem;
   color: var(--lect-muted-text);
@@ -494,39 +1098,81 @@ i2ml-lecture-app.has-error .lecture-status {
   text-overflow: ellipsis;
 }
 
-.correction-notice {
-  margin: 0 0.75rem 0.5rem;
-  border-left: 0.35rem solid #c9a227;
-  background: var(--lect-warning-bg);
-  color: var(--lect-warning-text);
-  padding: 0.5rem 0.6rem;
-  border-radius: 0 0.3rem 0.3rem 0;
-  font-size: 0.875rem;
+/*
+ * On hover a truncated hint switches from nowrap to wrapping, in place: the
+ * pseudo-element repeats the text exactly over the original (same origin and
+ * font) in a small white rectangle that extends downwards. The row itself
+ * never changes size.
+ */
+.revision-hint.is-truncated:hover {
+  overflow: visible;
+  text-overflow: clip;
 }
 
-/* ------------------------------------------------------------ slide strip */
+.revision-hint.is-truncated:hover::after {
+  content: attr(data-full);
+  position: absolute;
+  top: -0.35rem;
+  left: -0.5rem;
+  right: -0.5rem;
+  padding: 0.35rem 0.5rem;
+  background: white;
+  border: 1px solid var(--lect-border-strong);
+  border-radius: 0.25rem;
+  box-shadow: var(--lect-shadow-pop);
+  white-space: normal;
+  overflow-wrap: anywhere;
+  z-index: 40;
+  animation: lect-fade-in 0.15s ease-out;
+}
+
+@keyframes lect-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------- slide strip */
 
 .slide-strip {
   position: relative;
   min-height: 0;
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
+/*
+ * The strip scroller. The top padding is the "top position" gap; the gap
+ * between slides is half of it, so a slide in the top position shows a
+ * sliver of its predecessor. The trailing spacer (JS-measured) lets the
+ * last slide reach the top position too.
+ */
 .slide-scroll {
   overflow: auto;
-  padding: 1rem 1.1rem;
-  scroll-behavior: smooth;
+  overscroll-behavior: contain;
+  padding: var(--lect-strip-top-gap) 1.1rem 0;
   background: var(--lect-strip-bg);
   flex: 1;
   min-height: 0;
+}
+
+/* JS-managed trailing spacer (real element: its inline height must apply
+   synchronously under forced layout, unlike a var-fed pseudo-element). */
+.slide-strip-tail {
+  flex: none;
+  pointer-events: none;
 }
 
 .pdf-page,
 .structured-slide {
   position: relative;
   min-height: 8rem;
-  margin-block: 0 1rem;
+  margin-block: 0 calc(var(--lect-strip-top-gap) / 2);
   border: 2px solid var(--lect-border);
   border-radius: 0.35rem;
   background: white;
@@ -535,10 +1181,18 @@ i2ml-lecture-app.has-error .lecture-status {
   margin-inline: auto;
 }
 
+/* Blue: the selected slide. */
 .pdf-page.is-active,
 .structured-slide.is-active {
   border-color: var(--lect-accent);
   box-shadow: 0 0 0 1px var(--lect-accent), var(--lect-shadow);
+}
+
+/* Green: the slide currently in the video, when it is not the selection. */
+.pdf-page.is-video-current:not(.is-active),
+.structured-slide.is-video-current:not(.is-active) {
+  border-color: var(--lect-video-accent);
+  box-shadow: 0 0 0 1px var(--lect-video-accent), var(--lect-shadow);
 }
 
 .pdf-page canvas {
@@ -561,6 +1215,15 @@ i2ml-lecture-app.has-error .lecture-status {
 }
 
 .pdf-text-layer {
+  /*
+   * pdf.js derives glyph positions and font sizes from these variables; it
+   * only defines them under its own `.pdfViewer .page` wrapper, so our text
+   * layer must provide the chain itself (--scale-factor is set per render).
+   */
+  --user-unit: 1;
+  --total-scale-factor: calc(var(--scale-factor) * var(--user-unit));
+  --scale-round-x: 1px;
+  --scale-round-y: 1px;
   inset: 0;
   opacity: 1;
 }
@@ -591,25 +1254,79 @@ i2ml-lecture-app.has-error .lecture-status {
   display: none;
 }
 
+/* Floating play pill on the explicitly selected slide: centred on the
+   slide's 75% point and straddling its bottom edge (the edge cuts the pill
+   at half the pill's height). z-index above the next slide's own overlays.
+   The clamp keeps a minimal distance to the slide's right edge on narrow
+   slides (8.5rem = half the pill's ~15rem natural width + 1rem margin), so
+   the pill shifts left instead of clipping; the label span ellipsizes as a
+   last resort. */
+.slide-play-cta {
+  position: absolute;
+  left: clamp(8.5rem, 75%, calc(100% - 8.5rem));
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: calc(100% - 2rem);
+  border: 1px solid var(--lect-accent);
+  background: var(--lect-accent);
+  color: white;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  box-shadow: 0 2px 8px rgb(15 40 80 / 30%);
+  cursor: pointer;
+  white-space: nowrap;
+  overflow: hidden;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Flex items ignore text-overflow on the container; the label needs its own
+   shrinkable block for a real ellipsis instead of a hard clip. */
+.slide-play-cta-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slide-play-cta:hover:not(:disabled) {
+  background: var(--lect-accent-dark);
+  border-color: var(--lect-accent-dark);
+}
+
+.slide-play-cta:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
 .slide-current-chip {
   position: absolute;
   top: -2px;
-  left: -2px;
+  right: -2px;
   z-index: 3;
-  background: var(--lect-accent);
+  background: var(--lect-video-accent);
   color: white;
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
   padding: 0.18rem 0.6rem;
-  border-radius: 0.3rem 0 0.35rem 0;
+  border-radius: 0 0.3rem 0 0.35rem;
   font-variant-numeric: tabular-nums;
 }
 
 .slide-revision-badge {
   position: absolute;
-  top: 0.45rem;
+  /* Statically below the top-right current-chip slot, so the badge never
+     jumps (or overlaps) when the playing indicator arrives on its slide. */
+  top: 1.65rem;
   right: 0.55rem;
   z-index: 2;
   border: 1px solid #c9a227;
@@ -633,13 +1350,13 @@ i2ml-lecture-app.has-error .lecture-status {
   border: 0;
 }
 
-/* ------------------------------------------------------------- TOC drawer */
+/* ----------------------------------------------------------- TOC drawer */
 
 .toc-drawer {
   position: absolute;
   inset-block: 0;
   left: 0;
-  width: min(21rem, 88%);
+  width: min(23rem, 92%);
   background: white;
   border-right: 1px solid var(--lect-border);
   box-shadow: var(--lect-shadow-pop);
@@ -655,7 +1372,6 @@ i2ml-lecture-app.has-error .lecture-status {
 .toc-drawer header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
   padding: 0.6rem 0.85rem;
   border-bottom: 1px solid var(--lect-border);
@@ -665,9 +1381,36 @@ i2ml-lecture-app.has-error .lecture-status {
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
+  flex: none;
 }
 
-.toc-drawer header button {
+.toc-downloads {
+  margin-left: auto;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.toc-download-link {
+  border: 1px solid var(--lect-border-strong);
+  border-radius: 0.375rem;
+  background: white;
+  color: var(--lect-accent-dark);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.toc-download-link:hover {
+  border-color: var(--lect-accent);
+  background: var(--lect-accent-soft);
+  text-decoration: none;
+}
+
+.toc-drawer header > button {
+  flex: none;
   border: 0;
   background: transparent;
   font-size: 1.1rem;
@@ -678,7 +1421,7 @@ i2ml-lecture-app.has-error .lecture-status {
   color: var(--lect-muted-text);
 }
 
-.toc-drawer header button:hover {
+.toc-drawer header > button:hover {
   background: var(--lect-muted-bg);
   color: var(--lect-text);
 }
@@ -700,7 +1443,11 @@ i2ml-lecture-app.has-error .lecture-status {
   padding: 0.6rem 0.6rem 0.2rem;
 }
 
-.toc-list button {
+.toc-list li {
+  position: relative;
+}
+
+.toc-list button[data-state-id] {
   display: flex;
   align-items: center;
   gap: 0.6rem;
@@ -713,16 +1460,48 @@ i2ml-lecture-app.has-error .lecture-status {
   cursor: pointer;
 }
 
-.toc-list button:hover {
+.toc-list button[data-state-id]:hover {
   background: var(--lect-muted-bg);
 }
 
 .toc-list button.is-video-current {
-  background: var(--lect-accent-soft);
+  background: var(--lect-video-soft);
 }
 
 .toc-list button.is-viewing {
   border-color: var(--lect-accent);
+}
+
+/* "Play from here" appears only on the hovered/focused row. */
+.toc-play {
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: none;
+  align-items: center;
+  gap: 0.3rem;
+  border: 1px solid var(--lect-accent);
+  border-radius: 999px;
+  background: var(--lect-accent);
+  color: white;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.22rem 0.65rem;
+  cursor: pointer;
+  white-space: nowrap;
+  z-index: 2;
+  box-shadow: var(--lect-shadow);
+}
+
+.toc-list li:hover .toc-play,
+.toc-list li:focus-within .toc-play {
+  display: inline-flex;
+}
+
+.toc-play:hover {
+  background: var(--lect-accent-dark);
+  border-color: var(--lect-accent-dark);
 }
 
 .toc-thumb {
@@ -780,7 +1559,7 @@ i2ml-lecture-app.has-error .lecture-status {
   font-variant-numeric: tabular-nums;
 }
 
-/* -------------------------------------------------------- selection popover */
+/* ---------------------------------------------------- selection popover */
 
 .selection-popover {
   position: fixed;
@@ -820,7 +1599,7 @@ i2ml-lecture-app.has-error .lecture-status {
   background: rgb(255 255 255 / 14%);
 }
 
-/* --------------------------------------------------------------- assistant */
+/* ------------------------------------------------------------ assistant */
 
 .assistant-pill-icon {
   display: inline-flex;
@@ -850,6 +1629,13 @@ i2ml-lecture-app.has-error .lecture-status {
   box-shadow: var(--lect-shadow-pop);
   padding: 0.5rem 1rem 0.5rem 0.6rem;
   cursor: pointer;
+}
+
+/* In landscape the pill sits mostly ON the footer bar (mockup 1a/1c). */
+@media (orientation: landscape) {
+  .assistant-pill {
+    bottom: 0.3rem;
+  }
 }
 
 .assistant-pill:hover {
@@ -887,6 +1673,7 @@ i2ml-lecture-app.has-error .lecture-status {
   inset-block: 0;
   right: 0;
   width: min(27rem, 94vw);
+  max-width: 94vw;
   z-index: 1050;
   background: white;
   border-left: 1px solid var(--lect-border);
@@ -898,6 +1685,46 @@ i2ml-lecture-app.has-error .lecture-status {
 
 .chat-panel[hidden] {
   display: none;
+}
+
+/* Left-edge resize handle of the sheet (hidden while docked as a column). */
+.chat-sheet-resizer {
+  position: absolute;
+  left: -3px;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  cursor: ew-resize;
+  touch-action: none;
+  z-index: 5;
+}
+
+/* Same blue hover glow as the landscape column dividers. */
+.chat-sheet-resizer:hover::after,
+.chat-sheet-resizer:active::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--lect-accent-border, #9ec5fe);
+}
+
+/*
+ * Sheet dragged below its minimum: collapsed live, pill back, panel still
+ * mounted so the same gesture can re-open it.
+ */
+.assistant-region.sheet-drag-closed .chat-panel {
+  visibility: hidden;
+}
+
+.assistant-region.sheet-drag-closed .assistant-scrim {
+  display: none;
+}
+
+.assistant-region.is-expanded.sheet-drag-closed .assistant-pill {
+  display: inline-flex;
 }
 
 .chat-header {
@@ -916,17 +1743,6 @@ i2ml-lecture-app.has-error .lecture-status {
   flex: none;
 }
 
-.scope-chip {
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--lect-accent-dark);
-  border: 1px solid var(--lect-accent-border);
-  background: var(--lect-accent-soft);
-  border-radius: 999px;
-  padding: 0.08rem 0.55rem;
-  white-space: nowrap;
-}
-
 .chat-header button {
   border: 1px solid var(--lect-border-strong);
   background: white;
@@ -942,9 +1758,22 @@ i2ml-lecture-app.has-error .lecture-status {
   color: var(--lect-accent-dark);
 }
 
-.chat-header [data-action="assistant-menu"] {
+.chat-header .assistant-header-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.24rem 0.45rem;
+}
+
+.chat-header .assistant-header-icon[aria-pressed="true"] {
+  border-color: var(--lect-accent);
+  color: var(--lect-accent-dark);
+  background: #eef3fb;
+}
+
+/* The first header shortcut pushes the whole action group to the right. */
+.chat-header .assistant-header-icon[data-action="show-conversations"] {
   margin-left: auto;
-  letter-spacing: 0.12em;
 }
 
 .assistant-menu {
@@ -1074,6 +1903,7 @@ i2ml-lecture-app.has-error .lecture-status {
 .chat-messages {
   height: 100%;
   overflow: auto;
+  overscroll-behavior: contain;
   padding: 0.75rem;
   display: flex;
   flex-direction: column;
@@ -1085,11 +1915,54 @@ i2ml-lecture-app.has-error .lecture-status {
 }
 
 .chat-message {
+  position: relative;
   margin-bottom: 0.6rem;
   border-radius: 0.9rem;
   padding: 0.55rem 0.8rem;
   max-width: 92%;
   overflow-wrap: anywhere;
+}
+
+/* Hover-revealed copy control near the bubble's bottom-right corner. */
+.chat-copy {
+  position: absolute;
+  right: 0.3rem;
+  bottom: 0.25rem;
+  width: 1.45rem;
+  height: 1.45rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--lect-border);
+  border-radius: 0.3rem;
+  background: rgb(255 255 255 / 92%);
+  color: var(--lect-muted-text);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.12s ease-out;
+}
+
+.chat-message:hover .chat-copy,
+.chat-copy:focus-visible {
+  opacity: 1;
+}
+
+.chat-message.is-user .chat-copy {
+  border-color: rgb(255 255 255 / 45%);
+  background: rgb(255 255 255 / 22%);
+  color: white;
+}
+
+.chat-copy.is-copied {
+  border-color: var(--lect-video-accent);
+  color: var(--lect-video-dark);
+}
+
+.chat-message.is-user .chat-copy.is-copied {
+  border-color: white;
+  color: white;
+  background: var(--lect-video-accent);
 }
 
 .chat-message.is-user {
@@ -1204,6 +2077,7 @@ i2ml-lecture-app.has-error .lecture-status {
   inset: 0;
   background: white;
   overflow: auto;
+  overscroll-behavior: contain;
   padding: 0.5rem 0.75rem;
 }
 
@@ -1367,7 +2241,9 @@ i2ml-lecture-app.has-error .lecture-status {
   padding: 0.45rem 0.9rem;
   font: inherit;
   line-height: 1.4;
-  max-height: 10rem;
+  /* JS grows the field (scrollbar-free) up to half the chat area height. */
+  overflow-y: hidden;
+  overscroll-behavior: contain;
   background: white;
   color: var(--lect-text);
 }
@@ -1395,25 +2271,55 @@ i2ml-lecture-app.has-error .lecture-status {
   cursor: wait;
 }
 
+.assistant-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.2rem 0.75rem 0.55rem;
+}
+
+.assistant-footer[hidden] {
+  display: none;
+}
+
+.assistant-collapse {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  padding: 0;
+  border: 1px solid var(--lect-border-strong);
+  border-radius: 0.375rem;
+  background: white;
+  color: var(--lect-muted-text);
+  cursor: pointer;
+}
+
+.assistant-collapse:hover {
+  border-color: var(--lect-accent);
+  color: var(--lect-accent-dark);
+}
+
 .assistant-warning {
+  flex: 1;
+  min-width: 0;
   margin: 0;
-  padding: 0.2rem 0.9rem 0.6rem;
+  padding: 0;
   font-size: 0.72rem;
   color: var(--lect-muted-text);
   text-align: center;
 }
 
-.assistant-warning[hidden] {
-  display: none;
-}
+/* -------------------------------------------------- portrait (stacked) */
 
-/* ------------------------------------------------- stacked (narrow) layout */
-
-@media (max-width: 1149.98px) {
+@media (orientation: portrait) {
   .lecture-main {
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    padding-inline: 0;
   }
 
   .media-panel,
@@ -1423,21 +2329,33 @@ i2ml-lecture-app.has-error .lecture-status {
     min-width: 0;
   }
 
-  .media-panel[hidden] {
-    display: none;
+  .media-panel {
+    padding-inline: 0;
+  }
+
+  .slide-panel {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    overflow: visible;
   }
 
   .slide-toolbar,
   .revision-row,
   .video-statusbar {
-    padding-inline: 0.25rem;
+    padding-inline: 0.6rem;
   }
 
-  .correction-notice {
-    margin-inline: 0.25rem;
+  .slide-toolbar {
+    border-bottom: 0;
   }
 
   /* Cap the inline video height like the mockup (~42vh), centered on black. */
+  .video-frame {
+    background: #000;
+  }
+
   .video-container {
     max-height: 42vh;
     width: min(100%, calc(42vh * 16 / 9));
@@ -1453,21 +2371,52 @@ i2ml-lecture-app.has-error .lecture-status {
   }
 
   /*
-   * The strip is an internal scroller kept narrower than the page, so the
-   * side gutters and everything above/below always scroll the page itself.
+   * The strip is an internal scroller, narrower than the page and about 1.5
+   * slide heights tall, so the generous side gutters and the content
+   * above/below always scroll the page while the strip scrolls the slides.
+   * Overscroll never chains to the page. (flex: none — a flex-basis of 0
+   * would let the strip grow to its content height and defeat the internal
+   * scrolling.)
    */
+  .slide-strip {
+    flex: none;
+    --lect-gutter: clamp(2.2rem, 10vw, 4.5rem);
+  }
+
   .slide-scroll {
-    height: min(62vh, 36rem);
-    margin-inline: 1.4rem;
+    flex: none;
+    height: min(calc((100vw - 2 * var(--lect-gutter)) * var(--lect-slide-aspect, 0.75) * 1.5), 78vh);
+    margin-inline: var(--lect-gutter);
     border: 1px solid var(--lect-border);
     border-radius: var(--lect-radius);
   }
 
   .toc-drawer {
-    margin-left: 1.4rem;
+    margin-left: var(--lect-gutter);
   }
 
-  .slide-toolbar .play-from-slide .toolbar-label,
+  .media-below {
+    padding-inline: 0.6rem;
+  }
+
+  /* The ☰ button is icon-only in the stacked layout. */
+  .slide-toolbar [data-action="toggle-toc"] .toolbar-label {
+    display: none;
+  }
+
+  .assistant-pill-note {
+    display: none;
+  }
+
+  .now-viewing {
+    flex-basis: 100%;
+    text-align: left;
+    margin-left: 0;
+  }
+}
+
+/* Tight landscape columns: icon-only toolbar buttons. */
+@media (orientation: landscape) and (max-width: 999.98px) {
   .slide-toolbar [data-action="toggle-toc"] .toolbar-label {
     display: none;
   }
@@ -1477,223 +2426,13 @@ i2ml-lecture-app.has-error .lecture-status {
   }
 }
 
-@media (max-width: 519.98px) {
-  .now-viewing {
-    flex-basis: 100%;
-    text-align: left;
-    margin-left: 0;
-  }
-}
-
-/* --------------------------------------------------------- desktop layout */
-
-@media (min-width: 1150px) {
-  .lecture-shell.assistant-open {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(21rem, 26vw, 26rem);
-    grid-template-rows: auto auto 1fr;
-    column-gap: 1rem;
-  }
-
-  .lecture-shell.assistant-open .lecture-status,
-  .lecture-shell.assistant-open .lecture-fallback {
-    grid-column: 1;
-  }
-
-  .lecture-shell.assistant-open .lecture-main {
-    grid-column: 1;
-    grid-row: 3;
-  }
-
-  .lecture-shell.assistant-open .assistant-region {
-    grid-column: 2;
-    grid-row: 1 / span 3;
-    min-width: 0;
-  }
-
-  .lecture-main {
-    display: grid;
-    grid-template-columns: minmax(0, 1.12fr) minmax(23rem, 1fr);
-    gap: 1rem;
-    align-items: start;
-  }
-
-  .lecture-main.is-slide-only {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .lecture-main.is-slide-only .media-panel[hidden] {
-    display: none;
-  }
-
-  .lecture-main.is-slide-only .slide-panel {
-    position: static;
-    max-height: none;
-  }
-
-  .lecture-main.is-slide-only .slide-scroll {
-    height: min(74vh, 48rem);
-  }
-
-  .media-panel {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
-
-  .video-frame {
-    border-radius: var(--lect-radius);
-  }
-
-  .video-container {
-    width: min(100%, calc((100vh - 15rem) * 16 / 9));
-    max-height: calc(100vh - 15rem);
-  }
-
-  .slide-panel {
-    position: sticky;
-    top: 0.75rem;
-    display: flex;
-    flex-direction: column;
-    max-height: calc(100vh - 1.5rem);
-    border: 1px solid var(--lect-border);
-    border-radius: var(--lect-radius);
-    background: white;
-    overflow: hidden;
-    box-shadow: var(--lect-shadow);
-  }
-
-  .slide-toolbar {
-    border-bottom: 1px solid var(--lect-border);
-    padding-bottom: 0.55rem;
-  }
-
-  .revision-row {
-    padding-top: 0.5rem;
-  }
-
-  .assistant-open .chat-panel,
-  .lecture-shell.assistant-open .chat-panel {
-    position: sticky;
-    top: 0.75rem;
-    inset-block: auto;
-    right: auto;
-    width: auto;
-    height: calc(100vh - 1.5rem);
-    border: 1px solid var(--lect-border);
-    border-radius: var(--lect-radius);
-    box-shadow: var(--lect-shadow);
-    z-index: 5;
-  }
-
-  .lecture-shell.assistant-open .assistant-scrim {
-    display: none;
-  }
-}
-
-/* ----------------------------------------------------------------- motion */
+/* ---------------------------------------------------------------- motion */
 
 @media (prefers-reduced-motion: reduce) {
-  .slide-scroll {
-    scroll-behavior: auto;
-  }
-
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
-  }
-}
-
-/* ------------------------------------------------------------------ print */
-
-@media print {
-  .lecture-page.container {
-    max-width: none;
-  }
-
-  .lecture-shell,
-  .lecture-main,
-  .slide-panel,
-  .slide-strip {
-    display: block;
-    min-height: 0;
-    margin: 0;
-    position: static;
-    max-height: none;
-    border: 0;
-    box-shadow: none;
-    overflow: visible;
-  }
-
-  .video-dock,
-  .video-statusbar,
-  .external-video,
-  .assistant-region,
-  .selection-popover,
-  .revision-row,
-  .slide-toolbar > button,
-  .slide-search,
-  .toc-drawer,
-  .slide-current-chip,
-  [data-action="print"] {
-    display: none !important;
-  }
-
-  /* Keep the toolbar container so its PDF download links can print. */
-  .slide-toolbar {
-    display: block;
-    border: 0;
-    padding: 0;
-  }
-
-  .media-panel:not([hidden]) {
-    display: block;
-    border: 0;
-  }
-
-  .media-panel[hidden] {
-    display: none !important;
-  }
-
-  .slide-scroll {
-    overflow: visible;
-    padding: 0;
-    height: auto;
-    margin: 0;
-    background: white;
-    border: 0;
-  }
-
-  .pdf-page,
-  .structured-slide {
-    break-inside: avoid;
-    box-shadow: none;
-    max-width: none;
-  }
-
-  .pdf-download:not([hidden]),
-  .lecture-fallback:not([hidden]) {
-    display: block !important;
-  }
-
-  .pdf-menu,
-  .pdf-menu-list {
-    display: block !important;
-    position: static;
-    box-shadow: none;
-    border: 0;
-    padding: 0;
-  }
-
-  .pdf-menu > button {
-    display: none !important;
-  }
-
-  .pdf-menu-list[hidden] {
-    display: block !important;
   }
 }

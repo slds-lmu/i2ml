@@ -59,6 +59,7 @@ test.beforeEach(async ({ page }) => {
               this.time = 0;
               this.state = 2;
               this.options = options;
+              window.__integrationPlayerVars = options.playerVars;
               const iframe = document.createElement("iframe");
               iframe.title = "Fake YouTube player for browser integration testing";
               element.append(iframe);
@@ -98,27 +99,19 @@ test("combined FastAPI/Hugo demo loads the real release DTO and PDF", async ({ p
   await expect(page.locator(".pdf-page").first()).toBeVisible();
   await expect(page.locator(".pdf-page canvas").first()).toBeVisible();
   await expect(page.locator(".pdf-text-layer").first()).not.toBeEmpty();
-  await page.getByRole("button", { name: "PDF", exact: true }).click();
-  await expect(page.getByRole("link", { name: /Download slides/ })).toHaveAttribute(
+  // The PDF menu is gone: downloads live below the video and in the slide list.
+  await expect(page.locator(".pdf-menu")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Print slides" })).toHaveCount(0);
+  await expect(page.locator("[data-lecture-downloads] .lecture-download-link")).toHaveAttribute(
     "href",
     /course-assets\/pdfs\/[a-f0-9]{64}\.pdf/
   );
-  await page.evaluate(() => {
-    const state = window as typeof window & { __printCalled?: boolean };
-    state.__printCalled = false;
-    window.print = () => {
-      state.__printCalled = true;
-    };
-  });
-  await page.getByRole("button", { name: "Print slides" }).click();
-  await expect.poll(
-    () => page.evaluate(() => (window as typeof window & { __printCalled?: boolean }).__printCalled)
-  ).toBe(true);
-  expect(await page.locator(".pdf-page").count()).toBeGreaterThan(1);
-  expect(await page.locator(".pdf-page canvas").count()).toBe(
-    await page.locator(".pdf-page").count()
+  await page.getByRole("button", { name: "Slides", exact: true }).click();
+  await expect(page.locator(".toc-download-link")).toHaveAttribute(
+    "href",
+    /course-assets\/pdfs\/[a-f0-9]{64}\.pdf/
   );
-  await expect(page.locator(".pdf-page-loading")).toHaveCount(0);
+  await page.keyboard.press("Escape");
   await page.waitForFunction(
     () => Boolean((window as typeof window & { MathJax?: { startup?: { promise?: unknown } } }).MathJax?.startup?.promise)
   );
@@ -383,11 +376,22 @@ test("supplementary material remains visible and non-lecture pages remain legacy
     const html = await response.text();
     expect(html).toContain('aria-label="Supplementary lecture material"');
     expect(html).toContain("data-lecture-supplements");
+    // Lecture pages get the thin top bar (with hamburger menu) and the
+    // server-rendered heading/nav slots instead of the legacy header.
+    expect(html).toContain('class="lecture-topbar"');
+    expect(html).toContain("lecture-topbar-menu");
+    expect(html).toContain("data-lecture-heading");
+    expect(html).toContain('class="has-modern-lecture"');
+    expect(html).not.toContain('id="nav-border"');
   }
   for (const route of legacyRoutes) {
     const response = await request.get(route);
     expect(response.ok()).toBe(true);
-    expect(await response.text()).not.toContain("<i2ml-lecture-app");
+    const html = await response.text();
+    expect(html).not.toContain("<i2ml-lecture-app");
+    // Non-lecture pages keep the untouched theme header.
+    expect(html).toContain('id="nav-border"');
+    expect(html).not.toContain("lecture-topbar");
   }
 });
 
@@ -406,7 +410,7 @@ test("representative course routes load their real presentation modes and teachi
       await expect(page.locator(".video-container iframe")).toHaveCount(1);
     }
     if (mode === "two-deck") {
-      await expect(page.locator(".pdf-download a")).toHaveCount(2);
+      await expect(page.locator("[data-lecture-downloads] .lecture-download-link")).toHaveCount(2);
     }
     if (mode === "external") {
       await expect(page.getByRole("link", { name: "Open the externally hosted lecture video" }))
@@ -449,10 +453,13 @@ test("deep links, revision-tab keys, and URL replacement work without history sp
     "aria-current",
     "true"
   );
+  // The requested time cues the player via playerVars (no seek+pause, which
+  // would leave an unstarted player as a black box).
   await expect.poll(() => page.evaluate(
-    () => (window as typeof window & { __integrationSeekTimes?: number[] })
-      .__integrationSeekTimes ?? []
-  )).toContain(12.5);
+    () => (window as typeof window & { __integrationPlayerVars?: { start?: number } })
+      .__integrationPlayerVars?.start
+  )).toBe(12);
+  await expect(page.locator("[data-time-now]")).toHaveText("0:12");
   expect(new URL(page.url()).searchParams.get("slide")).toBe(teachingId);
   expect(new URL(page.url()).searchParams.get("time")).toBe("12.5");
   expect(await page.evaluate(
@@ -469,6 +476,183 @@ test("deep links, revision-tab keys, and URL replacement work without history sp
   );
 });
 
+test("revision toggle preserves the strip's top-position line on real PDFs", async ({ page }) => {
+  // 02-01 ships both revisions with real (lazily rendered) PDF decks.
+  await page.goto("/chapters/02_supervised_regression/02-01-l2-loss/");
+  await expect(page.locator(".pdf-page canvas").first()).toBeVisible({ timeout: 20_000 });
+
+  const lineHit = () =>
+    page.evaluate(() => {
+      const strip = document.querySelector<HTMLElement>(".slide-scroll")!;
+      const line = strip.getBoundingClientRect().top + 16;
+      const sections = [...document.querySelectorAll<HTMLElement>(".pdf-page, .structured-slide")];
+      const hit = sections.find((section) => section.getBoundingClientRect().bottom > line)
+        ?? sections.at(-1);
+      // Mid-switch the strip is momentarily empty while the new PDF loads.
+      if (!hit) {
+        return { stateId: undefined, position: undefined, fraction: Number.NaN, rendered: false };
+      }
+      const rect = hit.getBoundingClientRect();
+      return {
+        stateId: hit.dataset.pageStateId,
+        position: hit.dataset.stripPosition,
+        fraction: (line - rect.top) / rect.height,
+        rendered: Boolean(hit.querySelector("canvas"))
+      };
+    });
+
+  // Scroll a couple of slides in, let the lazy renders settle, then take the
+  // actual measured position as the reference. The wheel event marks the
+  // scroll as user input (it would otherwise race the load-time placement's
+  // trailing suppression window).
+  await page.locator(".slide-scroll").evaluate((strip) => {
+    strip.dispatchEvent(new WheelEvent("wheel", { deltaY: 1 }));
+    const third = strip.querySelectorAll(".pdf-page")[2]!;
+    strip.scrollTop += third.getBoundingClientRect().top - strip.getBoundingClientRect().top
+      + 0.4 * third.getBoundingClientRect().height - 16;
+  });
+  await expect.poll(async () => (await lineHit()).rendered, { timeout: 15_000 }).toBe(true);
+  await page.waitForTimeout(600);
+  const reference = await lineHit();
+  expect(reference.fraction).toBeGreaterThan(0);
+  expect(reference.fraction).toBeLessThan(1);
+
+  // Recorded (the default) → updated: the line must cut the mapped slide
+  // (same strip position for this parallel deck) at the same height fraction.
+  await page.getByRole("tab", { name: "Updated slides" }).click();
+  await expect.poll(
+    async () => {
+      const hit = await lineHit();
+      return hit.position === reference.position ? hit.fraction : Number.NaN;
+    },
+    { timeout: 15_000 }
+  ).toBeCloseTo(reference.fraction, 1);
+
+  // And back: the exact same slide ends up under the line again.
+  await page.getByRole("tab", { name: "Slides as in video" }).click();
+  await expect.poll(
+    async () => {
+      const hit = await lineHit();
+      return hit.stateId === reference.stateId ? hit.fraction : Number.NaN;
+    },
+    { timeout: 15_000 }
+  ).toBeCloseTo(reference.fraction, 1);
+});
+
+test("selecting a slide floats the play pill straddling the slide's bottom edge", async ({
+  page
+}) => {
+  await page.goto(lectureUrl);
+  await expect(page.locator(".pdf-page canvas").first()).toBeVisible({ timeout: 20_000 });
+  // Never shown before an explicit selection, and the old toolbar button no
+  // longer exists anywhere in the shell.
+  await expect(page.locator(".slide-play-cta")).toHaveCount(0);
+  await expect(page.locator(".play-from-slide")).toHaveCount(0);
+
+  const first = page.locator(".pdf-page").first();
+  await first.click();
+  await expect(first).toHaveClass(/is-active/);
+  const cta = page.locator(".slide-play-cta");
+  await expect(cta).toBeVisible();
+  // The title slide occurs in the video, so the pill is playable.
+  await expect(cta).toBeEnabled();
+  expect(
+    await cta.evaluate((element) => element.closest(".pdf-page")?.classList.contains("is-active"))
+  ).toBe(true);
+
+  // Geometry on a real rendered PDF page: the pill is centred on the
+  // slide's 75% point and the slide's bottom edge cuts it at ~half height.
+  const slideBox = (await first.boundingBox())!;
+  const ctaBox = (await cta.boundingBox())!;
+  expect(
+    Math.abs(ctaBox.x + ctaBox.width / 2 - (slideBox.x + slideBox.width * 0.75))
+  ).toBeLessThan(8);
+  expect(Math.abs(ctaBox.y + ctaBox.height / 2 - (slideBox.y + slideBox.height))).toBeLessThan(5);
+});
+
+test("PDF glyph layer matches the rendered scale and the line anchor survives resizes", async ({
+  page
+}) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/chapters/02_supervised_regression/02-01-l2-loss/");
+  await expect(page.locator(".pdf-page canvas").first()).toBeVisible({ timeout: 20_000 });
+
+  // The text layer carries the per-render scale (pdf.js sizes glyph spans
+  // from it); without it, selection highlights drift along each line.
+  await expect
+    .poll(() =>
+      page
+        .locator(".pdf-text-layer")
+        .first()
+        .evaluate((layer) => layer.style.getPropertyValue("--scale-factor"))
+    )
+    .not.toBe("");
+  const overflow = await page.evaluate(() => {
+    const canvas = document.querySelector(".pdf-page canvas")!;
+    const section = canvas.closest(".pdf-page")!;
+    const canvasRight = canvas.getBoundingClientRect().right;
+    let max = -Infinity;
+    for (const span of section.querySelectorAll(".pdf-text-layer span")) {
+      max = Math.max(max, span.getBoundingClientRect().right - canvasRight);
+    }
+    return max;
+  });
+  // Every glyph span ends inside the displayed canvas (sub-glyph tolerance).
+  expect(overflow).toBeLessThan(6);
+
+  // Line-anchor stability through a window resize with real lazy renders.
+  await page.locator(".slide-scroll").evaluate((strip) => {
+    strip.dispatchEvent(new WheelEvent("wheel", { deltaY: 1 }));
+    const third = strip.querySelectorAll(".pdf-page")[2]!;
+    strip.scrollTop += third.getBoundingClientRect().top - strip.getBoundingClientRect().top
+      + 0.4 * third.getBoundingClientRect().height - 16;
+  });
+  await page.waitForTimeout(800);
+  const fractionOfHit = () =>
+    page.evaluate(() => {
+      const strip = document.querySelector<HTMLElement>(".slide-scroll")!;
+      const line = strip.getBoundingClientRect().top + 16;
+      const sections = [...document.querySelectorAll<HTMLElement>(".pdf-page")];
+      const hit = sections.find((section) => section.getBoundingClientRect().bottom > line)
+        ?? sections.at(-1);
+      if (!hit) return { id: undefined, fraction: Number.NaN };
+      const rect = hit.getBoundingClientRect();
+      return { id: hit.dataset.pageStateId, fraction: (line - rect.top) / rect.height };
+    });
+  const reference = await fractionOfHit();
+  await page.setViewportSize({ width: 1120, height: 780 });
+  await expect
+    .poll(
+      async () => {
+        const hit = await fractionOfHit();
+        return hit.id === reference.id ? hit.fraction : Number.NaN;
+      },
+      { timeout: 10_000 }
+    )
+    .toBeCloseTo(reference.fraction, 1);
+});
+
+test("slide-only pages dock the assistant as a column in landscape", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto("/chapters/08_neural_networks/08-06-history/");
+  await expect(
+    page.locator(".pdf-page canvas, .structured-slide").first()
+  ).toBeVisible({ timeout: 20_000 });
+
+  const main = page.locator(".lecture-main");
+  const mainBefore = (await main.boundingBox())!.width;
+  await page.getByRole("button", { name: "Ask about this lecture" }).click();
+  const chat = page.locator(".chat-panel");
+  await expect(chat).toBeVisible();
+  const box = (await chat.boundingBox())!;
+  expect(box.height).toBeGreaterThan(500);
+  expect(box.width).toBeGreaterThan(260);
+  // A real docked column: static position, resized content, no scrim.
+  expect(await chat.evaluate((element) => getComputedStyle(element).position)).toBe("static");
+  expect((await main.boundingBox())!.width).toBeLessThan(mainBefore - 250);
+  await expect(page.locator(".assistant-scrim")).toBeHidden();
+});
+
 test("04-11 API failure retains two distinct usable PDF fallbacks", async ({ page }) => {
   await page.route("**/api/v1/lectures/i2ml-04-11", (route) =>
     route.fulfill({ status: 503, contentType: "application/json", body: "{}" })
@@ -481,6 +665,58 @@ test("04-11 API failure retains two distinct usable PDF fallbacks", async ({ pag
   expect(new Set(urls).size).toBe(2);
   expect(urls.every((url) => !url.toLocaleLowerCase().includes("%7c"))).toBe(true);
   for (const url of urls) expect((await page.request.get(url)).ok()).toBe(true);
+
+  // Landscape locks the page to the viewport: the footer is a static flex
+  // item, always visible at the window bottom while the columns scroll.
+  const landscape = await page.locator("footer").evaluate((element) => ({
+    position: getComputedStyle(element).position,
+    bodyOverflow: getComputedStyle(document.body).overflowY
+  }));
+  expect(landscape.position).toBe("static");
+  expect(landscape.bodyOverflow).toBe("hidden");
+  const footer = await page.locator("footer").boundingBox();
+  const viewport = page.viewportSize();
+  expect(footer).not.toBeNull();
+  expect(footer!.y + footer!.height).toBeGreaterThanOrEqual((viewport?.height ?? 0) - 2);
+
+  // Portrait windows put the footer in the flow, pinned to the bottom of the
+  // scroll range even when the page is shorter than the window.
+  await page.setViewportSize({ width: 700, height: 1000 });
+  const portraitPosition = await page
+    .locator("footer")
+    .evaluate((element) => getComputedStyle(element).position);
+  expect(portraitPosition).toBe("static");
+  const portraitFooter = await page.locator("footer").boundingBox();
+  expect(portraitFooter).not.toBeNull();
+  expect(portraitFooter!.y + portraitFooter!.height).toBeGreaterThanOrEqual(998);
+});
+
+test("slides render in browsers without the newest Map/Iterator/Promise APIs", async ({
+  page
+}) => {
+  // pdfjs-dist 6 assumes map-upsert, Iterator helpers, and Promise.try; the
+  // bundle ships polyfills because student browsers are often a year behind.
+  await page.addInitScript(() => {
+    const remove = (target: object, ...names: string[]) => {
+      for (const name of names) delete (target as Record<string, unknown>)[name];
+    };
+    remove(Map.prototype, "getOrInsert", "getOrInsertComputed");
+    remove(WeakMap.prototype, "getOrInsert", "getOrInsertComputed");
+    remove(Promise, "try", "withResolvers");
+    remove(Uint8Array.prototype, "toHex", "toBase64");
+    remove(Uint8Array, "fromBase64", "fromHex");
+    remove(Math, "sumPrecise");
+    remove(Set.prototype, "intersection");
+    remove(globalThis, "Iterator");
+  });
+  const errors: string[] = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.goto(lectureUrl);
+  await expect(page.getByRole("region", { name: "Synchronized lecture" })).toBeVisible();
+  await expect(page.locator(".pdf-page canvas").first()).toBeVisible();
+  await expect(page.locator(".pdf-text-layer").first()).not.toBeEmpty();
+  await expect(page.locator(".lecture-status")).not.toContainText("Lecture unavailable");
+  expect(errors).toEqual([]);
 });
 
 test("desktop assistant and narrow mobile layout preserve PDF text geometry", async ({ page }) => {
@@ -504,18 +740,24 @@ test("desktop assistant and narrow mobile layout preserve PDF text geometry", as
     const content = document.querySelector<HTMLElement>("#content")!;
     const media = document.querySelector<HTMLElement>(".media-panel")!;
     const slides = document.querySelector<HTMLElement>(".slide-panel")!;
+    const chat = document.querySelector<HTMLElement>(".chat-panel")!;
     const canvas = document.querySelector<HTMLCanvasElement>(".pdf-page canvas")!;
     const text = document.querySelector<HTMLElement>(".pdf-text-layer")!;
     return {
       content: content.getBoundingClientRect().width,
       media: media.getBoundingClientRect().width,
       slides: slides.getBoundingClientRect().width,
+      // The docked chat column bleeds to the right window edge, square.
+      chatFlush: Math.abs(chat.getBoundingClientRect().right - window.innerWidth),
+      chatRadius: getComputedStyle(chat).borderTopLeftRadius,
       geometryDelta: Math.abs(canvas.getBoundingClientRect().width - text.getBoundingClientRect().width)
     };
   });
   expect(desktop.content).toBeGreaterThan(1200);
   expect(desktop.media).toBeGreaterThan(350);
   expect(desktop.slides).toBeGreaterThan(350);
+  expect(desktop.chatFlush).toBeLessThan(2);
+  expect(desktop.chatRadius).toBe("0px");
   expect(desktop.geometryDelta).toBeLessThan(3);
 
   await page.setViewportSize({ width: 320, height: 800 });

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    {{- partial "head.html" . -}}
+    <body{{ if partial "lecture-detect.html" . }} class="has-modern-lecture"{{ end }}>
+        {{- partial "header.html" . -}}
+        <div id="content" class="container">
+        {{- block "main" . }}{{- end }}
+        </div>
+        {{- partial "footer.html" . -}}
+        {{- partial "script.html" . -}}
+    </body>
+</html>

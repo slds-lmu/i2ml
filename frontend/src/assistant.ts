@@ -28,9 +28,9 @@ export interface AssistantHost {
   lectureTitle(): string;
   contentRevision(): string;
   hasVideo(): boolean;
-  /** 1-based strip position of the slide the student is viewing, if any. */
-  activeSlideNumber(): number | undefined;
   citationTimeMs(slideId: string): number | undefined;
+  /** Panel opened or closed (the host may re-clamp its layout columns). */
+  expandedChanged?(expanded: boolean): void;
   /**
    * Resolve the teaching-revision context for a question. Returns undefined
    * (after announcing why) when the lecture is not ready for questions.
@@ -56,18 +56,47 @@ panelTemplate.innerHTML = `
   </button>
   <div class="assistant-scrim" hidden></div>
   <aside class="chat-panel" aria-label="Lecture assistant" hidden>
+    <div class="chat-sheet-resizer" aria-hidden="true"></div>
     <header class="chat-header">
       <span class="assistant-pill-icon" aria-hidden="true">?</span>
       <h2>Lecture assistant</h2>
-      <span class="scope-chip" title="Questions automatically include the slide you are viewing.">scope: auto</span>
-      <button
-        type="button"
-        data-action="assistant-menu"
-        aria-haspopup="true"
-        aria-expanded="false"
-        aria-label="Assistant options">…</button>
-      <button type="button" data-action="close-assistant" aria-label="Close assistant">×</button>
-      <div class="assistant-menu" hidden
+      <button type="button" class="assistant-header-icon" data-action="show-conversations"
+        aria-label="History" title="History" aria-pressed="false">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+          focusable="false">
+          <path d="M19 17V5a2 2 0 0 0-2-2H4"/>
+          <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4
+            0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/>
+        </svg>
+      </button>
+      <button type="button" class="assistant-header-icon" data-action="new-conversation"
+        aria-label="New chat" title="New chat">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+          focusable="false">
+          <path d="M12 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+          <path d="M18.4 2.6a2.12 2.12 0 0 1 3 3L13 14l-4 1 1-4z"/>
+        </svg>
+      </button>
+      <button type="button" class="assistant-header-icon" data-action="assistant-menu"
+        aria-haspopup="true" aria-expanded="false" aria-label="Settings" title="Settings">
+        <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor"
+          stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"
+          focusable="false">
+          <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2
+            0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1
+            1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0
+            2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2
+            2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2
+            0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0
+            1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0
+            .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2
+            0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+          <circle cx="12" cy="12" r="3"/>
+        </svg>
+      </button>
+      <div class="assistant-menu" hidden>
       <p class="assistant-menu-heading" role="presentation">Settings</p>
       <label class="assistant-menu-row">Language
         <select data-setting="language"></select>
@@ -106,15 +135,25 @@ panelTemplate.innerHTML = `
     </div>
     <form class="chat-form">
       <label class="lecture-visually-hidden" for="">Question</label>
-      <textarea name="question" maxlength="4000" required rows="1"></textarea>
+      <textarea name="question" maxlength="4000" required rows="1"
+        placeholder="Ask about the lecture..."></textarea>
       <button type="submit" aria-label="Ask">
         <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
-          <path d="M1 8h11M8 3l5 5-5 5" fill="none" stroke="currentColor" stroke-width="2"
+          <path d="M8 14V2M3 7l5-5 5 5" fill="none" stroke="currentColor" stroke-width="2"
             stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
     </form>
-    <p class="assistant-warning">AI-generated answers can be wrong — verify against slides and video.</p>
+    <div class="assistant-footer">
+      <button type="button" class="assistant-collapse" data-action="collapse-assistant"
+        aria-label="Collapse the assistant panel" title="Collapse the assistant panel">
+        <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false">
+          <path d="M2 8h8M6 4l4 4-4 4M13 3v10" fill="none" stroke="currentColor"
+            stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <p class="assistant-warning">AI-generated answers can be wrong — verify against slides and video.</p>
+    </div>
   </aside>`;
 
 let assistantInstance = 0;
@@ -154,7 +193,89 @@ export class AssistantPanel {
     this.fillSettingSelect("language", ASSISTANT_LANGUAGES);
     this.fillSettingSelect("answer-style", ASSISTANT_STYLES);
     this.bind();
-    this.refreshContext();
+    this.bindSheetResize();
+    this.bindScrollContainment();
+  }
+
+  /**
+   * In sheet mode (portrait, narrow landscape) the panel's left edge resizes
+   * it; dragging it below the minimum collapses it live — the pill returns,
+   * but pulling back re-opens it in the same gesture. There is deliberately
+   * no matching pull-in from the window edge here: portrait's right edge
+   * belongs to the page scrollbar.
+   */
+  private bindSheetResize(): void {
+    const handle = this.element<HTMLElement>(".chat-sheet-resizer");
+    handle.addEventListener("pointerdown", (event) => {
+      if (event.button !== 0) return;
+      const panel = this.element<HTMLElement>(".chat-panel");
+      if (getComputedStyle(panel).position !== "fixed") return; // docked: shell handles it
+      event.preventDefault();
+      handle.setPointerCapture?.(event.pointerId);
+      const startX = event.clientX;
+      const startWidth = panel.getBoundingClientRect().width;
+      const minWidth = 280;
+      const slack = 60;
+      const maxWidth = Math.floor(window.innerWidth * 0.94);
+      const move = (moveEvent: PointerEvent) => {
+        const desired = startWidth + (startX - moveEvent.clientX);
+        if (desired < minWidth - slack) {
+          this.root.classList.add("sheet-drag-closed");
+        } else {
+          this.root.classList.remove("sheet-drag-closed");
+          panel.style.width = `${Math.round(Math.min(Math.max(desired, minWidth), maxWidth))}px`;
+        }
+      };
+      const finish = (endEvent: PointerEvent) => {
+        handle.releasePointerCapture?.(endEvent.pointerId);
+        handle.removeEventListener("pointermove", move);
+        handle.removeEventListener("pointerup", finish);
+        handle.removeEventListener("pointercancel", finish);
+        if (this.root.classList.contains("sheet-drag-closed")) {
+          this.root.classList.remove("sheet-drag-closed");
+          this.setExpanded(false);
+        }
+      };
+      handle.addEventListener("pointermove", move);
+      handle.addEventListener("pointerup", finish);
+      handle.addEventListener("pointercancel", finish);
+    });
+  }
+
+  /**
+   * Wheel-scrolling anywhere over the panel must not move the page behind it
+   * as long as the panel content is scrollable at all; the scrollers
+   * themselves additionally use overscroll-behavior: contain.
+   */
+  private bindScrollContainment(): void {
+    this.element<HTMLElement>(".chat-panel").addEventListener(
+      "wheel",
+      (event) => {
+        const target = event.target as Node;
+        const scrollables = [
+          this.element<HTMLElement>(".chat-messages"),
+          this.element<HTMLElement>(".conversation-list"),
+          this.element<HTMLElement>("textarea[name=question]"),
+          this.querySelectorOptional(".qa-debug-output")
+        ].filter((element): element is HTMLElement => Boolean(element));
+        const insideScrollable = scrollables.some(
+          (element) =>
+            !element.hidden &&
+            element.contains(target) &&
+            element.scrollHeight > element.clientHeight + 1
+        );
+        if (insideScrollable) return; // native scrolling + contain handle it
+        const view = this.element<HTMLElement>(".conversation-list").hidden
+          ? this.element<HTMLElement>(".chat-messages")
+          : this.element<HTMLElement>(".conversation-list");
+        if (view.scrollHeight > view.clientHeight + 1) event.preventDefault();
+      },
+      { passive: false }
+    );
+  }
+
+  private querySelectorOptional(selector: string): HTMLElement | undefined {
+    return this.root.querySelector<HTMLElement>(selector) ?? undefined;
   }
 
   /** Called once the lecture manifest is ready; wires storage to the lecture. */
@@ -166,7 +287,6 @@ export class AssistantPanel {
     this.settingSelect("language").value = settings.language;
     this.settingSelect("answer-style").value = settings.answer_style;
     this.renderMessages();
-    this.refreshContext();
   }
 
   get isOpen(): boolean {
@@ -191,16 +311,8 @@ export class AssistantPanel {
     this.element<HTMLElement>(".selection-chip-text").textContent = selection?.text ?? "";
   }
 
-  /** Updates slide-dependent hints (composer placeholder). */
-  refreshContext(): void {
-    const slide = this.host.activeSlideNumber();
-    const question = this.element<HTMLTextAreaElement>("textarea[name=question]");
-    question.placeholder = slide
-      ? `Ask about slide ${slide} or the lecture…`
-      : "Ask about this lecture…";
-  }
-
   destroy(): void {
+    document.removeEventListener("pointerdown", this.outsideMenuClose);
     this.root.replaceChildren();
   }
 
@@ -219,7 +331,7 @@ export class AssistantPanel {
       if (this.isOpen) this.setExpanded(false, true);
       else this.open();
     });
-    this.action("close-assistant", () => this.setExpanded(false, true));
+    this.action("collapse-assistant", () => this.setExpanded(false, true));
     this.element<HTMLElement>(".assistant-scrim").addEventListener("click", () =>
       this.setExpanded(false)
     );
@@ -238,14 +350,7 @@ export class AssistantPanel {
     this.action("assistant-menu", () =>
       this.setMenuOpen(Boolean(this.element<HTMLElement>(".assistant-menu").hidden))
     );
-    document.addEventListener("pointerdown", (event) => {
-      const menu = this.element<HTMLElement>(".assistant-menu");
-      if (menu.hidden) return;
-      const target = event.target as Node;
-      if (!menu.contains(target) && !this.element("[data-action=assistant-menu]").contains(target)) {
-        this.setMenuOpen(false);
-      }
-    });
+    document.addEventListener("pointerdown", this.outsideMenuClose);
     this.action("new-conversation", () => {
       this.startNewConversation();
       this.setMenuOpen(false);
@@ -253,7 +358,9 @@ export class AssistantPanel {
     });
     this.action("show-conversations", () => {
       this.setMenuOpen(false);
-      this.showConversationList(true);
+      // The History control is a toggle: invoking it while the list is open
+      // returns to the chat, exactly like "Back to chat".
+      this.showConversationList(Boolean(this.element<HTMLElement>(".conversation-list").hidden));
     });
     this.action("close-conversations", () => this.showConversationList(false));
     this.action("export-conversation", () => this.exportCurrent());
@@ -279,10 +386,22 @@ export class AssistantPanel {
         form.requestSubmit();
       }
     });
-    question.addEventListener("input", () => {
-      question.style.height = "auto";
-      question.style.height = `${Math.min(question.scrollHeight, 160)}px`;
-    });
+    question.addEventListener("input", () => this.resizeQuestionField());
+  }
+
+  /**
+   * Grows the question field with its content — without scrollbars — up to
+   * half of the chat area's height; only beyond that it scrolls internally.
+   */
+  private resizeQuestionField(): void {
+    const question = this.element<HTMLTextAreaElement>("textarea[name=question]");
+    question.style.height = "auto";
+    const cap = Math.max(80, Math.floor(this.element<HTMLElement>(".chat-body").clientHeight / 2));
+    // +2 for the borders (border-box): without it the field is two pixels
+    // short of its content and shows a scrollbar although nothing is hidden.
+    const needed = question.scrollHeight + 2;
+    question.style.height = `${Math.min(needed, cap)}px`;
+    question.style.overflowY = needed > cap ? "auto" : "hidden";
   }
 
   private setExpanded(expanded: boolean, returnFocus = false): void {
@@ -296,7 +415,18 @@ export class AssistantPanel {
     this.root.closest(".lecture-shell")?.classList.toggle("assistant-open", expanded);
     if (!expanded) this.setMenuOpen(false);
     if (!expanded && (returnFocus || focusWasInside)) toggle.focus();
+    this.host.expandedChanged?.(expanded);
   }
+
+  /** Closes the settings menu on outside clicks; removed again in destroy(). */
+  private readonly outsideMenuClose = (event: PointerEvent): void => {
+    const menu = this.root.querySelector<HTMLElement>(".assistant-menu");
+    if (!menu || menu.hidden) return;
+    const target = event.target as Node;
+    if (!menu.contains(target) && !this.root.querySelector("[data-action=assistant-menu]")?.contains(target)) {
+      this.setMenuOpen(false);
+    }
+  };
 
   private setMenuOpen(open: boolean, returnFocus = false): void {
     const menu = this.element<HTMLElement>(".assistant-menu");
@@ -331,7 +461,10 @@ export class AssistantPanel {
     list.hidden = !show;
     messages.hidden = show;
     form.hidden = show;
-    this.element<HTMLElement>(".assistant-warning").hidden = show;
+    this.element<HTMLElement>(".assistant-footer").hidden = show;
+    this.root
+      .querySelector(".assistant-header-icon[data-action=show-conversations]")
+      ?.setAttribute("aria-pressed", String(show));
     if (!show) {
       this.deleteArmedId = undefined;
       return;
@@ -436,6 +569,9 @@ export class AssistantPanel {
       const text = document.createElement("span");
       text.textContent = message.markdown;
       element.append(text);
+      element.append(this.copyButton(
+        message.selection ? `> ${message.selection.text}\n\n${message.markdown}` : message.markdown
+      ));
       return element;
     }
     if (message.error) {
@@ -451,7 +587,32 @@ export class AssistantPanel {
     if (message.citations && message.citations.length > 0) {
       element.append(this.citationRow(message.citations));
     }
+    element.append(this.copyButton(message.markdown));
     return element;
+  }
+
+  /** Hover-revealed button copying the bubble's raw (unrendered) content. */
+  private copyButton(raw: string): HTMLElement {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "chat-copy";
+    button.title = "copy";
+    button.setAttribute("aria-label", "Copy message");
+    button.innerHTML =
+      '<svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true" focusable="false">' +
+      '<rect x="5.5" y="5.5" width="8" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="1.4"/>' +
+      '<path d="M10.5 5.5V3.8A1.3 1.3 0 0 0 9.2 2.5H3.8A1.3 1.3 0 0 0 2.5 3.8v6.4a1.3 1.3 0 0 0 1.3 1.3h1.7" ' +
+      'fill="none" stroke="currentColor" stroke-width="1.4"/></svg>';
+    button.addEventListener("click", () => {
+      void navigator.clipboard
+        ?.writeText(raw)
+        .then(() => {
+          button.classList.add("is-copied");
+          window.setTimeout(() => button.classList.remove("is-copied"), 1200);
+        })
+        .catch(() => this.host.announce("Copying to the clipboard failed."));
+    });
+    return button;
   }
 
   private citationRow(citations: readonly StoredCitation[]): HTMLElement {
@@ -499,6 +660,9 @@ export class AssistantPanel {
     this.conversation.messages.push(userMessage);
     this.persist();
     container.append(this.messageElement(userMessage));
+    questionField.value = "";
+    questionField.style.height = "";
+    questionField.style.overflowY = "";
     const pending = document.createElement("div");
     pending.className = "chat-message is-assistant is-thinking";
     pending.setAttribute("aria-busy", "true");
@@ -545,8 +709,6 @@ export class AssistantPanel {
       this.conversation.messages.push(answer);
       this.persist();
       pending.replaceWith(this.messageElement(answer));
-      questionField.value = "";
-      questionField.style.height = "";
     } catch (error) {
       const message: StoredMessage = {
         role: "assistant",
@@ -657,10 +819,11 @@ export class AssistantPanel {
     return this.element<HTMLSelectElement>(`select[data-setting="${name}"]`);
   }
 
+  /** Binds every control carrying the action (header shortcuts mirror menu entries). */
   private action(name: string, handler: () => void): void {
     this.root
-      .querySelector<HTMLButtonElement>(`[data-action="${name}"]`)
-      ?.addEventListener("click", handler);
+      .querySelectorAll<HTMLButtonElement>(`[data-action="${name}"]`)
+      .forEach((button) => button.addEventListener("click", handler));
   }
 
   private element<T extends Element = HTMLElement>(selector: string): T {

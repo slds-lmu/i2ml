@@ -17,8 +17,6 @@
 {{ end }}
 
 <main class="lecture-page container">
-  <h1>{{ $page.Title }}</h1>
-  <div class="lecture-introduction">{{ $page.Summary }}</div>
   <i2ml-lecture-app
     data-lecture-id="{{ $lectureID }}"
     {{ if or hugo.IsServer ($page.Site.Params.qadebug | default false) }}data-qa-debug="true"{{ end }}
@@ -38,6 +36,10 @@
         {{ end }}
       </ul>
     </noscript>
+    <header class="lecture-heading" data-lecture-heading>
+      <h1>{{ $page.Title }}</h1>
+    </header>
+    <div class="lecture-introduction" data-lecture-introduction>{{ $page.Summary }}</div>
     {{ $supplementMarker := "<!-- modern-lecture:supplements -->" }}
     {{ $contentParts := split $page.Content $supplementMarker }}
     {{ if gt (len $contentParts) 1 }}
@@ -48,18 +50,31 @@
       {{ index $contentParts 1 | safeHTML }}
     </section>
     {{ end }}
+    <nav
+      class="lecture-downloads"
+      aria-label="Slide downloads"
+      data-lecture-downloads
+      {{ if eq (len $fallbackPdfs) 0 }}hidden{{ end }}>
+      <h2>Downloads</h2>
+      <div class="lecture-downloads-links">
+        {{ range $index, $url := $fallbackPdfs }}
+        <a class="lecture-download-link" href="{{ $url }}">
+          {{- if eq (len $fallbackPdfs) 1 }}Download slides (PDF){{ else }}Download deck {{ add $index 1 }} (PDF){{ end -}}
+        </a>
+        {{ end }}
+      </div>
+    </nav>
+    {{ if or ($page.NextInSection) ($page.PrevInSection)}}
+    <ul class="section_skipper list-unstyled" data-lecture-nav>
+      {{ with $page.NextInSection }}
+      <li id="next_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">&#xab; {{ .Title }}</a></li>
+      {{ end }}
+      {{ with $page.PrevInSection }}
+      <li id="prev_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">{{ .Title }} &#xbb;</a></li>
+      {{ end }}
+    </ul>
+    {{ end }}
   </i2ml-lecture-app>
-
-  {{ if or ($page.NextInSection) ($page.PrevInSection)}}
-  <ul class="section_skipper list-unstyled">
-    {{ with $page.NextInSection }}
-    <li id="next_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">&#xab; {{ .Title }}</a></li>
-    {{ end }}
-    {{ with $page.PrevInSection }}
-    <li id="prev_in_section"><a class="btn btn-primary" href="{{ .Permalink }}">{{ .Title }} &#xbb;</a></li>
-    {{ end }}
-  </ul>
-  {{ end }}
 </main>
 <link rel="stylesheet" href="{{ "lecture/lecture-app.css" | relURL }}">
 <script type="module" src="{{ "lecture/lecture-app.js" | relURL }}"></script>
